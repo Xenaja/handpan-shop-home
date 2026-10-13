@@ -27,13 +27,17 @@
   const variant = body.dataset.variant;
   const accent = body.dataset.accent || '#B08D57';
 
-  /* ---------- масштаб: макет 1440, на узких экранах уменьшаем целиком ---------- */
+  /* ---------- масштаб: макет 1440, на узких экранах уменьшаем целиком;
+     первый экран — по высоте окна (--hh в пикселях макета) ---------- */
   const BASE = 1440;
   function fit() {
     const html = document.documentElement;
     html.style.zoom = '';
     const w = html.clientWidth;
-    html.style.zoom = w < BASE ? String(w / BASE) : '';
+    const z = w < BASE ? w / BASE : 1;
+    html.style.zoom = z < 1 ? String(z) : '';
+    const hh = Math.round(Math.min(1000, Math.max(640, innerHeight / z)));
+    html.style.setProperty('--hh', hh + 'px');
   }
   fit();
   addEventListener('resize', fit);
@@ -163,7 +167,7 @@
   const hero = $('[data-hero]');
   if (bar && hero) {
     const sentinel = document.createElement('div');
-    sentinel.style.cssText = 'position:absolute;left:0;top:640px;width:1px;height:1px;pointer-events:none;';
+    sentinel.style.cssText = 'position:absolute;left:0;top:71%;width:1px;height:1px;pointer-events:none;';
     hero.appendChild(sentinel);
     new IntersectionObserver(([e]) => {
       bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0);
