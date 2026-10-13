@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handpan Shop · 1a Тихая роскошь</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+:root{--graphite:#121212;--milk:#F2EEE8;--brass:#B08D57;--muted-d:#B9B3AA;--muted-l:#5A5650}
+body{background:var(--graphite);color:var(--milk);font-family:'Manrope',sans-serif}
+.cg{font-family:'Cormorant Garamond',serif}
+.mono{font-family:'JetBrains Mono',monospace}
+.caps{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+a:hover{color:var(--brass)}
+.wave span{width:3px;background:var(--brass);transform:scaleY(.12)}
+.mq-item{gap:28px;padding-right:28px}
+.mq-dot{width:6px;height:6px;background:var(--brass)}
+.h-play:hover{background:var(--brass)!important;color:var(--graphite)!important}
+.h-milk:hover{background:var(--brass)!important;color:var(--graphite)!important}
+.h-ink:hover{background:var(--brass)!important;color:var(--graphite)!important}
+.h-ast:hover{color:var(--graphite)!important}
+.h-under:hover{color:var(--brass)!important}
+</style>
+</head>
+<body data-variant="1a" data-accent="#B08D57">
+
+<!-- 01 · Найди свой звук -->
+<section data-screen data-hero style="position:relative;height:900px;background:#121212;overflow:hidden;">
+  <img src="../img/hangs_wall.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%;filter:grayscale(1) contrast(1.1) brightness(.5);">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,18,18,.55) 0%,rgba(18,18,18,0) 30%,rgba(18,18,18,.2) 55%,rgba(18,18,18,.92) 100%);"></div>
+  <header style="position:absolute;top:0;left:0;right:0;padding:32px 56px;display:flex;justify-content:space-between;align-items:center;">
+    <a href="./" class="cg" style="font-size:30px;letter-spacing:.01em;">Handpan Shop</a>
+    <nav style="display:flex;gap:36px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;">
+      <a href="#">Инструменты</a><a href="#">Обучение</a><a href="#">Сообщество</a><a href="#">Блог</a><a href="#">Контакты</a>
+    </nav>
+    <div style="display:flex;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;">
+      <span>Москва</span><span style="color:#B08D57;">·</span><a href="#" style="border-bottom:1px solid rgba(242,238,232,.5);">Санкт-Петербург</a>
+    </div>
+  </header>
+  <div class="mono" style="position:absolute;right:56px;top:140px;font-size:12px;letter-spacing:.14em;color:#B9B3AA;text-align:right;line-height:1.8;">D<br>D Kurd · 1/9</div>
+  <div style="position:absolute;left:56px;right:56px;bottom:56px;display:grid;grid-template-columns:minmax(0,1fr) 480px;gap:48px;align-items:end;">
+    <div style="display:flex;flex-direction:column;gap:28px;">
+      <h1 class="cg" style="margin:0;font-weight:300;font-size:200px;line-height:.82;letter-spacing:-.02em;text-transform:uppercase;">
+        <span style="display:block;">Найди</span>
+        <span style="display:block;padding-left:180px;color:#B08D57;">свой</span>
+        <span style="display:block;">звук</span>
+      </h1>
+      <div class="wave" data-wave style="display:flex;gap:5px;align-items:center;height:44px;overflow:hidden;"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px;">
+      <div style="display:flex;gap:20px;align-items:center;">
+        <button data-play class="t h-play" style="--ic:22px;width:96px;height:96px;border-radius:50%;border:1px solid #B08D57;background:rgba(18,18,18,.4);color:#F2EEE8;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;"></button>
+        <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;line-height:1.7;color:#B9B3AA;">Послушать,<br>как звучит ханг · <span data-time style="color:#F2EEE8;">0:00</span></div>
+      </div>
+      <p style="margin:0;font-size:17px;line-height:1.55;text-wrap:pretty;">Собственное производство хангов, школа и сообщество. От первого касания до своей музыки — вместе с вами.</p>
+      <div style="display:flex;flex-direction:column;gap:18px;align-items:flex-start;">
+        <div style="display:flex;gap:28px;align-items:center;">
+          <button data-open="Пробное занятие" class="caps t h-milk" style="padding:18px 28px;background:#F2EEE8;color:#121212;border:none;cursor:pointer;white-space:nowrap;">Попробовать занятие · 900 ₽</button>
+          <a href="#" class="t" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #B08D57;padding-bottom:4px;white-space:nowrap;">Выбрать ханг →</a>
+        </div>
+        <a href="#" data-open="Помочь определиться" class="t" style="font-size:14px;color:#B9B3AA;">Не знаете, с чего начать? Поможем определиться →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · Что такое ханг -->
+<section data-screen style="position:relative;min-height:900px;background:#F2EEE8;color:#121212;">
+  <div style="height:40px;border-bottom:1px solid rgba(18,18,18,.15);overflow:hidden;display:flex;align-items:center;">
+    <div data-marquee style="animation:mq 30s linear infinite;font-size:12px;letter-spacing:.24em;text-transform:uppercase;"></div>
+  </div>
+  <div class="mono" style="position:absolute;right:56px;top:72px;font-size:12px;letter-spacing:.14em;color:#5A5650;text-align:right;line-height:1.8;">A<br>2/9</div>
+  <div style="padding:72px 56px 96px;display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:80px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:28px;">
+      <div style="position:relative;display:flex;align-items:flex-start;">
+        <h2 class="cg" style="margin:0;font-weight:300;font-size:260px;line-height:.8;letter-spacing:-.03em;text-transform:uppercase;">Ханг</h2>
+        <button data-toggle="ast" class="cg t h-ast" aria-label="Что значит слово «ханг»" style="margin-top:6px;background:none;border:none;font-size:120px;line-height:.6;color:#B08D57;cursor:pointer;padding:0 0 0 6px;">*</button>
+        <div data-panel="ast" hidden style="position:absolute;left:520px;top:0;width:280px;background:#121212;color:#F2EEE8;padding:20px 22px;font-size:14px;line-height:1.55;z-index:2;">Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан — общее название подобных инструментов.</div>
+      </div>
+      <div class="cg" style="font-size:44px;line-height:1.05;">перкуссия нового времени</div>
+      <p style="margin:0;max-width:480px;font-size:17px;line-height:1.55;text-wrap:pretty;">Стальной инструмент, на котором вы одновременно задаёте ритм и ведёте мелодию. Поэтому его называют мелодической перкуссией.</p>
+      <div style="display:flex;align-items:center;gap:20px;"><span style="width:48px;height:1px;background:#B08D57;"></span><span class="cg" style="font-weight:400;font-size:38px;">К нему хочется прикоснуться</span></div>
+      <div style="display:flex;gap:28px;align-items:center;">
+        <button data-open="Частный визит" class="caps t h-ink" style="padding:18px 28px;background:#121212;color:#F2EEE8;border:none;cursor:pointer;">Прийти и послушать 20+ инструментов</button>
+        <button data-toggle="hist" class="t h-under" style="background:none;border:none;border-bottom:1px solid #B08D57;padding:0 0 4px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:#121212;">История ханга <span data-sign>+</span></button>
+      </div>
+      <p data-panel="hist" hidden style="margin:0;max-width:520px;font-size:15px;line-height:1.6;color:#5A5650;border-top:1px solid rgba(18,18,18,.15);padding-top:20px;">Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <svg data-hang data-stroke="#121212" data-text="#121212" data-ding-inner="1" viewBox="0 0 400 400" style="width:560px;height:560px;display:block;" role="group" aria-label="Схема ханга: коснитесь поля, чтобы услышать ноту">
+        <circle cx="200" cy="200" r="194" fill="none" stroke="#121212" stroke-width="1"></circle>
+        <circle cx="200" cy="200" r="180" fill="none" stroke="#121212" stroke-width=".5" stroke-dasharray="2 4"></circle>
+      </svg>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #121212;">
+        <div style="padding:14px 16px 0 0;display:flex;flex-direction:column;gap:6px;"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;">Динг</span><span style="font-size:14px;color:#5A5650;line-height:1.4;">основной тон, в центре</span></div>
+        <div style="padding:14px 16px 0;display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(18,18,18,.15);"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;">Тональные поля</span><span style="font-size:14px;color:#5A5650;line-height:1.4;">ноты вокруг</span></div>
+        <div style="padding:14px 0 0 16px;display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(18,18,18,.15);"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;">Гу</span><span style="font-size:14px;color:#5A5650;line-height:1.4;">резонатор снизу, глубокий бас</span></div>
+      </div>
+      <div class="mono" style="font-size:11px;letter-spacing:.12em;color:#5A5650;text-transform:uppercase;">Коснитесь поля — услышите ноту</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Почему так легко -->
+<section data-screen style="position:relative;min-height:900px;background:#121212;display:grid;grid-template-columns:600px minmax(0,1fr);">
+  <div style="position:relative;overflow:hidden;min-height:900px;">
+    <img src="../img/girl_hang.png" alt="Девушка играет на ханге" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 60%;filter:grayscale(1) contrast(1.1) brightness(.75);">
+    <span class="rip" style="left:62%;top:72%;width:420px;height:420px;border:1px solid #B08D57;"></span>
+    <span class="rip d2" style="left:62%;top:72%;width:420px;height:420px;border:1px solid #B08D57;"></span>
+    <span class="rip d3" style="left:62%;top:72%;width:420px;height:420px;border:1px solid #B08D57;"></span>
+  </div>
+  <div style="position:relative;padding:96px 80px 120px;display:flex;flex-direction:column;gap:32px;">
+    <div class="mono" style="position:absolute;right:56px;top:72px;font-size:12px;letter-spacing:.14em;color:#B9B3AA;text-align:right;line-height:1.8;">B♭<br>3/9</div>
+    <div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#B9B3AA;">Звуковая скульптура</div>
+    <h2 class="cg" style="margin:0;font-weight:300;font-size:150px;line-height:.84;letter-spacing:-.02em;text-transform:uppercase;">Почему<br><span style="padding-left:120px;">так</span><br>легко?</h2>
+    <p style="margin:0;max-width:520px;font-size:17px;line-height:1.55;text-wrap:pretty;">Ноты каждого ханга выстроены в один лад. Каждое поле звучит аккордом: основной тон, октава, квинта.</p>
+    <div class="cg" style="font-weight:300;font-size:72px;line-height:1;color:#B08D57;">Здесь нет фальшивых нот</div>
+    <p style="margin:0;max-width:520px;font-size:17px;line-height:1.55;text-wrap:pretty;">Ведите руки по полям, как чувствуете, — это уже музыкальная фраза. За несколько занятий без опыта вы начинаете импровизировать. Это состояние мы и называем: найти свой звук.</p>
+    <div style="display:flex;gap:28px;align-items:center;">
+      <button data-open="Пробное занятие" class="caps t h-milk" style="padding:18px 28px;background:#F2EEE8;color:#121212;border:none;cursor:pointer;">Записаться на пробное занятие</button>
+      <button data-toggle="more" class="t h-under" style="background:none;border:none;border-bottom:1px solid #B08D57;padding:0 0 4px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:#F2EEE8;">Читать дальше <span data-sign>+</span></button>
+    </div>
+    <p data-panel="more" hidden style="margin:0;max-width:560px;font-size:15px;line-height:1.6;color:#B9B3AA;border-top:1px solid rgba(242,238,232,.2);padding-top:20px;">Создатели называли ханг звуковой скульптурой и советовали следовать за звуком и ощущением касания, не ставя целью мелодию или ритм. Сегодня на ханге играют в академической музыке, неоклассике, электронике и кино, на больших сценах и в студиях.</p>
+  </div>
+</section>
+<div class="mono" style="height:160px;background:#121212;border-top:1px solid rgba(242,238,232,.12);display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.14em;color:#B9B3AA;text-transform:uppercase;">C · D · E · F · G · A — экраны 4–10 после утверждения стиля</div>
+
+<!-- липкая панель -->
+<div data-sticky style="left:0;right:0;bottom:0;height:76px;background:rgba(18,18,18,.94);border-top:1px solid rgba(242,238,232,.14);display:flex;align-items:center;justify-content:space-between;padding:0 32px 0 24px;gap:32px;color:#F2EEE8;">
+  <div style="display:flex;align-items:center;gap:18px;flex:1;max-width:620px;">
+    <button data-play class="t h-play" style="--ic:14px;width:44px;height:44px;border-radius:50%;border:1px solid #B08D57;background:none;color:#F2EEE8;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;"></button>
+    <div style="display:flex;flex-direction:column;gap:8px;flex:1;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;letter-spacing:.14em;text-transform:uppercase;"><span>Как звучит ханг · D Kurd</span><span class="mono" style="color:#B9B3AA;"><span data-time>0:00</span> / 1:20</span></div>
+      <div style="height:2px;background:rgba(242,238,232,.18);"><div data-progress style="height:2px;width:0;background:#B08D57;"></div></div>
+    </div>
+  </div>
+  <button data-open="Пробное занятие" class="t h-milk" style="padding:14px 26px;background:#F2EEE8;color:#121212;border:none;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Записаться</button>
+</div>
+
+<!-- форма -->
+<div data-sheet hidden role="dialog" aria-modal="true" aria-labelledby="sheet-title" style="align-items:center;background:rgba(18,18,18,.6);">
+  <div style="width:480px;background:#F2EEE8;color:#121212;padding:44px;display:flex;flex-direction:column;gap:20px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div id="sheet-title" data-sheet-title class="cg" style="font-size:44px;font-weight:300;line-height:1;"></div>
+      <button data-close aria-label="Закрыть" class="t h-under" style="background:none;border:none;font-size:24px;cursor:pointer;color:#121212;">×</button>
+    </div>
+    <p data-sheet-help style="margin:0;font-size:15px;line-height:1.55;color:#5A5650;">Можно начать с обучения, взять инструмент в аренду или сразу выбрать свой. Оставьте контакты — подскажем, с чего начать именно вам.</p>
+    <p data-sheet-thanks hidden style="margin:0;font-size:17px;line-height:1.55;">Спасибо! Перезвоним в течение дня.</p>
+    <form novalidate style="display:flex;flex-direction:column;gap:14px;">
+      <input name="name" placeholder="Имя" autocomplete="name" aria-label="Имя" style="padding:16px 0;border:none;border-bottom:1px solid #121212;background:none;font-family:inherit;font-size:16px;">
+      <input name="phone" type="tel" placeholder="Телефон" autocomplete="tel" inputmode="tel" aria-label="Телефон" style="padding:16px 0;border:none;border-bottom:1px solid #121212;background:none;font-family:inherit;font-size:16px;">
+      <select name="route" aria-label="Что вас интересует" style="padding:16px 0;border:none;border-bottom:1px solid #121212;background-color:transparent;background-position:right 4px center;font-family:inherit;font-size:16px;"></select>
+      <button type="submit" class="caps t h-ink" style="margin-top:12px;padding:18px 28px;background:#121212;color:#F2EEE8;border:none;cursor:pointer;">Записаться</button>
+    </form>
+  </div>
+</div>
+
+<script src="../assets/common.js"></script>
+</body>
+</html>
