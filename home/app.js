@@ -384,5 +384,18 @@
     }
   });
 
+  /* ---------- переключатель палитры A / B без перезагрузки ---------- */
+  const vs = $$('.vswitch a');
+  const markV = () => vs.forEach(a => a.toggleAttribute('aria-current', a.dataset.v === (root.dataset.palette || '')));
+  vs.forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const v = a.dataset.v, q = new URLSearchParams(location.search);
+    if (v) { root.dataset.palette = v; q.set('v', v); } else { delete root.dataset.palette; q.delete('v'); }
+    const qs = q.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    markV();
+  }));
+  markV();
+
   renderPlayer();
 })();

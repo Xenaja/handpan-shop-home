@@ -374,7 +374,7 @@ ul{margin:0;padding:0;list-style:none}
 .thanks-l{font-size:17px;line-height:1.5}
 
 /* ---------- данные в ожидании (только dev) ---------- */
-html[data-env="dev"] [data-pending]{outline:1.5px dashed #FFB020;outline-offset:2px}
+html[data-env="dev"] [data-pending],html[data-env="dev"] [data-pending-link]{outline:1.5px dashed #FFB020;outline-offset:2px}
 html:not([data-env="dev"]) [data-pending]{display:none!important}
 
 /* =========================================================
@@ -583,6 +583,18 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
   .form--light input:not([type="checkbox"]),.form--light select{padding-left:24px}
   .thanks-l{font-size:18px}
 }
+
+/* ---------- вариант B: без дерева — серый, чёрный, синий ---------- */
+html[data-palette="mono"]{--oak:var(--concrete)}
+html[data-palette="mono"] .s7{background:#E9E8E5}
+html[data-palette="mono"] .s5-photo{background:#bdb9b2}
+
+/* ---------- переключатель вариантов (служебный) ---------- */
+.vswitch{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:25;display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:14px 0 0 14px;background:rgba(18,18,18,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(242,238,232,.16);border-right:none;font-family:var(--f-m);color:var(--milk)}
+.vswitch a{display:flex;align-items:center;height:30px;padding:0 9px;border-radius:9px;font-size:11px;white-space:nowrap;max-width:30px;overflow:hidden;transition:max-width .3s ease-out,background-color .18s}
+.vswitch:hover a,.vswitch:focus-within a{max-width:240px}
+.vswitch a:hover{background:rgba(242,238,232,.12)}
+.vswitch a[aria-current]{background:var(--milk);color:var(--graphite)}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-env="dev">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -17,6 +17,12 @@
 <link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:1199.98px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-d.webp" media="(min-width:1200px)" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
+<script>
+  // ?v=mono — палитра без дерева; ?dev — пунктиром показать места, где ждём данные (PENDING.md)
+  (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
+    if (q.get('v') === 'mono') h.dataset.palette = 'mono';
+    if (q.has('dev')) h.dataset.env = 'dev'; })();
+</script>
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
@@ -348,7 +354,7 @@
           <option>Аренда от 8&nbsp;000&nbsp;₽ в месяц</option>
         </select>
         <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending="P-10">политикой конфиденциальности</a></span></label>
+        <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
         <button type="submit" class="btn btn--cobalt btn--submit">Записаться</button>
         <div class="form-status" aria-live="polite"></div>
       </form>
@@ -401,13 +407,19 @@
         <option>Частный визит</option><option>Пробное занятие</option><option>Покупка инструмента</option><option>Помочь определиться</option>
       </select>
       <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending="P-10">политикой конфиденциальности</a></span></label>
+      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
       <button type="submit" class="btn btn--cobalt btn--submit">Записаться</button>
       <div class="form-status" aria-live="polite"></div>
     </form>
     <p class="thanks-l" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня.</p>
   </div>
 </div>
+
+<!-- переключатель палитры — служебный, для сравнения вариантов -->
+<nav class="vswitch" aria-label="Вариант палитры">
+  <a href="./" data-v="">A · с деревом</a>
+  <a href="?v=mono" data-v="mono">B · серый, чёрный, синий</a>
+</nav>
 
 <script src="app.js"></script>
 </body>
