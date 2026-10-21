@@ -166,6 +166,8 @@
     $('[data-aud="name"]', panel).textContent = a.name;
     $('[data-aud="text"]', panel).textContent = a.text;
     $('[data-aud="link"]', panel).textContent = a.link;
+    const img = $('[data-aud-img]');
+    img.src = a.img; img.alt = a.alt; img.style.objectPosition = a.pos;
     const fit = $('[data-aud-fit]', panel);
     $('[data-aud="fit"]', fit).textContent = a.fit || 'уточнить';
     pend(fit, a.fitPending, !a.fit);
@@ -188,6 +190,8 @@
   });
   const fromHash = A.findIndex(a => '#' + encodeURIComponent(a.name.toLowerCase()) === location.hash);
   setTab(fromHash >= 0 ? fromHash : 0, false, false);
+  // заранее подгружаем фото вкладок, чтобы смена была без мигания
+  addEventListener('load', () => A.forEach(a => { new Image().src = a.img; }));
   $('[data-aud-play]').addEventListener('click', () => {
     const s = A[tab].snd, F = FREQS;
     if (s === 'long') tone(F[0], 0.28, 10);
