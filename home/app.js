@@ -102,7 +102,7 @@
         if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
         e.preventDefault();
         tone(FREQS[i], 0.25, i === 0 ? 6 : 4);
-        shape.setAttribute('fill', '#2F3CFF');
+        shape.setAttribute('fill', getComputedStyle(root).getPropertyValue('--cobalt').trim());
         clearTimeout(shape._t);
         shape._t = setTimeout(() => shape.setAttribute('fill', 'transparent'), 450);
       };
@@ -384,13 +384,14 @@
     }
   });
 
-  /* ---------- переключатель палитры A / B без перезагрузки ---------- */
+  /* ---------- переключатели палитры (фон A/B, вариант синего) без перезагрузки ---------- */
   const vs = $$('.vswitch a');
-  const markV = () => vs.forEach(a => a.toggleAttribute('aria-current', a.dataset.v === (root.dataset.palette || '')));
+  const ATTR = { v: 'palette', blue: 'blue' };
+  const markV = () => vs.forEach(a => a.toggleAttribute('aria-current', a.dataset.v === (root.dataset[ATTR[a.dataset.k]] || '')));
   vs.forEach(a => a.addEventListener('click', e => {
     e.preventDefault();
-    const v = a.dataset.v, q = new URLSearchParams(location.search);
-    if (v) { root.dataset.palette = v; q.set('v', v); } else { delete root.dataset.palette; q.delete('v'); }
+    const k = a.dataset.k, v = a.dataset.v, q = new URLSearchParams(location.search);
+    if (v) { root.dataset[ATTR[k]] = v; q.set(k, v); } else { delete root.dataset[ATTR[k]]; q.delete(k); }
     const qs = q.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
     markV();

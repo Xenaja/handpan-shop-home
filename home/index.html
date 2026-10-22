@@ -18,9 +18,10 @@
 <link rel="preload" as="image" href="img/hero-d.webp" media="(min-width:1200px)" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 <script>
-  // ?v=mono — палитра без дерева; ?dev — пунктиром показать места, где ждём данные (PENDING.md)
+  // ?v=mono — палитра без дерева; ?blue=faded|deep|ultra — вариант синего; ?dev — пунктиром показать места, где ждём данные (PENDING.md)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.get('v') === 'mono') h.dataset.palette = 'mono';
+    if (['faded', 'deep', 'ultra'].includes(q.get('blue'))) h.dataset.blue = q.get('blue');
     if (q.has('dev')) h.dataset.env = 'dev'; })();
 </script>
 </head>
@@ -416,9 +417,15 @@
 </div>
 
 <!-- переключатель палитры — служебный, для сравнения вариантов -->
-<nav class="vswitch" aria-label="Вариант палитры">
-  <a href="./" data-v="">A · с деревом</a>
-  <a href="?v=mono" data-v="mono">B · серый, чёрный, синий</a>
+<nav class="vswitch" aria-label="Варианты палитры">
+  <span class="vswitch-cap">Фон</span>
+  <a href="./" data-k="v" data-v="">A · с деревом</a>
+  <a href="?v=mono" data-k="v" data-v="mono">B · серый, чёрный, синий</a>
+  <span class="vswitch-cap">Синий</span>
+  <a href="./" data-k="blue" data-v=""><i class="vswitch-sw" style="background:#2F3CFF"></i>Кобальт #2F3CFF</a>
+  <a href="?blue=faded" data-k="blue" data-v="faded"><i class="vswitch-sw" style="background:#4E58BE"></i>Выгоревший #4E58BE</a>
+  <a href="?blue=deep" data-k="blue" data-v="deep"><i class="vswitch-sw" style="background:#2430C8"></i>Глубокий #2430C8</a>
+  <a href="?blue=ultra" data-k="blue" data-v="ultra"><i class="vswitch-sw" style="background:#1F2A8A"></i>Ультрамарин #1F2A8A</a>
 </nav>
 
 <script src="app.js"></script>
