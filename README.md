@@ -1,4 +1,7 @@
-# Handpan Shop — главная
+# Handpan Shop — сайт (превью)
+
+- `/home/` — главная
+- `/obuchenie/` — «Обучение» (синий — ультрамарин; что ждём — `obuchenie/PENDING.md`)
 
 ## Главная целиком — `/home/`
 

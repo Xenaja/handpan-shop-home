@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru" data-blue="ultra">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Обучение игре на хэндпане с нуля — Handpan Shop · Москва и Санкт-Петербург</title>
+<meta name="description" content="Научитесь играть на ханге с нуля. Пробное занятие 45 минут — 900 ₽, инструмент даём, опыт не нужен. Группы, индивидуально, онлайн. Москва и Санкт-Петербург.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Обучение игре на ханге с нуля — Handpan Shop">
+<meta property="og:description" content="Пробное занятие 45 минут — 900 ₽. Инструмент даём, опыт не нужен.">
+<meta property="og:image" content="img/hero-d.webp">
+<meta name="theme-color" content="#121212">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:999.98px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-d.webp" media="(min-width:1000px)" fetchpriority="high">
+<link rel="stylesheet" href="../home/style.css">
+<link rel="stylesheet" href="learn.css">
+<script>
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?blue=… — другой вариант синего (по умолчанию ультрамарин)
+  (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
+    if (['faded', 'deep', 'ultra'].includes(q.get('blue'))) h.dataset.blue = q.get('blue');
+    if (q.get('blue') === 'cobalt') delete h.dataset.blue;
+    if (q.has('dev')) h.dataset.env = 'dev'; })();
+</script>
+</head>
+<body class="learn">
+<a class="skip" href="#main">К содержанию</a>
+
+<!-- Изменяемые данные страницы. null = данных ещё нет (см. PENDING.md). -->
+<script type="application/json" id="content">
+{
+  "cities": {
+    "msk": { "name": "Москва", "address": "Нижний Сусальный переулок, 5 · м. Курская" },
+    "spb": { "name": "Санкт-Петербург", "address": null }
+  },
+  "formats": [
+    { "key": "group", "chip": "Группа", "name": "Группа до 8 человек", "price": "7 000 ₽", "unit": "/ мес · 4 занятия", "who": "Учиться в комфортном темпе с другими" },
+    { "key": "ind", "chip": "Индивидуально", "name": "Индивидуально", "price": "3 500 ₽", "unit": "/ час", "who": "Быстрый прогресс, гибкий график" },
+    { "key": "eug", "chip": "С Евгением", "name": "Индивидуально с Евгением", "price": "5 000 ₽", "unit": "/ час", "who": "Средний и высокий уровень" },
+    { "key": "online", "chip": "Онлайн", "name": "Онлайн", "price": "3 500 ₽", "unit": "/ час", "who": "Если вы в другом городе или нет времени ездить" }
+  ],
+  "teachers": [
+    { "name": "Евгений Неваленный", "nick": "U-Gene", "role": "Основатель школы и производства", "img": null, "bio": ["Основатель школы и производства Handpan Shop, стоящий у истоков хэндпан-культуры в России. Музыкант, композитор и педагог, специалист в области интуитивной музыки, изучающий физическую природу звука и его воздействие на человека", "Первые навыки получил у Юрия Рубина, затем обучался у Дэвида Кукерманна и других мастеров. Участник фестивалей, телевизионных шоу и международных проектов"] },
+    { "name": "Андрей Лето", "nick": "Jatamansi", "role": "Со-основатель школы · онлайн", "img": null, "bio": ["Музыкант-путешественник и один из ключевых исполнителей на пантаме в России. Базируется в Буэнос-Айресе, ведёт онлайн-занятия на русском языке для учеников по всему миру", "Участник фестивалей в России, Украине, Беларуси, Гонконге и Индии. Основатель проекта Pantam Studio, автор альбомов, сочетающих звучание ханга с электроникой и терменвоксом"] },
+    { "name": "Сергей Потлов", "nick": "СПб", "role": "Руководитель филиала в Санкт-Петербурге", "img": null, "bio": ["Преподаватель, музыкант, организатор мероприятий и джемов, автор контента. Выступает с учениками школы, проводит мастер-классы, популяризирует идею развития через творчество", "Многолетний опыт работы с людьми в разных творческих сферах"] },
+    { "name": "Анастасия Акмальдинова", "nick": "10 лет", "role": "Преподаватель", "img": null, "bio": ["Гибкий подход под каждого ученика – от мантр с хангом до композиций мастеров международного уровня. Опыт преподавания 10 лет, музыкальное образование, более 30 собственных композиций", "6 лет учится у мастеров из Бразилии, Германии, Италии, Ирана и России. Есть опыт работы с людьми с особенностями развития. Ученики ценят за понятность, чуткость и творческую энергию"] },
+    { "name": "Дарина Ямчук", "nick": "Перкуссия", "role": "Преподаватель", "img": null, "bio": ["Музыкальный путь длиной почти в 30 лет. Профессиональное образование – дирижёр хора, колледж при ГМПИ им. Ипполитова-Иванова. Около 10 лет играет на перкуссии, владеет фортепиано, сочиняет музыку", "14 лет ведёт авторский музыкальный проект: перкуссия, хэндпан и клавиши. Преподаёт хэндпан 2 года и продолжает учиться у ведущих мастеров России"] }
+  ],
+  "faq": [
+    ["Нужен ли свой инструмент для начала?", "Нет. На занятиях предоставляем хэндпан. Если захотите заниматься дома, можно взять в аренду от 8 000 ₽/мес"],
+    ["Я никогда не занимался музыкой. Получится?", "Да. Хэндпан – один из самых интуитивных инструментов. Первые мелодии получаются на первом занятии"],
+    ["Сколько нужно заниматься, чтобы начать играть красиво?", "Базовые основы – около 6 месяцев при занятиях раз в неделю"],
+    ["Можно ли учиться онлайн?", "Да. Индивидуальные занятия – 3 500 ₽/час"],
+    ["Есть ли занятия для детей?", "Да, от 12 лет. Для младшего возраста – индивидуально, по запросу"]
+  ]
+}
+</script>
+
+<!-- 01 · Научитесь играть -->
+<header class="e1" id="top">
+  <picture>
+    <source media="(min-width:1000px)" srcset="img/hero-d.webp" width="2400" height="1500">
+    <img class="e1-bg" src="img/hero-m.webp" alt="" width="1200" height="1800" fetchpriority="high">
+  </picture>
+  <div class="glow e1-glow" aria-hidden="true"></div>
+  <div class="e1-shade" aria-hidden="true"></div>
+
+  <div class="e-hdr">
+    <a class="pill e-logo" href="../home/">Handpan Shop</a>
+    <nav class="pill e-nav" aria-label="Основное меню">
+      <a class="lnk" href="../home/#making">Инструменты</a><span class="e-nav-on" aria-current="page">Обучение</span><a class="lnk" href="../home/#community">Сообщество</a><a class="lnk" href="#" data-pending="P-12">Блог</a><a class="lnk" href="#contacts">Контакты</a>
+    </nav>
+    <div class="pill city e-city" role="group" aria-label="Город" data-city-group>
+      <button type="button" data-city="msk" aria-pressed="true">Москва</button><button type="button" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+    </div>
+    <button type="button" class="e-burger" aria-expanded="false" aria-controls="e-menu" aria-label="Меню"><span></span><span></span></button>
+  </div>
+
+  <div class="e1-body">
+    <div class="e1-left">
+      <div class="mono">Обучение · 01/11</div>
+      <h1 class="e1-h1"><span>Научитесь играть</span><span class="cap">на&nbsp;ханге</span><span>с нуля</span></h1>
+    </div>
+    <div class="e1-card">
+      <div class="e1-price"><span class="e1-sum">900&nbsp;₽</span><span class="mono">пробное · 45 минут</span></div>
+      <p class="e1-lead">45 минут. Без опыта. Без своего инструмента. Первая мелодия – уже на первом занятии</p>
+      <button type="button" class="btn btn--milk" data-open="trial">Записаться на пробное</button>
+      <ul class="e1-list">
+        <li>Инструмент предоставляем</li>
+        <li>Опыт не нужен</li>
+        <li>Студии в Москве и Санкт-Петербурге</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 02 · Разные подходы -->
+<section class="e2 e-sec" aria-labelledby="h-e2">
+  <div class="e2-text">
+    <div class="mono">02/11 · Разные подходы</div>
+    <h2 id="h-e2" class="sr">Разные подходы к игре на ханге</h2>
+    <p class="e2-quote">Мастера играют на ханге по-разному: для ханг-пионера <b>Manu Delago</b> он звучит как арфа или перкуссия, для <b>Liron Meyuhas</b> – как инструмент сердца, тела и духа, а создатели <b>PANArt</b> советуют просто следовать за звуком, не ставя целью мелодию</p>
+    <p class="e-body">Ханг не требует музыкального образования, но вознаграждает за внимание к звуку</p>
+    <div class="e2-accent"><span class="e-dot"></span><span>Мы поможем познакомиться с разными подходами и найти свой</span></div>
+  </div>
+  <div class="e2-side">
+    <div class="e2-photo"><img src="img/hands.webp" alt="Ладонь на ханге" width="1600" height="1200" loading="lazy"></div>
+    <div class="e-cards2">
+      <div class="e-mcard"><span class="mono">Первый урок</span><span>Без музыкального образования, своего инструмента и подготовки</span></div>
+      <div class="e-mcard"><span class="mono">За 45 минут</span><span>Знакомство с инструментом, базовые приёмы и первая мелодия</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Что вы освоите -->
+<section class="e3 e-sec" aria-labelledby="h-e3">
+  <div class="e-head">
+    <div class="e-head-l">
+      <div class="mono">03/11 · Что вы освоите</div>
+      <h2 id="h-e3" class="e-h2 e3-h">От первого звука – к собственной музыке</h2>
+    </div>
+    <div class="e-head-r e-muted">
+      <p class="e-milk">На ханге легко начать играть. Но чтобы действительно владеть инструментом, одной интуиции недостаточно</p>
+      <p>В обучении соединяем технику, ритм, слух, мелодию и импровизацию – постепенно переходя от повторения за преподавателем к самостоятельной игре</p>
+    </div>
+  </div>
+  <div class="e3-list">
+    <div class="mono e3-cap">На занятиях вы учитесь</div>
+    <div class="skill"><span class="skill-n">01</span><span class="skill-w">Звукоизвлечению</span><span class="skill-t">Постановка рук, основные способы атаки, контроль громкости, тембра и длительности звука</span></div>
+    <div class="skill"><span class="skill-n">02</span><span class="skill-w">Ритму</span><span class="skill-t">Базовые ритмические рисунки, пульсация, акценты и координация обеих рук</span></div>
+    <div class="skill"><span class="skill-n">03</span><span class="skill-w">Мелодии</span><span class="skill-t">Как находить и соединять ноты, строить музыкальные фразы и разбирать композиции</span></div>
+    <div class="skill"><span class="skill-n">04</span><span class="skill-w">Импровизации</span><span class="skill-t">Как ориентироваться на инструменте и создавать музыку без заранее выученной последовательности нот</span></div>
+    <div class="skill"><span class="skill-n">05</span><span class="skill-w">Собственной музыке</span><span class="skill-t">Как постепенно перейти от исполнения чужих мелодий к созданию собственных</span></div>
+  </div>
+</section>
+
+<!-- 04 · Как мы учим -->
+<section class="e4 e-sec" aria-labelledby="h-e4">
+  <div class="e-head">
+    <div class="e-head-l">
+      <div class="mono">04/11 · Как мы учим</div>
+      <h2 id="h-e4" class="e-h2 e4-h">Не просто набор упражнений</h2>
+    </div>
+    <p class="e-head-r e-ink2">Каждый этап добавляет новый уровень контроля над инструментом: звук и движение, затем ритм и мелодия, после – импровизация и собственная музыкальная речь</p>
+  </div>
+  <ol class="stages">
+    <li class="stage st1"><span class="mono-n">01</span><div><b>Основа</b><span>Положение рук · звукоизвлечение · базовые удары · координация</span></div></li>
+    <li class="stage st2"><span class="mono-n">02</span><div><b>Ритм</b><span>Пульс · простые рисунки · игра двумя руками · чувство времени</span></div></li>
+    <li class="stage st3"><span class="mono-n">03</span><div><b>Мелодия</b><span>Лад · фразы · последовательности нот · разбор композиций</span></div></li>
+    <li class="stage st4"><span class="mono-n">04</span><div><b>Импровизация</b><span>Работа со структурой · вариативность · развитие слуха</span></div></li>
+    <li class="stage st5"><span class="mono-n">05</span><div><b>Собственный язык</b><span>Создание своих ритмов, мелодий и композиций</span></div></li>
+  </ol>
+  <div class="e4-extra">
+    <span class="e4-chip">+ Сложные техники и приёмы, разные размеры</span>
+    <span class="e4-chip e4-chip--line" data-pending="P-E2">Материалы: упражнения для самостоятельной практики · разборы композиций · материалы преподавателей</span>
+  </div>
+</section>
+
+<!-- 05 · Как строится путь -->
+<section class="e5 e-sec" aria-labelledby="h-e5">
+  <div class="e5-head">
+    <div class="mono">05/11 · Путь ученика</div>
+    <h2 id="h-e5" class="e5-h">Как строится путь</h2>
+  </div>
+  <ol class="path">
+    <li><div class="path-n"><span>1</span><b>месяц</b></div><p>Осваиваете базовые техники: как держать инструмент, как извлекать звук, первые ритмы. Играете простые мелодии</p></li>
+    <li><div class="path-n"><span>3–6</span><b>месяцев</b></div><p>Уверенно играете ритм и мелодию одновременно. Начинаете импровизировать. Можете сыграть несколько композиций</p></li>
+    <li><div class="path-n"><span>6+</span><b>месяцев</b></div><p>Свободно владеете инструментом. Играете «из потока». Можете выступать или играть для себя в удовольствие</p></li>
+  </ol>
+</section>
+
+<!-- 06 · Форматы и цены -->
+<section class="e6 e-sec" id="prices" aria-labelledby="h-e6">
+  <div class="e6-head">
+    <div class="e-head-l">
+      <div class="mono">06/11 · Форматы</div>
+      <h2 id="h-e6" class="e6-h">Форматы и цены</h2>
+    </div>
+    <p class="e-muted e6-note">Не знаете, какой формат выбрать? Начните с пробного занятия</p>
+  </div>
+  <div class="fmts" data-formats>
+    <div class="fmt fmt--trial">
+      <span class="fmt-name">Пробное занятие</span>
+      <span class="fmt-price">900&nbsp;₽ <span class="mono">/ 45 мин</span></span>
+      <span class="fmt-who">Попробовать без обязательств</span>
+      <button type="button" class="btn btn--cobalt fmt-btn" data-open="trial">Записаться</button>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · Что нужно -->
+<section class="e7 e-sec" aria-labelledby="h-e7">
+  <div class="e7-text">
+    <div class="e-head-l">
+      <div class="mono">07/11 · Перед первым занятием</div>
+      <h2 id="h-e7" class="e7-h">Что нужно</h2>
+    </div>
+    <div class="needs">
+      <div class="e-mcard need"><span class="mono">Инструмент</span><b>Не обязателен</b><span>На занятиях предоставляем хэндпан</span></div>
+      <div class="e-mcard need"><span class="mono">Опыт</span><b>Не нужен</b><span>Большинство наших учеников начинали с нуля</span></div>
+      <div class="e-mcard need"><span class="mono">Возраст</span><b>От 12 лет</b><span>Для детей младше – индивидуально</span></div>
+      <div class="e-mcard need"><span class="mono">Что взять</span><b>Желание попробовать новое</b><span>Остальное есть в студии</span></div>
+    </div>
+  </div>
+  <div class="e7-photo">
+    <img src="img/studio.webp" alt="Ханги в студии перед занятием" width="1200" height="1800" loading="lazy">
+    <span class="mono e7-tag">Инструмент ждёт в студии</span>
+  </div>
+</section>
+
+<!-- 08 · Кто вас учит -->
+<section class="e8 e-sec" aria-labelledby="h-e8">
+  <div class="e-head">
+    <div class="e-head-l">
+      <div class="mono">08/11 · Кто вас учит</div>
+      <h2 id="h-e8" class="e-h2 e8-h">Учимся у тех, кто двигает культуру ханга вперёд</h2>
+    </div>
+    <p class="e-head-r e-muted">Наши преподаватели формировали российскую культуру ханга с самого её начала. Сегодня они развивают собственную практику, исследуют возможности инструмента и учатся у мастеров мировой сцены</p>
+  </div>
+  <div class="e8-grid">
+    <div class="tlist" role="tablist" aria-label="Преподаватели" data-tlist></div>
+    <div class="tcard2" role="tabpanel" id="t-panel" tabindex="0">
+      <div class="tcard2-photo" data-t-photo></div>
+      <div class="tcard2-body">
+        <span class="mono e-ink2" data-t="role"></span>
+        <span class="tcard2-name" data-t="name"></span>
+        <div class="tcard2-bio" data-t="bio"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · Отзывы: ждём реальные (P-E1), без них блок скрыт -->
+<section class="e9 e-sec" aria-labelledby="h-e9" data-pending="P-E1">
+  <div class="e-head-l">
+    <div class="mono">09/11 · Отзывы</div>
+    <h2 id="h-e9" class="e9-h">Что говорят ученики</h2>
+  </div>
+  <div class="reviews">
+    <div class="review review--empty"><p>Реальный отзыв ученика: конкретный результат и срок</p><span class="mono">ждём от школы</span></div>
+    <div class="review review--empty"><p>Реальный отзыв ученика: конкретный результат и срок</p><span class="mono">ждём от школы</span></div>
+    <div class="review review--empty"><p>Реальный отзыв ученика: конкретный результат и срок</p><span class="mono">ждём от школы</span></div>
+  </div>
+</section>
+
+<!-- 10 · Частые вопросы -->
+<section class="e10 e-sec" aria-labelledby="h-e10">
+  <div class="e-head-l">
+    <div class="mono">10/11 · FAQ</div>
+    <h2 id="h-e10" class="e10-h">Частые вопросы</h2>
+  </div>
+  <div class="faq" data-faq></div>
+</section>
+
+<!-- 11 · Финал -->
+<section class="e11" id="contacts" aria-labelledby="h-e11">
+  <div class="glow e11-glow" aria-hidden="true"></div>
+  <div class="e11-main">
+    <div class="mono">11/11</div>
+    <h2 id="h-e11" class="e11-h">Найди свой звук за 45&nbsp;минут</h2>
+    <button type="button" class="btn btn--milk e11-btn" data-open="trial">Записаться на пробное · 900&nbsp;₽</button>
+    <div class="e11-addr" data-addr></div>
+  </div>
+  <footer class="e-foot">
+    <span class="foot-logo">Handpan Shop</span>
+    <nav class="e-foot-nav" aria-label="Разделы"><a class="lnk" href="../home/#making">Инструменты</a><a class="lnk" href="./" aria-current="page">Обучение</a><a class="lnk" href="../home/#community">Сообщество</a><a class="lnk" href="#" data-pending="P-12">Блог</a><a class="lnk" href="../home/#contacts">Контакты</a></nav>
+    <span class="mono e-muted">© Handpan Shop · Москва · СПб</span>
+  </footer>
+</section>
+
+</main>
+
+<!-- липкая панель -->
+<div class="e-bar" data-sticky>
+  <div class="e-bar-in">
+    <div class="e-bar-t"><b>Пробное занятие</b><span class="mono">900&nbsp;₽ · 45 мин</span></div>
+    <button type="button" class="btn btn--cobalt e-bar-btn" data-open="trial">Записаться</button>
+  </div>
+</div>
+
+<!-- меню на узких экранах: на весь экран -->
+<div class="e-menu" id="e-menu" hidden role="dialog" aria-modal="true" aria-label="Меню">
+  <div class="e-menu-top">
+    <span class="foot-logo">Handpan Shop</span>
+    <button type="button" class="e-menu-x" data-menu-close aria-label="Закрыть меню">×</button>
+  </div>
+  <nav class="e-menu-nav" aria-label="Меню">
+    <a href="../home/#making">Инструменты</a><span class="e-menu-on" aria-current="page">Обучение</span><a href="../home/#community">Сообщество</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+  </nav>
+  <div class="e-menu-city" role="group" aria-label="Город" data-city-group>
+    <button type="button" data-city="msk" aria-pressed="true">Москва</button><button type="button" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+  </div>
+</div>
+
+<!-- форма записи -->
+<div class="sheet" data-sheet hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="sheet-title">Запись на занятие</div>
+      <button type="button" class="x" data-close aria-label="Закрыть">×</button>
+    </div>
+    <form class="form form--light" data-form novalidate>
+      <fieldset class="chips">
+        <legend class="mono e-ink2">Формат</legend>
+        <div class="chips-row" data-fmt-chips></div>
+      </fieldset>
+      <fieldset class="chips">
+        <legend class="mono e-ink2">Город</legend>
+        <div class="chips-row">
+          <label class="chip-r"><input type="radio" name="city" value="msk" checked><span>Москва</span></label>
+          <label class="chip-r"><input type="radio" name="city" value="spb"><span>Санкт-Петербург</span></label>
+        </div>
+      </fieldset>
+      <label class="sr" for="m-name">Имя</label>
+      <input id="m-name" name="name" placeholder="Имя" autocomplete="given-name" required>
+      <label class="sr" for="m-phone">Телефон</label>
+      <input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="m-phone-err">
+      <div class="err" id="m-phone-err" aria-live="polite"></div>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
+      <button type="submit" class="btn btn--cobalt btn--submit">Отправить</button>
+      <div class="form-status" aria-live="polite"></div>
+      <p class="e-hint">Перезвоним, ответим на вопросы и подберём время</p>
+    </form>
+    <div class="e-thanks" data-thanks hidden tabindex="-1">
+      <span class="sheet-title">Спасибо!</span>
+      <span>Перезвоним в течение дня</span>
+      <button type="button" class="btn btn--ink btn--self" data-close>Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="learn.js"></script>
+</body>
+</html>
