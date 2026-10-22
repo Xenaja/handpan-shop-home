@@ -254,7 +254,10 @@
 
   /* ---------- липкая панель ---------- */
   const bar = $('[data-sticky]');
-  const onScroll = () => bar.classList.toggle('show', scrollY > (wide.matches ? 640 : 560));
+  const onScroll = () => {
+    bar.classList.toggle('show', scrollY > (wide.matches ? 640 : 560));
+    root.classList.toggle('scrolled', scrollY > 40);
+  };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
