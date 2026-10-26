@@ -19,8 +19,12 @@
 <link rel="stylesheet" href="common.css">
 <link rel="stylesheet" href="home.css">
 <script>
-  // ?dev — пунктиром показать места, где ждём данные (PENDING.md)
-  if (new URLSearchParams(location.search).has('dev')) document.documentElement.dataset.env = 'dev';
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?blue=deep — глубокий синий (выбор помним между страницами)
+  (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
+    if (q.has('dev')) h.dataset.env = 'dev';
+    let b = q.get('blue');
+    try { if (b === null) b = sessionStorage.getItem('hs-blue'); else sessionStorage.setItem('hs-blue', b); } catch (e) {}
+    if (b === 'deep') h.dataset.blue = 'deep'; })();
 </script>
 </head>
 <body>

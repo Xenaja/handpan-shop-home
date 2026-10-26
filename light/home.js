@@ -47,7 +47,7 @@
         if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
         e.preventDefault();
         tone(FREQS[i], 0.25, i === 0 ? 6 : 4);
-        shape.setAttribute('fill', '#4E58BE');
+        shape.setAttribute('fill', getComputedStyle(document.documentElement).getPropertyValue('--blue').trim());
         clearTimeout(shape._t);
         shape._t = setTimeout(() => shape.setAttribute('fill', 'transparent'), 450);
       };

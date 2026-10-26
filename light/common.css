@@ -5,6 +5,9 @@
   --blue:#4E58BE;          /* бренд, действия */
   --blue-l:#7A82D6;        /* акцент на тёмном фото */
   --blue-rgb:78,88,190;
+  --glow-rgb:106,114,212; /* центр свечений */
+  --cap-a:#2E3680;         /* градиент капсулы «свой» */
+  --cap-c:#8A92D8;
   --milk:#F2EEE8;          /* основной фон */
   --sand:#E2DED8;          /* второй фон секций */
   --concrete:#D6D3CD;      /* плашки, заглушки фото, бегущая строка */
@@ -58,7 +61,7 @@ h1,h2,h3,p{margin:0}
 .small{font-size:15px;line-height:1.5;color:var(--ink3)}
 /* капсула-акцент в строке заголовка */
 .cap{border-radius:200px;padding:0 .3em .07em}
-.cap--grad{background:linear-gradient(90deg,#2E3680 0%,var(--blue) 45%,#8A92D8 100%)}
+.cap--grad{background:linear-gradient(90deg,var(--cap-a) 0%,var(--blue) 45%,var(--cap-c) 100%)}
 .cap--blue{background:var(--blue);color:var(--milk)}
 .pcap{display:inline-block;width:1.85em;height:.8em;border-radius:1em;background:#9A958E center/cover no-repeat;flex-shrink:0}
 
@@ -159,7 +162,7 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- свечение ---------- */
-.glow{position:absolute;aspect-ratio:1;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(106,114,212,.5) 0%,rgba(var(--blue-rgb),.16) 38%,rgba(var(--blue-rgb),0) 68%);filter:blur(20px);transform:translate(-50%,-50%);animation:gl 6s ease-in-out infinite alternate}
+.glow{position:absolute;aspect-ratio:1;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(var(--glow-rgb),.5) 0%,rgba(var(--blue-rgb),.16) 38%,rgba(var(--blue-rgb),0) 68%);filter:blur(20px);transform:translate(-50%,-50%);animation:gl 6s ease-in-out infinite alternate}
 @keyframes gl{from{transform:translate(-50%,-50%) scale(.88);opacity:.6}to{transform:translate(-50%,-50%) scale(1.06);opacity:.9}}
 
 /* ---------- плеер ---------- */
@@ -216,6 +219,18 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
   .sheet{align-items:center}
   .sheet-card{padding:36px;border-radius:32px}
 }
+
+/* вариант синего: по умолчанию выгоревший из макета, ?blue=deep — глубокий */
+html[data-blue="deep"]{--blue:#2430C8;--blue-rgb:36,48,200;--blue-l:#6E78F0;--glow-rgb:84,96,232;--cap-a:#141C7A;--cap-c:#6E78F0}
+
+/* служебный переключатель синего — для сравнения вариантов, перед продом убрать */
+.vswitch{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:26;display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:14px 0 0 14px;background:rgba(18,18,18,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(242,238,232,.16);border-right:none;font-family:var(--f-m);color:var(--milk)}
+.vswitch-cap{padding:6px 9px 2px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#B9B3AA;max-width:30px;overflow:hidden;white-space:nowrap;transition:max-width .3s ease-out}
+.vswitch button{display:flex;align-items:center;height:30px;padding:0 9px;border:none;border-radius:9px;background:none;color:inherit;font-family:var(--f-m);font-size:11px;white-space:nowrap;max-width:30px;overflow:hidden;cursor:pointer;transition:max-width .3s ease-out,background-color .18s}
+.vswitch:hover .vswitch-cap,.vswitch:focus-within .vswitch-cap,.vswitch:hover button,.vswitch:focus-within button{max-width:240px}
+.vswitch button:hover{background:rgba(242,238,232,.12)}
+.vswitch button[aria-pressed="true"]{background:var(--milk);color:var(--ink)}
+.vswitch i{display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-right:8px;border:1px solid rgba(242,238,232,.4)}
 
 /* ---------- данные, которых ещё нет (PENDING.md) ---------- */
 html[data-env="dev"] [data-pending],html[data-env="dev"] [data-pending-link]{outline:1.5px dashed #E8890C;outline-offset:2px}
