@@ -21,15 +21,15 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=28f">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=28g">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28f">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28g">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
-  // ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит» (выбор помним между страницами)
+  // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.has('dev')) h.dataset.env = 'dev';
-    const V = { hang: ['bronze', 'dark'], teach: ['aubergine'] };
+    const V = { hang: ['bronze', 'dark'] };
     for (const k in V) {
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}

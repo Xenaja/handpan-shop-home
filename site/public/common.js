@@ -274,12 +274,10 @@
   }
 
   /* ---------- служебный переключатель вариантов для заказчика (перед продом убрать) ----------
-     ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит»; выбор помним между страницами */
+     ?hang=bronze | dark — купол на схеме ханга; выбор помним между страницами */
   const VARIANTS = [
     { key: 'hang', cap: 'Ханг', label: 'Цвет ханга на схеме', when: '.hang',
-      opts: [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C'], ['dark', 'Тёмная бронза', '#2A170D']] },
-    { key: 'teach', cap: 'Кто учит', label: 'Фон экрана «Кто учит»', when: '.s7, .e8',
-      opts: [['', 'Бронза', '#55331F'], ['aubergine', 'Баклажан', '#301728']] }
+      opts: [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C'], ['dark', 'Тёмная бронза', '#2A170D']] }
   ].filter(g => $(g.when));
   if (VARIANTS.length) {
     document.body.insertAdjacentHTML('beforeend', '<div class="vswitch">' + VARIANTS.map(g =>

@@ -4,24 +4,24 @@
 .ind{padding-left:0}
 
 /* ---------- 01 · Найди свой звук ---------- */
+/* сцена: ханг справа на бетоне; заголовок от поля, текст и кнопки — со 2-й колонки (хэндоф Navy, обновление 27.10) */
 .s1{position:relative;min-height:min(820px,100svh);overflow:hidden;display:flex;flex-direction:column;background:var(--night);color:var(--milk)}
-.s1-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
-.s1-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,32,.35) 0%,rgba(10,16,32,0) 30%,rgba(10,16,32,0) 62%,rgba(10,16,32,.7) 100%)}
-.s1-glow{left:50%;top:60%;width:min(900px,140vw);background:radial-gradient(circle,rgba(var(--glow-rgb),.32) 0%,rgba(var(--blue-rgb),.1) 40%,rgba(var(--blue-rgb),0) 68%);animation-duration:5s}
-.is-playing .s1-glow,.is-playing .s10-glow{animation-duration:.9s}
-.s1-ring{position:absolute;left:52%;top:62%;width:min(980px,150vw);aspect-ratio:1;border:1px solid rgba(232,238,244,.14);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.s1-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 50%}
+.s1-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,32,.85) 0%,rgba(10,16,32,.55) 55%,rgba(10,16,32,0) 80%)}
+.is-playing .s10-glow{animation-duration:.9s}
 .s1 .nav a:hover,.s1-help:hover{color:var(--blue-l)}
 .s1-city button{color:var(--milk)}
 .s1-city button[aria-pressed="true"]{background:var(--milk);color:var(--ink)}
 
-.s1-body{position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(28px,5vh,56px);padding:clamp(24px,6vh,64px) clamp(20px,3vw,40px) clamp(24px,4vh,40px)}
+/* на телефоне внизу кадра оставляем место под ханг */
+.s1-body{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(32px,5vh,56px);padding:clamp(32px,9vh,104px) var(--gut) calc(min(96vw,560px) / 2.01 + 80px)}
+.s1-top{gap:4px}
 .h-hero{line-height:1;letter-spacing:-.05em}
-.s1-h1{display:flex;flex-direction:column;gap:clamp(14px,2vh,22px);font-weight:400}
-.s1-slogan{font-size:clamp(52px,15vw,120px);display:flex;flex-wrap:wrap;align-items:center;gap:.04em .12em;text-shadow:0 4px 40px rgba(0,0,0,.35)}
-.s1-sub{font-family:var(--f-t);font-size:clamp(16px,1.5vw,21px);font-weight:500;line-height:1.35;letter-spacing:0;text-transform:none;max-width:22em;color:#E8EEF4;text-shadow:0 1px 2px rgba(10,16,32,.7),0 2px 22px rgba(10,16,32,.85);text-wrap:balance}
-.s1-grid{display:grid;grid-template-columns:1fr;gap:22px 32px;align-items:end}
-.s1-mid{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
-.s1-lead{font-size:clamp(16px,1.3vw,18px);line-height:1.45;max-width:400px;text-wrap:balance}
+.s1-h1{display:flex;flex-direction:column;gap:clamp(24px,3vh,32px);font-weight:400}
+.s1-slogan{font-size:clamp(36px,11vw,96px);display:flex;flex-direction:column;align-items:flex-start;gap:.16em;color:var(--card)}
+.s1-cap{margin-left:.22em;white-space:nowrap}
+.s1-sub,.s1-lead{font-family:var(--f-t);font-size:clamp(16px,1.4vw,19px);font-weight:400;line-height:1.45;letter-spacing:0;text-transform:none;max-width:420px;text-wrap:pretty}
+.s1-text{gap:18px;align-items:flex-start}
 .s1-btns{width:100%}
 .s1-btns .btn{flex:1 1 auto;padding:0 24px}
 .s1-help{font-size:13px;color:var(--num-off)}
@@ -29,30 +29,34 @@
 .s1-play-n .play{width:48px;height:48px;color:var(--milk)}
 .s1-play-n .play svg{width:14px;height:14px}
 .s1-play-n:hover .play{background:var(--blue)}
-.s1-player{gap:14px;align-items:center}
+.s1-bottom{justify-content:space-between;align-items:flex-end;gap:24px}
+.s1-player{display:flex;gap:14px;align-items:center}
 .s1-play{width:60px;height:60px;color:var(--milk)}
 .s1-play:hover{background:var(--blue)}
 .s1-pmeta{gap:8px}
 .s1-plabel{font-size:14px;font-weight:500}
 .s1-player .wave{color:var(--milk)}
-.s1-thumbs{justify-self:end}
+.s1-thumbs{display:flex}
 .s1-thumbs img,.s1-thumbs span{width:60px;height:60px;border-radius:14px;object-fit:cover;border:1px solid rgba(232,238,244,.3)}
 .s1-thumbs img+img,.s1-thumbs span{margin-left:-8px}
 .s1-thumbs span{display:flex;align-items:center;justify-content:center;font-size:15px}
 .s1-thumbs:hover span{background:var(--blue)}
 @media (min-width:1000px){
-  .s1-h1{align-items:center;text-align:center}
-  .s1-slogan{font-size:clamp(56px,7.4vw,136px);justify-content:center;flex-wrap:nowrap}
-  .s1-sub{max-width:none}
-  .s1-grid{grid-template-columns:1fr minmax(0,480px) 1fr}
-  .s1-mid{align-items:center;text-align:center}
-  .s1-btns{width:auto;justify-content:center}
+  .s1-bg{object-position:70% 62%}
+  .s1-shade{background:linear-gradient(90deg,rgba(10,16,32,.8) 0%,rgba(10,16,32,.45) 42%,rgba(10,16,32,0) 62%),linear-gradient(180deg,rgba(10,16,32,.45) 0%,rgba(10,16,32,0) 25%)}
+  .s1-body{padding-bottom:clamp(24px,4vh,40px)}
+  /* кегль от сетки: «НАЙДИ» укладывается в колонки 1–6 */
+  .s1-slogan{font-size:clamp(52px,calc((5.5 * var(--cw) + 120px) / 7.15),126px)}
+  .s1-cap{margin-left:calc(var(--cw) + var(--g) - .32em)}
+  .s1-sub,.s1-text{margin-left:calc(var(--cw) + var(--g))}
+  .s1-text{max-width:calc(5 * var(--cw) + 4 * var(--g))}
+  .s1-btns{width:auto}
   .s1-play-n{display:none}
 }
 
 /* ---------- 02 · Что такое ханг ---------- */
 .s2{position:relative;overflow:hidden}
-.s2-strip{height:44px;background:linear-gradient(90deg,var(--aubergine) 0%,var(--wine) 50%,var(--aubergine) 100%);color:var(--white-w)}
+.s2-strip{height:44px;background:var(--cta);color:var(--white-w)}
 .s2-strip .mq{font-size:14px;letter-spacing:.04em;animation-duration:28s}
 .s2-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px clamp(32px,5vw,80px);align-items:center}
 .s2-text{gap:24px;min-width:0}
@@ -192,14 +196,14 @@ html[data-hang="dark"] .hang{--hang-hit:rgba(201,150,104,.5);background:radial-g
   .tcard[data-o="2"],.tcard[data-o="-2"]{--op:.6}
 }
 
-/* вариант ?teach=aubergine: вино → баклажан → Neon Navy, холодный блик за центральной карточкой */
-html[data-teach="aubergine"] .s7{background:var(--aubergine-bg)}
-html[data-teach="aubergine"] .s7 .mono,html[data-teach="aubergine"] .s7-note{color:var(--breeze)}
-html[data-teach="aubergine"] .tcard,html[data-teach="aubergine"] .tcard[data-o="0"]{background:var(--wine)}
-html[data-teach="aubergine"] .tcard-shade{background:linear-gradient(180deg,rgba(19,25,54,0) 50%,rgba(19,25,54,.75) 100%)}
-html[data-teach="aubergine"] .s7 .arr:hover{border-color:var(--breeze);color:var(--breeze)}
-html[data-teach="aubergine"] .s7 .arr--ink{color:var(--aubergine)}
-html[data-teach="aubergine"] .s7 .arr--ink:hover{background:var(--breeze);border-color:var(--breeze);color:var(--aubergine)}
+/* «Кто учит» — баклажан: вино → баклажан → Neon Navy, холодный блик за центральной карточкой */
+.s7{background:var(--aubergine-bg)}
+.s7 .mono,.s7-note{color:var(--breeze)}
+.tcard,.tcard[data-o="0"]{background:var(--wine)}
+.tcard-shade{background:linear-gradient(180deg,rgba(19,25,54,0) 50%,rgba(19,25,54,.75) 100%)}
+.s7 .arr:hover{border-color:var(--breeze);color:var(--breeze)}
+.s7 .arr--ink{color:var(--aubergine)}
+.s7 .arr--ink:hover{background:var(--breeze);border-color:var(--breeze);color:var(--aubergine)}
 
 /* ---------- 08 · Как делают ханг ---------- */
 .s8{position:relative;overflow:hidden}
@@ -229,7 +233,7 @@ html[data-teach="aubergine"] .s7 .arr--ink:hover{background:var(--breeze);border
 .m2 img{object-position:50% 35%}
 .m3{aspect-ratio:4/5}
 .mosaic{align-items:start}
-.s9-strip{height:52px;background:var(--wine);color:var(--white-w)}
+.s9-strip{height:52px;background:var(--cta);color:var(--white-w)}
 .s9-strip .mq{font-size:16px}
 
 /* ---------- 10 · Финал и контакты ---------- */
@@ -277,12 +281,24 @@ html[data-teach="aubergine"] .s7 .arr--ink:hover{background:var(--breeze);border
 .s5-grid{outline-offset:4px}
 
 /* ---------- линии из знака ---------- */
-.s1-line{right:-230px;top:290px;width:560px;color:rgba(232,238,244,.15)}
 .s4{position:relative;overflow:hidden}
 .s4>.head-row,.s4>.routes{position:relative}
 .s4-line{right:-12%;top:-14%;width:min(820px,130vw);color:rgba(144,168,192,.17);transform:rotate(-8deg)}
 .s10-line{left:80%;top:22%;width:min(420px,70vw);transform:translate(-50%,-50%) rotate(12deg);color:rgba(58,96,144,.2)}
 @media (max-width:999.98px){
-  .s1-line{display:none}  /* на телефоне первый экран занят текстом и кнопками */
   .s4-line{right:-40%;top:-6%}
+}
+
+/* ---------- сетка 12 колонок на десктопе (хэндоф Navy, обновление 27.10) ---------- */
+@media (min-width:1000px){
+  .s2-grid,.s3,.s5-grid,.s6-grid,.s8-grid,.s9-grid,.s10-grid,.s4>.head-row,.s7>.head-row,.route{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+  .s2-text,.s3-text,.s5-grid>.aud,.s6-num,.s8-text,.s10-form{grid-column:1 / 7}
+  .s2-scheme,.s3-photo,.s5-photo,.s6-side,.s9-grid>.mosaic,.s10-side{grid-column:7 / 13}
+  .s4>.head-row>.sec-head,.s7>.head-row>.sec-head{grid-column:1 / 9}
+  .s4-note,.s7-note{grid-column:9 / 13;justify-self:start}
+  .route-verb{grid-column:1 / 7}
+  .route-info{grid-column:7 / 10}
+  .route-btn{grid-column:10 / 13;justify-self:end}
+  .s8-copy{grid-column:8 / 13}
+  .s9-text{grid-column:1 / 6}
 }

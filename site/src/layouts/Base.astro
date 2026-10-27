@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const canonical = new URL(path, Astro.site).href;
 const preview = base !== '';   // превью на GitHub Pages собирается с префиксом адресов, боевой сайт — от корня
-const V = '28f';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+const V = '28g';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -49,10 +49,10 @@ const V = '28f';   // версия ресурсов: браузер не дер�
 {styles.map(s => <link rel="stylesheet" href={`${u(s)}?v=${V}`}>)}
 <script is:inline>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
-  // ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит» (выбор помним между страницами)
+  // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.has('dev')) h.dataset.env = 'dev';
-    const V = { hang: ['bronze', 'dark'], teach: ['aubergine'] };
+    const V = { hang: ['bronze', 'dark'] };
     for (const k in V) {
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}

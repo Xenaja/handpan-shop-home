@@ -38,26 +38,25 @@ const jsonld = {
 };
 ---
 <Base
-  title="U-GENE sound vibe — ханги, школа и сообщество · Москва и Санкт-Петербург"
+  title="Ханги и школа игры на хэндпане в Москве и СПб — U-GENE sound vibe"
   description="Собственное производство хангов, школа и сообщество. Пробное занятие 45 минут — 900 ₽, инструмент даём, опыт не нужен. Москва и Санкт-Петербург."
   ogTitle="U-GENE sound vibe — найди свой звук"
   ogDescription="Ханги собственного производства, школа и сообщество. Пробное занятие — 900 ₽."
-  path="/" ogImage="img/hero-navy-d.webp" theme="#0A1020"
+  path="/" ogImage="img/hero-scene-d.webp" theme="#0A1020"
   styles={['common.css', 'home.css']} scripts={['common.js', 'home.js']} jsonld={jsonld}>
   <Fragment slot="head">
-    <link rel="preload" as="image" href={u('img/hero-navy-m.webp')} media="(max-width:999.98px)" fetchpriority="high">
-    <link rel="preload" as="image" href={u('img/hero-navy-d.webp')} media="(min-width:1000px)" fetchpriority="high">
+    <link rel="preload" as="image" href={u('img/hero-scene-m.webp')} media="(max-width:999.98px)" fetchpriority="high">
+    <link rel="preload" as="image" href={u('img/hero-scene-d.webp')} media="(min-width:1000px)" fetchpriority="high">
   </Fragment>
 
 <!-- 01 · Найди свой звук -->
 <header class="s1 on-dark" id="top">
   <picture>
-    <source media="(min-width:1000px)" srcset={u('img/hero-navy-d.webp')} width="1586" height="992">
-    <img class="s1-bg" src={u('img/hero-navy-m.webp')} alt="Стальной ханг" width="1100" height="688" fetchpriority="high">
+    <source media="(min-width:1000px)" srcset={u('img/hero-scene-d.webp')} width="1616" height="973">
+    <img class="s1-bg" src={u('img/hero-scene-m.webp')} alt="Стальной ханг на мокром бетоне" width="1200" height="723" fetchpriority="high">
   </picture>
   <div class="s1-shade" aria-hidden="true"></div>
-  <div class="glow s1-glow" aria-hidden="true"></div>
-  <span class="contour contour--outer s1-line" aria-hidden="true"></span>
+  <div class="grain" aria-hidden="true"></div>
 
   <div class="hdr">
     <Logo class="pill glass-d logo" href="#top" />
@@ -74,20 +73,13 @@ const jsonld = {
   </div>
 
   <div class="s1-body">
-    <!-- один H1: слоган + подзаголовок с ключевыми словами (SEO-MIGRATION.md, раздел 3) -->
-    <h1 class="s1-h1">
-      <span class="h-hero s1-slogan"><span class="chrome">Найди</span> <span class="cap cap--grad">свой</span> <span class="chrome">звук</span></span>
-      <span class="s1-sub">Ханги собственного производства, школа и сообщество в Москве и Санкт-Петербурге</span>
-    </h1>
-    <div class="s1-grid">
-      <div class="s1-player hdr-d">
-        <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
-        <div class="stack s1-pmeta">
-          <span class="s1-plabel"><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
-          <div class="wave" data-wave="40" aria-hidden="true"></div>
-        </div>
-      </div>
-      <div class="s1-mid">
+    <div class="stack s1-top">
+      <!-- один H1: слоган + подзаголовок с ключевыми словами (SEO-MIGRATION.md, раздел 3); подзаголовок — первая фраза текста со 2-й колонки -->
+      <h1 class="s1-h1">
+        <span class="h-hero s1-slogan"><span>Найди</span> <span class="cap cap--hero s1-cap">Свой звук</span></span>
+        <span class="s1-sub">Собственное производство хангов, школа и сообщество в Москве и Санкт-Петербурге.</span>
+      </h1>
+      <div class="stack s1-text">
         <p class="s1-lead">От первого касания до своей музыки – вместе с вами</p>
         <div class="btns s1-btns">
           <button type="button" class="btn btn--52 btn--blue s1-try" data-open="trial">Попробовать · 900 ₽</button>
@@ -98,7 +90,16 @@ const jsonld = {
           <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
         </button>
       </div>
-      <a class="s1-thumbs hdr-d" href="#making" aria-label="Инструменты: больше 20 в студии">
+    </div>
+    <div class="s1-bottom hdr-d">
+      <div class="s1-player">
+        <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
+        <div class="stack s1-pmeta">
+          <span class="s1-plabel"><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
+          <div class="wave" data-wave="40" aria-hidden="true"></div>
+        </div>
+      </div>
+      <a class="s1-thumbs" href="#making" aria-label="Инструменты: больше 20 в студии">
         <img src={u('img/thumb-pedestal.webp')} alt="" width="120" height="120">
         <img src={u('img/thumb-hang.webp')} alt="" width="120" height="120">
         <span class="glass-d">+20</span>
@@ -270,7 +271,7 @@ const jsonld = {
 </section>
 
 <!-- 07 · Кто учит -->
-<section class="sec s7 bg-bronze on-dark" id="teach" aria-labelledby="h-s7">
+<section class="sec s7 bg-aubergine on-dark" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
       <div class="mono">F · 7/10</div>
@@ -407,7 +408,7 @@ const jsonld = {
         <div class="bar-prog"><div data-progress></div></div>
       </div>
     </div>
-    <button type="button" class="btn btn--48 btn--ink" data-open="trial">Записаться</button>
+    <button type="button" class="btn btn--48 btn--blue" data-open="trial">Записаться</button>
   </div>
 </div>
 
