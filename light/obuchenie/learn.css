@@ -186,6 +186,13 @@
   .tmore{display:none}
 }
 
+/* вариант ?teach=aubergine — как «Кто учит» на главной */
+html[data-teach="aubergine"] .e8{background:var(--aubergine-bg)}
+html[data-teach="aubergine"] .e8 .mono,html[data-teach="aubergine"] .e8 .mute,html[data-teach="aubergine"] .e8 .e8-intro,html[data-teach="aubergine"] .e8 .tbio p,html[data-teach="aubergine"] .e8 .tmore{color:var(--breeze)}
+html[data-teach="aubergine"] .e8 .chip:hover{border-color:var(--breeze);color:var(--breeze)}
+html[data-teach="aubergine"] .e8 .chip[aria-selected="true"]{color:var(--aubergine)}
+html[data-teach="aubergine"] .tphoto{background:var(--wine)}
+
 /* ---------- 09 · Отзывы (скрыт до реальных, P-E1) ---------- */
 .e9{display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)}
 .rev{flex:0 0 82%!important;padding:24px;border-radius:24px;border:1px dashed rgba(10,16,32,.3);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:240px}

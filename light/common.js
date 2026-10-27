@@ -258,21 +258,28 @@
     });
   }
 
-  /* ---------- переключатель цвета ханга на схеме (служебный): ?hang=bronze | dark, помним между страницами ---------- */
-  if ($('.hang')) {
-    const VS = [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C'], ['dark', 'Тёмная бронза', '#2A170D']];
-    document.body.insertAdjacentHTML('beforeend', '<div class="vswitch" role="group" aria-label="Цвет ханга на схеме"><span class="vswitch-cap">Ханг</span>' +
-      VS.map(([v, l, c]) => `<button type="button" data-hang-v="${v}"><i style="background:${c}"></i>${l}</button>`).join('') + '</div>');
-    const markHang = () => $$('[data-hang-v]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.hangV === (root.dataset.hang || ''))));
-    $$('[data-hang-v]').forEach(b => b.addEventListener('click', () => {
-      const v = b.dataset.hangV, q = new URLSearchParams(location.search);
-      if (v) { root.dataset.hang = v; q.set('hang', v); } else { delete root.dataset.hang; q.delete('hang'); }
-      try { sessionStorage.setItem('hs-hang', v); } catch (e) {}
+  /* ---------- служебный переключатель вариантов для заказчика (перед продом убрать) ----------
+     ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит»; выбор помним между страницами */
+  const VARIANTS = [
+    { key: 'hang', cap: 'Ханг', label: 'Цвет ханга на схеме', when: '.hang',
+      opts: [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C'], ['dark', 'Тёмная бронза', '#2A170D']] },
+    { key: 'teach', cap: 'Кто учит', label: 'Фон экрана «Кто учит»', when: '.s7, .e8',
+      opts: [['', 'Бронза', '#55331F'], ['aubergine', 'Баклажан', '#301728']] }
+  ].filter(g => $(g.when));
+  if (VARIANTS.length) {
+    document.body.insertAdjacentHTML('beforeend', '<div class="vswitch">' + VARIANTS.map(g =>
+      `<div class="vswitch-g" role="group" aria-label="${g.label}"><span class="vswitch-cap">${g.cap}</span>` +
+      g.opts.map(([v, l, c]) => `<button type="button" data-v-key="${g.key}" data-v="${v}"><i style="background:${c}"></i>${l}</button>`).join('') + '</div>').join('') + '</div>');
+    const mark = () => $$('[data-v-key]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === (root.dataset[b.dataset.vKey] || ''))));
+    $$('[data-v-key]').forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.vKey, v = b.dataset.v, q = new URLSearchParams(location.search);
+      if (v) { root.dataset[k] = v; q.set(k, v); } else { delete root.dataset[k]; q.delete(k); }
+      try { sessionStorage.setItem('hs-' + k, v); } catch (e) {}
       const qs = q.toString();
       history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
-      markHang();
+      mark();
     }));
-    markHang();
+    mark();
   }
 
   /* после отрисовки страницы: типограф и начальные состояния */

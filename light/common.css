@@ -31,6 +31,7 @@
   --steel:linear-gradient(115deg,#243F66 0%,#3A6090 36%,#4E74A2 52%,#3A6090 68%,#243F66 100%);
   --dark:radial-gradient(ellipse 80% 60% at 85% 0%,#162848 0%,#0A1020 70%);
   --light2:linear-gradient(180deg,#E8EEF4 0%,#D9E2EC 100%);
+  --aubergine-bg:radial-gradient(ellipse 45% 38% at 50% 46%,rgba(183,209,234,.10) 0%,rgba(183,209,234,0) 70%),linear-gradient(160deg,#3F1521 0%,#301728 55%,#131936 100%);
   --bronze:radial-gradient(ellipse 45% 38% at 46% 46%,rgba(240,200,154,.30) 0%,rgba(240,200,154,0) 70%),radial-gradient(ellipse 30% 22% at 78% 82%,rgba(232,180,120,.16) 0%,rgba(232,180,120,0) 70%),radial-gradient(ellipse 30% 24% at 14% 30%,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 70%),radial-gradient(ellipse 110% 90% at 50% 42%,#7A4A2C 0%,#55331F 42%,#2E1A0F 78%,#1C100A 100%);
 
   --f-d:'Unbounded',sans-serif;
@@ -243,8 +244,10 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(10,16,32,.14)}
   .sheet-card{padding:36px;border-radius:32px}
 }
 
-/* служебный переключатель цвета ханга на схеме (бронза / navy) — заказчик выбирает, перед продом убрать */
-.vswitch{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:26;display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:14px 0 0 14px;background:rgba(10,16,32,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(232,238,244,.16);border-right:none;font-family:var(--f-m);color:var(--milk)}
+/* служебный переключатель вариантов (цвет ханга, фон «Кто учит») — заказчик выбирает, перед продом убрать */
+.vswitch{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:26;display:flex;flex-direction:column;gap:8px;padding:4px;border-radius:14px 0 0 14px;background:rgba(10,16,32,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(232,238,244,.16);border-right:none;font-family:var(--f-m);color:var(--milk)}
+.vswitch-g{display:flex;flex-direction:column;gap:2px}
+.vswitch-g+.vswitch-g{padding-top:6px;border-top:1px solid rgba(232,238,244,.16)}
 .vswitch-cap{padding:6px 9px 2px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--num-off);max-width:30px;overflow:hidden;white-space:nowrap;transition:max-width .3s ease-out}
 .vswitch button{display:flex;align-items:center;height:30px;padding:0 9px;border:none;border-radius:9px;background:none;color:inherit;font-family:var(--f-m);font-size:11px;white-space:nowrap;max-width:30px;overflow:hidden;cursor:pointer;transition:max-width .3s ease-out,background-color .18s}
 .vswitch:hover .vswitch-cap,.vswitch:focus-within .vswitch-cap,.vswitch:hover button,.vswitch:focus-within button{max-width:240px}
