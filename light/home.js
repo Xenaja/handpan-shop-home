@@ -35,21 +35,22 @@
   const NAMES = ['A3', 'B♭3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4'];
   const ANGLES = [100, 60, 145, 20, 195, 335, 245, 290];
   const NS = 'http://www.w3.org/2000/svg';
+  const REST = 'rgba(0,0,0,.16)';
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
   $$('[data-hang]').forEach(svg => {
     const add = (shape, label, x, y, size, i, aria) => {
       const g = svgEl('g', { class: 'hang-hit', tabindex: '0', role: 'button', 'aria-label': aria });
-      shape.setAttribute('fill', 'transparent');
-      const tx = svgEl('text', { x, y, 'text-anchor': 'middle', 'font-family': "'JetBrains Mono', monospace", 'font-size': size, fill: '#F2EEE8', 'pointer-events': 'none' });
+      shape.setAttribute('fill', REST);
+      const tx = svgEl('text', { x, y, 'text-anchor': 'middle', 'font-family': "'JetBrains Mono', monospace", 'font-size': size, fill: '#E8EEF4', 'pointer-events': 'none' });
       tx.textContent = label;
       g.append(shape, tx);
       const go = e => {
         if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
         e.preventDefault();
         tone(FREQS[i], 0.25, i === 0 ? 6 : 4);
-        shape.setAttribute('fill', getComputedStyle(document.documentElement).getPropertyValue('--blue').trim());
+        shape.setAttribute('fill', getComputedStyle(svg.parentNode).getPropertyValue('--hang-hit').trim());
         clearTimeout(shape._t);
-        shape._t = setTimeout(() => shape.setAttribute('fill', 'transparent'), 450);
+        shape._t = setTimeout(() => shape.setAttribute('fill', REST), 450);
       };
       g.addEventListener('pointerdown', go);
       g.addEventListener('keydown', go);
@@ -57,10 +58,10 @@
     };
     ANGLES.forEach((a, i) => {
       const r = a * Math.PI / 180, cx = +(200 + 132 * Math.cos(r)).toFixed(1), cy = +(200 + 132 * Math.sin(r)).toFixed(1);
-      add(svgEl('ellipse', { cx, cy, rx: 38, ry: 29, transform: `rotate(${a + 90} ${cx} ${cy})`, stroke: 'rgba(242,238,232,.55)', 'stroke-width': 1 }),
+      add(svgEl('ellipse', { cx, cy, rx: 38, ry: 29, transform: `rotate(${a + 90} ${cx} ${cy})`, stroke: 'rgba(232,238,244,.55)', 'stroke-width': 1 }),
         NAMES[i], cx, cy + 4, 11, i + 1, 'Нота ' + NAMES[i]);
     });
-    add(svgEl('circle', { cx: 200, cy: 200, r: 54, stroke: 'rgba(242,238,232,.7)', 'stroke-width': 1 }), 'D3', 200, 204, 12, 0, 'Динг, нота D3');
+    add(svgEl('circle', { cx: 200, cy: 200, r: 54, stroke: 'rgba(232,238,244,.7)', 'stroke-width': 1 }), 'D3', 200, 204, 12, 0, 'Динг, нота D3');
   });
 
   /* ---------- 05: кому подходит ---------- */

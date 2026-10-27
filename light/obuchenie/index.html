@@ -10,19 +10,19 @@
 <meta property="og:title" content="Обучение игре на ханге с нуля — U-GENE sound vibe">
 <meta property="og:description" content="Пробное занятие 45 минут — 900 ₽. Инструмент даём, опыт не нужен.">
 <meta property="og:image" content="../img/edu-46-d.webp">
-<meta name="theme-color" content="#F2EEE8">
+<meta name="theme-color" content="#E8EEF4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../common.css">
 <link rel="stylesheet" href="learn.css">
 <script>
-  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?blue=deep — глубокий синий (выбор помним между страницами)
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?hang=bronze — бронзовый ханг на схеме (выбор помним между страницами)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.has('dev')) h.dataset.env = 'dev';
-    let b = q.get('blue');
-    try { if (b === null) b = sessionStorage.getItem('hs-blue'); else sessionStorage.setItem('hs-blue', b); } catch (e) {}
-    if (b === 'deep') h.dataset.blue = 'deep'; })();
+    let v = q.get('hang');
+    try { if (v === null) v = sessionStorage.getItem('hs-hang'); else sessionStorage.setItem('hs-hang', v); } catch (e) {}
+    if (v === 'bronze') h.dataset.hang = 'bronze'; })();
 </script>
 </head>
 <body>
@@ -140,7 +140,7 @@
 </section>
 
 <!-- 03 · Что вы освоите -->
-<section class="sec e3" aria-labelledby="h-e3">
+<section class="sec bg-dark on-dark e3" aria-labelledby="h-e3">
   <div class="stack e3-head">
     <div class="mono">03/11 · Что вы освоите</div>
     <h2 id="h-e3" class="h2 stack"><span>От первого звука</span><span class="mute e-end">–&nbsp;к собственной музыке</span></h2>
@@ -219,7 +219,7 @@
 </section>
 
 <!-- 08 · Кто вас учит -->
-<section class="sec e8" id="teachers" aria-labelledby="h-e8">
+<section class="sec bg-bronze on-dark e8" id="teachers" aria-labelledby="h-e8">
   <div class="stack e8-head">
     <div class="mono">08/11 · Кто вас учит</div>
     <h2 id="h-e8" class="h2 e8-h">Учимся у тех, кто двигает <span class="mute">культуру ханга вперёд</span></h2>
@@ -251,7 +251,7 @@
 </section>
 
 <!-- 10 · Частые вопросы -->
-<section class="sec e10" aria-labelledby="h-e10">
+<section class="sec bg-navy on-dark e10" aria-labelledby="h-e10">
   <div class="sec-head">
     <div class="mono">10/11 · FAQ</div>
     <h2 id="h-e10" class="h2">Частые <span class="mute">вопросы</span></h2>

@@ -1,24 +1,37 @@
-/* U-GENE sound vibe — светлая версия: токены и общие компоненты обеих страниц.
+/* U-GENE sound vibe — версия Navy: токены и общие компоненты обеих страниц.
    Раскладка одна и плавная 360 → 1440+, «широкий» режим с 1000 px (как в макете). */
 
 :root{
-  --blue:#4E58BE;          /* бренд, действия */
-  --blue-l:#7A82D6;        /* акцент на тёмном фото */
-  --blue-rgb:78,88,190;
-  --glow-rgb:106,114,212; /* центр свечений */
-  --cap-a:#2E3680;         /* градиент капсулы «свой» */
-  --cap-c:#8A92D8;
-  --milk:#F2EEE8;          /* основной фон */
-  --sand:#E2DED8;          /* второй фон секций */
-  --concrete:#D6D3CD;      /* плашки, заглушки фото, бегущая строка */
-  --card:#FAF8F4;          /* карточки на светлом */
-  --ink:#121212;           /* графит */
-  --ink2:#3F3C38;          /* вторичный текст */
-  --ink3:#5A5650;          /* подписи */
-  --mute:#8C867E;          /* вторая часть заголовка */
-  --num-off:#B9B3AA;       /* неактивные цифры */
-  --line:rgba(18,18,18,.14);
-  --night:#0B111C;
+  --blue:#3A6090;          /* Steel Blue — акцент, кнопки */
+  --blue-l:#90A8C0;        /* Sky Gray — подписи и акцент на тёмном */
+  --blue-rgb:58,96,144;
+  --glow-rgb:144,168,192;  /* центр свечений */
+  --cap-a:#162848;         /* градиент капсулы «свой» */
+  --cap-c:#90A8C0;
+  --navy:#162848;          /* Deep Navy */
+  --milk:#E8EEF4;          /* Pale Blue — основной фон */
+  --sand:#D9E2EC;          /* второй светлый фон */
+  --concrete:#C6D3E0;      /* плашки, заглушки фото */
+  --card:#F7F9FC;          /* карточки на светлом */
+  --ink:#0A1020;           /* Near-Black Navy */
+  --ink2:#2E4260;          /* вторичный текст */
+  --ink3:#4A6484;          /* подписи */
+  --mute:#6F8AA8;          /* вторая часть заголовка */
+  --num-off:#90A8C0;       /* неактивные цифры */
+  --line:rgba(10,16,32,.14);
+  --night:#0A1020;
+  /* точечные акценты */
+  --wine:#3F1521;
+  --aubergine:#301728;
+  --breeze:#B7D1EA;
+  --white-w:#F4F5F0;       /* текст на вине */
+  /* металлик и фоны */
+  --metal:linear-gradient(180deg,#5B84B3 0%,#3A6090 52%,#2B4C78 100%);
+  --metal-sh:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(10,16,32,.25),0 6px 18px rgba(58,96,144,.28);
+  --steel:linear-gradient(115deg,#243F66 0%,#3A6090 36%,#4E74A2 52%,#3A6090 68%,#243F66 100%);
+  --dark:radial-gradient(ellipse 80% 60% at 85% 0%,#162848 0%,#0A1020 70%);
+  --light2:linear-gradient(180deg,#E8EEF4 0%,#D9E2EC 100%);
+  --bronze:radial-gradient(ellipse 45% 38% at 46% 46%,rgba(240,200,154,.30) 0%,rgba(240,200,154,0) 70%),radial-gradient(ellipse 30% 22% at 78% 82%,rgba(232,180,120,.16) 0%,rgba(232,180,120,0) 70%),radial-gradient(ellipse 30% 24% at 14% 30%,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 70%),radial-gradient(ellipse 110% 90% at 50% 42%,#7A4A2C 0%,#55331F 42%,#2E1A0F 78%,#1C100A 100%);
 
   --f-d:'Unbounded',sans-serif;
   --f-t:'Golos Text',sans-serif;
@@ -61,15 +74,19 @@ h1,h2,h3,p{margin:0}
 .small{font-size:15px;line-height:1.5;color:var(--ink3)}
 /* капсула-акцент в строке заголовка */
 .cap{border-radius:200px;padding:0 .3em .07em}
-.cap--grad{background:linear-gradient(90deg,var(--cap-a) 0%,var(--blue) 45%,var(--cap-c) 100%)}
+.cap--grad{background:linear-gradient(90deg,var(--cap-a) 0%,var(--blue) 45%,var(--cap-c) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 60px rgba(var(--blue-rgb),.45);color:var(--card)}
+/* хром-текст */
+.chrome{background:linear-gradient(180deg,#FFF 0%,#E8EEF4 42%,#90A8C0 60%,#F7F9FC 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .cap--blue{background:var(--blue);color:var(--milk)}
-.pcap{display:inline-block;width:1.85em;height:.8em;border-radius:1em;background:#9A958E center/cover no-repeat;flex-shrink:0}
+.pcap{display:inline-block;width:1.85em;height:.8em;border-radius:1em;background:var(--concrete) center/cover no-repeat;flex-shrink:0}
 
 /* ---------- секции ---------- */
 .sec{padding:var(--sec-y) var(--gut)}
-.bg-sand{background:var(--sand)}
-.bg-blue{background:var(--blue);color:var(--milk)}
-.bg-dark{background:var(--ink);color:var(--milk)}
+.bg-sand{background:var(--light2)}
+.bg-blue{background:var(--steel);color:var(--milk)}
+.bg-dark{background:var(--dark);color:var(--milk)}
+.bg-navy{background:var(--navy);color:var(--milk)}
+.bg-bronze{background:var(--bronze);color:var(--milk)}
 .sec-head{display:flex;flex-direction:column;gap:18px}
 .head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
 .bleed{margin-left:calc(-1 * var(--gut));margin-right:calc(-1 * var(--gut))}
@@ -78,16 +95,17 @@ h1,h2,h3,p{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 26px;border-radius:28px;border:1px solid transparent;background:none;font-family:var(--f-t);font-size:15px;font-weight:600;line-height:1.2;text-align:center;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
 .btn--52{min-height:52px;border-radius:26px}
 .btn--48{min-height:48px;padding:0 22px;border-radius:24px;font-size:14px}
-.btn--blue{background:var(--blue);color:var(--milk)}
+.btn--blue{background:var(--metal);color:var(--card);box-shadow:var(--metal-sh)}
 .btn--blue:hover{background:var(--ink)}
 .on-dark .btn--blue:hover{background:var(--milk);color:var(--ink)}
 .btn--ink{background:var(--ink);color:var(--milk)}
 .btn--ink:hover{background:var(--blue)}
 .btn--milk{background:var(--milk);color:var(--ink)}
 .btn--milk:hover{background:var(--ink);color:var(--milk)}
-.btn--line{border-color:rgba(18,18,18,.35);font-weight:500}
+.on-dark .btn--milk:hover{background:var(--blue-l);color:var(--ink)}
+.btn--line{border-color:rgba(10,16,32,.35);font-weight:500}
 .btn--line:hover{border-color:var(--blue);color:var(--blue)}
-.btn--line-d{border-color:rgba(242,238,232,.6);color:var(--milk);font-weight:500}
+.btn--line-d{border-color:rgba(232,238,244,.6);color:var(--milk);font-weight:500}
 .btn--line-d:hover{background:var(--milk);color:var(--ink)}
 .btns{display:flex;flex-wrap:wrap;gap:8px}
 .btn--wrap{white-space:normal}
@@ -98,8 +116,8 @@ h1,h2,h3,p{margin:0}
 }
 
 /* ---------- стекло ---------- */
-.glass-d{background:rgba(18,24,40,.42);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(242,238,232,.16)}
-.glass-l{background:rgba(250,248,244,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(18,18,18,.1)}
+.glass-d{background:rgba(10,16,32,.42);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(232,238,244,.16)}
+.glass-l{background:rgba(247,249,252,.8);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid rgba(10,16,32,.1)}
 
 /* ---------- шапка ---------- */
 .hdr{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px}
@@ -115,9 +133,9 @@ h1,h2,h3,p{margin:0}
 .hdr-n{display:flex;gap:8px;align-items:center}
 .city-short{padding:0 16px;font-size:13px;font-weight:500;white-space:nowrap}
 /* бургер закреплён в углу и едет со скроллом */
-.burger{position:fixed;top:12px;right:12px;z-index:25;width:48px;height:48px;border-radius:50%;border:1px solid rgba(18,18,18,.08);background:var(--milk);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:box-shadow .3s}
+.burger{position:fixed;top:12px;right:12px;z-index:25;width:48px;height:48px;border-radius:50%;border:1px solid rgba(10,16,32,.08);background:var(--milk);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:box-shadow .3s}
 .burger span{width:18px;height:2px;background:var(--ink)}
-html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
+html.scrolled .burger{box-shadow:0 6px 24px rgba(10,16,32,.14)}
 .hdr-n .burger-slot{width:48px;height:48px;flex-shrink:0}
 @media (max-width:999.98px){ .logo{padding:0 16px} }
 @media (max-width:389.98px){ .city-short{display:none} }
@@ -133,13 +151,13 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
 .menu-links{display:flex;flex-direction:column;gap:18px;font-family:var(--f-d);font-size:28px;letter-spacing:-.03em;text-transform:uppercase}
 .menu-links a:hover{color:var(--blue)}
 .menu-on{color:var(--blue)}
-.x{width:48px;height:48px;flex-shrink:0;border-radius:50%;background:none;border:1px solid rgba(18,18,18,.25);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
+.x{width:48px;height:48px;flex-shrink:0;border-radius:50%;background:none;border:1px solid rgba(10,16,32,.25);color:var(--ink);font-size:22px;line-height:1;cursor:pointer}
 .x:hover{border-color:var(--blue);color:var(--blue)}
 
 /* ---------- чипы-переключатели ---------- */
 .chips{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:2px var(--gut);margin:-2px calc(-1 * var(--gut))}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex-shrink:0;height:44px;padding:0 20px;border-radius:22px;border:1px solid rgba(18,18,18,.3);background:none;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.chip{flex-shrink:0;height:44px;padding:0 20px;border-radius:22px;border:1px solid rgba(10,16,32,.3);background:none;font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
 .chip:hover{border-color:var(--blue);color:var(--blue)}
 .chip[aria-selected="true"],.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 @media (min-width:1000px){
@@ -179,7 +197,7 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
 /* ---------- липкая панель ---------- */
 .bar{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;width:min(680px,calc(100% - 24px));transform:translate(-50%,160%);transition:transform .45s var(--ease)}
 .bar.show{transform:translate(-50%,0)}
-.bar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px;border-radius:32px;box-shadow:0 8px 32px rgba(18,18,18,.08)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px;border-radius:32px;box-shadow:0 8px 32px rgba(10,16,32,.08)}
 
 /* ---------- формы ---------- */
 .form{display:flex;flex-direction:column;gap:8px}
@@ -207,7 +225,7 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
 .chip-r input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
 
 /* модалка на десктопе / bottom sheet на мобильном */
-.sheet{position:fixed;inset:0;z-index:50;background:rgba(18,18,18,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .2s ease-out}
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(10,16,32,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .2s ease-out}
 .sheet.open{opacity:1}
 .sheet-card{width:100%;max-width:520px;max-height:92svh;overflow-y:auto;background:var(--milk);color:var(--ink);padding:24px 24px calc(28px + env(safe-area-inset-bottom));border-radius:28px 28px 0 0;display:flex;flex-direction:column;gap:16px;transform:translateY(30px);transition:transform .25s var(--ease)}
 .sheet.open .sheet-card{transform:none}
@@ -221,17 +239,14 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(18,18,18,.14)}
   .sheet-card{padding:36px;border-radius:32px}
 }
 
-/* вариант синего: по умолчанию выгоревший из макета, ?blue=deep — глубокий */
-html[data-blue="deep"]{--blue:#2430C8;--blue-rgb:36,48,200;--blue-l:#6E78F0;--glow-rgb:84,96,232;--cap-a:#141C7A;--cap-c:#6E78F0}
-
-/* служебный переключатель синего — для сравнения вариантов, перед продом убрать */
-.vswitch{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:26;display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:14px 0 0 14px;background:rgba(18,18,18,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(242,238,232,.16);border-right:none;font-family:var(--f-m);color:var(--milk)}
-.vswitch-cap{padding:6px 9px 2px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#B9B3AA;max-width:30px;overflow:hidden;white-space:nowrap;transition:max-width .3s ease-out}
+/* служебный переключатель цвета ханга на схеме (бронза / navy) — заказчик выбирает, перед продом убрать */
+.vswitch{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:26;display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:14px 0 0 14px;background:rgba(10,16,32,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(232,238,244,.16);border-right:none;font-family:var(--f-m);color:var(--milk)}
+.vswitch-cap{padding:6px 9px 2px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--num-off);max-width:30px;overflow:hidden;white-space:nowrap;transition:max-width .3s ease-out}
 .vswitch button{display:flex;align-items:center;height:30px;padding:0 9px;border:none;border-radius:9px;background:none;color:inherit;font-family:var(--f-m);font-size:11px;white-space:nowrap;max-width:30px;overflow:hidden;cursor:pointer;transition:max-width .3s ease-out,background-color .18s}
 .vswitch:hover .vswitch-cap,.vswitch:focus-within .vswitch-cap,.vswitch:hover button,.vswitch:focus-within button{max-width:240px}
-.vswitch button:hover{background:rgba(242,238,232,.12)}
+.vswitch button:hover{background:rgba(232,238,244,.12)}
 .vswitch button[aria-pressed="true"]{background:var(--milk);color:var(--ink)}
-.vswitch i{display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-right:8px;border:1px solid rgba(242,238,232,.4)}
+.vswitch i{display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-right:8px;border:1px solid rgba(232,238,244,.4)}
 
 /* ---------- данные, которых ещё нет (PENDING.md) ---------- */
 html[data-env="dev"] [data-pending],html[data-env="dev"] [data-pending-link]{outline:1.5px dashed #E8890C;outline-offset:2px}

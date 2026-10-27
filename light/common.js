@@ -258,20 +258,22 @@
     });
   }
 
-  /* ---------- переключатель синего (служебный): ?blue=deep, помним между страницами ---------- */
-  const VS = [['', 'Выгоревший #4E58BE', '#4E58BE'], ['deep', 'Глубокий #2430C8', '#2430C8']];
-  document.body.insertAdjacentHTML('beforeend', '<div class="vswitch" role="group" aria-label="Вариант синего"><span class="vswitch-cap">Синий</span>' +
-    VS.map(([v, l, c]) => `<button type="button" data-blue-v="${v}"><i style="background:${c}"></i>${l}</button>`).join('') + '</div>');
-  const markBlue = () => $$('[data-blue-v]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.blueV === (root.dataset.blue || ''))));
-  $$('[data-blue-v]').forEach(b => b.addEventListener('click', () => {
-    const v = b.dataset.blueV, q = new URLSearchParams(location.search);
-    if (v) { root.dataset.blue = v; q.set('blue', v); } else { delete root.dataset.blue; q.delete('blue'); }
-    try { sessionStorage.setItem('hs-blue', v); } catch (e) {}
-    const qs = q.toString();
-    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
-    markBlue();
-  }));
-  markBlue();
+  /* ---------- переключатель цвета ханга на схеме (служебный): ?hang=bronze, помним между страницами ---------- */
+  if ($('.hang')) {
+    const VS = [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C']];
+    document.body.insertAdjacentHTML('beforeend', '<div class="vswitch" role="group" aria-label="Цвет ханга на схеме"><span class="vswitch-cap">Ханг</span>' +
+      VS.map(([v, l, c]) => `<button type="button" data-hang-v="${v}"><i style="background:${c}"></i>${l}</button>`).join('') + '</div>');
+    const markHang = () => $$('[data-hang-v]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.hangV === (root.dataset.hang || ''))));
+    $$('[data-hang-v]').forEach(b => b.addEventListener('click', () => {
+      const v = b.dataset.hangV, q = new URLSearchParams(location.search);
+      if (v) { root.dataset.hang = v; q.set('hang', v); } else { delete root.dataset.hang; q.delete('hang'); }
+      try { sessionStorage.setItem('hs-hang', v); } catch (e) {}
+      const qs = q.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+      markHang();
+    }));
+    markHang();
+  }
 
   /* после отрисовки страницы: типограф и начальные состояния */
   function ready() {

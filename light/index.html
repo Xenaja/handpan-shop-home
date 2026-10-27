@@ -9,22 +9,22 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="U-GENE sound vibe — найди свой звук">
 <meta property="og:description" content="Ханги собственного производства, школа и сообщество. Пробное занятие — 900 ₽.">
-<meta property="og:image" content="img/hero-d.webp">
-<meta name="theme-color" content="#0B111C">
+<meta property="og:image" content="img/hero-navy-d.webp">
+<meta name="theme-color" content="#0A1020">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:999.98px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero-d.webp" media="(min-width:1000px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-navy-m.webp" media="(max-width:999.98px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-navy-d.webp" media="(min-width:1000px)" fetchpriority="high">
 <link rel="stylesheet" href="common.css">
 <link rel="stylesheet" href="home.css">
 <script>
-  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?blue=deep — глубокий синий (выбор помним между страницами)
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?hang=bronze — бронзовый ханг на схеме (выбор помним между страницами)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.has('dev')) h.dataset.env = 'dev';
-    let b = q.get('blue');
-    try { if (b === null) b = sessionStorage.getItem('hs-blue'); else sessionStorage.setItem('hs-blue', b); } catch (e) {}
-    if (b === 'deep') h.dataset.blue = 'deep'; })();
+    let v = q.get('hang');
+    try { if (v === null) v = sessionStorage.getItem('hs-hang'); else sessionStorage.setItem('hs-hang', v); } catch (e) {}
+    if (v === 'bronze') h.dataset.hang = 'bronze'; })();
 </script>
 </head>
 <body>
@@ -72,11 +72,10 @@
 <!-- 01 · Найди свой звук -->
 <header class="s1 on-dark" id="top">
   <picture>
-    <source media="(min-width:1000px)" srcset="img/hero-d.webp" width="1680" height="900">
-    <img class="s1-bg" src="img/hero-m.webp" alt="" width="933" height="1400" fetchpriority="high">
+    <source media="(min-width:1000px)" srcset="img/hero-navy-d.webp" width="1586" height="992">
+    <img class="s1-bg" src="img/hero-navy-m.webp" alt="Стальной ханг" width="1100" height="688" fetchpriority="high">
   </picture>
-  <div class="s1-tint" aria-hidden="true"></div>
-  <div class="s1-vig" aria-hidden="true"></div>
+  <div class="s1-shade" aria-hidden="true"></div>
   <div class="glow s1-glow" aria-hidden="true"></div>
   <span class="s1-ring" aria-hidden="true"></span>
 
@@ -95,7 +94,7 @@
   </div>
 
   <div class="s1-body">
-    <h1 class="h-hero s1-h1"><span>Найди</span> <span class="cap cap--grad">свой</span> <span>звук</span></h1>
+    <h1 class="h-hero s1-h1"><span class="chrome">Найди</span> <span class="cap cap--grad">свой</span> <span class="chrome">звук</span></h1>
     <div class="s1-grid">
       <div class="s1-player hdr-d">
         <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
@@ -170,7 +169,7 @@
 <section class="sec s3 bg-sand" aria-labelledby="h-s3">
   <div class="stack s3-text">
     <div class="mono row-sb"><span>Звуковая скульптура</span><span>B♭ · 3/10</span></div>
-    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span class="s3-h2">так легко?</span></h2>
+    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так легко?</span></h2>
     <p class="body">Ноты каждого ханга выстроены в один лад. Каждое поле звучит аккордом: основной тон, октава, квинта</p>
     <div class="accent ind">Здесь нет фальшивых нот</div>
     <p class="body body--2 ind">Ведите руки по полям, как чувствуете, – это уже музыкальная фраза. За несколько занятий без опыта вы начинаете импровизировать</p>
@@ -191,7 +190,7 @@
 </section>
 
 <!-- 04 · Три маршрута -->
-<section class="sec s4" aria-labelledby="h-s4">
+<section class="sec s4 bg-dark on-dark" aria-labelledby="h-s4">
   <div class="head-row">
     <div class="sec-head">
       <div class="mono">C · 4/10</div>
@@ -206,7 +205,7 @@
         <span class="mono">Хочу сначала послушать</span>
         <span>Частный визит в студию: 20+ инструментов разных строёв, можно играть на каждом. Без обязательств и без покупки</span>
       </div>
-      <button type="button" class="btn btn--52 btn--ink route-btn" data-open="Частный визит">Записаться на визит →</button>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Частный визит">Записаться на визит →</button>
     </div>
     <div class="route">
       <span class="route-verb" aria-hidden="true">Попробовать</span>
@@ -214,7 +213,7 @@
         <span class="mono">Хочу взять инструмент в руки</span>
         <span>Пробное занятие с преподавателем: 45 минут, 900 ₽. Инструмент даём, опыт не нужен</span>
       </div>
-      <button type="button" class="btn btn--52 btn--ink route-btn" data-open="Пробное занятие">Попробовать занятие →</button>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Пробное занятие">Попробовать занятие →</button>
     </div>
     <div class="route">
       <span class="route-verb" aria-hidden="true">Выбрать</span>
@@ -222,7 +221,7 @@
         <span class="mono">Хочу свой ханг</span>
         <span>Консультация мастера: строй, сталь, количество нот, бюджет. Покажем инструменты в наличии и под заказ</span>
       </div>
-      <button type="button" class="btn btn--52 btn--ink route-btn" data-open="Покупка инструмента">Получить консультацию →</button>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Покупка инструмента">Получить консультацию →</button>
     </div>
   </div>
 </section>
@@ -276,13 +275,13 @@
 </section>
 
 <!-- 07 · Кто учит -->
-<section class="sec s7 bg-sand" id="teach" aria-labelledby="h-s7">
+<section class="sec s7 bg-bronze on-dark" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
       <div class="mono">F · 7/10</div>
       <h2 id="h-s7" class="h-display">Кто учит</h2>
     </div>
-    <p class="small body--2 s7-note">Научиться можно с нуля, в любом возрасте и без музыкального опыта. Главное – преподаватель, который слышит вас</p>
+    <p class="small s7-note">Научиться можно с нуля, в любом возрасте и без музыкального опыта. Главное – преподаватель, который слышит вас</p>
   </div>
   <div class="tcar bleed" data-tcar aria-roledescription="карусель" aria-label="Преподаватели"></div>
   <div class="tnav">
@@ -292,7 +291,7 @@
   </div>
   <div class="btns">
     <button type="button" class="btn btn--blue btn--full-n" data-open="Пробное занятие">Записаться на пробное занятие</button>
-    <a class="btn btn--line btn--wrap" href="obuchenie/#teachers">Все преподаватели и форматы →</a>
+    <a class="btn btn--line-d btn--wrap" href="obuchenie/#teachers">Все преподаватели и форматы →</a>
   </div>
 </section>
 
@@ -306,7 +305,7 @@
         <span class="mono">G · 8/10</span>
       </div>
       <span class="s8-sub">Ханг нельзя сделать на конвейере</span>
-      <h2 id="h-s8" class="h-display stack"><span>Десятки</span><span class="s8-ind">тысяч</span><span class="s8-hl">ударов</span></h2>
+      <h2 id="h-s8" class="h-display stack"><span>Десятки</span><span>тысяч</span><span class="s8-hl">ударов</span></h2>
     </div>
     <div class="stack s8-copy">
       <p class="body">Его создают руками, снова и снова возвращаясь к каждому звуку. На настройку одной ноты уходит от 200 до нескольких тысяч касаний</p>
@@ -324,7 +323,7 @@
   <div class="s9-grid">
     <div class="stack s9-text">
       <div class="mono">A · 9/10</div>
-      <h2 id="h-s9" class="h2 stack"><span>Ханг</span><span class="s9-ind">объединяет</span></h2>
+      <h2 id="h-s9" class="h2 stack"><span>Ханг</span><span>объединяет</span></h2>
       <p class="body">Хэндпан-сообщества – одни из самых гостеприимных в мире музыки. На одном джеме встречаются виртуоз, человек с первым хангом и тот, кто пришёл послушать</p>
       <span class="accent ind s9-acc">Вы приходите за звуком. А находите своё окружение</span>
       <a class="btn btn--ink s9-btn" href="#" data-pending="P-11">Присоединиться к сообществу →</a>
