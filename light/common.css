@@ -123,6 +123,10 @@ h1,h2,h3,p{margin:0}
 .hdr{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px}
 .pill{height:48px;border-radius:24px;display:flex;align-items:center}
 .logo{padding:0 22px;font-family:var(--f-d);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+/* знак U-GENE: цвет берётся из текста (маска), поэтому один файл на светлом и тёмном */
+.logo{display:inline-flex;align-items:center;gap:.55em}
+.logo-mark{display:inline-block;width:2.4em;height:2.25em;flex-shrink:0;background:currentColor;-webkit-mask:url(img/logo-mark.svg) center/contain no-repeat;mask:url(img/logo-mark.svg) center/contain no-repeat}
+.foot-logo{display:inline-flex;align-items:center;gap:.55em}
 .logo-sub{margin-left:.4em;font-weight:300;letter-spacing:.02em;text-transform:none}
 .nav{padding:0 28px;gap:32px;font-size:14px;font-weight:500}
 .nav-on{padding:6px 14px;margin:0 -14px;border-radius:16px;background:var(--ink);color:#fff}
@@ -138,7 +142,7 @@ h1,h2,h3,p{margin:0}
 html.scrolled .burger{box-shadow:0 6px 24px rgba(10,16,32,.14)}
 .hdr-n .burger-slot{width:48px;height:48px;flex-shrink:0}
 @media (max-width:999.98px){ .logo{padding:0 16px} }
-@media (max-width:389.98px){ .city-short{display:none} }
+@media (max-width:439.98px){ .city-short{display:none} }
 @media (min-width:1000px){
   .hdr{padding:clamp(12px,2vw,32px) var(--gut)}
   .hdr-d{display:flex}
