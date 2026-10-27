@@ -1,0 +1,14 @@
+---
+// Простая страница с текстом: юридические документы и 404. Шапка — логотип и ссылка на главную.
+import Base from '../layouts/Base.astro';
+import Logo from './Logo.astro';
+const { title, description, path, robots = 'noindex, follow', canonical = true } = Astro.props;
+const home = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+<Base title={title} description={description} path={path} ogImage="img/hero-navy-d.webp" robots={robots} canonical={canonical}
+  styles={['common.css']} scripts={[]}>
+  <div class="doc-hdr hdr"><Logo class="logo" href={home} /></div>
+  <main id="main" class="sec doc">
+    <slot />
+  </main>
+</Base>

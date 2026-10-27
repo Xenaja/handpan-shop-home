@@ -11,8 +11,21 @@
   const wide = matchMedia('(min-width:1000px)');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Куда отправлять заявки (Cloudflare Worker → Telegram). null — эндпоинта ещё нет, см. PENDING.md P-08.
+  // Куда отправлять заявки: обработчик на российском хостинге (152-ФЗ). null — хостинга ещё нет, см. PENDING.md P-08.
   const ENDPOINT = null;
+
+  /* ---------- цели Яндекс Метрики (SEO-MIGRATION.md, раздел 10); счётчик подключается только на боевом домене ---------- */
+  function goal(name, params) {
+    if (typeof window.ym === 'function') window.ym(90206720, 'reachGoal', name, params);
+    else if (DEV) console.info('[Метрика]', name, params || '');
+  }
+  const CONTACT_GOALS = [[/^tel:/, 'click_phone'], [/^mailto:/, 'click_email'], [/t\.me\//, 'click_tg'], [/wa\.me\/|whatsapp/, 'click_wa'], [/max\.ru/, 'click_max']];
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const hit = CONTACT_GOALS.find(([re]) => re.test(a.getAttribute('href')));
+    if (hit) goal(hit[1], { page: location.pathname });
+  });
 
   /* ---------- типограф: без висящих предлогов, неразрывный пробел перед тире и после чисел ---------- */
   const NB_RE = /(^|[\s«( ])([а-яё]{1,2}|без|для|при|над|под|что|как|или|про|если)\s/gi;
@@ -66,6 +79,7 @@
     const toggle = () => {
       if (playing) { stop(); return; }
       ctx(); playing = true;
+      if (t === 0) goal('audio_play', { page: location.pathname });
       let beat = Math.round(t / step);
       iv = setInterval(() => {
         const n = pattern[beat % pattern.length];
@@ -106,7 +120,7 @@
     $$(`input[name="city"][value="${c}"]`).forEach(r => { r.checked = true; });
   }
   document.addEventListener('click', e => { const b = e.target.closest('[data-city]'); if (b) setCity(b.dataset.city); });
-  document.addEventListener('change', e => { if (e.target.name === 'city') setCity(e.target.value); });
+  document.addEventListener('change', e => { if (e.target.name === 'city' && e.target.value !== 'online') setCity(e.target.value); });
 
   /* ---------- меню на весь экран (< 1000) ---------- */
   const burger = $('.burger'), menu = $('#menu');
@@ -201,6 +215,7 @@
         const fd = Object.fromEntries(new FormData(form));
         delete fd.company; delete fd.consent;
         await send({ ...fd, name: name.value.trim(), page: location.pathname, ...utm });
+        goal('lead_submit', { interest: fd.format || fd.interest, city: fd.city, page: location.pathname });
         onSuccess();
       } catch (err) {
         status.textContent = 'Не получилось отправить. Попробуйте ещё раз или позвоните нам.';
@@ -289,5 +304,5 @@
     typo();
   }
 
-  window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, ready };
+  window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready };
 })();

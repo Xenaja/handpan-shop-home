@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="robots" content="noindex">
+<title>Страница не найдена — U-GENE sound vibe</title>
+<meta name="description" content="Такой страницы нет. Перейдите на главную или в раздел обучения.">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="U-GENE sound vibe">
+<meta property="og:title" content="Страница не найдена — U-GENE sound vibe">
+<meta property="og:description" content="Такой страницы нет. Перейдите на главную или в раздел обучения.">
+<meta property="og:url" content="https://handpanshop.pro/404">
+<meta property="og:image" content="https://handpanshop.pro/img/hero-navy-d.webp">
+<meta name="theme-color" content="#E8EEF4">
+<link rel="icon" type="image/png" href="/handpan-shop-home/astro/img/favicon.png">
+<link rel="apple-touch-icon" href="/handpan-shop-home/astro/img/apple-touch-icon.png">
+<!-- шрифты со своего сервера; основные начертания — заранее -->
+<link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=28f">
+
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28f">
+<script>
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
+  // ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит» (выбор помним между страницами)
+  (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
+    if (q.has('dev')) h.dataset.env = 'dev';
+    const V = { hang: ['bronze', 'dark'], teach: ['aubergine'] };
+    for (const k in V) {
+      let v = q.get(k);
+      try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
+      if (V[k].includes(v)) h.dataset[k] = v;
+    } })();
+</script>
+
+<script>
+  // Яндекс Метрика — тот же счётчик 90206720, что на Тильде (SEO-MIGRATION.md, п. 1.9). Только на боевом домене,
+  // чтобы превью не портило статистику. Вебвизор выключен: включать или нет — решает заказчик.
+  if (location.hostname === 'handpanshop.pro') {
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(90206720, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+  }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+  <div class="doc-hdr hdr"><a class="logo" href="/handpan-shop-home/astro/"><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></a></div>
+  <main id="main" class="sec doc">
+    
+  <h1 class="h-display">404</h1>
+  <p class="body">Такой страницы нет. Возможно, она переехала — начните с главной или с обучения.</p>
+  <div class="btns">
+    <a class="btn btn--blue" href="/handpan-shop-home/astro/">На главную</a>
+    <a class="btn btn--line" href="/handpan-shop-home/astro/cources">Обучение игре на ханге</a>
+  </div>
+
+  </main>
+
+
+</body>
+</html>

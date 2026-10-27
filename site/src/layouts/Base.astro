@@ -11,23 +11,26 @@ interface Props {
   styles: string[];
   scripts: string[];
   jsonld?: object;
+  robots?: string;         // служебные и юридические страницы: 'noindex, follow'
+  canonical?: boolean;     // false — без canonical (страница 404)
 }
-const { title, description, path, ogTitle = title, ogDescription = description, ogImage, theme = '#E8EEF4', styles, scripts, jsonld } = Astro.props;
+const { title, description, path, ogTitle = title, ogDescription = description, ogImage, theme = '#E8EEF4', styles, scripts, jsonld, robots, canonical: withCanonical = true } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const canonical = new URL(path, Astro.site).href;
-const V = '28e';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+const preview = base !== '';   // превью на GitHub Pages собирается с префиксом адресов, боевой сайт — от корня
+const V = '28f';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
 ---
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- превью: закрыто от индекса; на боевом сайте убрать (SEO-MIGRATION.md, п. 1.8) -->
-<meta name="robots" content="noindex">
+{/* превью закрыто от индекса целиком (SEO-MIGRATION.md, п. 1.8); на боевом — только служебные страницы */}
+{preview ? <meta name="robots" content="noindex"> : robots && <meta name="robots" content={robots}>}
 <title>{title}</title>
 <meta name="description" content={description}>
-<link rel="canonical" href={canonical}>
+{withCanonical && <link rel="canonical" href={canonical}>}
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="U-GENE sound vibe">
@@ -38,9 +41,10 @@ const V = '28e';   // версия ресурсов: браузер не дер�
 <meta name="theme-color" content={theme}>
 <link rel="icon" type="image/png" href={u('img/favicon.png')}>
 <link rel="apple-touch-icon" href={u('img/apple-touch-icon.png')}>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- шрифты со своего сервера; основные начертания — заранее -->
+<link rel="preload" as="font" type="font/woff2" href={u('fonts/unbounded-400-cyrillic.woff2')} crossorigin>
+<link rel="preload" as="font" type="font/woff2" href={u('fonts/golos-text-400-cyrillic.woff2')} crossorigin>
+<link rel="stylesheet" href={`${u('fonts.css')}?v=${V}`}>
 <slot name="head" />
 {styles.map(s => <link rel="stylesheet" href={`${u(s)}?v=${V}`}>)}
 <script is:inline>
@@ -56,6 +60,17 @@ const V = '28e';   // версия ресурсов: браузер не дер�
     } })();
 </script>
 {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+<script is:inline>
+  // Яндекс Метрика — тот же счётчик 90206720, что на Тильде (SEO-MIGRATION.md, п. 1.9). Только на боевом домене,
+  // чтобы превью не портило статистику. Вебвизор выключен: включать или нет — решает заказчик.
+  if (location.hostname === 'handpanshop.pro') {
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(90206720, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+  }
+</script>
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>

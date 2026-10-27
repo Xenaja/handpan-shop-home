@@ -3,6 +3,7 @@
 // Навыки, ступени, путь, форматы, преподаватели и FAQ собираются в HTML при сборке; learn.js их только переключает.
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import LeadForm from '../components/LeadForm.astro';
 import D from '../data/site.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -306,33 +307,16 @@ const jsonld = {
       <div class="sheet-title" id="sheet-title">Запись на занятие</div>
       <button type="button" class="x" data-close aria-label="Закрыть">×</button>
     </div>
-    <form class="form form--edu" data-form novalidate>
-      <fieldset class="fs">
-        <legend class="mono">Формат</legend>
+    <LeadForm id="m" interest="trial" submit="Отправить" note="Перезвоним, ответим на вопросы и подберём время">
+      <fieldset class="fs fld">
+        <legend class="fl">Формат</legend>
         <div class="btns">
           {[['trial', 'Пробное'], ...D.formats.map(f => [f.key, f.chip])].map(([k, l], i) => (
             <label class="chip-r"><input type="radio" name="format" value={k} checked={i === 0}><span>{l}</span></label>
           ))}
         </div>
       </fieldset>
-      <fieldset class="fs">
-        <legend class="mono">Город</legend>
-        <div class="btns">
-          <label class="chip-r"><input type="radio" name="city" value="msk" checked><span>Москва</span></label>
-          <label class="chip-r"><input type="radio" name="city" value="spb"><span>Санкт-Петербург</span></label>
-        </div>
-      </fieldset>
-      <label class="sr" for="m-name">Имя</label>
-      <input id="m-name" name="name" placeholder="Имя" autocomplete="given-name" required>
-      <label class="sr" for="m-phone">Телефон</label>
-      <input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="m-phone-err">
-      <div class="err" id="m-phone-err" aria-live="polite"></div>
-      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
-      <button type="submit" class="btn btn--blue btn--submit">Отправить</button>
-      <div class="form-status" aria-live="polite"></div>
-      <span class="small">Перезвоним, ответим на вопросы и подберём время</span>
-    </form>
+    </LeadForm>
     <div class="stack thanks-box" data-thanks hidden tabindex="-1">
       <span class="sheet-title">Спасибо!</span>
       <span>Перезвоним в течение дня</span>

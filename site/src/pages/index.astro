@@ -3,6 +3,7 @@
 // home.js только переключает их. Данные — src/data/site.json, null = данных ещё нет (PENDING.md).
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import LeadForm from '../components/LeadForm.astro';
 import D from '../data/site.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -21,6 +22,7 @@ const contacts = [
   { key: 'youtube', label: 'YouTube', href: K.youtube }
 ];
 const msk = D.cities[0];
+const mapQ = encodeURIComponent(`Москва, ${msk.address}`);
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -88,10 +90,10 @@ const jsonld = {
       <div class="s1-mid">
         <p class="s1-lead">От первого касания до своей музыки – вместе с вами</p>
         <div class="btns s1-btns">
-          <button type="button" class="btn btn--52 btn--blue s1-try" data-open="Пробное занятие">Попробовать · 900 ₽</button>
+          <button type="button" class="btn btn--52 btn--blue s1-try" data-open="trial">Попробовать · 900 ₽</button>
           <a class="btn btn--52 btn--line-d" href="#making">Выбрать ханг</a>
         </div>
-        <a class="s1-help" href="#" data-open="Помочь определиться">Не знаете, с чего начать? Поможем определиться →</a>
+        <a class="s1-help" href="#" data-open="help">Не знаете, с чего начать? Поможем определиться →</a>
         <button type="button" class="s1-play-n" data-play>
           <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
         </button>
@@ -135,7 +137,7 @@ const jsonld = {
       <div class="s2-sub ind">перкуссия нового времени</div>
       <p class="body ind">Стальной инструмент, на котором вы одновременно задаёте ритм и ведёте мелодию. Поэтому его называют мелодической перкуссией</p>
       <div class="btns ind">
-        <button type="button" class="btn btn--milk btn--wrap" data-open="Частный визит">Прийти и послушать 20+ инструментов</button>
+        <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать 20+ инструментов</button>
         <button type="button" class="btn btn--line-d" data-toggle="hist">История ханга <span data-sign>+</span></button>
       </div>
       <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
@@ -156,7 +158,7 @@ const jsonld = {
     <div class="accent ind">Здесь нет фальшивых нот</div>
     <p class="body body--2 ind">Ведите руки по полям, как чувствуете, – это уже музыкальная фраза. За несколько занятий без опыта вы начинаете импровизировать</p>
     <div class="btns">
-      <button type="button" class="btn btn--blue btn--full-n" data-open="Пробное занятие">Записаться на пробное занятие</button>
+      <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на пробное занятие</button>
       <button type="button" class="btn btn--line" data-toggle="more">Читать дальше <span data-sign>+</span></button>
     </div>
     <p class="body body--2 s3-more" data-panel="more" hidden>Создатели называли ханг звуковой скульптурой и советовали следовать за звуком и ощущением касания, не ставя целью мелодию или ритм. Сегодня на ханге играют в академической музыке, неоклассике, электронике и кино</p>
@@ -185,7 +187,7 @@ const jsonld = {
         <span class="mono">Хочу сначала послушать</span>
         <span>Частный визит в студию: 20+ инструментов разных строёв, можно играть на каждом. Без обязательств и без покупки</span>
       </div>
-      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Частный визит">Записаться на визит →</button>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="visit">Записаться на визит →</button>
     </div>
     <div class="route">
       <span class="route-verb" aria-hidden="true">Попробовать</span>
@@ -193,7 +195,7 @@ const jsonld = {
         <span class="mono">Хочу взять инструмент в руки</span>
         <span>Пробное занятие с преподавателем: 45 минут, 900 ₽. Инструмент даём, опыт не нужен</span>
       </div>
-      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Пробное занятие">Попробовать занятие →</button>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="trial">Попробовать занятие →</button>
     </div>
     <div class="route">
       <span class="route-verb" aria-hidden="true">Выбрать</span>
@@ -201,7 +203,7 @@ const jsonld = {
         <span class="mono">Хочу свой ханг</span>
         <span>Консультация мастера: строй, сталь, количество нот, бюджет. Покажем инструменты в наличии и под заказ</span>
       </div>
-      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Покупка инструмента">Получить консультацию →</button>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="buy">Получить консультацию →</button>
     </div>
   </div>
 </section>
@@ -293,7 +295,7 @@ const jsonld = {
     <button type="button" class="arr arr--ink" data-t-next aria-label="Следующий преподаватель">→</button>
   </div>
   <div class="btns">
-    <button type="button" class="btn btn--blue btn--full-n" data-open="Пробное занятие">Записаться на пробное занятие</button>
+    <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на пробное занятие</button>
     <a class="btn btn--line-d btn--wrap" href={u('cources#teachers')}>Все преподаватели и форматы →</a>
   </div>
 </section>
@@ -315,7 +317,7 @@ const jsonld = {
       <div class="s8-plate">Вы покупаете время мастеров, вложенное в каждый удар</div>
       <div class="btns">
         <a class="btn btn--milk s8-btn" href="#" data-pending="P-12">Смотреть инструменты</a>
-        <button type="button" class="btn btn--line-d s8-btn" data-open="Помочь определиться">Помочь выбрать</button>
+        <button type="button" class="btn btn--line-d s8-btn" data-open="help">Помочь выбрать</button>
       </div>
     </div>
   </div>
@@ -354,18 +356,7 @@ const jsonld = {
   <div class="s10-grid">
     <div class="glass-l s10-form">
       <p class="s10-lead">Пробное занятие – 900 ₽. Инструмент даём, опыт не нужен</p>
-      <form class="form" data-form data-final novalidate>
-        <input type="hidden" name="route" value="Пробное занятие">
-        <label class="sr" for="f-name">Имя</label>
-        <input id="f-name" name="name" placeholder="Имя" autocomplete="given-name" required>
-        <label class="sr" for="f-phone">Телефон</label>
-        <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="f-phone-err">
-        <div class="err" id="f-phone-err" aria-live="polite"></div>
-        <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
-        <button type="submit" class="btn btn--blue btn--submit">Записаться</button>
-        <div class="form-status" aria-live="polite"></div>
-      </form>
+      <div data-final><LeadForm id="f" interest="trial" /></div>
       <div class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</div>
     </div>
     <div class="stack s10-side">
@@ -379,8 +370,17 @@ const jsonld = {
           </div>
         ))}
       </div>
-      <div class="s10-map">
-        <iframe title={`Карта: Москва, ${msk.address}`} loading="lazy" src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9D%D0%B8%D0%B6%D0%BD%D0%B8%D0%B9%20%D0%A1%D1%83%D1%81%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D1%83%D0%BB%D0%BE%D0%BA%2C%205&amp;z=16"></iframe>
+      <!-- карта: виджет Яндекса грузится только по клику — он тяжёлый (SEO-MIGRATION.md, раздел 9) -->
+      <div class="s10-map" data-map={`https://yandex.ru/map-widget/v1/?text=${mapQ}&z=16`}>
+        <span class="contour contour--inner map-line" aria-hidden="true"></span>
+        <div class="map-in">
+          <span class="mono">Москва · студия</span>
+          <span class="map-addr">{msk.address}{msk.metro && `, ${msk.metro}`}</span>
+          <div class="btns">
+            <button type="button" class="btn btn--48 btn--ink" data-map-show>Показать карту</button>
+            <a class="btn btn--48 btn--line" href={`https://yandex.ru/maps/?text=${mapQ}`} target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          </div>
+        </div>
       </div>
       <div class="s10-contacts">
         {contacts.map(c => c.href
@@ -407,7 +407,7 @@ const jsonld = {
         <div class="bar-prog"><div data-progress></div></div>
       </div>
     </div>
-    <button type="button" class="btn btn--48 btn--ink" data-open="Пробное занятие">Записаться</button>
+    <button type="button" class="btn btn--48 btn--ink" data-open="trial">Записаться</button>
   </div>
 </div>
 
@@ -419,21 +419,7 @@ const jsonld = {
       <button type="button" class="x" data-close aria-label="Закрыть">×</button>
     </div>
     <p class="small body--2" data-sheet-help hidden>Можно начать с обучения, взять инструмент в аренду или сразу выбрать свой. Оставьте контакты – подскажем, с чего начать именно вам</p>
-    <form class="form" data-form novalidate>
-      <label class="sr" for="m-name">Имя</label>
-      <input id="m-name" name="name" placeholder="Имя" autocomplete="given-name" required>
-      <label class="sr" for="m-phone">Телефон</label>
-      <input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="m-phone-err">
-      <div class="err" id="m-phone-err" aria-live="polite"></div>
-      <label class="sr" for="m-route">С чего начать</label>
-      <select id="m-route" name="route" data-sheet-route>
-        <option>Частный визит</option><option>Пробное занятие</option><option>Покупка инструмента</option><option>Помочь определиться</option>
-      </select>
-      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
-      <button type="submit" class="btn btn--blue btn--submit">Записаться</button>
-      <div class="form-status" aria-live="polite"></div>
-    </form>
+    <LeadForm id="m" />
     <p class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</p>
   </div>
 </div>

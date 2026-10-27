@@ -1,0 +1,13 @@
+---
+// Страница «не найдено». Сервер отдаёт её с настоящим кодом 404 (SEO-MIGRATION.md, раздел 8).
+import DocPage from '../components/DocPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<DocPage title="Страница не найдена — U-GENE sound vibe" description="Такой страницы нет. Перейдите на главную или в раздел обучения." path="/404" canonical={false} robots="noindex">
+  <h1 class="h-display">404</h1>
+  <p class="body">Такой страницы нет. Возможно, она переехала — начните с главной или с обучения.</p>
+  <div class="btns">
+    <a class="btn btn--blue" href={`${base}/`}>На главную</a>
+    <a class="btn btn--line" href={`${base}/cources`}>Обучение игре на ханге</a>
+  </div>
+</DocPage>

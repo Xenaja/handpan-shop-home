@@ -240,8 +240,6 @@ html[data-teach="aubergine"] .tphoto{background:var(--wine)}
 .sheet-card{background:var(--card)}
 .form--edu{gap:10px}
 .form--edu input:not([type=checkbox]):not([type=radio]){background:var(--milk)}
-.fs{border:none;margin:0 0 6px;padding:0;display:flex;flex-direction:column;gap:10px}
-.fs legend{padding:0;margin-bottom:10px}
 .fs .btns{gap:6px}
 .thanks-box{gap:16px;padding:24px 0;outline:none}
 .sheet-card:has(.thanks-box:not([hidden])) .sheet-head{display:none}

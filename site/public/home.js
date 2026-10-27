@@ -168,21 +168,30 @@
   });
   setT(0);
 
+  /* ---------- 10: карта по клику ---------- */
+  $$('[data-map-show]').forEach(b => b.addEventListener('click', () => {
+    const box = b.closest('[data-map]');
+    box.innerHTML = `<iframe title="Карта: ${box.querySelector('.map-addr').textContent}" src="${box.dataset.map}" allowfullscreen></iframe>`;
+  }));
+
   /* ---------- формы ---------- */
-  const fin = $('[data-final]'), finThanks = fin.parentNode.querySelector('[data-thanks]');
+  const fin = $('[data-final] form'), finThanks = $('.s10-form [data-thanks]');
   HS.bindForm(fin, () => { fin.hidden = true; finThanks.hidden = false; finThanks.focus(); });
 
+  // модалка: кнопка на странице заранее выбирает «Что интересно»
   const TITLES = {
-    'Частный визит': 'Визит в студию',
-    'Пробное занятие': 'Пробное занятие',
-    'Покупка инструмента': 'Консультация мастера',
-    'Помочь определиться': 'Поможем определиться'
+    visit: 'Визит в студию',
+    trial: 'Пробное занятие',
+    buy: 'Консультация мастера',
+    rent: 'Аренда инструмента',
+    help: 'Поможем определиться'
   };
-  const sheet = $('[data-sheet]'), sRoute = $('[data-sheet-route]', sheet);
+  const sheet = $('[data-sheet]'), sRoute = $('[data-interest]', sheet);
   const setRoute = r => {
+    if (!TITLES[r]) r = 'help';
     sRoute.value = r;
     $('[data-sheet-title]', sheet).textContent = TITLES[r];
-    $('[data-sheet-help]', sheet).hidden = r !== 'Помочь определиться';
+    $('[data-sheet-help]', sheet).hidden = r !== 'help';
   };
   sRoute.addEventListener('change', () => setRoute(sRoute.value));
   HS.initSheet(setRoute);

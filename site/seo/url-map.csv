@@ -1,0 +1,48 @@
+old_path,new_path,action,note
+/,/,keep,главная
+/cources,/cources,keep,обучение — адрес с опечаткой сохраняем
+/politikaconfidencialnosti,/politikaconfidencialnosti,noindex,текст переписывается с юристом
+,/consent,noindex,новая: отдельное согласие на обработку ПДн
+/home,/,301,дубль главной
+/page41003248.html,/,301,старая копия «О нас» со старыми ценами
+/page35812636.html,,410,шаблон «Blank page» про путешествия
+/zayavkanayrok,,410,«Заявка принята» — успех формы показывается на странице
+/contacts,/contacts,keep,TODO: страница контактов
+/delivery,/delivery,keep,TODO: страница доставки
+/custom,/custom,keep,TODO: что на странице — уточнить
+/form,/form,keep,TODO: форма Тильды — уточнить (возможно 301 на /contacts)
+/catalog,/catalog,keep,TODO: каталог — решение заказчика
+/podcatalogodno,/podcatalogodno,keep,TODO: каталог
+/podkatalogdvy,/podkatalogdvy,keep,TODO: каталог
+/podkatalogikslyziv,/podkatalogikslyziv,keep,TODO: каталог — адрес с опечаткой сохраняем
+/accessories,/accessories,keep,TODO: каталог
+/cmaya9note_odnostoronie,/cmaya9note_odnostoronie,keep,TODO: карточка
+/g_pygmy_9_note,/g_pygmy_9_note,keep,TODO: карточка
+/c_aegean_9_note,/c_aegean_9_note,keep,TODO: карточка
+/e_aquinox_9_note,/e_aquinox_9_note,keep,TODO: карточка — адрес с опечаткой сохраняем
+/c_vostok_9_note,/c_vostok_9_note,keep,TODO: карточка
+/d_sabai_9_note,/d_sabai_9_note,keep,TODO: карточка
+/b_kurd_9_note,/b_kurd_9_note,keep,TODO: карточка
+/f2_minor_9_not,/f2_minor_9_not,keep,TODO: карточка — адрес с опечаткой сохраняем
+/d_kurd_9_note,/d_kurd_9_note,keep,TODO: карточка
+/f_pygmy_9_note,/f_pygmy_9_note,keep,TODO: карточка
+/f2_pygmy_11_note,/f2_pygmy_11_note,keep,TODO: карточка
+/d_kurd_17_note,/d_kurd_17_note,keep,TODO: карточка
+/a2_minor_12_note,/a2_minor_12_note,keep,TODO: карточка
+/e_ashkarian14,/e_ashkarian14,keep,TODO: заказчик — один инструмент или два (тогда 301 на один адрес)
+/e_ashkarian_14,/e_ashkarian_14,keep,TODO: заказчик — один инструмент или два
+/e_aquinox_13_note,/e_aquinox_13_note,keep,TODO: карточка
+/f_pygmy_13_note,/f_pygmy_13_note,keep,TODO: карточка
+/f_major_13_note,/f_major_13_note,keep,TODO: карточка
+/f2_low_pygmy_12_note,/f2_low_pygmy_12_note,keep,TODO: карточка
+/f_equinox_11_note,/f_equinox_11_note,keep,TODO: карточка
+/e_kurd_10_note,/e_kurd_10_note,keep,TODO: карточка
+/d_celtik_9_note1,/d_celtik_9_note1,keep,TODO: карточка — адрес с опечаткой сохраняем
+/d_celtik_9_note_color,/d_celtik_9_note_color,keep,TODO: карточка
+/heder,,410,TODO: служебная страница Тильды (закрыта в robots) — проверить содержимое
+/hahdpandlyavas,,410,TODO: закрыта в robots — проверить содержимое
+/page18689516.html,,410,TODO: закрыта в robots — проверить содержимое
+/page20057217.html,,410,TODO: закрыта в robots — проверить содержимое
+/page29873452.html,,410,TODO: закрыта в robots — проверить содержимое
+/page29894947.html,,410,TODO: закрыта в robots — проверить содержимое
+/page36990447.html,,410,TODO: закрыта в robots — проверить содержимое
