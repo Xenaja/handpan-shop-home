@@ -16,7 +16,9 @@
 
 .s1-body{position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(28px,5vh,56px);padding:clamp(24px,6vh,64px) clamp(20px,3vw,40px) clamp(24px,4vh,40px)}
 .h-hero{line-height:1;letter-spacing:-.05em}
-.s1-h1{font-size:clamp(52px,15vw,120px);display:flex;flex-wrap:wrap;align-items:center;gap:.04em .12em;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+.s1-h1{display:flex;flex-direction:column;gap:clamp(14px,2vh,22px);font-weight:400}
+.s1-slogan{font-size:clamp(52px,15vw,120px);display:flex;flex-wrap:wrap;align-items:center;gap:.04em .12em;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+.s1-sub{font-family:var(--f-t);font-size:clamp(16px,1.5vw,21px);font-weight:500;line-height:1.35;letter-spacing:0;text-transform:none;max-width:22em;color:#E8EEF4;text-shadow:0 1px 2px rgba(10,16,32,.7),0 2px 22px rgba(10,16,32,.85);text-wrap:balance}
 .s1-grid{display:grid;grid-template-columns:1fr;gap:22px 32px;align-items:end}
 .s1-mid{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .s1-lead{font-size:clamp(16px,1.3vw,18px);line-height:1.45;max-width:400px;text-wrap:balance}
@@ -39,7 +41,9 @@
 .s1-thumbs span{display:flex;align-items:center;justify-content:center;font-size:15px}
 .s1-thumbs:hover span{background:var(--blue)}
 @media (min-width:1000px){
-  .s1-h1{font-size:clamp(56px,7.4vw,136px);justify-content:center;flex-wrap:nowrap}
+  .s1-h1{align-items:center;text-align:center}
+  .s1-slogan{font-size:clamp(56px,7.4vw,136px);justify-content:center;flex-wrap:nowrap}
+  .s1-sub{max-width:none}
   .s1-grid{grid-template-columns:1fr minmax(0,480px) 1fr}
   .s1-mid{align-items:center;text-align:center}
   .s1-btns{width:auto;justify-content:center}

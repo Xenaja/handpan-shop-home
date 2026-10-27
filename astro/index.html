@@ -25,7 +25,7 @@
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-navy-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-navy-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28b"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=28b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28c"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=28c">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит» (выбор помним между страницами)
@@ -70,7 +70,11 @@
   </div>
 
   <div class="s1-body">
-    <h1 class="h-hero s1-h1"><span class="chrome">Найди</span> <span class="cap cap--grad">свой</span> <span class="chrome">звук</span></h1>
+    <!-- один H1: слоган + подзаголовок с ключевыми словами (SEO-MIGRATION.md, раздел 3) -->
+    <h1 class="s1-h1">
+      <span class="h-hero s1-slogan"><span class="chrome">Найди</span> <span class="cap cap--grad">свой</span> <span class="chrome">звук</span></span>
+      <span class="s1-sub">Ханги собственного производства, школа и сообщество в Москве и Санкт-Петербурге</span>
+    </h1>
     <div class="s1-grid">
       <div class="s1-player hdr-d">
         <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
@@ -80,7 +84,7 @@
         </div>
       </div>
       <div class="s1-mid">
-        <p class="s1-lead">Собственное производство хангов, школа и сообщество. От первого касания до своей музыки – вместе с вами</p>
+        <p class="s1-lead">От первого касания до своей музыки – вместе с вами</p>
         <div class="btns s1-btns">
           <button type="button" class="btn btn--52 btn--blue s1-try" data-open="Пробное занятие">Попробовать · 900 ₽</button>
           <a class="btn btn--52 btn--line-d" href="#making">Выбрать ханг</a>
@@ -513,6 +517,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=28b"></script><script src="/handpan-shop-home/astro/home.js?v=28b"></script>
+<script src="/handpan-shop-home/astro/common.js?v=28c"></script><script src="/handpan-shop-home/astro/home.js?v=28c"></script>
 </body>
 </html>
