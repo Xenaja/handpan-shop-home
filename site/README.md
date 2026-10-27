@@ -10,3 +10,5 @@
 - `npm run dev` — локальный сервер с перезагрузкой;
 - `npm run preview` — сборка превью для GitHub Pages в `../astro` (адреса `/handpan-shop-home/astro/…`);
 - `npm run build` — сборка для боевого сайта в `dist/`.
+
+Линии из знака (`public/img/lines/line-inner|middle|outer.svg`) — центральные линии колец логотипа, по одной на экран, класс `.contour` в `common.css`. Пересобрать из исходного знака: `python -I scripts/logo-lines.py ../../logo/svg/U-GENE-icon.svg public/img/lines`.

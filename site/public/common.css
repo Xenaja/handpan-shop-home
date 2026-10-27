@@ -263,3 +263,10 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* ---------- линии из знака U-GENE: каждое кольцо по отдельности, декор ---------- */
+/* цвет — через color, толщина 1,5 px при любом размере (logo/lines/extract.py) */
+.contour{position:absolute;display:block;pointer-events:none;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.contour--outer{--src:url(img/lines/line-outer.svg);aspect-ratio:294.9/276.1}
+.contour--middle{--src:url(img/lines/line-middle.svg);aspect-ratio:224.4/205.2}
+.contour--inner{--src:url(img/lines/line-inner.svg);aspect-ratio:122.3/119.2}

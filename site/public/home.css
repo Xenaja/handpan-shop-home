@@ -268,3 +268,14 @@ html[data-teach="aubergine"] .s7 .arr--ink:hover{background:var(--breeze);border
 
 /* 05: панели вкладок — по одной на аудиторию, видна активная */
 .s5-grid{outline-offset:4px}
+
+/* ---------- линии из знака ---------- */
+.s1-line{left:50%;top:62%;width:min(1080px,170vw);transform:translate(-50%,-50%);color:rgba(232,238,244,.34)}
+.s4{position:relative;overflow:hidden}
+.s4>.head-row,.s4>.routes{position:relative}
+.s4-line{right:-12%;top:-14%;width:min(820px,130vw);color:rgba(144,168,192,.3);transform:rotate(-8deg)}
+.s10-line{left:80%;top:22%;width:min(420px,70vw);transform:translate(-50%,-50%) rotate(12deg);color:rgba(58,96,144,.32)}
+@media (max-width:999.98px){
+  .s1-line{top:52%}
+  .s4-line{right:-40%;top:-6%}
+}
