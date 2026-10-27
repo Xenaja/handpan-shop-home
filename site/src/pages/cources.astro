@@ -10,7 +10,8 @@ const u = (p: string) => `${base}/${p}`;
 const home = `${base}/`;
 const initials = (s: string) => s.split(/\s+/).map(w => w[0]).join('').slice(0, 2);
 const pad = (n: number) => String(n).padStart(2, '0');
-const T = D.teachers;
+// hidden — преподаватель временно не показывается (Андрей Лето — добавим позже)
+const T = D.teachers.filter(t => !t.hidden);
 const priceNum = (p: string) => p.replace(/\D/g, '');
 
 const jsonld = {
@@ -80,7 +81,7 @@ const jsonld = {
       </div>
       <a class="e1-team hdr-d" href="#teachers">
         <span class="e1-ava" aria-hidden="true">
-          {T.slice(0, 2).map(t => <span data-pending-link="P-13">{initials(t.name)}</span>)}<span>+{T.length - 2}</span>
+          {T.slice(0, 2).map(t => <span>{t.img ? <img src={u(t.face || t.img)} alt="" width="60" height="60"> : initials(t.name)}</span>)}<span>+{T.length - 2}</span>
         </span>
         <span class="e1-team-t">{T.length} преподавателей</span>
       </a>
@@ -224,12 +225,12 @@ const jsonld = {
   {T.map((t, i) => (
     <div class="tpanel" id={`tp-${i}`} role="tabpanel" aria-labelledby={`t-${i}`} tabindex="0" hidden={i > 0}>
       <div class="tphoto" data-pending-link={t.img ? undefined : 'P-13'}>
-        {t.img ? <img src={u(t.img)} alt={t.name}> : <span class="tmono" aria-hidden="true">{initials(t.name)}</span>}
+        {t.img ? <img src={u(t.img)} alt={`${t.name} с хангом`} width="720" height="960" loading="lazy"> : <span class="tmono" aria-hidden="true">{initials(t.name)}</span>}
       </div>
       <div class="stack tinfo">
         <span class="mono">{t.role}</span>
         <h3 class="tname">{t.name} {t.nick && <span class="mute">{t.nick}</span>}</h3>
-        <div class="tbio">{t.bio.map(p => <p>{p}</p>)}</div>
+        {t.bio.length > 0 ? <div class="tbio">{t.bio.map(p => <p>{p}</p>)}</div> : <div class="tbio" data-pending={t.pending}><p>Описание – уточнить</p></div>}
         {t.bio.length > 1 && <button type="button" class="tmore" data-t-more aria-expanded="false">Читать дальше +</button>}
       </div>
     </div>

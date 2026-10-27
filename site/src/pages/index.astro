@@ -10,6 +10,8 @@ const u = (p: string) => `${base}/${p}`;
 const initials = (s: string) => s.split(/\s+/).map(w => w[0]).join('').slice(0, 2);
 const fmtN = (n: number) => n >= 1000 ? n.toLocaleString('ru-RU') : String(n);
 const pad = (n: number) => String(n).padStart(2, '0');
+// hidden — преподаватель временно не показывается (Андрей Лето — добавим позже)
+const TEACH = D.teachers.filter(t => !t.hidden);
 const K = D.contacts;
 const contacts = [
   { key: 'phone', label: K.phone || '+7 (___) ___-__-__', href: K.phone ? 'tel:+' + String(K.phone).replace(/\D/g, '') : null },
@@ -275,10 +277,10 @@ const jsonld = {
     <p class="small s7-note">Научиться можно с нуля, в любом возрасте и без музыкального опыта. Главное – преподаватель, который слышит вас</p>
   </div>
   <div class="tcar bleed" data-tcar aria-roledescription="карусель" aria-label="Преподаватели">
-    {D.teachers.map((p, i) => (
+    {TEACH.map((p, i) => (
       <button type="button" class="tcard" data-i={i} aria-label={p.name}>
         {p.img
-          ? <img src={u(p.img)} alt="" loading="lazy">
+          ? <img src={u(p.img)} alt={`${p.name} с хангом`} width="720" height="960" loading="lazy">
           : <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">{initials(p.name)}</span>}
         <span class="tcard-shade"></span>
         <span class="tcard-cap"><span class="tcard-name">{p.name}</span><span class="tcard-role">{p.roleShort}</span></span>
@@ -287,7 +289,7 @@ const jsonld = {
   </div>
   <div class="tnav">
     <button type="button" class="arr" data-t-prev aria-label="Предыдущий преподаватель">←</button>
-    <span class="mono tcount" data-t-count aria-live="polite">01 / {pad(D.teachers.length)}</span>
+    <span class="mono tcount" data-t-count aria-live="polite">01 / {pad(TEACH.length)}</span>
     <button type="button" class="arr arr--ink" data-t-next aria-label="Следующий преподаватель">→</button>
   </div>
   <div class="btns">
