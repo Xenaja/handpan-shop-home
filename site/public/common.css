@@ -69,8 +69,8 @@ h1,h2,h3,p{margin:0}
 .on-dark .mono,.on-blue .mono{color:inherit}
 .row-sb{display:flex;justify-content:space-between;gap:16px}
 .h-display,.h2,.h-hero{font-family:var(--f-d);font-weight:400;text-transform:uppercase}
-.h-display{font-size:clamp(48px,7vw,112px);line-height:.95;letter-spacing:-.05em}
-.h2{font-size:clamp(32px,4.4vw,68px);line-height:1.04;letter-spacing:-.045em}
+.h-display{font-size:clamp(40px,13vw,72px);line-height:.95;letter-spacing:-.05em}
+.h2{font-size:clamp(25px,8vw,40px);line-height:1.04;letter-spacing:-.045em}
 .h2--long{font-size:clamp(26px,3.8vw,58px);line-height:1.06;text-wrap:balance}
 .stack{display:flex;flex-direction:column}
 .mute{color:var(--mute)}
@@ -341,3 +341,11 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
   .tpage-head{grid-column:1 / 6;position:sticky;top:40px}
   .tpage-card{grid-column:7 / 13}
 }
+
+/* ---------- узкие экраны (проверка адаптива 28.10) ---------- */
+@media (min-width:1000px){ .h2{font-size:clamp(32px,4.4vw,68px)} }
+@media (max-width:359.98px){ .logo-sub{display:none} }
+/* простые страницы: длинные слова в заголовке («конфиденциальности») */
+.doc .h2{font-size:clamp(24px,6vw,48px);overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto}
+@media (max-width:429.98px){ .tpage-back{display:none} }
+@media (min-width:1000px){ .h-display{font-size:clamp(48px,7vw,112px)} }

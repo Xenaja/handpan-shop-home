@@ -32,7 +32,7 @@
 .e1-text{gap:18px;align-items:flex-start}
 .e1-lead{font-size:clamp(16px,1.4vw,19px);line-height:1.45;max-width:440px;text-wrap:pretty}
 .e1-btns{width:100%}
-.e1-btns .btn{flex:1 1 auto}
+.e1-btns .btn{flex:1 1 auto;white-space:normal}
 .e1-facts{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--num-off)}
 .e1-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
 .e1-play{display:flex;gap:14px;align-items:center;padding:0;background:none;border:none;color:var(--milk);cursor:pointer;text-align:left}
@@ -114,8 +114,8 @@
 /* ---------- 05 · Как строится путь ---------- */
 .e5{display:flex;flex-direction:column;gap:32px;color:#fff}
 .e5 .mono{color:var(--milk)}
-.e5-h{font-size:clamp(32px,9vw,80px)}
-@media (min-width:1000px){ .e5-h{font-size:clamp(40px,4.6vw,80px)} }
+.e5-h{font-size:clamp(26px,8.6vw,80px)}
+@media (min-width:1000px){ .e5-h{font-size:clamp(36px,3.8vw,72px)} }
 .path{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .step{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 24px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(255,255,255,.3)}
 .step-h{display:flex;align-items:baseline;gap:10px}
@@ -140,13 +140,13 @@
 .trial-price>span:first-child{font-family:var(--f-d);font-weight:300;font-size:clamp(48px,5vw,72px);line-height:1;letter-spacing:-.05em}
 .trial-price .mono{color:var(--blue-l)!important}
 .fmts{display:flex;flex-direction:column}
-.fmt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;align-items:center;padding:20px 0;border-top:1px solid var(--line)}
+.fmt{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 24px;align-items:center;padding:20px 0;border-top:1px solid var(--line)}
 .fmt-name{font-family:var(--f-t);font-weight:400;font-family:var(--f-d);font-size:clamp(16px,1.4vw,20px);letter-spacing:-.02em}
-.fmt-who{grid-column:1 / -1;order:3;font-size:14px;line-height:1.45;color:var(--ink3)}
+.fmt-who{order:3;font-size:14px;line-height:1.45;color:var(--ink3)}
 .fmt-price{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
 .fmt-price>span:first-child{font-family:var(--f-d);font-weight:300;font-size:22px;color:var(--blue)}
 .fmt-price .mono{font-size:10px;letter-spacing:.08em}
-.fmt-btn{grid-column:1 / -1;order:4;justify-self:start}
+.fmt-btn{order:4;justify-self:start}
 
 .fmt-btn:hover{border-color:var(--cta);color:var(--cta)}
 @media (min-width:1000px){
@@ -239,7 +239,7 @@
 .e11 .mono{color:var(--blue-l)}
 .e11-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:32px var(--g);align-items:end}
 .e11-l{gap:clamp(20px,2.4vw,28px)}
-.e11-h{font-size:clamp(40px,6vw,96px);display:flex;flex-direction:column;align-items:flex-start;gap:.14em}
+.e11-h{font-size:clamp(28px,9vw,96px);display:flex;flex-direction:column;align-items:flex-start;gap:.14em}
 .e11-cap{margin-left:-.1em;white-space:nowrap;box-shadow:none}
 .e11-r{gap:14px}
 .e11-btn{width:100%;min-height:60px;border-radius:30px;font-size:16px}
@@ -265,3 +265,20 @@
 .fs .btns{gap:6px}
 .thanks-box{gap:16px;padding:24px 0;outline:none}
 .sheet-card:has(.thanks-box:not([hidden])) .sheet-head{display:none}
+
+@media (min-width:1000px){ .e11-h{font-size:clamp(40px,6vw,96px)} }
+/* 1000–1199: пять узких колонок — меньше кегль и поля, чтобы «Импровизация» и «ориентироваться» помещались */
+@media (min-width:1000px) and (max-width:1199.98px){
+  .stage{padding:18px 16px}
+  .stage-t{font-size:13px}
+  .skill-t{font-size:13px;-webkit-hyphens:auto;hyphens:auto}
+  .skill{padding-right:16px;margin-right:16px}
+}
+@media (max-width:359.98px){ .tpanel{grid-template-columns:96px minmax(0,1fr)} }
+/* 1000–1199: строка формата — название, цена, кнопка; «кому подходит» строкой ниже */
+@media (min-width:1000px) and (max-width:1199.98px){
+  .fmt{grid-template-columns:minmax(0,1fr) auto auto}
+  .fmt-who{grid-column:1 / -1;order:3}
+}
+.tmore{justify-self:start}
+@media (min-width:600px) and (max-width:999.98px){ .tpanel{grid-template-columns:220px minmax(0,1fr);column-gap:24px} }
