@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=28g">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=28h">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28g"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=28g">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28h"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=28h">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -93,7 +93,7 @@
           <button type="button" class="btn btn--52 btn--blue s1-try" data-open="trial">Попробовать · 900 ₽</button>
           <a class="btn btn--52 btn--line-d" href="#making">Выбрать ханг</a>
         </div>
-        <a class="s1-help" href="#" data-open="help">Не знаете, с чего начать? Поможем определиться →</a>
+        <a class="s1-help" href="/handpan-shop-home/astro/test" data-quiz-open>Не знаете, с чего начать? Поможем определиться →</a>
         <button type="button" class="s1-play-n" data-play>
           <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
         </button>
@@ -575,6 +575,210 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=28g"></script><script src="/handpan-shop-home/astro/home.js?v=28g"></script>
+<div class="sheet qsheet" data-quiz-modal hidden>
+  <div class="sheet-card qsheet-card" role="dialog" aria-modal="true" aria-labelledby="qm-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="qm-title">С чего вам начать</div>
+      <button type="button" class="x" data-quiz-close aria-label="Закрыть">×</button>
+    </div>
+    <p class="small">6 коротких вопросов – и подскажем первый шаг: пробное занятие, подбор инструмента, аренда или сообщество</p>
+    <div class="quiz" data-quiz id="hq" data-lead="{&#34;unsure&#34;:&#34;Вы пока не уверены, ваш ли это инструмент – и это нормально.&#34;,&#34;curious&#34;:&#34;Вы пока присматриваетесь – и это лучший момент попробовать вживую.&#34;,&#34;howlearn&#34;:&#34;Вам интересно научиться играть, но непонятно, с чего начать.&#34;,&#34;quit&#34;:&#34;Покупать инструмент пока не нужно – сначала стоит понять, хочется ли продолжать.&#34;,&#34;notready&#34;:&#34;Покупать инструмент пока не нужно – сначала стоит понять, хочется ли продолжать.&#34;,&#34;alone&#34;:&#34;Вам важно учиться не в одиночку – на занятиях и джемах вы будете среди своих.&#34;,&#34;choose&#34;:&#34;Выбрать инструмент проще, когда уже знаешь, как он звучит у тебя в руках.&#34;,&#34;none&#34;:&#34;Вы готовы пробовать – отличный момент начать.&#34;}">
+  <div class="quiz-top">
+    <div class="quiz-prog" aria-hidden="true"><i data-quiz-bar></i></div>
+    <span class="mono quiz-count" data-quiz-count aria-live="polite">01 / 06</span>
+  </div>
+  <fieldset class="quiz-step" data-quiz-step="0">
+      <legend class="quiz-q">Что привело вас к хэндпану?</legend>
+      <div class="quiz-opts">
+        <label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="0" data-tags="{&#34;t&#34;:&#34;Хочу научиться играть на необычном инструменте&#34;,&#34;stage&#34;:&#34;learn&#34;,&#34;motive&#34;:&#34;music&#34;}">
+            <span>Хочу научиться играть на необычном инструменте</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="1" data-tags="{&#34;t&#34;:&#34;Хочу найти занятие для себя – переключаться, отдыхать, творить&#34;,&#34;stage&#34;:&#34;learn&#34;,&#34;motive&#34;:&#34;rest&#34;}">
+            <span>Хочу найти занятие для себя – переключаться, отдыхать, творить</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="2" data-tags="{&#34;t&#34;:&#34;Хочу попробовать звук и понять, моё это или нет&#34;,&#34;stage&#34;:&#34;try&#34;}">
+            <span>Хочу попробовать звук и понять, моё это или нет</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="3" data-tags="{&#34;t&#34;:&#34;Хочу купить хэндпан и играть самостоятельно&#34;,&#34;stage&#34;:&#34;buy&#34;}">
+            <span>Хочу купить хэндпан и играть самостоятельно</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="4" data-tags="{&#34;t&#34;:&#34;Уже играю и хочу развиваться дальше&#34;,&#34;stage&#34;:&#34;pro&#34;,&#34;motive&#34;:&#34;music&#34;}">
+            <span>Уже играю и хочу развиваться дальше</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="5" data-tags="{&#34;t&#34;:&#34;Мне интересен сам мир хэндпана – музыка, люди, события&#34;,&#34;motive&#34;:&#34;people&#34;,&#34;community&#34;:1}">
+            <span>Мне интересен сам мир хэндпана – музыка, люди, события</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q0" value="6" data-tags="{&#34;t&#34;:&#34;Пока просто смотрю и присматриваюсь&#34;,&#34;stage&#34;:&#34;curious&#34;}">
+            <span>Пока просто смотрю и присматриваюсь</span>
+          </label>
+      </div>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="1" hidden>
+      <legend class="quiz-q">Как вы хотите взаимодействовать с инструментом?</legend>
+      <div class="quiz-opts">
+        <label class="quiz-opt">
+            <input type="radio" name="hq-q1" value="0" data-tags="{&#34;t&#34;:&#34;Хочу заниматься с преподавателем&#34;,&#34;stage&#34;:&#34;learn&#34;}">
+            <span>Хочу заниматься с преподавателем</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q1" value="1" data-tags="{&#34;t&#34;:&#34;Хочу учиться самостоятельно&#34;,&#34;stage&#34;:&#34;buy&#34;}">
+            <span>Хочу учиться самостоятельно</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q1" value="2" data-tags="{&#34;t&#34;:&#34;Хочу сначала попробовать, прежде чем что-то решать&#34;,&#34;stage&#34;:&#34;try&#34;}">
+            <span>Хочу сначала попробовать, прежде чем что-то решать</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q1" value="3" data-tags="{&#34;t&#34;:&#34;Хочу взять инструмент в аренду и пожить с ним&#34;,&#34;stage&#34;:&#34;rent&#34;}">
+            <span>Хочу взять инструмент в аренду и пожить с ним</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q1" value="4" data-tags="{&#34;t&#34;:&#34;Хочу сразу подобрать и купить свой&#34;,&#34;stage&#34;:&#34;buy&#34;}">
+            <span>Хочу сразу подобрать и купить свой</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q1" value="5" data-tags="{&#34;t&#34;:&#34;Пока не знаю&#34;,&#34;stage&#34;:&#34;curious&#34;}">
+            <span>Пока не знаю</span>
+          </label>
+      </div>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="2" hidden>
+      <legend class="quiz-q">Представьте идеальный сценарий. Что вам ближе?</legend>
+      <div class="quiz-opts">
+        <label class="quiz-opt">
+            <input type="radio" name="hq-q2" value="0" data-tags="{&#34;t&#34;:&#34;Прихожу на занятие и постепенно учусь играть&#34;,&#34;stage&#34;:&#34;learn&#34;,&#34;motive&#34;:&#34;music&#34;}">
+            <span>Прихожу на занятие и постепенно учусь играть</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q2" value="1" data-tags="{&#34;t&#34;:&#34;Вечером остаюсь один на один с инструментом и играю для себя&#34;,&#34;motive&#34;:&#34;rest&#34;}">
+            <span>Вечером остаюсь один на один с инструментом и играю для себя</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q2" value="2" data-tags="{&#34;t&#34;:&#34;Беру хэндпан с собой в поездки, на природу, в разные места&#34;,&#34;motive&#34;:&#34;creative&#34;}">
+            <span>Беру хэндпан с собой в поездки, на природу, в разные места</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q2" value="3" data-tags="{&#34;t&#34;:&#34;Играю с другими музыкантами и участвую в джемах&#34;,&#34;motive&#34;:&#34;people&#34;,&#34;community&#34;:1}">
+            <span>Играю с другими музыкантами и участвую в джемах</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q2" value="4" data-tags="{&#34;t&#34;:&#34;Выступаю и создаю собственную музыку&#34;,&#34;motive&#34;:&#34;stage&#34;}">
+            <span>Выступаю и создаю собственную музыку</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q2" value="5" data-tags="{&#34;t&#34;:&#34;Иногда прихожу в красивое пространство, слушаю музыку и знакомлюсь с людьми&#34;,&#34;motive&#34;:&#34;people&#34;,&#34;community&#34;:2}">
+            <span>Иногда прихожу в красивое пространство, слушаю музыку и знакомлюсь с людьми</span>
+          </label>
+      </div>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="3" hidden>
+      <legend class="quiz-q">Что вам сейчас важнее всего?</legend>
+      <div class="quiz-opts">
+        <label class="quiz-opt">
+            <input type="radio" name="hq-q3" value="0" data-tags="{&#34;t&#34;:&#34;Понять, моё ли это&#34;,&#34;route&#34;:&#34;try&#34;}">
+            <span>Понять, моё ли это</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q3" value="1" data-tags="{&#34;t&#34;:&#34;Научиться играть&#34;,&#34;route&#34;:&#34;learn&#34;}">
+            <span>Научиться играть</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q3" value="2" data-tags="{&#34;t&#34;:&#34;Найти свой инструмент&#34;,&#34;route&#34;:&#34;buy&#34;}">
+            <span>Найти свой инструмент</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q3" value="3" data-tags="{&#34;t&#34;:&#34;Получить инструмент на время&#34;,&#34;route&#34;:&#34;rent&#34;}">
+            <span>Получить инструмент на время</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q3" value="4" data-tags="{&#34;t&#34;:&#34;Найти людей со схожими интересами&#34;,&#34;route&#34;:&#34;community&#34;}">
+            <span>Найти людей со схожими интересами</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q3" value="5" data-tags="{&#34;t&#34;:&#34;Пока просто хочу разобраться&#34;,&#34;route&#34;:&#34;curious&#34;}">
+            <span>Пока просто хочу разобраться</span>
+          </label>
+      </div>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="4" hidden>
+      <legend class="quiz-q">А что вас останавливает?</legend>
+      <div class="quiz-opts">
+        <label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="0" data-tags="{&#34;t&#34;:&#34;Боюсь купить дорогой инструмент и забросить&#34;,&#34;barrier&#34;:&#34;quit&#34;}">
+            <span>Боюсь купить дорогой инструмент и забросить</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="1" data-tags="{&#34;t&#34;:&#34;Не знаю, с чего начать обучение&#34;,&#34;barrier&#34;:&#34;howlearn&#34;}">
+            <span>Не знаю, с чего начать обучение</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="2" data-tags="{&#34;t&#34;:&#34;Не понимаю, какой инструмент выбрать&#34;,&#34;barrier&#34;:&#34;choose&#34;}">
+            <span>Не понимаю, какой инструмент выбрать</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="3" data-tags="{&#34;t&#34;:&#34;Пока не уверен(а), что хэндпан вообще для меня&#34;,&#34;barrier&#34;:&#34;unsure&#34;}">
+            <span>Пока не уверен(а), что хэндпан вообще для меня</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="4" data-tags="{&#34;t&#34;:&#34;Не хочу заниматься в одиночку&#34;,&#34;barrier&#34;:&#34;alone&#34;,&#34;community&#34;:1}">
+            <span>Не хочу заниматься в одиночку</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="5" data-tags="{&#34;t&#34;:&#34;Пока не готов(а) покупать&#34;,&#34;barrier&#34;:&#34;notready&#34;}">
+            <span>Пока не готов(а) покупать</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q4" value="6" data-tags="{&#34;t&#34;:&#34;Ничего не останавливает – хочу попробовать&#34;,&#34;barrier&#34;:&#34;none&#34;}">
+            <span>Ничего не останавливает – хочу попробовать</span>
+          </label>
+      </div>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="5" hidden>
+      <legend class="quiz-q">Хотели бы вы быть частью сообщества вокруг хэндпана?</legend>
+      <div class="quiz-opts">
+        <label class="quiz-opt">
+            <input type="radio" name="hq-q5" value="0" data-tags="{&#34;t&#34;:&#34;Да, хочу знакомиться, играть вместе и ходить на события&#34;,&#34;community&#34;:3}">
+            <span>Да, хочу знакомиться, играть вместе и ходить на события</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q5" value="1" data-tags="{&#34;t&#34;:&#34;Было бы интересно, но сначала хочу разобраться с инструментом&#34;,&#34;community&#34;:1}">
+            <span>Было бы интересно, но сначала хочу разобраться с инструментом</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q5" value="2" data-tags="{&#34;t&#34;:&#34;Мне интереснее заниматься самостоятельно&#34;,&#34;community&#34;:-2}">
+            <span>Мне интереснее заниматься самостоятельно</span>
+          </label><label class="quiz-opt">
+            <input type="radio" name="hq-q5" value="3" data-tags="{&#34;t&#34;:&#34;Пока не знаю&#34;,&#34;community&#34;:0}">
+            <span>Пока не знаю</span>
+          </label>
+      </div>
+    </fieldset>
+  <div class="quiz-res" data-quiz-res="trial" hidden tabindex="-1">
+      <h2 class="quiz-kicker">Кажется, мы поняли, с чего вам лучше начать</h2>
+      <p class="quiz-lead" data-quiz-lead></p>
+      <p class="quiz-text">Сначала приходите на пробное занятие: познакомитесь с инструментом, попробуете сыграть и поймёте, хочется ли продолжить.</p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Пробное занятие</span>
+        <span class="quiz-step-meta">45 минут · 900 ₽</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="trial" data-quiz-cta>Записаться на занятие →</button>
+      <p class="small quiz-after">А если после занятия захочется свой инструмент – его можно подобрать и попробовать у нас в студии.</p>
+    </div><div class="quiz-res" data-quiz-res="buy" hidden tabindex="-1">
+      <h2 class="quiz-kicker">Похоже, вы уже готовы искать свой инструмент</h2>
+      <p class="quiz-lead" data-quiz-lead></p>
+      <p class="quiz-text">Разбираться в строях, нотах и характеристиках самостоятельно не обязательно. У нас можно услышать, сравнить, попробовать, получить консультацию мастера – и выбрать свой хэндпан.</p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Тест инструментов</span>
+        <span class="quiz-step-meta">20+ хангов в студии · консультация мастера</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="buy" data-quiz-cta>Записаться на тест инструментов →</button>
+      
+    </div><div class="quiz-res" data-quiz-res="rent" hidden tabindex="-1">
+      <h2 class="quiz-kicker">Вам не обязательно покупать хэндпан сразу</h2>
+      <p class="quiz-lead" data-quiz-lead></p>
+      <p class="quiz-text">Можно идти шаг за шагом: попробовать, взять инструмент в аренду, научиться играть – и потом выбрать свой.</p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Аренда хэндпана</span>
+        <span class="quiz-step-meta">от 8 000 ₽ в месяц</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="rent" data-quiz-cta>Узнать об аренде →</button>
+      
+    </div><div class="quiz-res" data-quiz-res="community" hidden tabindex="-1">
+      <h2 class="quiz-kicker">Похоже, вам интересен не только инструмент</h2>
+      <p class="quiz-lead" data-quiz-lead></p>
+      <p class="quiz-text">U-GENE sound vibe – это не только школа и мастерская. Это люди, с которыми можно играть, знакомиться, ходить на события, участвовать в джемах и расти в музыке.</p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Знакомство с сообществом</span>
+        <span class="quiz-step-meta">джемы · концерты · выезды · встречи с мастерами</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="help" data-quiz-cta>Хочу в сообщество →</button>
+      
+    </div>
+  <div class="quiz-nav">
+    <button type="button" class="btn btn--44 btn--line quiz-back" data-quiz-back hidden>← Назад</button>
+    <button type="button" class="btn btn--44 btn--line quiz-again" data-quiz-again hidden>Пройти заново</button>
+  </div>
+</div>
+  </div>
+</div>
+
+<script src="/handpan-shop-home/astro/common.js?v=28h"></script><script src="/handpan-shop-home/astro/home.js?v=28h"></script>
 </body>
 </html>

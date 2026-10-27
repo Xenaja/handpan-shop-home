@@ -147,7 +147,7 @@
 .fmt-price>span:first-child{font-family:var(--f-d);font-weight:300;font-size:22px;color:var(--blue)}
 .fmt-price .mono{font-size:10px;letter-spacing:.08em}
 .fmt-btn{grid-column:1 / -1;order:4;justify-self:start}
-.btn--44{min-height:44px;padding:0 18px;border-radius:22px;font-size:14px}
+
 .fmt-btn:hover{border-color:var(--cta);color:var(--cta)}
 @media (min-width:1000px){
   .e6-grid{grid-template-columns:repeat(12,minmax(0,1fr))}

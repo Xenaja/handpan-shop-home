@@ -174,6 +174,34 @@
     box.innerHTML = `<iframe title="Карта: ${box.querySelector('.map-addr').textContent}" src="${box.dataset.map}" allowfullscreen></iframe>`;
   }));
 
+  /* ---------- тест «Поможем определиться»: окно, quiz.js — по первому открытию ---------- */
+  const qm = $('[data-quiz-modal]');
+  let qmFocus = null;
+  const qmClose = () => {
+    qm.classList.remove('open');
+    document.documentElement.classList.remove('locked');
+    setTimeout(() => { qm.hidden = true; }, 200);
+    if (qmFocus) qmFocus.focus({ preventScroll: true });
+  };
+  const qmOpen = () => {
+    qmFocus = document.activeElement;
+    qm.hidden = false;
+    requestAnimationFrame(() => qm.classList.add('open'));
+    document.documentElement.classList.add('locked');
+    setTimeout(() => { const f = qm.querySelector('.quiz-step:not([hidden]) input'); if (f) f.focus({ preventScroll: true }); }, 60);
+  };
+  $$('[data-quiz-open]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    if (window.Quiz) { qmOpen(); return; }
+    const sc = document.createElement('script');
+    sc.src = a.closest('html').querySelector('script[src*="home.js"]').src.replace('home.js', 'quiz.js');
+    sc.onload = qmOpen;
+    document.body.appendChild(sc);
+  }));
+  $('[data-quiz-close]', qm).addEventListener('click', qmClose);
+  qm.addEventListener('click', e => { if (e.target === qm || e.target.closest('[data-quiz-cta]')) qmClose(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !qm.hidden) qmClose(); });
+
   /* ---------- формы ---------- */
   const fin = $('[data-final] form'), finThanks = $('.s10-form [data-thanks]');
   HS.bindForm(fin, () => { fin.hidden = true; finThanks.hidden = false; finThanks.focus(); });

@@ -1,0 +1,44 @@
+---
+// Тест «Поможем определиться» (ТЗ: 6 вопросов → профиль посетителя → персональный первый шаг).
+// Вопросы и исходы — в HTML; quiz.js переключает шаги, собирает профиль, кладёт его в заявку и шлёт цели в Метрику.
+import Q from '../data/quiz.json';
+const { id = 'quiz' } = Astro.props;
+const R = Q.results as Record<string, { kicker: string; text: string; step: string; meta: string; cta: string; open: string; after?: string }>;
+---
+<div class="quiz" data-quiz id={id} data-lead={JSON.stringify(Q.lead)}>
+  <div class="quiz-top">
+    <div class="quiz-prog" aria-hidden="true"><i data-quiz-bar></i></div>
+    <span class="mono quiz-count" data-quiz-count aria-live="polite">01 / {String(Q.questions.length).padStart(2, '0')}</span>
+  </div>
+  {Q.questions.map((s, i) => (
+    <fieldset class="quiz-step" data-quiz-step={i} hidden={i > 0}>
+      <legend class="quiz-q">{s.q}</legend>
+      <div class="quiz-opts">
+        {s.a.map((a, k) => (
+          <label class="quiz-opt">
+            <input type="radio" name={`${id}-q${i}`} value={k} data-tags={JSON.stringify(a)}>
+            <span>{a.t}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  ))}
+  {Object.entries(R).map(([key, r]) => (
+    <div class="quiz-res" data-quiz-res={key} hidden tabindex="-1">
+      <h2 class="quiz-kicker">{r.kicker}</h2>
+      <p class="quiz-lead" data-quiz-lead></p>
+      <p class="quiz-text">{r.text}</p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">{r.step}</span>
+        <span class="quiz-step-meta">{r.meta}</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open={r.open} data-quiz-cta>{r.cta} →</button>
+      {r.after && <p class="small quiz-after">{r.after}</p>}
+    </div>
+  ))}
+  <div class="quiz-nav">
+    <button type="button" class="btn btn--44 btn--line quiz-back" data-quiz-back hidden>← Назад</button>
+    <button type="button" class="btn btn--44 btn--line quiz-again" data-quiz-again hidden>Пройти заново</button>
+  </div>
+</div>

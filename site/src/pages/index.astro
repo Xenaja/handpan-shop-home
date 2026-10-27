@@ -4,6 +4,8 @@
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import LeadForm from '../components/LeadForm.astro';
+import Quiz from '../components/Quiz.astro';
+import QD from '../data/quiz.json';
 import D from '../data/site.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -85,7 +87,7 @@ const jsonld = {
           <button type="button" class="btn btn--52 btn--blue s1-try" data-open="trial">Попробовать · 900 ₽</button>
           <a class="btn btn--52 btn--line-d" href="#making">Выбрать ханг</a>
         </div>
-        <a class="s1-help" href="#" data-open="help">Не знаете, с чего начать? Поможем определиться →</a>
+        <a class="s1-help" href={u('test')} data-quiz-open>Не знаете, с чего начать? Поможем определиться →</a>
         <button type="button" class="s1-play-n" data-play>
           <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
         </button>
@@ -422,6 +424,17 @@ const jsonld = {
     <p class="small body--2" data-sheet-help hidden>Можно начать с обучения, взять инструмент в аренду или сразу выбрать свой. Оставьте контакты – подскажем, с чего начать именно вам</p>
     <LeadForm id="m" />
     <p class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</p>
+  </div>
+</div>
+<!-- тест «Поможем определиться» в окне; quiz.js грузится по кнопке, без JS ссылка ведёт на /test -->
+<div class="sheet qsheet" data-quiz-modal hidden>
+  <div class="sheet-card qsheet-card" role="dialog" aria-modal="true" aria-labelledby="qm-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="qm-title">С чего вам начать</div>
+      <button type="button" class="x" data-quiz-close aria-label="Закрыть">×</button>
+    </div>
+    <p class="small">{QD.intro}</p>
+    <Quiz id="hq" />
   </div>
 </div>
 </Base>

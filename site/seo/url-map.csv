@@ -3,6 +3,7 @@ old_path,new_path,action,note
 /cources,/cources,keep,обучение — адрес с опечаткой сохраняем
 /politikaconfidencialnosti,/politikaconfidencialnosti,noindex,текст переписывается с юристом
 ,/consent,noindex,новая: отдельное согласие на обработку ПДн
+,/test,noindex,новая: тест «Поможем определиться» (ссылка для рекламы; на главной — в окне)
 /home,/,301,дубль главной
 /page41003248.html,/,301,старая копия «О нас» со старыми ценами
 /page35812636.html,,410,шаблон «Blank page» про путешествия

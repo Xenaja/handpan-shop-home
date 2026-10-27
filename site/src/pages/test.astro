@@ -1,0 +1,47 @@
+---
+// Тест «Поможем определиться» отдельной страницей: ссылка для рекламы и соцсетей. На главной та же логика — в окне.
+// noindex, follow: страница-инструмент, в поиске ей делать нечего (SEO-MIGRATION.md, раздел 4).
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import Quiz from '../components/Quiz.astro';
+import LeadForm from '../components/LeadForm.astro';
+import Q from '../data/quiz.json';
+const home = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+<Base
+  title="Тест: с чего начать знакомство с хангом — U-GENE sound vibe"
+  description="Шесть коротких вопросов – и подскажем первый шаг: пробное занятие, подбор хэндпана, аренда или сообщество. Москва и Санкт-Петербург."
+  path="/test" ogImage="img/hero-scene-d.webp" theme="#0A1020" robots="noindex, follow"
+  styles={['common.css']} scripts={['common.js', 'quiz.js', 'test.js']}>
+
+<div class="tpage on-dark">
+  <div class="glow tpage-glow" aria-hidden="true"></div>
+  <span class="contour contour--middle tpage-line" aria-hidden="true"></span>
+  <div class="hdr tpage-hdr">
+    <Logo class="pill glass-d logo" href={home} />
+    <a class="pill glass-d tpage-back" href={home}>На главную</a>
+  </div>
+  <main id="main" class="tpage-main">
+    <div class="stack tpage-head">
+      <span class="mono">Тест · 2 минуты</span>
+      <h1 class="h2 tpage-h">С чего вам <span class="mute">начать</span></h1>
+      <p class="tpage-intro">{Q.intro}</p>
+    </div>
+    <div class="tpage-card">
+      <Quiz id="quiz" />
+    </div>
+  </main>
+</div>
+
+<!-- форма записи: модалка / bottom sheet, интерес выбирает кнопка теста -->
+<div class="sheet" data-sheet hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="sheet-title" data-sheet-title>Заявка</div>
+      <button type="button" class="x" data-close aria-label="Закрыть">×</button>
+    </div>
+    <LeadForm id="m" />
+    <p class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</p>
+  </div>
+</div>
+</Base>

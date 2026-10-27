@@ -292,3 +292,52 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 /* ---------- простые страницы: документы и 404 ---------- */
 .doc-hdr{padding:clamp(12px,2vw,32px) var(--gut)}
 .doc{display:flex;flex-direction:column;gap:24px;max-width:860px;min-height:60vh}
+.btn--44{min-height:44px;padding:0 18px;border-radius:22px;font-size:14px}
+
+/* ---------- тест «Поможем определиться» (Quiz.astro + quiz.js) ---------- */
+.quiz{display:flex;flex-direction:column;gap:22px}
+.quiz-top{display:flex;align-items:center;gap:14px}
+.quiz-prog{flex:1;height:4px;border-radius:2px;background:rgba(10,16,32,.12);overflow:hidden}
+.quiz-prog i{display:block;height:100%;width:0;border-radius:2px;background:var(--blue);transition:width .3s var(--ease)}
+.quiz .mono{color:var(--ink3)}
+.quiz-step{border:none;margin:0;padding:0;min-width:0}
+.quiz-q{padding:0;margin-bottom:18px;font-family:var(--f-d);font-size:clamp(20px,2vw,28px);line-height:1.15;letter-spacing:-.03em}
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{position:relative;cursor:pointer}
+.quiz-opt input{position:absolute;opacity:0;width:1px;height:1px}
+.quiz-opt span{display:block;padding:14px 18px;border-radius:18px;border:1px solid transparent;background:var(--sand);font-size:15px;line-height:1.4;transition:background-color .2s,color .2s,border-color .2s}
+.quiz-opt:hover span{border-color:var(--blue)}
+.quiz-opt input:checked+span{background:var(--ink);color:var(--milk)}
+.quiz-opt input:focus-visible+span{outline:2px solid var(--blue);outline-offset:2px}
+.quiz-res{display:flex;flex-direction:column;gap:14px;outline:none}
+.quiz-kicker{font-family:var(--f-d);font-weight:400;font-size:clamp(22px,2.2vw,32px);line-height:1.1;letter-spacing:-.035em;text-wrap:balance}
+.quiz-lead{font-size:17px;font-weight:500;line-height:1.45}
+.quiz-text{font-size:15px;line-height:1.55;color:var(--ink2);text-wrap:pretty}
+.quiz-step-card{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:20px;background:var(--ink);color:var(--milk)}
+.quiz-step-card .mono{color:var(--breeze)}
+.quiz-step-name{font-family:var(--f-d);font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;text-transform:uppercase}
+.quiz-step-meta{font-size:14px;color:var(--blue-l)}
+.quiz-cta{align-self:stretch}
+.quiz-nav{display:flex;gap:8px}
+.quiz-nav:not(:has(:not([hidden]))){display:none}
+@media (min-width:1000px){ .quiz-cta{align-self:flex-start} }
+.qsheet-card{max-width:600px}
+
+/* ---------- страница теста /test ---------- */
+.tpage{position:relative;min-height:100svh;overflow:hidden;background:var(--dark);color:var(--milk)}
+.tpage-glow{left:20%;top:30%;width:min(720px,130vw)}
+.tpage-line{left:-8%;bottom:-18%;width:min(560px,120vw);color:rgba(144,168,192,.16)}
+.tpage-back{padding:0 20px;font-size:14px;font-weight:500}
+.tpage-back:hover{color:var(--blue-l)}
+.tpage-hdr .hdr-n{display:none}
+.tpage-main{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,1fr);gap:32px;padding:clamp(24px,6vh,72px) var(--gut) 72px}
+.tpage-head{gap:18px}
+.tpage-head .mono{color:var(--blue-l)}
+.tpage-h{text-wrap:balance}
+.tpage-intro{max-width:420px;font-size:16px;line-height:1.55;color:var(--breeze)}
+.tpage-card{border-radius:28px;background:var(--card);color:var(--ink);padding:clamp(22px,3vw,36px)}
+@media (min-width:1000px){
+  .tpage-main{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);align-items:start}
+  .tpage-head{grid-column:1 / 6;position:sticky;top:40px}
+  .tpage-card{grid-column:7 / 13}
+}
