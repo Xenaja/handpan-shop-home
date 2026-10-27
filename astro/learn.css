@@ -249,7 +249,7 @@ html[data-teach="aubergine"] .tphoto{background:var(--wine)}
 .tname{font-weight:400}
 
 /* ---------- линии из знака ---------- */
-.e1-line{left:78%;top:30%;width:min(560px,110vw);transform:translate(-50%,-50%) rotate(-6deg);color:rgba(58,96,144,.3)}
+.e1-line{left:78%;top:30%;width:min(560px,110vw);transform:translate(-50%,-50%) rotate(-6deg);color:rgba(58,96,144,.18)}
 .e10{position:relative;overflow:hidden}
 .e10>.sec-head,.e10>.faq{position:relative}
-.e10-line{left:-14%;bottom:-30%;width:min(760px,140vw);color:rgba(144,168,192,.3);transform:rotate(160deg)}
+.e10-line{left:-14%;bottom:-30%;width:min(760px,140vw);color:rgba(144,168,192,.17);transform:rotate(160deg)}
