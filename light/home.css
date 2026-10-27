@@ -59,9 +59,11 @@
 .s2-sub{font-family:var(--f-d);font-weight:300;font-size:clamp(24px,2.6vw,38px);line-height:1.1;letter-spacing:-.02em}
 .s2-more{font-size:15px;max-width:480px}
 .s2-scheme{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
-/* цвет купола: navy по умолчанию, ?hang=bronze — бронза (служебный переключатель) */
+/* цвет купола: navy по умолчанию, ?hang=bronze — бронза, ?hang=dark — тёмная бронза (служебный переключатель) */
 .hang{--hang-hit:#3A6090;position:relative;width:min(100%,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 26%,#7A93B4 0%,#2B4C78 9%,#131936 32%,#0A1020 62%,#030303 100%);box-shadow:0 30px 90px rgba(30,36,100,.5),inset 0 2px 0 rgba(255,255,255,.12)}
 html[data-hang="bronze"] .hang{--hang-hit:rgba(232,180,120,.55);background:radial-gradient(circle at 36% 28%,#F0C89A 0%,#B97E4E 14%,#7A4A2C 40%,#3E2416 72%,#1C100A 100%)}
+/* ?hang=dark — тёмная бронза: почти чёрно-коричневый металл с тёплым бликом и отсветом по краю */
+html[data-hang="dark"] .hang{--hang-hit:rgba(201,150,104,.5);background:radial-gradient(ellipse 20% 14% at 34% 24%,rgba(236,196,150,.45) 0%,rgba(236,196,150,0) 100%),radial-gradient(ellipse 60% 30% at 70% 88%,rgba(150,96,58,.28) 0%,rgba(150,96,58,0) 100%),radial-gradient(circle at 36% 28%,#8A5E3A 0%,#4E301C 10%,#2A170D 34%,#160C06 62%,#070302 100%);box-shadow:0 30px 90px rgba(28,14,6,.55),inset 0 2px 0 rgba(255,220,180,.14),inset 0 -6px 18px rgba(0,0,0,.45)}
 .hang svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hang-hit{cursor:pointer;outline:none}
 .hang-hit ellipse,.hang-hit circle{transition:fill .35s}

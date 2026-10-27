@@ -258,9 +258,9 @@
     });
   }
 
-  /* ---------- переключатель цвета ханга на схеме (служебный): ?hang=bronze, помним между страницами ---------- */
+  /* ---------- переключатель цвета ханга на схеме (служебный): ?hang=bronze | dark, помним между страницами ---------- */
   if ($('.hang')) {
-    const VS = [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C']];
+    const VS = [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C'], ['dark', 'Тёмная бронза', '#2A170D']];
     document.body.insertAdjacentHTML('beforeend', '<div class="vswitch" role="group" aria-label="Цвет ханга на схеме"><span class="vswitch-cap">Ханг</span>' +
       VS.map(([v, l, c]) => `<button type="button" data-hang-v="${v}"><i style="background:${c}"></i>${l}</button>`).join('') + '</div>');
     const markHang = () => $$('[data-hang-v]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.hangV === (root.dataset.hang || ''))));

@@ -19,12 +19,12 @@
 <link rel="stylesheet" href="../common.css">
 <link rel="stylesheet" href="learn.css">
 <script>
-  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?hang=bronze — бронзовый ханг на схеме (выбор помним между страницами)
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); ?hang=bronze | dark — бронзовый / тёмно-бронзовый ханг на схеме (выбор помним между страницами)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.has('dev')) h.dataset.env = 'dev';
     let v = q.get('hang');
     try { if (v === null) v = sessionStorage.getItem('hs-hang'); else sessionStorage.setItem('hs-hang', v); } catch (e) {}
-    if (v === 'bronze') h.dataset.hang = 'bronze'; })();
+    if (v === 'bronze' || v === 'dark') h.dataset.hang = v; })();
 </script>
 </head>
 <body>
