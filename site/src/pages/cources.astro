@@ -1,0 +1,340 @@
+---
+// «Обучение». Адрес /cources — как на Тильде, с опечаткой: он проиндексирован (SEO-MIGRATION.md, п. 1.11).
+// Навыки, ступени, путь, форматы, преподаватели и FAQ собираются в HTML при сборке; learn.js их только переключает.
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import D from '../data/site.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (p: string) => `${base}/${p}`;
+const home = `${base}/`;
+const initials = (s: string) => s.split(/\s+/).map(w => w[0]).join('').slice(0, 2);
+const pad = (n: number) => String(n).padStart(2, '0');
+const T = D.teachers;
+const priceNum = (p: string) => p.replace(/\D/g, '');
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Course', name: 'Обучение игре на ханге (хэндпане) с нуля',
+      description: 'Групповые, индивидуальные и онлайн-занятия. Пробный урок 45 минут — 900 ₽, инструмент предоставляем.',
+      inLanguage: 'ru',
+      provider: { '@type': 'Organization', '@id': 'https://handpanshop.pro/#org', name: 'U-GENE sound vibe', url: 'https://handpanshop.pro/' },
+      offers: [
+        { '@type': 'Offer', name: 'Пробное занятие, 45 минут', price: '900', priceCurrency: 'RUB', category: 'Paid' },
+        ...D.formats.map(f => ({ '@type': 'Offer', name: `${f.name} ${f.unit}`.replace(' / ', ', '), price: priceNum(f.price), priceCurrency: 'RUB', category: 'Paid' }))
+      ] },
+    { '@type': 'FAQPage', mainEntity: D.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://handpanshop.pro/' },
+      { '@type': 'ListItem', position: 2, name: 'Обучение' } ] }
+  ]
+};
+---
+<Base
+  title="Обучение игре на ханге с нуля — пробный урок 900 ₽ · U-GENE sound vibe"
+  description="Научитесь играть на ханге с нуля. Пробное занятие 45 минут — 900 ₽, инструмент даём, опыт не нужен. Группы, индивидуально, онлайн. Москва и Санкт-Петербург."
+  ogTitle="Обучение игре на ханге с нуля — U-GENE sound vibe"
+  ogDescription="Пробное занятие 45 минут — 900 ₽. Инструмент даём, опыт не нужен."
+  path="/cources" ogImage="img/edu-46-d.webp"
+  styles={['common.css', 'learn.css']} scripts={['common.js', 'learn.js']} jsonld={jsonld}>
+
+<!-- 01 · Научитесь играть -->
+<header class="e1" id="top">
+  <img class="e1-blur" src={u('img/aud-home.webp')} alt="" width="733" height="1100" aria-hidden="true">
+  <div class="glow e1-glow" aria-hidden="true"></div>
+
+  <div class="hdr">
+    <Logo class="pill glass-w logo" href={home} />
+    <nav class="pill glass-w nav hdr-d" aria-label="Основное меню">
+      <a class="lnk" href={`${home}#making`}>Инструменты</a><span class="nav-on" aria-current="page">Обучение</span><a class="lnk" href={`${home}#community`}>Сообщество</a><a class="lnk" href="#" data-pending="P-12">Блог</a><a class="lnk" href="#contacts">Контакты</a>
+    </nav>
+    <div class="pill glass-w city hdr-d" role="group" aria-label="Город">
+      <button type="button" data-city="msk" aria-pressed="true">Москва</button><button type="button" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+    </div>
+    <div class="hdr-n"><span class="burger-slot" aria-hidden="true"></span></div>
+  </div>
+
+  <div class="e1-body">
+    <h1 class="h-hero e1-h1">
+      <span>Научитесь играть</span>
+      <span class="e1-l2"><span class="pcap" style={`background-image:url(${u('img/edu-34.webp')})`} aria-hidden="true"></span><span>на ханге</span></span>
+      <span class="e1-l3"><span>с нуля</span><span class="mono e1-cities">Москва · Санкт-Петербург</span></span>
+    </h1>
+    <div class="e1-grid">
+      <button type="button" class="e1-play hdr-d" data-play aria-label="Послушать, как звучит ханг">
+        <span class="play glass-w" data-play-ic aria-hidden="true"></span>
+        <span class="stack e1-pmeta">
+          <span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
+          <span class="wave" data-wave="18" aria-hidden="true"></span>
+        </span>
+      </button>
+      <div class="e1-mid">
+        <p class="e1-lead">45 минут. Без опыта. Без своего инструмента. Первая мелодия – уже на первом занятии</p>
+        <div class="btns e1-btns">
+          <button type="button" class="btn btn--blue e1-try" data-open="trial">Записаться на пробное · 900 ₽</button>
+          <a class="btn btn--line" href="#formats">Форматы и цены</a>
+        </div>
+        <div class="small e1-facts"><span>Инструмент предоставляем</span><span>Опыт не нужен</span></div>
+      </div>
+      <a class="e1-team hdr-d" href="#teachers">
+        <span class="e1-ava" aria-hidden="true">
+          {T.slice(0, 2).map(t => <span data-pending-link="P-13">{initials(t.name)}</span>)}<span>+{T.length - 2}</span>
+        </span>
+        <span class="e1-team-t">{T.length} преподавателей</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="menu menu--sand" id="menu" hidden aria-label="Меню">
+  <div class="menu-top">
+    <Logo style="padding:0" href={home} />
+    <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
+  </div>
+  <div class="menu-links">
+    <a href={`${home}#making`}>Инструменты</a><span class="menu-on" aria-current="page">Обучение</span><a href={`${home}#community`}>Сообщество</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+  </div>
+  <div class="btns" role="group" aria-label="Город">
+    <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><button type="button" class="chip" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+  </div>
+</nav>
+<button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
+
+<main id="main">
+
+<!-- 02 · Разные подходы -->
+<section class="sec bg-sand e2" aria-label="Разные подходы">
+  <div class="mono e-ind">02/11 · Разные подходы</div>
+  <p class="e2-q">Мастера играют на ханге по-разному: для Manu Delago <span class="pcap e2-cap" style={`background-image:url(${u('img/edu-34.webp')})`} aria-hidden="true"></span> он звучит как арфа или перкуссия, для Liron Meyuhas – как инструмент сердца, тела и духа, <span class="mute">а создатели PANArt <span class="pcap e2-cap" style={`background-image:url(${u('img/aud-home.webp')})`} aria-hidden="true"></span> советуют просто следовать за звуком</span></p>
+  <div class="e2-grid">
+    <div class="e-photo e2-photo">
+      <picture>
+        <source media="(min-width:1000px)" srcset={u('img/edu-46-m.webp')} width="1200" height="1800">
+        <img src={u('img/edu-46-d.webp')} alt="Ученица играет на ханге на отчётном концерте школы" width="2400" height="1500" loading="lazy">
+      </picture>
+    </div>
+    <div class="e2-items">
+      <p class="body">Ханг не требует музыкального образования, но вознаграждает за внимание к звуку. <span class="e2-hl">Мы поможем познакомиться с разными подходами и найти свой</span></p>
+      <div class="e-item"><span class="mono">Первый урок</span><span>Без музыкального образования, своего инструмента и подготовки</span></div>
+      <div class="e-item"><span class="mono">За 45 минут</span><span>Знакомство с инструментом, базовые приёмы и первая мелодия</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Что вы освоите -->
+<section class="sec bg-dark on-dark e3" aria-labelledby="h-e3">
+  <div class="stack e3-head">
+    <div class="mono">03/11 · Что вы освоите</div>
+    <h2 id="h-e3" class="h2 stack"><span>От первого звука</span><span class="mute e-end">–&nbsp;к собственной музыке</span></h2>
+    <div class="e3-row">
+      <div class="e-photo e3-photo"><img src={u('img/aud-home.webp')} alt="Преподаватель играет на ханге в студии" width="733" height="1100" loading="lazy"></div>
+      <div class="stack e3-txt">
+        <p>На ханге легко начать играть. Но чтобы действительно владеть инструментом, одной интуиции недостаточно</p>
+        <p class="e3-sub">В обучении соединяем технику, ритм, слух, мелодию и импровизацию – постепенно переходя от повторения за преподавателем к самостоятельной игре</p>
+      </div>
+    </div>
+  </div>
+  <div class="stack">
+    <div class="mono e3-cap">На занятиях вы учитесь</div>
+    <ol class="skills">
+      {D.skills.map((s, i) => <li class="skill"><span class="skill-n">{pad(i + 1)}</span><span class="skill-w">{s.w}</span><span class="skill-t">{s.t}</span></li>)}
+    </ol>
+  </div>
+</section>
+
+<!-- 04 · Как мы учим -->
+<section class="sec bg-sand e4" aria-labelledby="h-e4">
+  <div class="e4-head">
+    <div class="sec-head">
+      <div class="mono">04/11 · Как мы учим</div>
+      <h2 id="h-e4" class="h2">Не просто <span class="mute">набор упражнений</span></h2>
+    </div>
+    <p class="body e4-p">Каждый этап добавляет новый уровень контроля над инструментом: звук и движение, затем ритм и мелодия, после – импровизация и собственная музыкальная речь</p>
+  </div>
+  <ol class="snap stages">
+    {D.stages.map((s, i) => <li class="stage"><span class="stage-n">{pad(i + 1)}</span><span class="stack" style="gap:10px"><span class="stage-t">{s.h}</span><span class="stage-x">{s.t}</span></span></li>)}
+  </ol>
+  <div class="e4-facts">
+    <span class="e4-plus">+ Сложные техники и приёмы, разные размеры</span>
+    <span data-pending="P-E2">Материалы: упражнения для практики · разборы композиций · материалы преподавателей</span>
+  </div>
+</section>
+
+<!-- 05 · Как строится путь -->
+<section class="sec bg-blue on-blue e5" aria-labelledby="h-e5">
+  <div class="head-row">
+    <h2 id="h-e5" class="h-display e5-h">Как строится путь</h2>
+    <div class="mono">05/11 · Путь ученика</div>
+  </div>
+  <ol class="snap path">
+    {D.path.map(s => <li class="step"><span class="step-h"><span class="step-num">{s.n}</span><span class="step-u">{s.u}</span></span><p>{s.t}</p></li>)}
+  </ol>
+</section>
+
+<!-- 06 · Форматы и цены -->
+<section class="sec e6" id="formats" aria-labelledby="h-e6">
+  <div class="head-row">
+    <div class="sec-head">
+      <div class="mono">06/11 · Форматы</div>
+      <h2 id="h-e6" class="h2">Форматы <span class="mute">и цены</span></h2>
+    </div>
+    <p class="small e6-note">Не знаете, какой формат выбрать? Начните с пробного занятия</p>
+  </div>
+  <div class="stack fmts">
+    <div class="fmt fmt--trial">
+      <span class="fmt-name">Пробное занятие</span>
+      <span class="fmt-price">900 ₽ <span class="mono">/ 45 мин</span></span>
+      <span class="fmt-who">Попробовать без обязательств</span>
+      <button type="button" class="btn btn--48 btn--blue" data-open="trial">Записаться</button>
+    </div>
+    {D.formats.map(f => (
+      <div class="fmt"><span class="fmt-name">{f.name}</span><span class="fmt-price">{f.price} <span class="mono">{f.unit}</span></span><span class="fmt-who">{f.who}</span><button type="button" class="btn btn--48 btn--line" data-open={f.key}>Записаться</button></div>
+    ))}
+  </div>
+</section>
+
+<!-- 07 · Что нужно -->
+<section class="sec bg-sand e7" aria-labelledby="h-e7">
+  <div class="stack e7-l">
+    <div class="mono">07/11 · Перед первым занятием</div>
+    <h2 id="h-e7" class="h2">Что нужно</h2>
+    <p class="small">Инструмент ждёт в студии – достаточно прийти</p>
+    <div class="e-photo e7-photo"><img src={u('img/edu-51.webp')} alt="Ханги в студии школы" width="1200" height="1800" loading="lazy"></div>
+  </div>
+  <div class="needs">
+    <div class="e-item"><span class="mono">Инструмент</span><span class="need-big">Не обязателен</span><span class="small">На занятиях предоставляем хэндпан</span></div>
+    <div class="e-item"><span class="mono">Опыт</span><span class="need-big">Не нужен</span><span class="small">Большинство учеников начинали с нуля</span></div>
+    <div class="e-item"><span class="mono">Возраст</span><span class="need-big">От 12 лет</span><span class="small">Для детей младше – индивидуально</span></div>
+    <div class="e-item"><span class="mono">Что взять</span><span class="need-big">Желание</span><span class="small">Попробовать новое. Остальное есть в студии</span></div>
+  </div>
+</section>
+
+<!-- 08 · Кто вас учит: все преподаватели в HTML, виден один -->
+<section class="sec bg-bronze on-dark e8" id="teachers" aria-labelledby="h-e8">
+  <div class="stack e8-head">
+    <div class="mono">08/11 · Кто вас учит</div>
+    <h2 id="h-e8" class="h2 e8-h">Учимся у тех, кто двигает <span class="mute">культуру ханга вперёд</span></h2>
+    <p class="small e8-intro">Наши преподаватели формировали российскую культуру ханга с самого её начала. Сегодня они развивают собственную практику и учатся у мастеров мировой сцены</p>
+  </div>
+  <div class="chips" role="tablist" aria-label="Преподаватели" data-tlist>
+    {T.map((t, i) => <button type="button" class="chip" role="tab" id={`t-${i}`} aria-controls={`tp-${i}`} aria-selected={String(i === 0)} tabindex={i === 0 ? 0 : -1}>{t.name}</button>)}
+  </div>
+  {T.map((t, i) => (
+    <div class="tpanel" id={`tp-${i}`} role="tabpanel" aria-labelledby={`t-${i}`} tabindex="0" hidden={i > 0}>
+      <div class="tphoto" data-pending-link={t.img ? undefined : 'P-13'}>
+        {t.img ? <img src={u(t.img)} alt={t.name}> : <span class="tmono" aria-hidden="true">{initials(t.name)}</span>}
+      </div>
+      <div class="stack tinfo">
+        <span class="mono">{t.role}</span>
+        <h3 class="tname">{t.name} {t.nick && <span class="mute">{t.nick}</span>}</h3>
+        <div class="tbio">{t.bio.map(p => <p>{p}</p>)}</div>
+        {t.bio.length > 1 && <button type="button" class="tmore" data-t-more aria-expanded="false">Читать дальше +</button>}
+      </div>
+    </div>
+  ))}
+</section>
+
+<!-- 09 · Что говорят ученики — ждём реальные отзывы (P-E1), до тех пор экран скрыт -->
+<section class="sec bg-sand e9" aria-labelledby="h-e9" data-pending="P-E1">
+  <div class="head-row">
+    <h2 id="h-e9" class="h2">Что говорят <span class="mute">ученики</span></h2>
+    <div class="mono">09/11 · Отзывы</div>
+  </div>
+  <div class="snap revs">
+    <div class="rev"><p class="small">Реальный отзыв ученика: конкретный результат и срок</p><span class="mono">уточнить</span></div>
+    <div class="rev"><p class="small">Реальный отзыв ученика: конкретный результат и срок</p><span class="mono">уточнить</span></div>
+    <div class="rev"><p class="small">Реальный отзыв ученика: конкретный результат и срок</p><span class="mono">уточнить</span></div>
+  </div>
+</section>
+
+<!-- 10 · Частые вопросы: ответы в HTML, открыт первый -->
+<section class="sec bg-navy on-dark e10" aria-labelledby="h-e10">
+  <div class="sec-head">
+    <div class="mono">10/11 · FAQ</div>
+    <h2 id="h-e10" class="h2">Частые <span class="mute">вопросы</span></h2>
+  </div>
+  <div class="faq" data-faq>
+    {D.faq.map((f, i) => (
+      <div class="faq-i">
+        <h3><button type="button" class="faq-q" aria-expanded={String(i === 0)} aria-controls={`faq-${i}`}><span>{f.q}</span><span class="faq-sign" aria-hidden="true">{i === 0 ? '−' : '+'}</span></button></h3>
+        <p class="faq-a" id={`faq-${i}`} hidden={i > 0}>{f.a}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- 11 · Найди свой звук -->
+<section class="sec e11" id="contacts" aria-labelledby="h-e11">
+  <div class="glow e11-glow" aria-hidden="true"></div>
+  <div class="stack e11-top">
+    <h2 id="h-e11" class="h-hero e11-h">
+      <span>Найди свой звук</span>
+      <span class="e11-l2"><span>за</span> <span class="cap cap--blue">45 минут</span></span>
+    </h2>
+    <div class="e11-row">
+      <button type="button" class="btn btn--blue btn--full-n e11-btn" data-open="trial">Записаться на пробное · 900 ₽</button>
+      <div class="stack e11-addr">
+        {D.cities.map(c => <span>{c.name}{c.address && ` · ${c.address}${c.metro ? ' · ' + c.metro : ''}`}</span>)}
+      </div>
+    </div>
+  </div>
+  <footer class="efoot">
+    <Logo style="padding:0" href={home} />
+    <nav class="efoot-nav" aria-label="Разделы"><a class="lnk" href={`${home}#making`}>Инструменты</a><span aria-current="page">Обучение</span><a class="lnk" href={`${home}#community`}>Сообщество</a><a class="lnk" href="#" data-pending="P-12">Блог</a><a class="lnk" href={`${home}#contacts`}>Контакты</a></nav>
+    <span class="mono">© U-GENE sound vibe · Москва · СПб</span>
+  </footer>
+</section>
+
+</main>
+
+<!-- липкая панель -->
+<div class="bar bar--edu" data-sticky="520">
+  <div class="glass-l bar-in">
+    <div class="bar-txt"><span class="bar-name">Пробное занятие</span><span class="mono">900 ₽ · 45 мин</span></div>
+    <button type="button" class="btn btn--48 btn--blue" data-open="trial">Записаться</button>
+  </div>
+</div>
+
+<!-- форма записи: модалка / bottom sheet -->
+<div class="sheet" data-sheet hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="sheet-title">Запись на занятие</div>
+      <button type="button" class="x" data-close aria-label="Закрыть">×</button>
+    </div>
+    <form class="form form--edu" data-form novalidate>
+      <fieldset class="fs">
+        <legend class="mono">Формат</legend>
+        <div class="btns">
+          {[['trial', 'Пробное'], ...D.formats.map(f => [f.key, f.chip])].map(([k, l], i) => (
+            <label class="chip-r"><input type="radio" name="format" value={k} checked={i === 0}><span>{l}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend class="mono">Город</legend>
+        <div class="btns">
+          <label class="chip-r"><input type="radio" name="city" value="msk" checked><span>Москва</span></label>
+          <label class="chip-r"><input type="radio" name="city" value="spb"><span>Санкт-Петербург</span></label>
+        </div>
+      </fieldset>
+      <label class="sr" for="m-name">Имя</label>
+      <input id="m-name" name="name" placeholder="Имя" autocomplete="given-name" required>
+      <label class="sr" for="m-phone">Телефон</label>
+      <input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="m-phone-err">
+      <div class="err" id="m-phone-err" aria-live="polite"></div>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
+      <button type="submit" class="btn btn--blue btn--submit">Отправить</button>
+      <div class="form-status" aria-live="polite"></div>
+      <span class="small">Перезвоним, ответим на вопросы и подберём время</span>
+    </form>
+    <div class="stack thanks-box" data-thanks hidden tabindex="-1">
+      <span class="sheet-title">Спасибо!</span>
+      <span>Перезвоним в течение дня</span>
+      <button type="button" class="btn btn--52 btn--ink" data-close>Закрыть</button>
+    </div>
+  </div>
+</div>
+</Base>

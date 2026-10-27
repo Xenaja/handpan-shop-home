@@ -1,0 +1,6 @@
+---
+// Знак U-GENE + название текстом (логотип вертикальный, в шапку целиком не помещается — DECISIONS.md, п. 22)
+const { class: cls = 'logo', href, style } = Astro.props;
+const Tag = href ? 'a' : 'span';
+---
+<Tag class={cls} href={href} style={style}><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></Tag>

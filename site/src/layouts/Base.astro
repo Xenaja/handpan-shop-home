@@ -1,0 +1,65 @@
+---
+// Общий каркас страницы: <head> по шаблону SEO-MIGRATION.md (раздел 4), служебные варианты для заказчика, скрипты.
+interface Props {
+  title: string;
+  description: string;
+  path: string;            // адрес страницы на боевом сайте, для canonical и og:url
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage: string;         // путь от корня сайта: img/…
+  theme?: string;
+  styles: string[];
+  scripts: string[];
+  jsonld?: object;
+}
+const { title, description, path, ogTitle = title, ogDescription = description, ogImage, theme = '#E8EEF4', styles, scripts, jsonld } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (p: string) => `${base}/${p}`;
+const canonical = new URL(path, Astro.site).href;
+const V = '28a';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- превью: закрыто от индекса; на боевом сайте убрать (SEO-MIGRATION.md, п. 1.8) -->
+<meta name="robots" content="noindex">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="U-GENE sound vibe">
+<meta property="og:title" content={ogTitle}>
+<meta property="og:description" content={ogDescription}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={new URL(ogImage, Astro.site).href}>
+<meta name="theme-color" content={theme}>
+<link rel="icon" type="image/png" href={u('img/favicon.png')}>
+<link rel="apple-touch-icon" href={u('img/apple-touch-icon.png')}>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<slot name="head" />
+{styles.map(s => <link rel="stylesheet" href={`${u(s)}?v=${V}`}>)}
+<script is:inline>
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
+  // ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит» (выбор помним между страницами)
+  (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
+    if (q.has('dev')) h.dataset.env = 'dev';
+    const V = { hang: ['bronze', 'dark'], teach: ['aubergine'] };
+    for (const k in V) {
+      let v = q.get(k);
+      try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
+      if (V[k].includes(v)) h.dataset[k] = v;
+    } })();
+</script>
+{jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+<slot />
+{scripts.map(s => <script is:inline src={`${u(s)}?v=${V}`}></script>)}
+</body>
+</html>

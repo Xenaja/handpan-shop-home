@@ -1,0 +1,45 @@
+/* «Обучение»: преподаватели, FAQ, форма записи. Тексты уже в HTML (собирает Astro), скрипт их только переключает. */
+(() => {
+  'use strict';
+  const { $, $$ } = HS;
+
+  /* ---------- звук: короткая фраза D Kurd (заглушка до аудиофайла, P-01) ---------- */
+  HS.player({ pattern: [0, 1, 4, 3, 5, 4, 6, 7, 8, 7, 5, 4, 2, 3, 1, 0], duration: 10 });
+
+  /* ---------- 08: преподаватели — чипы-вкладки, все панели в HTML ---------- */
+  const tbtns = $$('[data-tlist] .chip'), tpanels = tbtns.map(b => $('#' + b.getAttribute('aria-controls')));
+  let ti = 0;
+  function setTeacher(i, focus) {
+    ti = i;
+    tbtns.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; tpanels[k].hidden = k !== i; });
+    if (focus) tbtns[i].focus();
+  }
+  tbtns.forEach((b, i) => b.addEventListener('click', () => setTeacher(i)));
+  $('[data-tlist]').addEventListener('keydown', e => {
+    const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (k) { e.preventDefault(); setTeacher((ti + k + tbtns.length) % tbtns.length, true); }
+  });
+  // на узких второй абзац био — по «Читать дальше»
+  $$('[data-t-more]').forEach(more => more.addEventListener('click', () => {
+    const bio = $('.tbio', more.parentNode), open = !bio.classList.contains('open');
+    bio.classList.toggle('open', open);
+    more.setAttribute('aria-expanded', String(open));
+    more.textContent = open ? 'Свернуть −' : 'Читать дальше +';
+  }));
+
+  /* ---------- 10: FAQ — открыт один вопрос ---------- */
+  const qs = $$('[data-faq] .faq-q');
+  qs.forEach(b => b.addEventListener('click', () => {
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    qs.forEach(x => { x.setAttribute('aria-expanded', 'false'); $('.faq-sign', x).textContent = '+'; $('#' + x.getAttribute('aria-controls')).hidden = true; });
+    if (open) { b.setAttribute('aria-expanded', 'true'); $('.faq-sign', b).textContent = '−'; $('#' + b.getAttribute('aria-controls')).hidden = false; }
+  }));
+
+  /* ---------- форма записи: формат и город предвыбраны ---------- */
+  HS.initSheet(key => {
+    const r = $(`[data-sheet] input[name="format"][value="${key}"]`);
+    if (r) r.checked = true;
+  });
+
+  HS.ready();
+})();

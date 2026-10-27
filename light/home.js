@@ -37,7 +37,7 @@
   const NS = 'http://www.w3.org/2000/svg';
   const REST = 'rgba(0,0,0,.16)';
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
-  $$('[data-hang]').forEach(svg => {
+  $$('svg[data-hang]').forEach(svg => {
     const add = (shape, label, x, y, size, i, aria) => {
       const g = svgEl('g', { class: 'hang-hit', tabindex: '0', role: 'button', 'aria-label': aria });
       shape.setAttribute('fill', REST);

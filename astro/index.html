@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- превью: закрыто от индекса; на боевом сайте убрать (SEO-MIGRATION.md, п. 1.8) -->
+<meta name="robots" content="noindex">
+<title>U-GENE sound vibe — ханги, школа и сообщество · Москва и Санкт-Петербург</title>
+<meta name="description" content="Собственное производство хангов, школа и сообщество. Пробное занятие 45 минут — 900 ₽, инструмент даём, опыт не нужен. Москва и Санкт-Петербург.">
+<link rel="canonical" href="https://handpanshop.pro/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="U-GENE sound vibe">
+<meta property="og:title" content="U-GENE sound vibe — найди свой звук">
+<meta property="og:description" content="Ханги собственного производства, школа и сообщество. Пробное занятие — 900 ₽.">
+<meta property="og:url" content="https://handpanshop.pro/">
+<meta property="og:image" content="https://handpanshop.pro/img/hero-navy-d.webp">
+<meta name="theme-color" content="#0A1020">
+<link rel="icon" type="image/png" href="/handpan-shop-home/astro/img/favicon.png">
+<link rel="apple-touch-icon" href="/handpan-shop-home/astro/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-navy-m.webp" media="(max-width:999.98px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-navy-d.webp" media="(min-width:1000px)" fetchpriority="high">
+  
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=28a"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=28a">
+<script>
+  // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
+  // ?hang=bronze | dark — купол на схеме ханга, ?teach=aubergine — фон «Кто учит» (выбор помним между страницами)
+  (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
+    if (q.has('dev')) h.dataset.env = 'dev';
+    const V = { hang: ['bronze', 'dark'], teach: ['aubergine'] };
+    for (const k in V) {
+      let v = q.get(k);
+      try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
+      if (V[k].includes(v)) h.dataset[k] = v;
+    } })();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://handpanshop.pro/#org","name":"U-GENE sound vibe","alternateName":"Handpan Shop","url":"https://handpanshop.pro/","logo":"https://handpanshop.pro/img/apple-touch-icon.png","foundingDate":"2019"},{"@type":"WebSite","@id":"https://handpanshop.pro/#website","url":"https://handpanshop.pro/","name":"U-GENE sound vibe","inLanguage":"ru","publisher":{"@id":"https://handpanshop.pro/#org"}},{"@type":"MusicStore","@id":"https://handpanshop.pro/#moscow","name":"U-GENE sound vibe — студия в Москве","parentOrganization":{"@id":"https://handpanshop.pro/#org"},"url":"https://handpanshop.pro/","address":{"@type":"PostalAddress","streetAddress":"Нижний Сусальный пер., 5","addressLocality":"Москва","addressCountry":"RU"}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+  
+
+
+<header class="s1 on-dark" id="top">
+  <picture>
+    <source media="(min-width:1000px)" srcset="/handpan-shop-home/astro/img/hero-navy-d.webp" width="1586" height="992">
+    <img class="s1-bg" src="/handpan-shop-home/astro/img/hero-navy-m.webp" alt="Стальной ханг" width="1100" height="688" fetchpriority="high">
+  </picture>
+  <div class="s1-shade" aria-hidden="true"></div>
+  <div class="glow s1-glow" aria-hidden="true"></div>
+  <span class="s1-ring" aria-hidden="true"></span>
+
+  <div class="hdr">
+    <a class="pill glass-d logo" href="#top"><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></a>
+    <nav class="pill glass-d nav hdr-d" aria-label="Основное меню">
+      <a class="lnk" href="#making">Инструменты</a><a class="lnk" href="/handpan-shop-home/astro/cources">Обучение</a><a class="lnk" href="#community">Сообщество</a><a class="lnk" href="#contacts">Контакты</a>
+    </nav>
+    <div class="pill glass-d city s1-city hdr-d" role="group" aria-label="Город">
+      <button type="button" data-city="msk" aria-pressed="true">Москва</button><button type="button" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+    </div>
+    <div class="hdr-n">
+      <a class="pill glass-d city-short" href="#contacts">Москва · СПб</a>
+      <span class="burger-slot" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="s1-body">
+    <h1 class="h-hero s1-h1"><span class="chrome">Найди</span> <span class="cap cap--grad">свой</span> <span class="chrome">звук</span></h1>
+    <div class="s1-grid">
+      <div class="s1-player hdr-d">
+        <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
+        <div class="stack s1-pmeta">
+          <span class="s1-plabel"><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
+          <div class="wave" data-wave="40" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="s1-mid">
+        <p class="s1-lead">Собственное производство хангов, школа и сообщество. От первого касания до своей музыки – вместе с вами</p>
+        <div class="btns s1-btns">
+          <button type="button" class="btn btn--52 btn--blue s1-try" data-open="Пробное занятие">Попробовать · 900 ₽</button>
+          <a class="btn btn--52 btn--line-d" href="#making">Выбрать ханг</a>
+        </div>
+        <a class="s1-help" href="#" data-open="Помочь определиться">Не знаете, с чего начать? Поможем определиться →</a>
+        <button type="button" class="s1-play-n" data-play>
+          <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
+        </button>
+      </div>
+      <a class="s1-thumbs hdr-d" href="#making" aria-label="Инструменты: больше 20 в студии">
+        <img src="/handpan-shop-home/astro/img/thumb-pedestal.webp" alt="" width="120" height="120">
+        <img src="/handpan-shop-home/astro/img/thumb-hang.webp" alt="" width="120" height="120">
+        <span class="glass-d">+20</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="menu" id="menu" hidden aria-label="Меню">
+  <div class="menu-top">
+    <span class="logo" style="padding:0"><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></span>
+    <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
+  </div>
+  <div class="menu-links">
+    <a href="#making">Инструменты</a><a href="/handpan-shop-home/astro/cources">Обучение</a><a href="#community">Сообщество</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+  </div>
+  <div class="btns" role="group" aria-label="Город">
+    <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><button type="button" class="chip" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+  </div>
+</nav>
+<button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
+
+<main id="main">
+
+<!-- 02 · Что такое ханг -->
+<section class="s2 bg-blue on-blue" aria-labelledby="h-s2">
+  <div class="mq-wrap s2-strip" aria-hidden="true"><div class="mq" data-marquee="HANG|ХАНГ|HANDPAN|ХЭНДПАН|PANTAM"></div></div>
+  <div class="sec s2-grid">
+    <div class="stack s2-text">
+      <div class="mono">A · 2/10</div>
+      <div class="s2-title">
+        <h2 id="h-s2" class="h-display">Ханг</h2>
+        <button type="button" class="ast" data-toggle="ast" aria-label="Что значит слово «ханг»">*</button>
+      </div>
+      <div class="s2-tip" data-panel="ast" hidden>Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
+      <div class="s2-sub ind">перкуссия нового времени</div>
+      <p class="body ind">Стальной инструмент, на котором вы одновременно задаёте ритм и ведёте мелодию. Поэтому его называют мелодической перкуссией</p>
+      <div class="btns ind">
+        <button type="button" class="btn btn--milk btn--wrap" data-open="Частный визит">Прийти и послушать 20+ инструментов</button>
+        <button type="button" class="btn btn--line-d" data-toggle="hist">История ханга <span data-sign>+</span></button>
+      </div>
+      <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
+    </div>
+    <div class="s2-scheme">
+      <div class="hang"><svg viewBox="0 0 400 400" data-hang role="group" aria-label="Схема ханга: коснитесь поля, чтобы услышать ноту"></svg></div>
+      <div class="mono">Коснитесь поля – услышите ноту</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Почему так легко -->
+<section class="sec s3 bg-sand" aria-labelledby="h-s3">
+  <div class="stack s3-text">
+    <div class="mono row-sb"><span>Звуковая скульптура</span><span>B♭ · 3/10</span></div>
+    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так легко?</span></h2>
+    <p class="body">Ноты каждого ханга выстроены в один лад. Каждое поле звучит аккордом: основной тон, октава, квинта</p>
+    <div class="accent ind">Здесь нет фальшивых нот</div>
+    <p class="body body--2 ind">Ведите руки по полям, как чувствуете, – это уже музыкальная фраза. За несколько занятий без опыта вы начинаете импровизировать</p>
+    <div class="btns">
+      <button type="button" class="btn btn--blue btn--full-n" data-open="Пробное занятие">Записаться на пробное занятие</button>
+      <button type="button" class="btn btn--line" data-toggle="more">Читать дальше <span data-sign>+</span></button>
+    </div>
+    <p class="body body--2 s3-more" data-panel="more" hidden>Создатели называли ханг звуковой скульптурой и советовали следовать за звуком и ощущением касания, не ставя целью мелодию или ритм. Сегодня на ханге играют в академической музыке, неоклассике, электронике и кино</p>
+  </div>
+  <div class="s3-photo">
+    <img src="/handpan-shop-home/astro/img/easy-m.webp" alt="Руки на ханге" width="733" height="1100" loading="lazy">
+    <span class="rip" aria-hidden="true"></span><span class="rip rip--2" aria-hidden="true"></span><span class="rip rip--3" aria-hidden="true"></span>
+    <div class="s3-chip">Первое занятие · без опыта</div>
+  </div>
+</section>
+
+<!-- 04 · Три маршрута -->
+<section class="sec s4 bg-dark on-dark" aria-labelledby="h-s4">
+  <div class="head-row">
+    <div class="sec-head">
+      <div class="mono">C · 4/10</div>
+      <h2 id="h-s4" class="h2">Как начать <span class="mute">знакомство с хангом</span></h2>
+    </div>
+    <p class="small s4-note">Не знаете, какой маршрут ваш? Начните с любого, остальное подскажем на месте</p>
+  </div>
+  <div class="routes">
+    <div class="route">
+      <span class="route-verb" aria-hidden="true">Услышать</span>
+      <div class="stack route-info">
+        <span class="mono">Хочу сначала послушать</span>
+        <span>Частный визит в студию: 20+ инструментов разных строёв, можно играть на каждом. Без обязательств и без покупки</span>
+      </div>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Частный визит">Записаться на визит →</button>
+    </div>
+    <div class="route">
+      <span class="route-verb" aria-hidden="true">Попробовать</span>
+      <div class="stack route-info">
+        <span class="mono">Хочу взять инструмент в руки</span>
+        <span>Пробное занятие с преподавателем: 45 минут, 900 ₽. Инструмент даём, опыт не нужен</span>
+      </div>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Пробное занятие">Попробовать занятие →</button>
+    </div>
+    <div class="route">
+      <span class="route-verb" aria-hidden="true">Выбрать</span>
+      <div class="stack route-info">
+        <span class="mono">Хочу свой ханг</span>
+        <span>Консультация мастера: строй, сталь, количество нот, бюджет. Покажем инструменты в наличии и под заказ</span>
+      </div>
+      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="Покупка инструмента">Получить консультацию →</button>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · Кому подходит: все вкладки в HTML, видна одна -->
+<section class="sec s5 bg-sand" aria-labelledby="h-s5">
+  <div class="sec-head">
+    <div class="mono">D · 5/10</div>
+    <h2 id="h-s5" class="h2 s5-h">Кому подходит ханг&nbsp;<span class="mute">– от медитации до сцены</span></h2>
+  </div>
+  <div class="chips" role="tablist" aria-label="Кому подходит" data-tabs>
+    <button type="button" class="chip" role="tab" id="tab-0" aria-controls="aud-0" aria-selected="true" tabindex="0">Дома</button><button type="button" class="chip" role="tab" id="tab-1" aria-controls="aud-1" aria-selected="false" tabindex="-1">Учёба</button><button type="button" class="chip" role="tab" id="tab-2" aria-controls="aud-2" aria-selected="false" tabindex="-1">Сцена</button><button type="button" class="chip" role="tab" id="tab-3" aria-controls="aud-3" aria-selected="false" tabindex="-1">Медитация</button><button type="button" class="chip" role="tab" id="tab-4" aria-controls="aud-4" aria-selected="false" tabindex="-1">Музыкантам</button><button type="button" class="chip" role="tab" id="tab-5" aria-controls="aud-5" aria-selected="false" tabindex="-1">Детям</button>
+  </div>
+  <div class="s5-grid" role="tabpanel" id="aud-0" aria-labelledby="tab-0" tabindex="0" data-snd="mel">
+      <div class="aud">
+        <div class="aud-top">
+          <h3 class="aud-name">Дома</h3>
+          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Дома"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+        </div>
+        <p class="aud-text">Тёплый мелодичный звук. Первая мелодия получается в первый день</p>
+        <div class="stack aud-foot">
+          <div class="aud-fit"><span class="mono">Подходит · </span>новичкам, для вечерней игры и отдыха после работы</div>
+          <a class="lnk aud-link" href="#" data-pending="P-12">Инструменты для дома →</a>
+        </div>
+      </div>
+      <div class="s5-photo">
+        <img src="/handpan-shop-home/astro/img/aud-home.webp" alt="Ханг у дивана дома" width="733" height="1100" loading="lazy" style="object-position:50% 30%">
+        <div class="glass-l s5-rec"><span class="mono">Рекомендуем</span><span class="s5-rec-v">65Г или СТ-20Ф · 9 нот</span></div>
+      </div>
+    </div><div class="s5-grid" role="tabpanel" id="aud-1" aria-labelledby="tab-1" tabindex="0" data-snd="mel" hidden>
+      <div class="aud">
+        <div class="aud-top">
+          <h3 class="aud-name">Учёба</h3>
+          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Учёба"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+        </div>
+        <p class="aud-text">Сбалансированный инструмент с запасом для роста. D Kurd – самый популярный строй в мире</p>
+        <div class="stack aud-foot">
+          <div class="aud-fit"><span class="mono">Подходит · </span>тем, кто хочет учиться системно</div>
+          <a class="lnk aud-link" href="#" data-pending="P-12">Инструменты для обучения →</a>
+        </div>
+      </div>
+      <div class="s5-photo">
+        <img src="/handpan-shop-home/astro/img/aud-study.webp" alt="Преподаватель объясняет ученикам" width="733" height="1100" loading="lazy" style="object-position:50% 45%">
+        <div class="glass-l s5-rec"><span class="mono">Рекомендуем</span><span class="s5-rec-v">65Г · 9 нот · D Kurd</span></div>
+      </div>
+    </div><div class="s5-grid" role="tabpanel" id="aud-2" aria-labelledby="tab-2" tabindex="0" data-snd="fast" hidden>
+      <div class="aud">
+        <div class="aud-top">
+          <h3 class="aud-name">Сцена</h3>
+          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Сцена"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+        </div>
+        <p class="aud-text">Яркий мощный звук, долгий сустейн, большой диапазон для импровизаций</p>
+        <div class="stack aud-foot">
+          <div class="aud-fit" data-pending="P-05"><span class="mono">Подходит · </span>уточнить</div>
+          <a class="lnk aud-link" href="#" data-pending="P-12">Инструменты для сцены →</a>
+        </div>
+      </div>
+      <div class="s5-photo">
+        <img src="/handpan-shop-home/astro/img/aud-stage.webp" alt="Музыкант с хангом на сцене" width="733" height="1100" loading="lazy" style="object-position:50% 30%">
+        <div class="glass-l s5-rec"><span class="mono">Рекомендуем</span><span class="s5-rec-v">65Г или нержавеющая · 13–17 нот</span></div>
+      </div>
+    </div><div class="s5-grid" role="tabpanel" id="aud-3" aria-labelledby="tab-3" tabindex="0" data-snd="long" hidden>
+      <div class="aud">
+        <div class="aud-top">
+          <h3 class="aud-name">Медитация</h3>
+          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Медитация"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+        </div>
+        <p class="aud-text">Один удар – и вибрация держится 8–12 секунд. Звукотерапия, дыхательные практики, йога</p>
+        <div class="stack aud-foot">
+          <div class="aud-fit"><span class="mono">Подходит · </span>практикующим, терапевтам, преподавателям йоги</div>
+          <a class="lnk aud-link" href="#" data-pending="P-12">Инструменты для медитации →</a>
+        </div>
+      </div>
+      <div class="s5-photo">
+        <img src="/handpan-shop-home/astro/img/aud-meditation.webp" alt="Музыкант за хангом, чёрно-белое фото" width="733" height="1100" loading="lazy" style="object-position:50% 35%">
+        <div class="glass-l s5-rec" data-pending="P-06"><span class="mono">Рекомендуем</span><span class="s5-rec-v">уточнить</span></div>
+      </div>
+    </div><div class="s5-grid" role="tabpanel" id="aud-4" aria-labelledby="tab-4" tabindex="0" data-snd="fast" hidden>
+      <div class="aud">
+        <div class="aud-top">
+          <h3 class="aud-name">Музыкантам</h3>
+          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Музыкантам"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+        </div>
+        <p class="aud-text">Эмбиент, неоклассика, кино, электроника, джаз. Солирующий голос или текстура в аранжировке</p>
+        <div class="stack aud-foot">
+          <div class="aud-fit"><span class="mono">Подходит · </span>гитаристам, пианистам, продюсерам, композиторам</div>
+          <a class="lnk aud-link" href="#" data-pending="P-12">Инструменты для музыкантов →</a>
+        </div>
+      </div>
+      <div class="s5-photo">
+        <img src="/handpan-shop-home/astro/img/aud-musicians.webp" alt="Музыкант играет на ханге" width="733" height="1100" loading="lazy" style="object-position:50% 45%">
+        <div class="glass-l s5-rec"><span class="mono">Рекомендуем</span><span class="s5-rec-v">двусторонние · 13–17 нот</span></div>
+      </div>
+    </div><div class="s5-grid" role="tabpanel" id="aud-5" aria-labelledby="tab-5" tabindex="0" data-snd="mel" hidden>
+      <div class="aud">
+        <div class="aud-top">
+          <h3 class="aud-name">Детям</h3>
+          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Детям"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+        </div>
+        <p class="aud-text">Не нужны ноты и усидчивость: ребёнок касается металла и слышит красивый звук. Развивает слух и чувство ритма</p>
+        <div class="stack aud-foot">
+          <div class="aud-fit" data-pending-link="P-07"><span class="mono">Подходит · </span>детям, родителям, педагогам</div>
+          <a class="lnk aud-link" href="#" data-pending="P-12">Инструменты для детей →</a>
+        </div>
+      </div>
+      <div class="s5-photo">
+        <img src="/handpan-shop-home/astro/img/aud-kids.webp" alt="Девушка играет на ханге в студии" width="733" height="1100" loading="lazy" style="object-position:62% 50%">
+        <div class="glass-l s5-rec"><span class="mono">Рекомендуем</span><span class="s5-rec-v">9 нот · компактные размеры</span></div>
+      </div>
+    </div>
+</section>
+
+<!-- 06 · Почему доверяют -->
+<section class="sec s6" aria-labelledby="h-s6" data-stats-wrap>
+  <div class="sec-head">
+    <div class="mono">E · 6/10</div>
+    <h2 id="h-s6" class="h2 h2--long s6-h">Мастера, которые стоят у истоков <span class="mute">культуры ханга в России</span></h2>
+  </div>
+  <div class="s6-grid">
+    <div class="s6-num" aria-hidden="true"><div class="s6-col" data-stat-col>
+      <span>300+</span><span>5</span><span>5 лет</span><span>20+</span><span>4 000+</span>
+    </div></div>
+    <div class="stack s6-side">
+      <p class="s6-label" data-stat-label aria-live="polite">
+        <span><span class="sr">300+ </span>инструментов ручной работы с 2019 года</span><span hidden><span class="sr">5 </span>видов стали, у каждой свой характер звука</span><span hidden><span class="sr">5 лет </span>гарантии на настройку и обслуживание</span><span hidden><span class="sr">20+ </span>инструментов в студии: сравнивайте до покупки</span><span hidden><span class="sr">4 000+ </span>учеников, от новичков до тех, кто выступает</span>
+      </p>
+      <div class="s6-dots">
+        <div class="s6-dots-in" data-stat-dots role="group" aria-label="Цифры">
+          <button type="button" class="s6-dot" aria-label="Цифра 1: 300+"></button><button type="button" class="s6-dot" aria-label="Цифра 2: 5"></button><button type="button" class="s6-dot" aria-label="Цифра 3: 5 лет"></button><button type="button" class="s6-dot" aria-label="Цифра 4: 20+"></button><button type="button" class="s6-dot" aria-label="Цифра 5: 4 000+"></button>
+        </div>
+        <span class="mono s6-count" data-stat-count>01 / 05</span>
+      </div>
+    </div>
+  </div>
+  <span class="mono s6-note" data-pending="P-04">Цифры – уточнить</span>
+</section>
+
+<!-- 07 · Кто учит -->
+<section class="sec s7 bg-bronze on-dark" id="teach" aria-labelledby="h-s7">
+  <div class="head-row">
+    <div class="sec-head">
+      <div class="mono">F · 7/10</div>
+      <h2 id="h-s7" class="h-display">Кто учит</h2>
+    </div>
+    <p class="small s7-note">Научиться можно с нуля, в любом возрасте и без музыкального опыта. Главное – преподаватель, который слышит вас</p>
+  </div>
+  <div class="tcar bleed" data-tcar aria-roledescription="карусель" aria-label="Преподаватели">
+    <button type="button" class="tcard" data-i="0" aria-label="Евгений Неваленный">
+        <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">ЕН</span>
+        <span class="tcard-shade"></span>
+        <span class="tcard-cap"><span class="tcard-name">Евгений Неваленный</span><span class="tcard-role">U-Gene · основатель школы и производства</span></span>
+      </button><button type="button" class="tcard" data-i="1" aria-label="Андрей Лето">
+        <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">АЛ</span>
+        <span class="tcard-shade"></span>
+        <span class="tcard-cap"><span class="tcard-name">Андрей Лето</span><span class="tcard-role">Jatamansi · сооснователь, онлайн из Буэнос-Айреса</span></span>
+      </button><button type="button" class="tcard" data-i="2" aria-label="Сергей Потлов">
+        <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">СП</span>
+        <span class="tcard-shade"></span>
+        <span class="tcard-cap"><span class="tcard-name">Сергей Потлов</span><span class="tcard-role">Руководитель филиала в Санкт-Петербурге</span></span>
+      </button><button type="button" class="tcard" data-i="3" aria-label="Анастасия Акмальдинова">
+        <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">АА</span>
+        <span class="tcard-shade"></span>
+        <span class="tcard-cap"><span class="tcard-name">Анастасия Акмальдинова</span><span class="tcard-role">10 лет преподавания, 30+ своих композиций</span></span>
+      </button><button type="button" class="tcard" data-i="4" aria-label="Дарина Ямчук">
+        <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">ДЯ</span>
+        <span class="tcard-shade"></span>
+        <span class="tcard-cap"><span class="tcard-name">Дарина Ямчук</span><span class="tcard-role">Дирижёр хора по образованию, 14 лет авторского проекта</span></span>
+      </button>
+  </div>
+  <div class="tnav">
+    <button type="button" class="arr" data-t-prev aria-label="Предыдущий преподаватель">←</button>
+    <span class="mono tcount" data-t-count aria-live="polite">01 / 05</span>
+    <button type="button" class="arr arr--ink" data-t-next aria-label="Следующий преподаватель">→</button>
+  </div>
+  <div class="btns">
+    <button type="button" class="btn btn--blue btn--full-n" data-open="Пробное занятие">Записаться на пробное занятие</button>
+    <a class="btn btn--line-d btn--wrap" href="/handpan-shop-home/astro/cources#teachers">Все преподаватели и форматы →</a>
+  </div>
+</section>
+
+<!-- 08 · Как делают ханг -->
+<section class="s8 bg-dark on-dark" id="making" aria-labelledby="h-s8">
+  <img class="s8-bg" src="/handpan-shop-home/astro/img/making.webp" alt="" width="1200" height="1800" loading="lazy">
+  <div class="sec s8-grid">
+    <div class="stack s8-text">
+      <div class="s8-top">
+        <span class="s8-chip" data-pending="P-09">Видео из мастерской</span>
+        <span class="mono">G · 8/10</span>
+      </div>
+      <span class="s8-sub">Ханг нельзя сделать на конвейере</span>
+      <h2 id="h-s8" class="h-display stack"><span>Десятки</span><span>тысяч</span><span class="s8-hl">ударов</span></h2>
+    </div>
+    <div class="stack s8-copy">
+      <p class="body">Его создают руками, снова и снова возвращаясь к каждому звуку. На настройку одной ноты уходит от 200 до нескольких тысяч касаний</p>
+      <div class="s8-plate">Вы покупаете время мастеров, вложенное в каждый удар</div>
+      <div class="btns">
+        <a class="btn btn--milk s8-btn" href="#" data-pending="P-12">Смотреть инструменты</a>
+        <button type="button" class="btn btn--line-d s8-btn" data-open="Помочь определиться">Помочь выбрать</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · Ханг объединяет -->
+<section class="sec s9" id="community" aria-labelledby="h-s9">
+  <div class="s9-grid">
+    <div class="stack s9-text">
+      <div class="mono">A · 9/10</div>
+      <h2 id="h-s9" class="h2 stack"><span>Ханг</span><span>объединяет</span></h2>
+      <p class="body">Хэндпан-сообщества – одни из самых гостеприимных в мире музыки. На одном джеме встречаются виртуоз, человек с первым хангом и тот, кто пришёл послушать</p>
+      <span class="accent ind s9-acc">Вы приходите за звуком. А находите своё окружение</span>
+      <a class="btn btn--ink s9-btn" href="#" data-pending="P-11">Присоединиться к сообществу →</a>
+    </div>
+    <div class="mosaic">
+      <div class="m m1"><img src="/handpan-shop-home/astro/img/community-1.webp" alt="Зал аплодирует на концерте школы" width="1200" height="800" loading="lazy"></div>
+      <div class="m m2"><img src="/handpan-shop-home/astro/img/community-2.webp" alt="Ансамбль хангов на отчётном концерте" width="667" height="1000" loading="lazy"></div>
+      <div class="m m3"><img src="/handpan-shop-home/astro/img/community-3.webp" alt="Игра на хангах в поле у маяка" width="600" height="900" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="mq-wrap s9-strip bleed" aria-hidden="true"><div class="mq" data-marquee="джемы|концерты|выезды|фестивали|встречи с мастерами"></div></div>
+</section>
+
+<!-- 10 · Финал и контакты -->
+<section class="sec s10" id="contacts" aria-labelledby="h-s10">
+  <div class="glow s10-glow" aria-hidden="true"></div>
+  <div class="stack s10-head">
+    <div class="mono row-sb"><span>Пробное занятие</span><span>C · 10/10</span></div>
+    <h2 id="h-s10" class="h-hero s10-h">
+      <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue">свой</span> <span>звук</span></span>
+      <span class="s10-l2">за 45 минут</span>
+    </h2>
+  </div>
+  <div class="s10-grid">
+    <div class="glass-l s10-form">
+      <p class="s10-lead">Пробное занятие – 900 ₽. Инструмент даём, опыт не нужен</p>
+      <form class="form" data-form data-final novalidate>
+        <input type="hidden" name="route" value="Пробное занятие">
+        <label class="sr" for="f-name">Имя</label>
+        <input id="f-name" name="name" placeholder="Имя" autocomplete="given-name" required>
+        <label class="sr" for="f-phone">Телефон</label>
+        <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="f-phone-err">
+        <div class="err" id="f-phone-err" aria-live="polite"></div>
+        <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
+        <button type="submit" class="btn btn--blue btn--submit">Записаться</button>
+        <div class="form-status" aria-live="polite"></div>
+      </form>
+      <div class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</div>
+    </div>
+    <div class="stack s10-side">
+      <div class="s10-cities">
+        <div class="cityc">
+            <div class="cityc-n">Москва</div>
+            <div class="cityc-a">Нижний Сусальный пер., 5<br>м. Курская</div>
+          </div><div class="cityc">
+            <div class="cityc-n">Санкт-Петербург</div>
+            <div class="cityc-a" data-pending="P-02">Адрес – уточнить</div>
+          </div>
+      </div>
+      <div class="s10-map">
+        <iframe title="Карта: Москва, Нижний Сусальный пер., 5" loading="lazy" src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9D%D0%B8%D0%B6%D0%BD%D0%B8%D0%B9%20%D0%A1%D1%83%D1%81%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D1%83%D0%BB%D0%BE%D0%BA%2C%205&z=16"></iframe>
+      </div>
+      <div class="s10-contacts">
+        <a href="#" data-pending="P-03">+7 (___) ___-__-__</a><a href="#" data-pending="P-03">Telegram</a><a href="#" data-pending="P-03">WhatsApp</a><a href="#" data-pending="P-03">ВКонтакте</a><a href="#" data-pending="P-03">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <footer class="foot">
+    <span class="foot-logo"><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></span>
+    <div class="foot-links"><a class="lnk" href="#" data-pending="P-10">Политика конфиденциальности</a><a class="lnk" href="#" data-pending="P-10">Договор оферты</a></div>
+  </footer>
+</section>
+
+</main>
+
+
+<div class="bar" data-sticky="560">
+  <div class="glass-l bar-in">
+    <div class="bar-l">
+      <button type="button" class="play bar-play" data-play aria-label="Послушать, как звучит ханг"></button>
+      <div class="stack bar-meta">
+        <div class="bar-row"><span class="bar-t">Как звучит ханг</span><span class="bar-time" data-time>0:00</span></div>
+        <div class="bar-prog"><div data-progress></div></div>
+      </div>
+    </div>
+    <button type="button" class="btn btn--48 btn--ink" data-open="Пробное занятие">Записаться</button>
+  </div>
+</div>
+
+
+<div class="sheet" data-sheet hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="sheet-title" data-sheet-title></div>
+      <button type="button" class="x" data-close aria-label="Закрыть">×</button>
+    </div>
+    <p class="small body--2" data-sheet-help hidden>Можно начать с обучения, взять инструмент в аренду или сразу выбрать свой. Оставьте контакты – подскажем, с чего начать именно вам</p>
+    <form class="form" data-form novalidate>
+      <label class="sr" for="m-name">Имя</label>
+      <input id="m-name" name="name" placeholder="Имя" autocomplete="given-name" required>
+      <label class="sr" for="m-phone">Телефон</label>
+      <input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder="Телефон" autocomplete="tel" required aria-describedby="m-phone-err">
+      <div class="err" id="m-phone-err" aria-live="polite"></div>
+      <label class="sr" for="m-route">С чего начать</label>
+      <select id="m-route" name="route" data-sheet-route>
+        <option>Частный визит</option><option>Пробное занятие</option><option>Покупка инструмента</option><option>Помочь определиться</option>
+      </select>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных и с <a href="#" data-pending-link="P-10">политикой конфиденциальности</a></span></label>
+      <button type="submit" class="btn btn--blue btn--submit">Записаться</button>
+      <div class="form-status" aria-live="polite"></div>
+    </form>
+    <p class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</p>
+  </div>
+</div>
+
+<script src="/handpan-shop-home/astro/common.js?v=28a"></script><script src="/handpan-shop-home/astro/home.js?v=28a"></script>
+</body>
+</html>
