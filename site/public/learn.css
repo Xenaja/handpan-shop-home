@@ -198,7 +198,7 @@
   .tinfo>.mono{grid-row:1;grid-column:2;align-self:end}
   .tname{grid-row:2;grid-column:2;align-self:start}
   .tbio,.tmore{grid-column:1 / -1}
-  .tbio:not(.open) p+p{display:none}
+  .tbio:not(.open) p+p,.tbio:not(.open) .tpoints{display:none}
 }
 @media (min-width:1000px){
   .tpanel{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
@@ -282,3 +282,7 @@
 }
 .tmore{justify-self:start}
 @media (min-width:600px) and (max-width:999.98px){ .tpanel{grid-template-columns:220px minmax(0,1fr);column-gap:24px} }
+/* список фактов о преподавателе */
+.tpoints{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.tpoints li{position:relative;padding-left:18px;font-size:15px;line-height:1.55;color:var(--concrete);text-wrap:pretty}
+.tpoints li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--breeze)}

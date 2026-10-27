@@ -243,8 +243,12 @@ const jsonld = {
       <div class="stack tinfo">
         <span class="mono">{t.role}</span>
         <h3 class="tname">{t.name} {t.nick && <span class="mute">{t.nick}</span>}</h3>
-        {t.bio.length > 0 ? <div class="tbio">{t.bio.map(p => <p>{p}</p>)}</div> : <div class="tbio" data-pending={t.pending}><p>Описание – уточнить</p></div>}
-        {t.bio.length > 1 && <button type="button" class="tmore" data-t-more aria-expanded="false">Читать дальше +</button>}
+        {/* описание: абзацы; у части преподавателей — вступление и список фактов (points) */}
+        <div class="tbio">
+          {t.bio.map(p => <p>{p}</p>)}
+          {t.points && <ul class="tpoints">{t.points.map(x => <li>{x}</li>)}</ul>}
+        </div>
+        {(t.bio.length > 1 || t.points) && <button type="button" class="tmore" data-t-more aria-expanded="false">Читать дальше +</button>}
       </div>
     </div>
   ))}
