@@ -286,3 +286,6 @@
 .tpoints{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .tpoints li{position:relative;padding-left:18px;font-size:15px;line-height:1.55;color:var(--concrete);text-wrap:pretty}
 .tpoints li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--breeze)}
+
+/* Правки 29.10: прямые углы у фотографий и плашек. */
+.e-photo,.e1-ava span,.stage,.trial,.e7-photo,.tphoto,.rev,.addr{border-radius:0}

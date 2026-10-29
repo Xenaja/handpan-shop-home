@@ -63,25 +63,7 @@
     add(svgEl('circle', { cx: 200, cy: 200, r: 54, stroke: 'rgba(232,238,244,.7)', 'stroke-width': 1 }), 'D3', 200, 204, 12, 0, 'Динг, нота D3');
   });
 
-  /* ---------- 05: кому подходит — все панели в HTML, видна одна ---------- */
-  const tabs = $$('[data-tabs] .chip'), panels = tabs.map(b => $('#' + b.getAttribute('aria-controls')));
-  const slug = b => '#' + encodeURIComponent(b.textContent.trim().toLowerCase());
-  let tab = 0;
-  function setTab(i, focus, hash = true) {
-    tab = i;
-    tabs.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; panels[k].hidden = k !== i; });
-    if (focus) tabs[i].focus();
-    if (hash) try { history.replaceState(null, '', slug(tabs[i])); } catch (e) {}
-  }
-  tabs.forEach((b, i) => b.addEventListener('click', () => setTab(i)));
-  $('[data-tabs]').addEventListener('keydown', e => {
-    const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-    if (k) { e.preventDefault(); setTab((tab + k + tabs.length) % tabs.length, true); }
-    else if (e.key === 'Home') { e.preventDefault(); setTab(0, true); }
-    else if (e.key === 'End') { e.preventDefault(); setTab(tabs.length - 1, true); }
-  });
-  const fromHash = tabs.findIndex(b => slug(b) === location.hash);
-  if (fromHash > 0) setTab(fromHash, false, false);
+  /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
   $$('[data-aud-play]').forEach(b => b.addEventListener('click', () => {
     const s = b.closest('[data-snd]').dataset.snd, F = FREQS;
     if (s === 'long') tone(F[0], 0.28, 10);
@@ -212,7 +194,8 @@
     trial: 'Пробное занятие',
     buy: 'Консультация мастера',
     rent: 'Аренда инструмента',
-    help: 'Поможем определиться'
+    help: 'Поможем определиться',
+    community: 'Присоединиться к комьюнити'
   };
   const sheet = $('[data-sheet]'), sRoute = $('[data-interest]', sheet);
   const setRoute = r => {

@@ -1,5 +1,5 @@
 ---
-// Главная. Тексты вкладок, цифр, преподавателей и контактов собираются в HTML при сборке (SEO-MIGRATION.md, п. 1.10);
+// Главная. Тексты карточек, цифр, преподавателей и контактов собираются в HTML при сборке (SEO-MIGRATION.md, п. 1.10);
 // home.js только переключает их. Данные — src/data/site.json, null = данных ещё нет (PENDING.md).
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
@@ -104,7 +104,7 @@ const jsonld = {
       <a class="s1-thumbs" href="#making" aria-label="Инструменты: больше 20 в студии">
         <img src={u('img/thumb-pedestal.webp')} alt="" width="120" height="120">
         <img src={u('img/thumb-hang.webp')} alt="" width="120" height="120">
-        <span class="glass-d">+20</span>
+        <span class="glass-d">20+<small>инструментов<br>в студии →</small></span>
       </a>
     </div>
   </div>
@@ -156,7 +156,7 @@ const jsonld = {
 <section class="sec s3 bg-sand" aria-labelledby="h-s3">
   <div class="stack s3-text">
     <div class="mono row-sb"><span>Звуковая скульптура</span><span>B♭ · 3/10</span></div>
-    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так легко?</span></h2>
+    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так</span><span>легко?</span></h2>
     <p class="body">Ноты каждого ханга выстроены в один лад. Каждое поле звучит аккордом: основной тон, октава, квинта</p>
     <div class="accent ind">Здесь нет фальшивых нот</div>
     <p class="body body--2 ind">Ведите руки по полям, как чувствуете, – это уже музыкальная фраза. За несколько занятий без опыта вы начинаете импровизировать</p>
@@ -174,84 +174,73 @@ const jsonld = {
 </section>
 
 <!-- 04 · Три маршрута -->
-<section class="sec s4 bg-dark on-dark" aria-labelledby="h-s4">
-  <span class="contour contour--middle s4-line" aria-hidden="true"></span>
+<section class="sec s4" aria-labelledby="h-s4">
+
   <div class="head-row">
     <div class="sec-head">
       <div class="mono">C · 4/10</div>
-      <h2 id="h-s4" class="h2">Как начать <span class="mute">знакомство с хангом</span></h2>
+      <h2 id="h-s4" class="h2"><span>Как начать</span> <span class="s4-title-indent"><em>знакомство</em><br>с хангом?</span></h2>
     </div>
     <p class="small s4-note">Не знаете, какой маршрут ваш? Начните с любого, остальное подскажем на месте</p>
   </div>
   <div class="routes">
     <div class="route">
-      <span class="route-verb" aria-hidden="true">Услышать</span>
+      <img class="route-photo" src={u('img/aud-home.webp')} alt="Ханг в студии" width="720" height="900" loading="lazy">
+      <h3 class="route-verb">Услышать</h3>
       <div class="stack route-info">
         <span class="mono">Хочу сначала послушать</span>
         <span>Частный визит в студию: 20+ инструментов разных строёв, можно играть на каждом. Без обязательств и без покупки</span>
       </div>
-      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="visit">Записаться на визит →</button>
+      <button type="button" class="btn btn--52 btn--line route-btn" data-open="visit">Записаться на визит →</button>
     </div>
     <div class="route">
-      <span class="route-verb" aria-hidden="true">Попробовать</span>
+      <img class="route-photo" src={u('img/easy-d.webp')} alt="Первое знакомство с хангом на занятии" width="720" height="900" loading="lazy">
+      <h3 class="route-verb">Попробовать</h3>
       <div class="stack route-info">
         <span class="mono">Хочу взять инструмент в руки</span>
         <span>Пробное занятие с преподавателем: 45 минут, 900 ₽. Инструмент даём, опыт не нужен</span>
       </div>
-      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="trial">Попробовать занятие →</button>
+      <button type="button" class="btn btn--52 btn--line route-btn" data-open="trial">Попробовать занятие →</button>
     </div>
     <div class="route">
-      <span class="route-verb" aria-hidden="true">Выбрать</span>
+      <img class="route-photo" src={u('img/making.webp')} alt="Работа мастера над хангом" width="720" height="900" loading="lazy">
+      <h3 class="route-verb">Выбрать</h3>
       <div class="stack route-info">
         <span class="mono">Хочу свой ханг</span>
         <span>Консультация мастера: строй, сталь, количество нот, бюджет. Покажем инструменты в наличии и под заказ</span>
       </div>
-      <button type="button" class="btn btn--52 btn--milk route-btn" data-open="buy">Получить консультацию →</button>
+      <button type="button" class="btn btn--52 btn--line route-btn" data-open="buy">Получить консультацию →</button>
     </div>
   </div>
 </section>
 
-<!-- 05 · Кому подходит: все вкладки в HTML, видна одна -->
+<!-- 05 · Все шесть аудиторий: карточки с рекомендацией и звуком -->
 <section class="sec s5 bg-sand" aria-labelledby="h-s5">
   <div class="sec-head">
     <div class="mono">D · 5/10</div>
-    <h2 id="h-s5" class="h2 s5-h">Кому подходит ханг&nbsp;<span class="mute">– от медитации до сцены</span></h2>
+    <h2 id="h-s5" class="h2 s5-h"><span>Кому подходит ханг</span><br>– от медитации до сцены</h2>
   </div>
-  <div class="chips" role="tablist" aria-label="Кому подходит" data-tabs>
+  <div class="audiences">
     {D.audiences.map((a, i) => (
-      <button type="button" class="chip" role="tab" id={`tab-${i}`} aria-controls={`aud-${i}`} aria-selected={String(i === 0)} tabindex={i === 0 ? 0 : -1}>{a.name}</button>
-    ))}
-  </div>
-  {D.audiences.map((a, i) => (
-    <div class="s5-grid" role="tabpanel" id={`aud-${i}`} aria-labelledby={`tab-${i}`} tabindex="0" data-snd={a.snd} hidden={i > 0}>
-      <div class="aud">
-        <div class="aud-top">
-          <h3 class="aud-name">{a.name}</h3>
+      <article class="aud" id={`aud-${i}`} data-snd={a.snd}>
+        <h3 class="aud-name">{a.name}</h3>
+        <p class="aud-text">{a.text}</p>
+        <div class="aud-bottom">
+          {a.rec
+            ? <p class="aud-rec"><span>Рекомендуем</span><br>{a.rec}</p>
+            : <p class="aud-rec" data-pending={a.recPending}>Рекомендация уточняется</p>}
           <button type="button" class="play aud-play" data-aud-play aria-label={`Пример звучания: ${a.name}`}><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"/></svg></button>
         </div>
-        <p class="aud-text">{a.text}</p>
-        <div class="stack aud-foot">
-          {a.fit
-            ? <div class="aud-fit" data-pending-link={a.fitPending}><span class="mono">Подходит · </span>{a.fit}</div>
-            : <div class="aud-fit" data-pending={a.fitPending}><span class="mono">Подходит · </span>уточнить</div>}
-          <a class="lnk aud-link" href="#" data-pending="P-12">{a.link} →</a>
-        </div>
-      </div>
-      <div class="s5-photo">
-        <img src={u(a.img)} alt={a.alt} width="733" height="1100" loading="lazy" style={`object-position:${a.pos}`}>
-        {a.rec
-          ? <div class="glass-l s5-rec"><span class="mono">Рекомендуем</span><span class="s5-rec-v">{a.rec}</span></div>
-          : <div class="glass-l s5-rec" data-pending={a.recPending}><span class="mono">Рекомендуем</span><span class="s5-rec-v">уточнить</span></div>}
-      </div>
-    </div>
-  ))}
+      </article>
+    ))}
+  </div>
 </section>
 
 <!-- 06 · Почему доверяют -->
 <section class="sec s6" aria-labelledby="h-s6" data-stats-wrap>
   <div class="sec-head">
     <div class="mono">E · 6/10</div>
-    <h2 id="h-s6" class="h2 h2--long s6-h">Мастера, которые стоят у истоков <span class="mute">культуры ханга в России</span></h2>
+    <h2 id="h-s6" class="h2 h2--long s6-h"><span class="s6-accent">Мастера,</span> которые стоят <span class="s6-indent">у истоков культуры<br>ханга в России</span></h2>
   </div>
   <div class="s6-grid">
     <div class="s6-num" aria-hidden="true"><div class="s6-col" data-stat-col>
@@ -273,7 +262,7 @@ const jsonld = {
 </section>
 
 <!-- 07 · Кто учит -->
-<section class="sec s7 bg-aubergine on-dark" id="teach" aria-labelledby="h-s7">
+<section class="sec s7" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
       <div class="mono">F · 7/10</div>
@@ -299,7 +288,7 @@ const jsonld = {
   </div>
   <div class="btns">
     <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на пробное занятие</button>
-    <a class="btn btn--line-d btn--wrap" href={u('cources#teachers')}>Все преподаватели и форматы →</a>
+    <a class="btn btn--line btn--wrap" href={u('cources#teachers')}>Все преподаватели и форматы →</a>
   </div>
 </section>
 
@@ -332,9 +321,16 @@ const jsonld = {
     <div class="stack s9-text">
       <div class="mono">A · 9/10</div>
       <h2 id="h-s9" class="h2 stack"><span>Ханг</span><span>объединяет</span></h2>
-      <p class="body">Хэндпан-сообщества – одни из самых гостеприимных в мире музыки. На одном джеме встречаются виртуоз, человек с первым хангом и тот, кто пришёл послушать</p>
-      <span class="accent ind s9-acc">Вы приходите за звуком. А находите своё окружение</span>
-      <a class="btn btn--ink s9-btn" href="#" data-pending="P-11">Присоединиться к сообществу →</a>
+      <p class="s9-intro">Круг, где ты становишься частью культуры.</p>
+      <p class="body">Хэндпан-сообщества — одни из самых гостеприимных в мире музыки.</p>
+      <h3 class="accent">Почему?</h3>
+      <p class="body">Потому что здесь ценится не статус, опыт или уровень мастерства, а сам интерес к звуку. На одном джеме могут встретиться виртуоз, человек с первым хангом и тот, кто пришёл просто послушать.</p>
+      <p class="body">Это культура, в которой знания передают друг другу, музыкой делятся, а знакомства легко превращаются в дружбу и совместные проекты.</p>
+      <p class="body">Джемы, концерты, выезды, фестивали, встречи с мастерами и музыкантами. Доступ к самым актуальным событиям и знаниям. Люди, с которыми хочется продолжать играть уже за пределами музыки.</p>
+      <span class="accent ind s9-acc">Ты приходишь за звуком. А находишь своё окружение</span>
+      {D.communityUrl
+        ? <a class="btn btn--ink s9-btn" href={D.communityUrl}>Присоединиться к комьюнити →</a>
+        : <button type="button" class="btn btn--ink s9-btn" data-open="community">Присоединиться к комьюнити →</button>}
     </div>
     <div class="mosaic">
       <div class="m m1"><img src={u('img/community-1.webp')} alt="Зал аплодирует на концерте школы" width="1200" height="800" loading="lazy"></div>
@@ -342,7 +338,6 @@ const jsonld = {
       <div class="m m3"><img src={u('img/community-3.webp')} alt="Игра на хангах в поле у маяка" width="600" height="900" loading="lazy"></div>
     </div>
   </div>
-  <div class="mq-wrap s9-strip bleed" aria-hidden="true"><div class="mq" data-marquee="джемы|концерты|выезды|фестивали|встречи с мастерами"></div></div>
 </section>
 
 <!-- 10 · Финал и контакты -->

@@ -349,3 +349,6 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 .doc .h2{font-size:clamp(24px,6vw,48px);overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto}
 @media (max-width:429.98px){ .tpage-back{display:none} }
 @media (min-width:1000px){ .h-display{font-size:clamp(48px,7vw,112px)} }
+
+/* Правки 29.10: прямые углы у фотографий и плашек. */
+.pill,.pcap,.bar-in,.sheet-card,.vswitch,.quiz-step-card,.tpage-card,.form input:not([type=checkbox]):not([type=radio]),.form select{border-radius:0}
