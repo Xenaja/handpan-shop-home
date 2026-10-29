@@ -353,9 +353,5 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 /* Правки 29.10: прямые углы у фотографий и плашек. */
 .pcap,.bar-in,.sheet-card,.vswitch,.quiz-step-card,.tpage-card,.form input:not([type=checkbox]):not([type=radio]),.form select{border-radius:0}
 
-/* Линии оригинального знака: сталь, светлый блик и винный акцент. Без анимации. */
-.brand-lines{position:absolute;display:block;width:420px;aspect-ratio:1;pointer-events:none;user-select:none;z-index:0;--trace:linear-gradient(125deg,rgba(131,57,69,.48),rgba(58,96,144,.48) 36%,rgba(183,209,234,.15) 53%,rgba(58,96,144,.5) 72%,rgba(131,57,69,.2))}
-.brand-lines>.contour{background:var(--trace)}
-.brand-lines>.contour--outer{width:100%;left:0;top:0;transform:rotate(-18deg)}
-.brand-lines>.contour--middle{width:82%;left:9%;top:12%;transform:scaleX(-1) rotate(26deg)}
-.brand-lines>.contour--inner{width:53%;left:24%;top:28%;transform:rotate(8deg)}
+/* Исходная композиция линий логотипа, приглушённый однотонный оттиск. */
+.brand-lines{position:absolute;display:block;width:320px;aspect-ratio:308/290;pointer-events:none;user-select:none;z-index:0;background:var(--blue);opacity:.2;-webkit-mask:url(img/lines/logo-contours.svg) center/contain no-repeat;mask:url(img/lines/logo-contours.svg) center/contain no-repeat}
