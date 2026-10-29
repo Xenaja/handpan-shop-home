@@ -426,3 +426,16 @@
   .s9-grid>.mosaic{grid-column:8 / 13;position:sticky;top:32px}
 }
 @media(prefers-reduced-motion:reduce){.tcard{transition:none}}
+
+/* Контуры размещены в полях композиции, содержимое выше декоративного слоя. */
+.s4,.s9,.s10{isolation:isolate}
+.brand-lines--routes{right:-100px;top:-150px;width:clamp(300px,31vw,530px);transform:rotate(20deg)}
+.s9{position:relative;overflow:hidden}
+.s9-grid{position:relative;z-index:1}
+.brand-lines--community{left:-240px;bottom:-190px;width:460px;transform:scaleX(-1) rotate(-24deg);opacity:.7}
+.brand-lines--contact{right:-100px;top:-105px;width:clamp(340px,40vw,650px);transform:scaleX(-1) rotate(12deg)}
+@media(max-width:999.98px){
+ .brand-lines--routes{width:260px;right:-135px;top:-150px;opacity:.65}
+ .brand-lines--community{width:300px;left:-200px;bottom:-120px;opacity:.5}
+ .brand-lines--contact{width:300px;right:-145px;top:-110px;opacity:.6}
+}

@@ -3,6 +3,7 @@
 // Навыки, ступени, путь, форматы, преподаватели и FAQ собираются в HTML при сборке; learn.js их только переключает.
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import BrandLines from '../components/BrandLines.astro';
 import LeadForm from '../components/LeadForm.astro';
 import D from '../data/site.json';
 
@@ -287,7 +288,7 @@ const jsonld = {
 <!-- 11 · Найди свой звук: тёмный финал, 1–8 заголовок · 9–12 запись и адреса -->
 <section class="sec bg-dark on-dark e11" id="contacts" aria-labelledby="h-e11">
   <div class="glow e11-glow" aria-hidden="true"></div>
-  <span class="contour contour--outer e11-line" aria-hidden="true"></span>
+  <BrandLines class="brand-lines--learn" />
   <div class="e11-grid">
     <div class="stack e11-l">
       <span class="mono">11 · Пробное занятие · 900 ₽</span>

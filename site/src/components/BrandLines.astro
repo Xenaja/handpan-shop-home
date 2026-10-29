@@ -1,0 +1,9 @@
+---
+// Контуры извлечены из оригинального логотипа, только декоративный слой.
+const { class: cls = '' } = Astro.props;
+---
+<span class={`brand-lines ${cls}`} aria-hidden="true">
+  <span class="contour contour--outer"></span>
+  <span class="contour contour--middle"></span>
+  <span class="contour contour--inner"></span>
+</span>

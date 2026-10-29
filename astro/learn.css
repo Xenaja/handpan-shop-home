@@ -289,3 +289,7 @@
 
 /* Правки 29.10: прямые углы у фотографий и плашек. */
 .e-photo,.e1-ava span,.stage,.trial,.e7-photo,.tphoto,.rev,.addr{border-radius:0}
+
+.e11{isolation:isolate}
+.brand-lines--learn{-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 88%);mask-image:linear-gradient(to bottom,#000 55%,transparent 88%);right:-140px;top:-150px;width:clamp(380px,48vw,720px);transform:rotate(-25deg);--trace:linear-gradient(125deg,rgba(183,209,234,.12),rgba(183,209,234,.52) 30%,rgba(244,245,240,.25) 49%,rgba(131,57,69,.6) 72%,rgba(183,209,234,.15))}
+@media(max-width:999.98px){.brand-lines--learn{width:350px;right:-170px;top:-140px;opacity:.7}}

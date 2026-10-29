@@ -3,6 +3,7 @@
 // home.js только переключает их. Данные — src/data/site.json, null = данных ещё нет (PENDING.md).
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import BrandLines from '../components/BrandLines.astro';
 import LeadForm from '../components/LeadForm.astro';
 import Quiz from '../components/Quiz.astro';
 import QD from '../data/quiz.json';
@@ -178,6 +179,7 @@ const jsonld = {
 
 <!-- 04 · Три маршрута -->
 <section class="sec s4" aria-labelledby="h-s4">
+  <BrandLines class="brand-lines--routes" />
 
   <div class="head-row">
     <div class="sec-head">
@@ -320,6 +322,7 @@ const jsonld = {
 
 <!-- 09 · Ханг объединяет -->
 <section class="sec s9" id="community" aria-labelledby="h-s9">
+  <BrandLines class="brand-lines--community" />
   <div class="s9-grid">
     <div class="stack s9-text">
       <div class="mono">A · 9/10</div>
@@ -346,7 +349,7 @@ const jsonld = {
 <!-- 10 · Финал и контакты -->
 <section class="sec s10" id="contacts" aria-labelledby="h-s10">
   <div class="glow s10-glow" aria-hidden="true"></div>
-  <span class="contour contour--inner s10-line" aria-hidden="true"></span>
+  <BrandLines class="brand-lines--contact" />
   <div class="stack s10-head">
     <div class="mono row-sb"><span>Пробное занятие</span><span>C · 10/10</span></div>
     <h2 id="h-s10" class="h-hero s10-h">
