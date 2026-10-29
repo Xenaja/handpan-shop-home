@@ -169,8 +169,8 @@ html[data-hang="dark"] .hang{--hang-hit:rgba(201,150,104,.5);background:radial-g
 .tcard[data-o="2"]{--w:var(--w2);--x:calc(var(--w0) / 2 + 2 * var(--gap) + var(--w1) + var(--w2) / 2);--op:0;z-index:1}
 .tcard[data-o="-2"]{--w:var(--w2);--x:calc(-1 * (var(--w0) / 2 + 2 * var(--gap) + var(--w1) + var(--w2) / 2));--op:0;z-index:1}
 .tcard[data-o="far"]{--w:var(--w2);--x:0px;--op:0;z-index:0;pointer-events:none}
-.tcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.3) brightness(1.05);transition:filter .55s}
-.tcard[data-o="0"] img{filter:saturate(.8)}
+.tcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:none}
+
 .tcard-ini{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-d);font-weight:300;font-size:calc(var(--w) * .3);letter-spacing:-.04em;transition:font-size .55s var(--ease)}
 .tcard[data-o="0"] .tcard-ini{color:rgba(232,238,244,.9)}
 .tcard-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,32,0) 50%,rgba(10,16,32,.72) 100%);opacity:0;transition:opacity .55s}

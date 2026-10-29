@@ -273,7 +273,7 @@ const jsonld = {
     {TEACH.map((p, i) => (
       <button type="button" class="tcard" data-i={i} aria-label={p.name}>
         {p.img
-          ? <img src={u(p.img)} alt={`${p.name} с хангом`} width="720" height="960" loading="lazy">
+          ? <img src={u(p.img)} alt={`Портрет: ${p.name}`} width={p.imgWidth || 720} height={p.imgHeight || 960} loading="lazy">
           : <span class="tcard-ini" aria-hidden="true" data-pending-link="P-13">{initials(p.name)}</span>}
         <span class="tcard-shade"></span>
         <span class="tcard-cap"><span class="tcard-name">{p.name}</span><span class="tcard-role">{p.roleShort}</span></span>
