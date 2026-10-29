@@ -273,28 +273,6 @@
     });
   }
 
-  /* ---------- служебный переключатель вариантов для заказчика (перед продом убрать) ----------
-     ?hang=bronze | dark — купол на схеме ханга; выбор помним между страницами */
-  const VARIANTS = [
-    { key: 'hang', cap: 'Ханг', label: 'Цвет ханга на схеме', when: '.hang',
-      opts: [['', 'Navy', '#131936'], ['bronze', 'Бронза', '#7A4A2C'], ['dark', 'Тёмная бронза', '#2A170D']] }
-  ].filter(g => $(g.when));
-  if (VARIANTS.length) {
-    document.body.insertAdjacentHTML('beforeend', '<div class="vswitch">' + VARIANTS.map(g =>
-      `<div class="vswitch-g" role="group" aria-label="${g.label}"><span class="vswitch-cap">${g.cap}</span>` +
-      g.opts.map(([v, l, c]) => `<button type="button" data-v-key="${g.key}" data-v="${v}"><i style="background:${c}"></i>${l}</button>`).join('') + '</div>').join('') + '</div>');
-    const mark = () => $$('[data-v-key]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === (root.dataset[b.dataset.vKey] || ''))));
-    $$('[data-v-key]').forEach(b => b.addEventListener('click', () => {
-      const k = b.dataset.vKey, v = b.dataset.v, q = new URLSearchParams(location.search);
-      if (v) { root.dataset[k] = v; q.set(k, v); } else { delete root.dataset[k]; q.delete(k); }
-      try { sessionStorage.setItem('hs-' + k, v); } catch (e) {}
-      const qs = q.toString();
-      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
-      mark();
-    }));
-    mark();
-  }
-
   /* после отрисовки страницы: типограф и начальные состояния */
   function ready() {
     setCity(city);

@@ -67,16 +67,16 @@
 .s2-sub{font-family:var(--f-d);font-weight:300;font-size:clamp(24px,2.6vw,38px);line-height:1.1;letter-spacing:-.02em}
 .s2-more{font-size:15px;max-width:480px}
 .s2-scheme{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
-/* цвет купола: navy по умолчанию, ?hang=bronze — бронза, ?hang=dark — тёмная бронза (служебный переключатель) */
-.hang{--hang-hit:#3A6090;position:relative;width:min(100%,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 26%,#7A93B4 0%,#2B4C78 9%,#131936 32%,#0A1020 62%,#030303 100%);box-shadow:0 30px 90px rgba(30,36,100,.5),inset 0 2px 0 rgba(255,255,255,.12)}
-html[data-hang="bronze"] .hang{--hang-hit:rgba(232,180,120,.55);background:radial-gradient(circle at 36% 28%,#F0C89A 0%,#B97E4E 14%,#7A4A2C 40%,#3E2416 72%,#1C100A 100%)}
-/* ?hang=dark — тёмная бронза: почти чёрно-коричневый металл с тёплым бликом и отсветом по краю */
-html[data-hang="dark"] .hang{--hang-hit:rgba(201,150,104,.5);background:radial-gradient(ellipse 20% 14% at 34% 24%,rgba(236,196,150,.45) 0%,rgba(236,196,150,0) 100%),radial-gradient(ellipse 60% 30% at 70% 88%,rgba(150,96,58,.28) 0%,rgba(150,96,58,0) 100%),radial-gradient(circle at 36% 28%,#8A5E3A 0%,#4E301C 10%,#2A170D 34%,#160C06 62%,#070302 100%);box-shadow:0 30px 90px rgba(28,14,6,.55),inset 0 2px 0 rgba(255,220,180,.14),inset 0 -6px 18px rgba(0,0,0,.45)}
+/* Фото реального инструмента; интерактивные поля совпадают с его геометрией. */
+.hang{position:relative;width:min(100%,560px);aspect-ratio:1;isolation:isolate}
+.hang-photo{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 28px rgba(10,16,32,.32))}
 .hang svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hang-hit{cursor:pointer;outline:none}
-.hang-hit ellipse,.hang-hit circle{transition:fill .35s}
-.hang-hit:hover ellipse,.hang-hit:hover circle{stroke:var(--milk);stroke-width:1.5}
-.hang-hit:focus-visible ellipse,.hang-hit:focus-visible circle{stroke:var(--milk);stroke-width:2.5}
+.hang-hit ellipse{fill:transparent;stroke:transparent;stroke-width:1.5;transition:fill .18s,stroke .18s}
+.hang-hit:hover ellipse,.hang-hit:focus-visible ellipse{fill:rgba(232,238,244,.14);stroke:var(--milk)}
+.hang-hit.is-active ellipse{fill:rgba(232,238,244,.32);stroke:var(--milk)}
+.hang-sound-note{font-size:13px;line-height:1.4;color:var(--milk);opacity:.8;margin-top:-8px}
+@media(prefers-reduced-motion:reduce){.hang-hit ellipse{transition:none}}
 
 /* ---------- 03 · Почему так легко ---------- */
 .s3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px clamp(32px,5vw,80px);align-items:center}

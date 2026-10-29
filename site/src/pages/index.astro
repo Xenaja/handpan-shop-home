@@ -146,8 +146,12 @@ const jsonld = {
       <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
     </div>
     <div class="s2-scheme">
-      <div class="hang"><svg viewBox="0 0 400 400" data-hang role="group" aria-label="Схема ханга: коснитесь поля, чтобы услышать ноту"></svg></div>
-      <div class="mono">Коснитесь поля – услышите ноту</div>
+      <div class="hang">
+        <img class="hang-photo" src={u('img/handpan-fsharp-cutout.png')} alt="Хэндпан Фа-диез гармоник: вид на тональные поля" width="1254" height="1254" loading="lazy">
+        <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>
+      </div>
+      <div class="mono">Коснитесь поля — услышите звук</div>
+      <p class="hang-sound-note" id="hang-sound-note">Синтезированный пример звучания</p>
     </div>
   </div>
 </section>

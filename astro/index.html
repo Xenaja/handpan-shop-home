@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=29c">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=29d">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-d.webp" media="(min-width:1000px)" fetchpriority="high">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=29c"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=29c">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=29d"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=29d">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -152,8 +152,12 @@
       <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
     </div>
     <div class="s2-scheme">
-      <div class="hang"><svg viewBox="0 0 400 400" data-hang role="group" aria-label="Схема ханга: коснитесь поля, чтобы услышать ноту"></svg></div>
-      <div class="mono">Коснитесь поля – услышите ноту</div>
+      <div class="hang">
+        <img class="hang-photo" src="/handpan-shop-home/astro/img/handpan-fsharp-cutout.png" alt="Хэндпан Фа-диез гармоник: вид на тональные поля" width="1254" height="1254" loading="lazy">
+        <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>
+      </div>
+      <div class="mono">Коснитесь поля — услышите звук</div>
+      <p class="hang-sound-note" id="hang-sound-note">Синтезированный пример звучания</p>
     </div>
   </div>
 </section>
@@ -734,6 +738,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=29c"></script><script src="/handpan-shop-home/astro/home.js?v=29c"></script>
+<script src="/handpan-shop-home/astro/common.js?v=29d"></script><script src="/handpan-shop-home/astro/home.js?v=29d"></script>
 </body>
 </html>
