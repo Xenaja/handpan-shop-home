@@ -351,7 +351,7 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 @media (min-width:1000px){ .h-display{font-size:clamp(48px,7vw,112px)} }
 
 /* Правки 29.10: прямые углы у фотографий и плашек. */
-.pill,.pcap,.bar-in,.sheet-card,.vswitch,.quiz-step-card,.tpage-card,.form input:not([type=checkbox]):not([type=radio]),.form select{border-radius:0}
+.pcap,.bar-in,.sheet-card,.vswitch,.quiz-step-card,.tpage-card,.form input:not([type=checkbox]):not([type=radio]),.form select{border-radius:0}
 
 /* Линии оригинального знака: сталь, светлый блик и винный акцент. Без анимации. */
 .brand-lines{position:absolute;display:block;width:420px;aspect-ratio:1;pointer-events:none;user-select:none;z-index:0;--trace:linear-gradient(125deg,rgba(131,57,69,.48),rgba(58,96,144,.48) 36%,rgba(183,209,234,.15) 53%,rgba(58,96,144,.5) 72%,rgba(131,57,69,.2))}
