@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const canonical = new URL(path, Astro.site).href;
 const preview = base !== '';   // превью на GitHub Pages собирается с префиксом адресов, боевой сайт — от корня
-const V = '29g';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+const V = '30a';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
 ---
 <!DOCTYPE html>
 <html lang="ru">

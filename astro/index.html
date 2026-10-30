@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=29g">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=30a">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-d.webp" media="(min-width:1000px)" fetchpriority="high">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=29g"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=29g">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=30a"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=30a">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -69,7 +69,7 @@
   <div class="hdr">
     <a class="pill glass-d logo" href="#top"><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></a>
     <nav class="pill glass-d nav hdr-d" aria-label="Основное меню">
-      <a class="lnk" href="#making">Инструменты</a><a class="lnk" href="/handpan-shop-home/astro/cources">Обучение</a><a class="lnk" href="#community">Сообщество</a><a class="lnk" href="#contacts">Контакты</a>
+      <a class="lnk" href="#making">Инструменты</a><a class="lnk" href="/handpan-shop-home/astro/cources">Обучение</a><a class="lnk" href="#contacts">Контакты</a>
     </nav>
     <div class="pill glass-d city s1-city hdr-d" role="group" aria-label="Город">
       <button type="button" data-city="msk" aria-pressed="true">Москва</button><button type="button" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
@@ -122,7 +122,7 @@
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href="#making">Инструменты</a><a href="/handpan-shop-home/astro/cources">Обучение</a><a href="#community">Сообщество</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+    <a href="#making">Инструменты</a><a href="/handpan-shop-home/astro/cources">Обучение</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><button type="button" class="chip" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
@@ -165,16 +165,27 @@
 <!-- 03 · Почему так легко -->
 <section class="sec s3 bg-sand" aria-labelledby="h-s3">
   <div class="stack s3-text">
-    <div class="mono row-sb"><span>Звуковая скульптура</span><span>B♭ · 3/10</span></div>
-    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так</span><span>легко?</span></h2>
-    <p class="body">Ноты каждого ханга выстроены в один лад. Каждое поле звучит аккордом: основной тон, октава, квинта</p>
-    <div class="accent ind">Здесь нет фальшивых нот</div>
-    <p class="body body--2 ind">Ведите руки по полям, как чувствуете, – это уже музыкальная фраза. За несколько занятий без опыта вы начинаете импровизировать</p>
-    <div class="btns">
-      <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на пробное занятие</button>
-      <button type="button" class="btn btn--line" data-toggle="more">Читать дальше <span data-sign>+</span></button>
+    <div class="s3-kicker row-sb">
+      <div class="s3-info" data-sculpture>
+        <button type="button" class="mono s3-info-trigger" aria-expanded="false" aria-controls="sculpture-note" data-sculpture-trigger>
+          Звуковая скульптура <span class="s3-info-dot" aria-hidden="true"></span>
+        </button>
+        <div class="s3-info-panel" id="sculpture-note" role="region" aria-label="Почему ханг называют звуковой скульптурой" tabindex="0" hidden>
+          <button type="button" class="s3-info-close" aria-label="Закрыть пояснение" data-sculpture-close>×</button>
+          <p>Сами создатели называют ханг «звуковой скульптурой», рассматривая его как художественное произведение, с которым вступаешь в диалог. В руководстве PANArt писали: не ставьте целью мелодию или ритм. Следуйте за звуком и ощущением прикосновения.</p>
+          <p>С тех пор, конечно, ханг вышел далеко за пределы этого интуитивного подхода: его используют в академической музыке, неоклассике, электронике и кино. Исполнители мирового уровня — от сольных перкуссионистов до оркестровых проектов — играют на нём на больших сценах и в студиях. Это полноправный голос современной музыки.</p>
+          <p>И всё же суть осталась прежней: вы можете играть легко. И вот почему:</p>
+        </div>
+      </div>
+      <span class="mono">B♭ · 3/10</span>
     </div>
-    <p class="body body--2 s3-more" data-panel="more" hidden>Создатели называли ханг звуковой скульптурой и советовали следовать за звуком и ощущением касания, не ставя целью мелодию или ритм. Сегодня на ханге играют в академической музыке, неоклассике, электронике и кино</p>
+    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так</span><span>легко?</span></h2>
+    <p class="body">Внутри каждого ханга ноты выстроены в ладовую систему — гармоническая архитектура, где все звуки связаны. Вы не можете сыграть «неправильно» — инструмент сам ведёт к гармонии. Можно интуитивно выводить руки по полям, и это уже будет музыкальная фраза.</p>
+    <p class="body body--2">За несколько занятий, без опыта, вы начинаете импровизировать, звучать гармонично и чувствовать себя творцом. Именно это мы называем «найти свой звук». Состояние, когда музыка рождается естественно, а вы просто наслаждаетесь процессом.</p>
+    <p class="s3-support">Мы помогаем найти ваш звук. И сопровождаем на каждом этапе музыкального развития.</p>
+    <div class="btns">
+      <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на обучение</button>
+    </div>
   </div>
   <div class="s3-photo">
     <img src="/handpan-shop-home/astro/img/easy-m.webp" alt="Руки на ханге" width="733" height="1100" loading="lazy">
@@ -374,7 +385,6 @@
 
 <!-- 09 · Ханг объединяет -->
 <section class="sec s9" id="community" aria-labelledby="h-s9">
-  <span class="brand-lines brand-lines--community" aria-hidden="true"></span>
   <div class="s9-grid">
     <div class="stack s9-text">
       <div class="mono">A · 9/10</div>
@@ -740,6 +750,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=29g"></script><script src="/handpan-shop-home/astro/home.js?v=29g"></script>
+<script src="/handpan-shop-home/astro/common.js?v=30a"></script><script src="/handpan-shop-home/astro/home.js?v=30a"></script>
 </body>
 </html>

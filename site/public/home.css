@@ -429,13 +429,29 @@
 
 /* Знак целиком внутри секций, без обрезки и отражений. */
 .s4,.s9,.s10{isolation:isolate}
-.brand-lines--routes{right:var(--gut);top:32px;width:clamp(180px,18vw,290px)}
+.brand-lines--routes{right:calc(var(--gut) + 24px);top:48px;width:clamp(180px,18vw,290px);aspect-ratio:296.4/277.6;-webkit-mask-image:url(img/logo-mark.svg);mask-image:url(img/logo-mark.svg);transform:rotate(-12deg)}
 .s9{position:relative;overflow:hidden}
 .s9-grid{position:relative;z-index:1}
 .brand-lines--community{left:var(--gut);bottom:28px;width:180px;opacity:.12}
 .brand-lines--contact{right:var(--gut);top:32px;width:clamp(220px,26vw,390px)}
 @media(max-width:999.98px){
- .brand-lines--routes{width:110px;right:var(--gut);top:18px;opacity:.12}
+ .brand-lines--routes{width:110px;right:calc(var(--gut) + 14px);top:28px;opacity:.12}
  .brand-lines--community{width:120px;left:auto;right:var(--gut);bottom:16px;opacity:.1}
  .brand-lines--contact{width:150px;right:var(--gut);top:24px;opacity:.12}
 }
+
+/* Звуковая скульптура: пояснение над основным заголовком, доступно и с клавиатуры. */
+.s3-kicker{align-items:center}
+.s3-kicker>.mono{white-space:nowrap}
+.s3-info{position:relative;z-index:5;min-width:0}
+.s3-info-trigger{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0;border:0;background:none;text-align:left;cursor:pointer;color:var(--ink3);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:5px}
+.s3-info-dot{display:inline-block;width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(58,96,144,.1)}
+.s3-info-trigger:hover,.s3-info-trigger[aria-expanded="true"]{color:var(--blue)}
+.s3-info-panel{position:absolute;left:0;top:100%;width:min(540px,calc(100vw - 2 * var(--gut)));max-height:min(65svh,580px);overflow:auto;overscroll-behavior:contain;background:var(--card);border:1px solid var(--line);box-shadow:0 16px 40px rgba(10,16,32,.14);padding:clamp(20px,2.2vw,30px);font-size:16px;line-height:1.6;color:var(--ink2);text-wrap:pretty}
+.s3-info-panel p+p{margin-top:16px}
+.s3 .body{max-width:550px;font-size:17px;line-height:1.6}
+.s3-support{max-width:480px;color:var(--ink3);font-size:16px;line-height:1.5;padding-top:4px}
+@media(min-width:1000px){.s3 .s3-text>.s3-kicker{margin-left:0}}
+@media(max-width:399.98px){.s3-kicker{gap:8px}.s3-info-trigger{font-size:10px;letter-spacing:.06em}}
+
+.s3-info-close{float:right;display:flex;align-items:center;justify-content:center;width:36px;height:36px;margin:-8px -8px 4px 12px;border:0;background:var(--sand);border-radius:50%;font-size:23px;cursor:pointer;color:var(--ink)}

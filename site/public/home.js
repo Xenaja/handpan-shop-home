@@ -30,6 +30,23 @@
     });
   });
 
+  /* Звуковая скульптура: наведение, фиксация нажатием, Escape и внешнее нажатие. */
+  const sculpture = $('[data-sculpture]');
+  if (sculpture) {
+    const trigger = $('[data-sculpture-trigger]', sculpture), panel = $('#sculpture-note');
+    let pinned = false;
+    const show = open => { panel.hidden = !open; trigger.setAttribute('aria-expanded', String(open)); };
+    const close = () => { pinned = false; show(false); };
+    $('[data-sculpture-close]', panel).addEventListener('click', () => { trigger.focus(); close(); });
+    sculpture.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') show(true); });
+    sculpture.addEventListener('pointerleave', () => { if (!pinned && !sculpture.contains(document.activeElement)) show(false); });
+    trigger.addEventListener('focus', () => show(true));
+    trigger.addEventListener('click', () => { pinned = !pinned; show(pinned); });
+    sculpture.addEventListener('focusout', e => { if (!sculpture.contains(e.relatedTarget)) close(); });
+    document.addEventListener('pointerdown', e => { if (!sculpture.contains(e.target)) close(); });
+    sculpture.addEventListener('keydown', e => { if (e.key === 'Escape') { e.preventDefault(); if (document.activeElement === panel) trigger.focus(); close(); } });
+  }
+
   /* ---------- 02: зоны над фото, координаты в viewBox 400×400 ----------
      Звук — прежний синтезированный пример, не запись строя инструмента на фото.
      Ноты на фото не подписываем до получения достоверной карты строя. */
