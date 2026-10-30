@@ -293,3 +293,5 @@
 .e11{isolation:isolate}
 .brand-lines--learn{right:var(--gut);top:32px;width:clamp(220px,26vw,390px);background:var(--breeze);opacity:.18}
 @media(max-width:999.98px){.brand-lines--learn{width:160px;right:var(--gut);top:24px;opacity:.12}}
+
+.e1-copy{font-size:clamp(16px,1.25vw,18px);line-height:1.5;max-width:470px;text-wrap:pretty}
