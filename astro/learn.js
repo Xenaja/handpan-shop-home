@@ -8,9 +8,30 @@
 
   /* ---------- 08: преподаватели — чипы-вкладки, все панели в HTML ---------- */
   const tbtns = $$('[data-tlist] .chip'), tpanels = tbtns.map(b => $('#' + b.getAttribute('aria-controls')));
+  // Компактные фото подгружаем до появления блока и до выбора вкладки.
+  const teacherImages = tpanels.map(panel => $('img', panel));
+  const warmTeacher = img => {
+    if (!img) return Promise.resolve();
+    img.loading = 'eager';
+    return img.decode().catch(() => {});
+  };
+  if ('IntersectionObserver' in window) {
+    const near = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      near.disconnect();
+      // Последовательно, чтобы не конкурировать с видимым содержимым страницы.
+      (async () => { for (const img of teacherImages) await warmTeacher(img); })();
+    }, { rootMargin: '800px 0px' });
+    near.observe($('#teachers'));
+  }
+  tbtns.forEach((button, i) => {
+    button.addEventListener('pointerenter', () => warmTeacher(teacherImages[i]), { once: true });
+    button.addEventListener('focus', () => warmTeacher(teacherImages[i]), { once: true });
+  });
   let ti = 0;
   function setTeacher(i, focus) {
     ti = i;
+    warmTeacher(teacherImages[i]);
     tbtns.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; tpanels[k].hidden = k !== i; });
     if (focus) tbtns[i].focus();
   }
