@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=30d">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=30e">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-d.webp" media="(min-width:1000px)" fetchpriority="high">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=30d"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=30d">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=30e"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=30e">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -165,10 +165,11 @@
 <!-- 03 · Почему так легко -->
 <section class="sec s3 bg-sand" aria-labelledby="h-s3">
   <div class="stack s3-text">
-    <div class="s3-kicker row-sb">
+    <span class="mono s3-count">B♭ · 3/10</span>
+    <div class="s3-heading">
       <div class="s3-info" data-sculpture>
         <button type="button" class="mono s3-info-trigger" aria-expanded="false" aria-controls="sculpture-note" data-sculpture-trigger>
-          Звуковая скульптура <span class="s3-info-dot" aria-hidden="true"></span>
+          <span>Звуковая</span><span>скульптура</span><span class="s3-info-dot" aria-hidden="true"></span>
         </button>
         <div class="s3-info-panel" id="sculpture-note" role="region" aria-label="Почему ханг называют звуковой скульптурой" tabindex="0" hidden>
           <button type="button" class="s3-info-close" aria-label="Закрыть пояснение" data-sculpture-close>×</button>
@@ -177,9 +178,8 @@
           <p>И всё же суть осталась прежней: вы можете играть легко. И вот почему:</p>
         </div>
       </div>
-      <span class="mono">B♭ · 3/10</span>
+      <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так</span><span>легко?</span></h2>
     </div>
-    <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так</span><span>легко?</span></h2>
     <p class="body">Внутри каждого ханга ноты выстроены в ладовую систему — гармоническая архитектура, где все звуки связаны. Вы не можете сыграть «неправильно» — инструмент сам ведёт к гармонии. Можно интуитивно выводить руки по полям, и это уже будет музыкальная фраза.</p>
     <p class="body body--2">За несколько занятий, без опыта, вы начинаете импровизировать, звучать гармонично и чувствовать себя творцом. Именно это мы называем «найти свой звук». Состояние, когда музыка рождается естественно, а вы просто наслаждаетесь процессом.</p>
     <p class="s3-support">Мы помогаем найти ваш звук. И сопровождаем на каждом этапе музыкального развития.</p>
@@ -750,6 +750,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=30d"></script><script src="/handpan-shop-home/astro/home.js?v=30d"></script>
+<script src="/handpan-shop-home/astro/common.js?v=30e"></script><script src="/handpan-shop-home/astro/home.js?v=30e"></script>
 </body>
 </html>

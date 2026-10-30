@@ -455,3 +455,14 @@
 @media(max-width:399.98px){.s3-kicker{gap:8px}.s3-info-trigger{font-size:10px;letter-spacing:.06em}}
 
 .s3-info-close{float:right;display:flex;align-items:center;justify-content:center;width:36px;height:36px;margin:-8px -8px 4px 12px;border:0;background:var(--sand);border-radius:50%;font-size:23px;cursor:pointer;color:var(--ink)}
+
+/* Подпись занимает ширину слова «Почему», заголовок компактнее. */
+.s3-text{position:relative}
+.s3-heading{--s3-title-size:clamp(48px,6vw,84px);display:grid;width:max-content;max-width:100%;gap:12px}
+.s3 .s3-heading .h2{font-size:var(--s3-title-size);margin:0;line-height:1.02;width:max-content}
+.s3-heading .s3-info{width:0;min-width:100%}
+.s3 .s3-info-trigger{position:relative;display:flex;justify-content:space-between;width:100%;gap:8px;font-family:var(--f-d);font-size:calc(var(--s3-title-size) * .34);font-weight:400;line-height:1.25;letter-spacing:-.04em;white-space:nowrap;color:var(--blue);text-decoration:none}
+.s3-heading .s3-info-dot{position:absolute;right:-17px;top:50%;transform:translateY(-50%)}
+.s3-count{position:absolute;right:0;top:12px}
+@media(min-width:1000px){.s3 .s3-text>.s3-heading{margin-left:0}}
+@media(max-width:999.98px){.s3-count{display:none}}
