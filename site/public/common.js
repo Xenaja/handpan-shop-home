@@ -273,11 +273,63 @@
     });
   }
 
+  /* Лёгкое движение: однократное появление блоков, без скрытия контента в HTML. */
+  function initMotion() {
+    if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.stage,.need,.s8-text,.s8-copy,.s9-text,.s10-head,.s10-grid,.e11-l,.e11-r';
+    const targets = $$(selector).filter(el => !el.parentElement.closest(selector));
+    const seen = new WeakSet(), active = new Map();
+    const entrances = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting || preference.matches) return;
+        const el = entry.target;
+        entrances.unobserve(el); seen.add(el);
+        // При переходе по якорю или с клавиатуры управление сразу доступно.
+        if (el.contains(document.activeElement)) return;
+        const stagger = el.matches('.route,.aud,.stage,.need')
+          ? ([...el.parentElement.children].indexOf(el) % 3) * 45 : 0;
+        const animation = el.animate([
+          { opacity: .25, transform: 'translateY(12px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ], { duration: 520, delay: stagger, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+        active.set(el, animation);
+        animation.finished.then(() => active.delete(el), () => active.delete(el));
+      });
+    }, { threshold: .08 });
+    const hint = $('[data-sculpture-trigger]');
+    const pulse = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.toggleAttribute('data-pulse-visible', entry.isIntersecting));
+    });
+    const applyPreference = () => {
+      entrances.disconnect(); pulse.disconnect();
+      if (hint) hint.removeAttribute('data-pulse-visible');
+      if (preference.matches) {
+        active.forEach(animation => animation.cancel()); active.clear();
+        return;
+      }
+      targets.forEach(el => { if (!seen.has(el)) entrances.observe(el); });
+      if (hint) pulse.observe(hint);
+    };
+    preference.addEventListener('change', applyPreference);
+    // Скрытая вкладка не тратит ресурсы на повторяющуюся пульсацию.
+    document.addEventListener('visibilitychange', () => {
+      root.toggleAttribute('data-motion-paused', document.hidden);
+    });
+    const stopAtInteraction = event => {
+      active.forEach((animation, el) => { if (el.contains(event.target)) animation.cancel(); });
+    };
+    document.addEventListener('focusin', stopAtInteraction);
+    document.addEventListener('pointerdown', stopAtInteraction, { passive: true });
+    applyPreference();
+  }
+
   /* после отрисовки страницы: типограф и начальные состояния */
   function ready() {
     setCity(city);
     onScroll();
     typo();
+    initMotion();
   }
 
   window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready };

@@ -355,3 +355,14 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 
 /* Исходная композиция линий логотипа, приглушённый однотонный оттиск. */
 .brand-lines{position:absolute;display:block;width:320px;aspect-ratio:308/290;pointer-events:none;user-select:none;z-index:0;background:var(--blue);opacity:.2;-webkit-mask:url(img/lines/logo-contours.svg) center/contain no-repeat;mask:url(img/lines/logo-contours.svg) center/contain no-repeat}
+
+/* Спокойные реакции управления, только на устройствах с точным указателем. */
+@media (prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  .btn{transition:background-color .2s,color .2s,border-color .2s,transform .22s var(--ease)}
+  .btn:not(:disabled):hover{transform:translateY(-2px)}
+  .btn:not(:disabled):active{transform:translateY(0)}
+  .aud{transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .aud:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(10,16,32,.06)}
+  .tcard img{transition:scale .55s var(--ease)}
+  .tcard:hover img{scale:1.02}
+}

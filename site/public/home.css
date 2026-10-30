@@ -466,3 +466,17 @@
 .s3-count{position:absolute;right:0;top:12px}
 @media(min-width:1000px){.s3 .s3-text>.s3-heading{margin-left:0}}
 @media(max-width:999.98px){.s3-count{display:none}}
+
+/* Точка приглашает открыть пояснение: мягкое кольцо раз в три секунды. */
+.s3-info-dot::after{content:'';position:absolute;inset:-6px;border:1px solid var(--blue);border-radius:50%;opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:no-preference){
+  .s3-info-dot::after{animation:sculpture-hint 3s ease-out infinite;animation-play-state:paused}
+  [data-sculpture-trigger][data-pulse-visible] .s3-info-dot::after{animation-play-state:running}
+  [data-sculpture-trigger][aria-expanded="true"] .s3-info-dot::after{animation:none;opacity:0}
+  html[data-motion-paused] .s3-info-dot::after{animation-play-state:paused}
+}
+@keyframes sculpture-hint{
+  0%,12%{transform:scale(.5);opacity:0}
+  22%{opacity:.5}
+  65%,100%{transform:scale(1.5);opacity:0}
+}
