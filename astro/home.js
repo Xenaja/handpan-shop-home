@@ -101,17 +101,41 @@
     labels.forEach((l, k) => { l.hidden = k !== i; });
     $('[data-stat-count]').textContent = String(i + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0');
   }
-  // автосмена каждые 3 с после появления; пауза под курсором и фокусом; без неё при reduced-motion
+  // Автосмена каждые 3 с после появления. Курсор над блоком её не останавливает;
+  // пауза остаётся при работе с клавиатуры и при reduced-motion.
   function run() {
     clearInterval(siv);
-    if (reduce || !seen) return;
+    if (reduce || !seen || document.hidden) return;
     siv = setInterval(() => { if (!hold) setStat((si + 1) % N); }, 3000);
   }
   dots.forEach((d, i) => d.addEventListener('click', () => { setStat(i); run(); }));
-  sWrap.addEventListener('pointerenter', () => { hold = true; });
-  sWrap.addEventListener('pointerleave', () => { hold = false; });
-  sWrap.addEventListener('focusin', () => { hold = true; });
-  sWrap.addEventListener('focusout', () => { hold = false; });
+  sWrap.addEventListener('focusin', e => { hold = e.target.matches(':focus-visible'); });
+  sWrap.addEventListener('focusout', e => {
+    hold = !!(e.relatedTarget && sWrap.contains(e.relatedTarget) && e.relatedTarget.matches(':focus-visible'));
+  });
+  $('[data-stat-dots]').addEventListener('keydown', e => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+    e.preventDefault();
+    const next = e.key === 'Home' ? 0 : e.key === 'End' ? N - 1
+      : (si + (e.key === 'ArrowRight' ? 1 : -1) + N) % N;
+    setStat(next); dots[next].focus(); run();
+  });
+  let statTouch = null;
+  const statsArea = $('.s6-grid', sWrap);
+  statsArea.addEventListener('touchstart', e => {
+    statTouch = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null;
+  }, { passive: true });
+  statsArea.addEventListener('touchend', e => {
+    if (!statTouch) return;
+    const dx = e.changedTouches[0].clientX - statTouch.x;
+    const dy = e.changedTouches[0].clientY - statTouch.y;
+    statTouch = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      setStat((si + (dx < 0 ? 1 : -1) + N) % N); run();
+    }
+  }, { passive: true });
+  statsArea.addEventListener('touchcancel', () => { statTouch = null; }, { passive: true });
+  document.addEventListener('visibilitychange', run);
   setStat(0);
   if ('IntersectionObserver' in window && !reduce) {
     // первая цифра «набегает» от нуля; число и суффикс берём из HTML
@@ -129,6 +153,8 @@
       requestAnimationFrame(step);
     }, { threshold: 0.2 });
     io.observe(sWrap);
+  } else {
+    seen = true; run();
   }
 
   /* ---------- 07: карусель преподавателей, бесконечная ---------- */
