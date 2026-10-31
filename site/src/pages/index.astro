@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import BrandLines from '../components/BrandLines.astro';
 import LeadForm from '../components/LeadForm.astro';
+import BranchContacts from '../components/BranchContacts.astro';
 import Quiz from '../components/Quiz.astro';
 import QD from '../data/quiz.json';
 import D from '../data/site.json';
@@ -23,7 +24,7 @@ const contacts = [
   { key: 'whatsapp', label: 'WhatsApp', href: K.whatsapp },
   { key: 'vk', label: 'ВКонтакте', href: K.vk },
   { key: 'youtube', label: 'YouTube', href: K.youtube }
-];
+].filter(c => c.href);
 const msk = D.cities[0];
 const mapQ = encodeURIComponent(`Москва, ${msk.address}`);
 
@@ -396,13 +397,12 @@ const jsonld = {
           </div>
         </div>
       </div>
-      <div class="s10-contacts">
-        {contacts.map(c => c.href
-          ? <a href={c.href} target={c.key === 'phone' ? undefined : '_blank'} rel={c.key === 'phone' ? undefined : 'noopener'}>{c.label}</a>
-          : <a href="#" data-pending="P-03">{c.label}</a>)}
-      </div>
+      {contacts.length > 0 && <div class="s10-contacts">
+        {contacts.map(c => <a href={c.href} target={c.key === 'phone' ? undefined : '_blank'} rel={c.key === 'phone' ? undefined : 'noopener'}>{c.label}</a>)}
+      </div>}
     </div>
   </div>
+  <BranchContacts />
   <footer class="foot">
     <Logo class="foot-logo" />
     <div class="foot-links"><a class="lnk" href="#" data-pending="P-10">Политика конфиденциальности</a><a class="lnk" href="#" data-pending="P-10">Договор оферты</a></div>

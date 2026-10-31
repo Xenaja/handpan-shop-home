@@ -23,6 +23,7 @@
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]');
     if (!a) return;
+    if (a.dataset.bookingCity) goal('booking_open', { city: a.dataset.bookingCity, page: location.pathname });
     const hit = CONTACT_GOALS.find(([re]) => re.test(a.getAttribute('href')));
     if (hit) goal(hit[1], { page: location.pathname });
   });
@@ -118,9 +119,14 @@
     try { sessionStorage.setItem('hs-city', c); } catch (e) {}
     $$('[data-city]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.city === c)));
     $$(`input[name="city"][value="${c}"]`).forEach(r => { r.checked = true; });
+    $$('[data-form]').forEach(updateBooking);
   }
   document.addEventListener('click', e => { const b = e.target.closest('[data-city]'); if (b) setCity(b.dataset.city); });
-  document.addEventListener('change', e => { if (e.target.name === 'city' && e.target.value !== 'online') setCity(e.target.value); });
+  document.addEventListener('change', e => {
+    if (e.target.name === 'city' && e.target.value !== 'online') setCity(e.target.value);
+    const form = e.target.closest('[data-form]');
+    if (form && ['city', 'interest', 'format'].includes(e.target.name)) updateBooking(form);
+  });
 
   /* ---------- меню на весь экран (< 1000) ---------- */
   const burger = $('.burger'), menu = $('#menu');
@@ -175,6 +181,18 @@
   document.addEventListener('focusout', () => requestAnimationFrame(onScroll));
 
   /* ---------- формы ---------- */
+  function updateBooking(form) {
+    const selectedCity = $('input[name="city"]:checked', form)?.value;
+    const interest = $('[name="interest"]', form)?.value;
+    const format = $('input[name="format"]:checked', form)?.value;
+    // Только очные занятия филиала: покупка, аренда и онлайн-уроки сохраняют свои формы.
+    const isLesson = interest === 'trial' && format !== 'online';
+    const booking = $$('[data-branch-booking]', form).find(el => isLesson && el.dataset.branchBooking === selectedCity);
+    $$('[data-branch-booking]', form).forEach(el => { el.hidden = el !== booking; });
+    const fields = $('[data-lead-fields]', form);
+    if (fields) { fields.hidden = !!booking; fields.inert = !!booking; }
+    return booking;
+  }
   const utm = (() => {
     const p = new URLSearchParams(location.search), o = {};
     ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(k => { if (p.get(k)) o[k] = p.get(k); });
@@ -226,6 +244,8 @@
     maskPhone(phone);
     form.addEventListener('submit', async e => {
       e.preventDefault();
+      const booking = updateBooking(form);
+      if (booking) { $('a', booking).focus(); return; }
       status.textContent = '';
       if (!name.value.trim()) { name.setAttribute('aria-invalid', 'true'); name.focus(); return; }
       name.setAttribute('aria-invalid', 'false');
@@ -262,12 +282,17 @@
       form._opened = Date.now();
       setCity(city);
       onOpen(key);
+      updateBooking(form);
       clearTimeout(hideT);
       sheet.hidden = false;
       requestAnimationFrame(() => sheet.classList.add('open'));
       root.classList.add('locked');
       onScroll();
-      setTimeout(() => $('input[name="name"]', form).focus({ preventScroll: true }), 60);
+      setTimeout(() => {
+        if (sheet.hidden) return;
+        const booking = updateBooking(form);
+        (booking ? $('a', booking) : $('input[name="name"]', form)).focus({ preventScroll: true });
+      }, 60);
     }
     function close() {
       sheet.classList.remove('open');

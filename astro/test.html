@@ -21,9 +21,9 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=31a">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=31b">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=31a">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=31b">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -286,6 +286,11 @@
       <label class="chip-r"><input type="radio" name="city" value="msk" checked><span>Москва</span></label><label class="chip-r"><input type="radio" name="city" value="spb"><span>Санкт-Петербург</span></label><label class="chip-r"><input type="radio" name="city" value="online"><span>Онлайн</span></label>
     </div>
   </fieldset>
+  <div class="form-booking" data-branch-booking="spb" hidden>
+    <p>Запись в студию в Санкт-Петербурге — через YCLIENTS. Выберите занятие и удобное время в расписании.</p>
+    <a class="btn btn--blue" href="https://n1548111.yclients.com" target="_blank" rel="noopener" data-booking-city="spb">Открыть онлайн-запись <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="form-fields" data-lead-fields>
   <div class="fld">
     <label class="fl" for="m-name">Имя</label>
     <input id="m-name" name="name" autocomplete="given-name" required>
@@ -305,11 +310,12 @@
   <button type="submit" class="btn btn--blue btn--submit">Записаться</button>
   <div class="form-status" aria-live="polite"></div>
 
+  </div>
 </form>
     <p class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</p>
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=31a"></script><script src="/handpan-shop-home/astro/quiz.js?v=31a"></script><script src="/handpan-shop-home/astro/test.js?v=31a"></script>
+<script src="/handpan-shop-home/astro/common.js?v=31b"></script><script src="/handpan-shop-home/astro/quiz.js?v=31b"></script><script src="/handpan-shop-home/astro/test.js?v=31b"></script>
 </body>
 </html>

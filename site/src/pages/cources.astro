@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
 import BrandLines from '../components/BrandLines.astro';
 import LeadForm from '../components/LeadForm.astro';
+import BranchContacts from '../components/BranchContacts.astro';
 import D from '../data/site.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -305,6 +306,7 @@ const jsonld = {
       ))}
     </div>
   </div>
+  <BranchContacts />
   <footer class="efoot">
     <span>© U-GENE sound vibe · Москва · СПб</span>
     <nav class="efoot-nav" aria-label="Документы и разделы"><a class="lnk" href={u('politikaconfidencialnosti')}>Политика конфиденциальности</a><a class="lnk" href={home}>На главную →</a></nav>

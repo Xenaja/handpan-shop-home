@@ -17,7 +17,23 @@
       "key": "spb",
       "name": "Санкт-Петербург",
       "address": "проспект Чернышевского, 17",
-      "metro": null
+      "metro": null,
+      "bookingUrl": "https://n1548111.yclients.com",
+      "contacts": {
+        "website": "https://handpanstudiospb.ru",
+        "phone": "+79031177210",
+        "phoneLabel": "+7 (903) 117-72-10",
+        "email": "handpanstudiospb@yandex.ru",
+        "telegram": "https://t.me/handpanstudiospb",
+        "max": "https://max.ru/u/f9LHodD0cOKamSFyFSUCB4QqCQAH60JBKaVzOddLVSbLyhvaGW6h22NFc1k",
+        "whatsapp": "https://wa.me/message/DXIG3AOLREQUB1"
+      },
+      "socials": {
+        "vk": "https://vk.ru/handpanstudiospb",
+        "telegram": "https://t.me/handpanstudio",
+        "max": "https://max.ru/join/T6RaGt4PcscXJ3UVQFV_A_89UFKGXBGR_n11n6hc46E",
+        "instagram": "https://www.instagram.com/handpanstudio.spb"
+      }
     }
   ],
   "audiences": [

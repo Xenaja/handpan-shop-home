@@ -1,0 +1,46 @@
+---
+import D from '../data/site.json';
+const branches = D.cities.filter(c => c.contacts);
+---
+{branches.map(c => {
+  const k = c.contacts!;
+  const messages = [
+    { label: 'Telegram', href: k.telegram },
+    { label: 'MAX', href: k.max },
+    { label: 'WhatsApp', href: k.whatsapp }
+  ];
+  const socials = [
+    { label: 'ВКонтакте', href: c.socials?.vk },
+    { label: 'Telegram · канал', href: c.socials?.telegram },
+    { label: 'MAX · канал', href: c.socials?.max },
+    { label: 'Instagram', href: c.socials?.instagram }
+  ];
+  return (
+    <section class="branch-contacts" id={`contacts-${c.key}`} aria-labelledby={`branch-${c.key}-title`}>
+      <div class="branch-main">
+        <h3 class="branch-title" id={`branch-${c.key}-title`}>Студия в {c.key === 'spb' ? 'Санкт-Петербурге' : c.name}</h3>
+        <p class="branch-address">{c.address}</p>
+        <a class="branch-phone" href={`tel:${k.phone}`}>{k.phoneLabel}</a>
+        <div class="branch-direct">
+          <a href={k.website} target="_blank" rel="noopener">{new URL(k.website).hostname}</a>
+          <a href={`mailto:${k.email}`}>{k.email}</a>
+        </div>
+        <a class="btn btn--blue branch-book" href={c.bookingUrl} target="_blank" rel="noopener" data-booking-city={c.key}>Записаться онлайн <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="branch-channels">
+        <div class="branch-group">
+          <h4 class="mono">Написать нам</h4>
+          <div class="branch-links">
+            {messages.filter(l => l.href).map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+          </div>
+        </div>
+        <div class="branch-group">
+          <h4 class="mono">Соцсети студии</h4>
+          <div class="branch-links">
+            {socials.filter(l => l.href).map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+})}

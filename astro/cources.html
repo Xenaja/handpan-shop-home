@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=31a">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=31b">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/edu-hero-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/edu-hero-d.webp" media="(min-width:1000px)" fetchpriority="high">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=31a"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=31a"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=31a">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=31b"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=31b"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=31b">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -399,6 +399,32 @@
       <div class="addr"><span class="mono">Москва</span><span>Нижний Сусальный пер., 5 · м. Курская</span></div><div class="addr"><span class="mono">Санкт-Петербург</span><span>проспект Чернышевского, 17</span></div>
     </div>
   </div>
+  <section class="branch-contacts" id="contacts-spb" aria-labelledby="branch-spb-title">
+      <div class="branch-main">
+        <h3 class="branch-title" id="branch-spb-title">Студия в Санкт-Петербурге</h3>
+        <p class="branch-address">проспект Чернышевского, 17</p>
+        <a class="branch-phone" href="tel:+79031177210">+7 (903) 117-72-10</a>
+        <div class="branch-direct">
+          <a href="https://handpanstudiospb.ru" target="_blank" rel="noopener">handpanstudiospb.ru</a>
+          <a href="mailto:handpanstudiospb@yandex.ru">handpanstudiospb@yandex.ru</a>
+        </div>
+        <a class="btn btn--blue branch-book" href="https://n1548111.yclients.com" target="_blank" rel="noopener" data-booking-city="spb">Записаться онлайн <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="branch-channels">
+        <div class="branch-group">
+          <h4 class="mono">Написать нам</h4>
+          <div class="branch-links">
+            <a href="https://t.me/handpanstudiospb" target="_blank" rel="noopener">Telegram</a><a href="https://max.ru/u/f9LHodD0cOKamSFyFSUCB4QqCQAH60JBKaVzOddLVSbLyhvaGW6h22NFc1k" target="_blank" rel="noopener">MAX</a><a href="https://wa.me/message/DXIG3AOLREQUB1" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <div class="branch-group">
+          <h4 class="mono">Соцсети студии</h4>
+          <div class="branch-links">
+            <a href="https://vk.ru/handpanstudiospb" target="_blank" rel="noopener">ВКонтакте</a><a href="https://t.me/handpanstudio" target="_blank" rel="noopener">Telegram · канал</a><a href="https://max.ru/join/T6RaGt4PcscXJ3UVQFV_A_89UFKGXBGR_n11n6hc46E" target="_blank" rel="noopener">MAX · канал</a><a href="https://www.instagram.com/handpanstudio.spb" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
   <footer class="efoot">
     <span>© U-GENE sound vibe · Москва · СПб</span>
     <nav class="efoot-nav" aria-label="Документы и разделы"><a class="lnk" href="/handpan-shop-home/astro/politikaconfidencialnosti">Политика конфиденциальности</a><a class="lnk" href="/handpan-shop-home/astro/">На главную →</a></nav>
@@ -438,6 +464,11 @@
       <label class="chip-r"><input type="radio" name="city" value="msk" checked><span>Москва</span></label><label class="chip-r"><input type="radio" name="city" value="spb"><span>Санкт-Петербург</span></label><label class="chip-r"><input type="radio" name="city" value="online"><span>Онлайн</span></label>
     </div>
   </fieldset>
+  <div class="form-booking" data-branch-booking="spb" hidden>
+    <p>Запись в студию в Санкт-Петербурге — через YCLIENTS. Выберите занятие и удобное время в расписании.</p>
+    <a class="btn btn--blue" href="https://n1548111.yclients.com" target="_blank" rel="noopener" data-booking-city="spb">Открыть онлайн-запись <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="form-fields" data-lead-fields>
   <div class="fld">
     <label class="fl" for="m-name">Имя</label>
     <input id="m-name" name="name" autocomplete="given-name" required>
@@ -457,6 +488,7 @@
   <button type="submit" class="btn btn--blue btn--submit">Отправить</button>
   <div class="form-status" aria-live="polite"></div>
   <span class="small">Перезвоним, ответим на вопросы и подберём время</span>
+  </div>
 </form>
     <div class="stack thanks-box" data-thanks hidden tabindex="-1">
       <span class="sheet-title">Спасибо!</span>
@@ -466,6 +498,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=31a"></script><script src="/handpan-shop-home/astro/learn.js?v=31a"></script>
+<script src="/handpan-shop-home/astro/common.js?v=31b"></script><script src="/handpan-shop-home/astro/learn.js?v=31b"></script>
 </body>
 </html>

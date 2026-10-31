@@ -1,4 +1,5 @@
 ---
+import D from '../data/site.json';
 // Одна форма заявки на весь сайт (SEO-MIGRATION.md, раздел 10): видимые подписи, отдельная галочка согласия на /consent
 // (152-ФЗ, с 01.09.2025 согласие оформляется отдельно), город с онлайном, удобное время. Отправку и проверку ведёт common.js.
 interface Props {
@@ -19,6 +20,7 @@ const INTERESTS = [
   ['community', 'Сообщество и мероприятия']
 ];
 const CITIES = [['msk', 'Москва'], ['spb', 'Санкт-Петербург'], ['online', 'Онлайн']];
+const bookingBranches = D.cities.filter(c => c.bookingUrl);
 ---
 <form class="form" data-form novalidate>
   <slot />
@@ -36,6 +38,11 @@ const CITIES = [['msk', 'Москва'], ['spb', 'Санкт-Петербург'
       {CITIES.map(([v, l], i) => <label class="chip-r"><input type="radio" name="city" value={v} checked={i === 0}><span>{l}</span></label>)}
     </div>
   </fieldset>
+  {bookingBranches.map(c => <div class="form-booking" data-branch-booking={c.key} hidden>
+    <p>Запись в студию в {c.key === 'spb' ? 'Санкт-Петербурге' : c.name} — через YCLIENTS. Выберите занятие и удобное время в расписании.</p>
+    <a class="btn btn--blue" href={c.bookingUrl} target="_blank" rel="noopener" data-booking-city={c.key}>Открыть онлайн-запись <span aria-hidden="true">↗</span></a>
+  </div>)}
+  <div class="form-fields" data-lead-fields>
   <div class="fld">
     <label class="fl" for={`${id}-name`}>Имя</label>
     <input id={`${id}-name`} name="name" autocomplete="given-name" required>
@@ -55,4 +62,5 @@ const CITIES = [['msk', 'Москва'], ['spb', 'Санкт-Петербург'
   <button type="submit" class="btn btn--blue btn--submit">{submit}</button>
   <div class="form-status" aria-live="polite"></div>
   {note && <span class="small">{note}</span>}
+  </div>
 </form>
