@@ -33,6 +33,13 @@
     ti = i;
     warmTeacher(teacherImages[i]);
     tbtns.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; tpanels[k].hidden = k !== i; });
+    if (!HS.wide.matches) {
+      const list = $('[data-tlist]'), button = tbtns[i];
+      const listRect = list.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
+      if (buttonRect.left < listRect.left + 12 || buttonRect.right > listRect.right - 12) {
+        list.scrollTo({ left: list.scrollLeft + buttonRect.left - listRect.left - list.clientWidth / 2 + buttonRect.width / 2, behavior: HS.reduce ? 'instant' : 'smooth' });
+      }
+    }
     if (focus) tbtns[i].focus();
   }
   tbtns.forEach((b, i) => b.addEventListener('click', () => setTeacher(i)));

@@ -144,12 +144,35 @@
   /* ---------- липкая панель ---------- */
   const bar = $('[data-sticky]'), sheet = $('[data-sheet]');
   const barFrom = bar ? +bar.dataset.sticky || 560 : 0;
+  const hero = $('header.s1,header.e1');
+  const conversionZones = $$('.s10,.e6,.e11');
+  const pageActions = $$('.sec .btn[data-open],.sec .btn[href]');
   function onScroll() {
-    const busy = (sheet && !sheet.hidden) || (menu && !menu.hidden);
-    if (bar) bar.classList.toggle('show', scrollY > barFrom && !busy);
+    const busy = root.classList.contains('locked') || (sheet && !sheet.hidden) || (menu && !menu.hidden)
+      || !!$('.s3-info-panel:not([hidden])');
+    if (bar) {
+      const mobile = !wide.matches;
+      const pastHero = mobile && hero ? hero.getBoundingClientRect().bottom <= 0 : scrollY > barFrom;
+      const nearConversion = mobile && conversionZones.some(el => {
+        const rect = el.getBoundingClientRect();
+        return rect.height > 0 && rect.top < innerHeight * .85 && rect.bottom > 0;
+      });
+      const nearAction = mobile && pageActions.some(el => {
+        const rect = el.getBoundingClientRect();
+        return rect.height > 0 && rect.top < innerHeight - 8 && rect.bottom > innerHeight - 92;
+      });
+      const typing = mobile && document.activeElement?.matches('input:not([type="radio"]):not([type="checkbox"]),textarea,select');
+      bar.classList.toggle('show', pastHero && !busy && !nearConversion && !nearAction && !typing);
+    }
     root.classList.toggle('scrolled', scrollY > 40);
   }
-  addEventListener('scroll', onScroll, { passive: true });
+  let scrollFrame = 0;
+  addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(() => { scrollFrame = 0; onScroll(); });
+  }, { passive: true });
+  addEventListener('resize', onScroll);
+  document.addEventListener('focusin', onScroll);
+  document.addEventListener('focusout', () => requestAnimationFrame(onScroll));
 
   /* ---------- формы ---------- */
   const utm = (() => {
@@ -332,5 +355,5 @@
     initMotion();
   }
 
-  window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready };
+  window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready, updateSticky: onScroll };
 })();

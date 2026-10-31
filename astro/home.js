@@ -35,7 +35,7 @@
   if (sculpture) {
     const trigger = $('[data-sculpture-trigger]', sculpture), panel = $('#sculpture-note');
     let pinned = false;
-    const show = open => { panel.hidden = !open; trigger.setAttribute('aria-expanded', String(open)); };
+    const show = open => { panel.hidden = !open; trigger.setAttribute('aria-expanded', String(open)); HS.updateSticky(); };
     const close = () => { pinned = false; show(false); };
     $('[data-sculpture-close]', panel).addEventListener('click', () => { trigger.focus(); close(); });
     sculpture.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') show(true); });

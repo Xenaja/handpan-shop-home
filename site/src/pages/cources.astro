@@ -46,7 +46,7 @@ const jsonld = {
   ogTitle="Обучение игре на ханге с нуля — U-GENE sound vibe"
   ogDescription="Пробное занятие 45 минут — 900 ₽. Инструмент даём, опыт не нужен."
   path="/cources" ogImage="img/edu-hero-d.webp" theme="#0A1020"
-  styles={['common.css', 'learn.css']} scripts={['common.js', 'learn.js']} jsonld={jsonld}>
+  styles={['common.css', 'learn.css', 'mobile.css']} scripts={['common.js', 'learn.js']} jsonld={jsonld}>
   <Fragment slot="head">
     <link rel="preload" as="image" href={u('img/edu-hero-m.webp')} media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href={u('img/edu-hero-d.webp')} media="(min-width:1000px)" fetchpriority="high">
@@ -239,7 +239,7 @@ const jsonld = {
   {T.map((t, i) => (
     <div class="tpanel" id={`tp-${i}`} role="tabpanel" aria-labelledby={`t-${i}`} tabindex="0" hidden={i > 0}>
       <div class="tphoto" data-pending-link={t.img ? undefined : 'P-13'}>
-        {t.img ? <img src={u(t.img)} srcset={t.imgSmall ? `${u(t.imgSmall)} 480w, ${u(t.img)} 960w` : undefined} sizes="(min-width:1000px) 32vw, 120px" alt={`Портрет: ${t.name}`} width={t.imgWidth || 720} height={t.imgHeight || 960} loading="lazy"> : <span class="tmono" aria-hidden="true">{initials(t.name)}</span>}
+        {t.img ? <img src={u(t.img)} srcset={t.imgSmall ? `${u(t.imgSmall)} 480w, ${u(t.img)} 960w` : undefined} sizes="(min-width:1000px) 32vw, (min-width:360px) 320px, calc(100vw - 40px)" alt={`Портрет: ${t.name}`} width={t.imgWidth || 720} height={t.imgHeight || 960} loading="lazy"> : <span class="tmono" aria-hidden="true">{initials(t.name)}</span>}
       </div>
       <div class="stack tinfo">
         <span class="mono">{t.role}</span>
