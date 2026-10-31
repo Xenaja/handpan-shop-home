@@ -44,7 +44,7 @@
   .s3-heading{--s3-title-size:clamp(44px,12vw,60px)}
   .s3 .s3-info-trigger{font-size:calc(var(--s3-title-size) * .32);gap:6px}
   .s3 .body{font-size:16px;line-height:1.6}
-  .s3-photo{min-height:0;aspect-ratio:4/5}
+  .s3-photo{min-width:0;width:100%;min-height:0;aspect-ratio:4/5}
   .s3-chip{left:12px;top:12px;max-width:calc(100% - 24px);font-size:12px;padding:8px 12px}
   .s3-info-panel{position:fixed;top:auto;bottom:calc(16px + env(safe-area-inset-bottom));left:var(--gut);right:var(--gut);width:auto;max-height:min(72svh,560px);padding:20px;z-index:30}
   .s3-info-close{width:44px;height:44px}
