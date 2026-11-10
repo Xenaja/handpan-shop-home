@@ -21,9 +21,9 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1110m">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1110o">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1110m"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=1110m"><link rel="stylesheet" href="/handpan-shop-home/astro/inst.css?v=1110m"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1110m">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1110o"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=1110o"><link rel="stylesheet" href="/handpan-shop-home/astro/inst.css?v=1110o"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1110o">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -56,7 +56,14 @@
 
 <header class="e1 i1 on-dark" id="top">
   <div class="i1-glow" aria-hidden="true"></div>
-  <img class="i1-hang" src="/handpan-shop-home/astro/img/handpan-bronze-cutout.webp" alt="Бронзовый хэндпан U-GENE: вид сверху" width="880" height="880" fetchpriority="high">
+  <!-- ханги по очереди укатываются и выкатываются (inst.js); без JS и при «меньше движения» виден первый -->
+  <div class="i1-stage" data-roll aria-hidden="true">
+    <div class="i1-float">
+      <img class="i1-hang is-on" src="/handpan-shop-home/astro/img/handpan-bronze-cutout.webp" alt="" width="880" height="880" fetchpriority="high">
+      <img class="i1-hang" src="/handpan-shop-home/astro/img/handpan-iridescent-cutout.webp" alt="" width="880" height="880" loading="lazy">
+      <img class="i1-hang" src="/handpan-shop-home/astro/img/handpan-fsharp-cutout.webp" alt="" width="880" height="880" loading="lazy">
+    </div>
+  </div>
   <div class="grain" aria-hidden="true"></div>
 
   <div class="hdr">
@@ -74,11 +81,15 @@
     <div class="stack e1-top">
       <h1 class="h-hero e1-h1">
         <span>Хэндпаны</span>
-        <span class="cap cap--hero e1-cap">ручной работы</span>
+        <span class="i1-l2">ручной работы</span>
       </h1>
       <div class="stack e1-text">
-        <p class="e1-lead">Собственное производство с 2019 года. Каждый инструмент настроен вручную и проверен мастерами, музыкантами и основателем.</p>
-        <p class="e1-copy">Подберём строй, сталь и количество нот под вашу задачу — для дома, учёбы, практик или сцены.</p>
+        <p class="i1-lead">Собственное производство U-GENE с 2019 года</p>
+        <ul class="i1-points">
+          <li>Каждый инструмент настроен вручную</li>
+          <li>Проверен мастерами, музыкантами и основателем</li>
+          <li>Строй, сталь и ноты — под вашу задачу</li>
+        </ul>
         <div class="btns e1-btns">
           <a class="btn btn--52 btn--blue i1-cat" href="/handpan-shop-home/astro/catalog">Смотреть каталог</a>
           <button type="button" class="btn btn--52 btn--line-d" data-open="visit">Записаться на тест инструментов</button>
@@ -303,6 +314,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1110m"></script><script src="/handpan-shop-home/astro/inst.js?v=1110m"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1110o"></script><script src="/handpan-shop-home/astro/inst.js?v=1110o"></script>
 </body>
 </html>
