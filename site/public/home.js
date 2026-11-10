@@ -50,14 +50,31 @@
   /* ---------- 02: зоны над фото, координаты в viewBox 400×400 ----------
      Звук — прежний синтезированный пример, не запись строя инструмента на фото.
      Ноты на фото не подписываем до получения достоверной карты строя. */
-  // поля под фото «Иридисцентный хэндпан» (handpan-iridescent-cutout.webp), координаты в viewBox 400
-  const FIELDS = [
-    [200, 180, 33, 37, 0, 0],
-    [121, 305, 34, 27, 20, 1], [264, 312, 34, 27, -20, 2],
-    [54, 214, 22, 30, 5, 3], [342, 220, 22, 30, -5, 4],
-    [74, 109, 25, 21, -40, 5], [325, 114, 25, 21, 40, 6],
-    [153, 50, 24, 17, -8, 7], [247, 51, 24, 17, 8, 8]
-  ]
+  // Варианты ханга на экране 2: ?hang=bronze — бронзовый (8 полей), по умолчанию — иридисцентный (9 полей).
+  // Поля в координатах viewBox 400: [x, y, rx, ry, наклон, номер ноты]
+  const HANGS = {
+    iridescent: { file: 'handpan-iridescent-cutout.webp', alt: 'Иридисцентный хэндпан: вид сверху на тональные поля', fields: [
+      [200, 180, 33, 37, 0, 0],
+      [121, 305, 34, 27, 20, 1], [264, 312, 34, 27, -20, 2],
+      [54, 214, 22, 30, 5, 3], [342, 220, 22, 30, -5, 4],
+      [74, 109, 25, 21, -40, 5], [325, 114, 25, 21, 40, 6],
+      [153, 50, 24, 17, -8, 7], [247, 51, 24, 17, 8, 8]
+    ] },
+    bronze: { file: 'handpan-bronze-cutout.webp', alt: 'Бронзовый хэндпан: вид сверху на тональные поля', fields: [
+      [201, 170, 40, 42, 0, 0],
+      [123, 307, 32, 24, 15, 1], [273, 309, 32, 24, -20, 2],
+      [55, 195, 18, 28, 5, 3], [345, 189, 18, 28, -8, 4],
+      [94, 85, 25, 19, -25, 5], [299, 82, 25, 19, 20, 6],
+      [193, 37, 26, 16, 0, 7]
+    ] }
+  };
+  const hangKey = new URLSearchParams(location.search).get('hang') === 'bronze' ? 'bronze' : 'iridescent';
+  const FIELDS = HANGS[hangKey].fields;
+  $$('.hang-photo').forEach(img => {
+    if (img.src.includes(HANGS[hangKey].file)) return;
+    img.src = img.src.replace(/[^/]+\.webp$/, HANGS[hangKey].file);
+    img.alt = HANGS[hangKey].alt;
+  });
   const NS = 'http://www.w3.org/2000/svg';
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
   $$('svg[data-hang]').forEach(svg => {
@@ -82,7 +99,7 @@
     /* Подсказка (правка 10.11): пока не трогали, поля по очереди загораются и «нажимаются». */
     const hits = $$('.hang-hit', svg), tap = svgEl('circle', { class: 'hang-tap', r: 9, cx: FIELDS[0][0], cy: FIELDS[0][1] });
     svg.append(tap);
-    const ORDER = [0, 3, 1, 2, 4, 5, 7, 8, 6];
+    const ORDER = [0, 3, 1, 2, 4, 5, 7, 8, 6].filter(i => i < FIELDS.length);
     let k = 0, demo = null;
     const step = () => {
       hits.forEach(h => h.classList.remove('is-hint'));
