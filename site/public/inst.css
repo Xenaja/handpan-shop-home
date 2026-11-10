@@ -70,3 +70,8 @@
 /* воздух между пунктами и кнопками; цифры одинаковой ширины, чтобы при досчёте не прыгала строка (правка 10.11) */
 .i1 .e1-btns{margin-top:clamp(10px,2.4vh,26px)}
 .i1-facts b{font-variant-numeric:tabular-nums}
+
+/* 02: кнопки под задачами длиннее и с большим промежутком (правка 10.11) */
+.i2-btns{gap:clamp(16px,2vw,28px)}
+.i2-btns .btn{min-width:min(100%,300px);padding:0 40px}
+@media (max-width:599.98px){.i2-btns .btn{width:100%}}
