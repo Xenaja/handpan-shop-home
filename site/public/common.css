@@ -409,3 +409,13 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 .on-dark .city a{color:var(--milk)}
 .city a:hover{background:rgba(232,238,244,.14)}
 .menu a.chip{display:inline-flex;align-items:center;text-decoration:none;color:inherit}
+
+/* контакты: воздух между подписью и кнопкой записи; карта на тёмном фоне — тёмная карточка (правка 10.11) */
+.branch-booking{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:14px}
+.branch-booking .branch-book{margin-top:0}
+.on-dark .branch-map-frame{background:rgba(232,238,244,.06);border-color:rgba(232,238,244,.18)}
+.on-dark .branch-map-pin{color:var(--blue-l)}
+.on-dark .branch-map-label{color:var(--milk)}
+.on-dark .branch-map-show{color:var(--milk);border-color:rgba(232,238,244,.4)}
+.on-dark .branch-map-show:hover{background:var(--milk);color:var(--ink);border-color:var(--milk)}
+.on-dark .branch-address span{color:var(--blue-l)}
