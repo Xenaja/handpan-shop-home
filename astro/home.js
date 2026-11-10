@@ -63,7 +63,7 @@
     FIELDS.forEach(([x, y, rx, ry, angle, i]) => {
       const label = i === 0 ? 'Центральный купол: послушать звук' : `Тональное поле ${i}: послушать звук`;
       const g = svgEl('g', { class: 'hang-hit', tabindex: '0', role: 'button', 'aria-label': label });
-      const shape = svgEl('ellipse', { cx:x, cy:y, rx, ry, transform:`rotate(${angle} ${x} ${y})` });
+      const shape = svgEl('ellipse', { cx:x, cy:y, rx: rx * 1.12, ry: ry * 1.12, transform:`rotate(${angle} ${x} ${y})` });
       const title = svgEl('title', {}); title.textContent = label;
       g.append(title, shape);
       let timer;
@@ -71,8 +71,6 @@
         if (e.type === 'keydown' && (e.repeat || !['Enter', ' '].includes(e.key))) return;
         e.preventDefault();
         tone(FREQS[i], .25, i === 0 ? 6 : 4);
-        const hint = svg.parentElement.querySelector('[data-hang-hint]');
-        if (hint) hint.classList.add('is-gone');
         g.classList.add('is-active');
         clearTimeout(timer); timer = setTimeout(() => g.classList.remove('is-active'), 450);
       };
@@ -80,6 +78,25 @@
       g.addEventListener('keydown', play);
       svg.append(g);
     });
+    /* Подсказка (правка 10.11): пока не трогали, поля по очереди загораются и «нажимаются». */
+    const hits = $$('.hang-hit', svg), tap = svgEl('circle', { class: 'hang-tap', r: 9, cx: FIELDS[0][0], cy: FIELDS[0][1] });
+    svg.append(tap);
+    const ORDER = [0, 3, 1, 2, 4, 5, 7, 8, 6];
+    let k = 0, demo = null;
+    const step = () => {
+      hits.forEach(h => h.classList.remove('is-hint'));
+      const i = ORDER[k++ % ORDER.length], [x, y] = FIELDS[i];
+      hits[i].classList.add('is-hint');
+      tap.setAttribute('cx', x); tap.setAttribute('cy', y);
+      tap.classList.remove('is-tap'); void tap.getBBox(); tap.classList.add('is-tap');
+    };
+    const start = () => { if (!demo && !svg.dataset.touched) { step(); demo = setInterval(step, 1100); } };
+    const stop = () => { clearInterval(demo); demo = null; hits.forEach(h => h.classList.remove('is-hint')); tap.classList.remove('is-tap'); };
+    const done = () => { svg.dataset.touched = '1'; stop(); svg.classList.add('is-touched'); };
+    svg.addEventListener('pointerdown', done); svg.addEventListener('keydown', done);
+    svg.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') stop(); });
+    svg.addEventListener('pointerleave', () => { if (!svg.dataset.touched) start(); });
+    if (!reduce) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: .4 }).observe(svg);
   });
 
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
