@@ -1,46 +1,63 @@
 ---
 import D from '../data/site.json';
-const branches = D.cities.filter(c => c.contacts);
 ---
-{branches.map(c => {
-  const k = c.contacts!;
-  const messages = [
-    { label: 'Telegram', href: k.telegram },
-    { label: 'MAX', href: k.max },
-    { label: 'WhatsApp', href: k.whatsapp }
-  ];
-  const socials = [
-    { label: 'ВКонтакте', href: c.socials?.vk },
-    { label: 'Telegram · канал', href: c.socials?.telegram },
-    { label: 'MAX · канал', href: c.socials?.max },
-    { label: 'Instagram', href: c.socials?.instagram }
-  ];
-  return (
-    <section class="branch-contacts" id={`contacts-${c.key}`} aria-labelledby={`branch-${c.key}-title`}>
-      <div class="branch-main">
-        <h3 class="branch-title" id={`branch-${c.key}-title`}>Студия в {c.key === 'spb' ? 'Санкт-Петербурге' : c.name}</h3>
-        <p class="branch-address">{c.address}</p>
-        <a class="branch-phone" href={`tel:${k.phone}`}>{k.phoneLabel}</a>
-        <div class="branch-direct">
-          <a href={k.website} target="_blank" rel="noopener">{new URL(k.website).hostname}</a>
-          <a href={`mailto:${k.email}`}>{k.email}</a>
-        </div>
-        <a class="btn btn--blue branch-book" href={c.bookingUrl} target="_blank" rel="noopener" data-booking-city={c.key}>Записаться онлайн <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="branch-channels">
-        <div class="branch-group">
-          <h4 class="mono">Написать нам</h4>
-          <div class="branch-links">
-            {messages.filter(l => l.href).map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+<div class="branch-contacts" data-contact-switch>
+  <div class="branch-tabs" role="tablist" aria-label="Город студии" data-contact-tabs hidden>
+    {D.cities.map((c, i) => <button type="button" role="tab" id={`contact-tab-${c.key}`} aria-controls={`contacts-${c.key}`} aria-selected={String(i === 0)} tabindex={i === 0 ? 0 : -1} data-contact-city={c.key}>{c.name}</button>)}
+  </div>
+  {D.cities.map(c => {
+    const k = { ...D.contacts, ...c.contacts };
+    const messages = [
+      { label: 'Telegram', href: k.telegram },
+      { label: 'MAX', href: k.max },
+      { label: 'WhatsApp', href: k.whatsapp }
+    ].filter(l => l.href);
+    const socials = [
+      { label: 'ВКонтакте', href: c.socials?.vk || k.vk },
+      { label: 'Telegram · канал', href: c.socials?.telegram },
+      { label: 'MAX · канал', href: c.socials?.max },
+      { label: 'Instagram', href: c.socials?.instagram },
+      { label: 'YouTube', href: k.youtube }
+    ].filter(l => l.href);
+    const mapQuery = encodeURIComponent(`${c.name}, ${c.address}`);
+    return (
+      <section class="branch-panel" id={`contacts-${c.key}`} aria-labelledby={`branch-${c.key}-title`} data-contact-panel={c.key}>
+        <div class="branch-main">
+          <h3 class="branch-title" id={`branch-${c.key}-title`}>Студия в {c.key === 'spb' ? 'Санкт-Петербурге' : 'Москве'}</h3>
+          <p class="branch-address">{c.address}{c.metro && <span>{c.metro}</span>}</p>
+          {k.phone && <a class="branch-phone" href={`tel:${k.phone}`}>{k.phoneLabel || k.phone}</a>}
+          {(k.website || k.email) && <div class="branch-direct">
+            {k.website && <a href={k.website} target="_blank" rel="noopener">{new URL(k.website).hostname}</a>}
+            {k.email && <a href={`mailto:${k.email}`}>{k.email}</a>}
+          </div>}
+          <div class="branch-booking">
+            <p class="branch-booking-note">{c.bookingUrl ? 'Выберите занятие и удобное время в расписании' : 'Пробное занятие — 45 минут. Инструмент предоставляем'}</p>
+            {c.bookingUrl
+              ? <a class="btn btn--blue branch-book" href={c.bookingUrl} target="_blank" rel="noopener" data-booking-city={c.key}>Записаться онлайн <span aria-hidden="true">↗</span></a>
+              : <button type="button" class="btn btn--blue branch-book" data-open="trial">Записаться на пробное</button>}
           </div>
+          {(messages.length > 0 || socials.length > 0) && <div class="branch-channels">
+            {messages.length > 0 && <div class="branch-group">
+              <h4 class="mono">Написать нам</h4>
+              <div class="branch-links">{messages.map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</div>
+            </div>}
+            {socials.length > 0 && <div class="branch-group">
+              <h4 class="mono">Соцсети студии</h4>
+              <div class="branch-links">{socials.map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</div>
+            </div>}
+          </div>}
         </div>
-        <div class="branch-group">
-          <h4 class="mono">Соцсети студии</h4>
-          <div class="branch-links">
-            {socials.filter(l => l.href).map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+        <div class="branch-map">
+          <div class="branch-map-frame" data-contact-map={`https://yandex.ru/map-widget/v1/?text=${mapQuery}&z=16`} data-map-title={`Карта студии: ${c.name}, ${c.address}`}>
+            <div class="branch-map-cover" data-map-cover>
+              <svg class="branch-map-pin" viewBox="0 0 32 40" aria-hidden="true"><path d="M16 38S2 24 2 15a14 14 0 1 1 28 0c0 9-14 23-14 23Z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="15" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span class="branch-map-label">{c.name}</span>
+              <button type="button" class="btn btn--48 btn--line branch-map-show" data-map-show>Показать карту</button>
+            </div>
           </div>
+          <a class="branch-map-link" href={`https://yandex.ru/maps/?text=${mapQuery}`} target="_blank" rel="noopener">Открыть в Яндекс Картах <span aria-hidden="true">↗</span></a>
         </div>
-      </div>
-    </section>
-  );
-})}
+      </section>
+    );
+  })}
+</div>

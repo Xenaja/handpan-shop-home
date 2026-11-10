@@ -345,7 +345,7 @@
         animation.finished.then(() => active.delete(el), () => active.delete(el));
       });
     }, { threshold: .08 });
-    const hint = $('[data-sculpture-trigger]');
+    const hint = $('[data-sculpture-trigger],[data-pulse-hint]');
     const pulse = new IntersectionObserver(entries => {
       entries.forEach(entry => entry.target.toggleAttribute('data-pulse-visible', entry.isIntersecting));
     });

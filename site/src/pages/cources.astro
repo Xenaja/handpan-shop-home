@@ -299,12 +299,6 @@ const jsonld = {
         <span>за 45 минут</span>
       </h2>
     </div>
-    <div class="stack e11-r">
-      <button type="button" class="btn btn--blue e11-btn" data-open="trial">Записаться на пробное</button>
-      {D.cities.map(c => (
-        <div class="addr"><span class="mono">{c.name}</span>{c.address ? <span>{c.address}{c.metro && ` · ${c.metro}`}</span> : <span data-pending="P-02">Адрес – уточнить</span>}</div>
-      ))}
-    </div>
   </div>
   <BranchContacts />
   <footer class="efoot">

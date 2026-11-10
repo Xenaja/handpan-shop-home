@@ -17,16 +17,7 @@ const fmtN = (n: number) => n >= 1000 ? n.toLocaleString('ru-RU') : String(n);
 const pad = (n: number) => String(n).padStart(2, '0');
 // hidden — преподаватель временно не показывается (Андрей Лето — добавим позже)
 const TEACH = D.teachers.filter(t => !t.hidden);
-const K = D.contacts;
-const contacts = [
-  { key: 'phone', label: K.phone || '+7 (___) ___-__-__', href: K.phone ? 'tel:+' + String(K.phone).replace(/\D/g, '') : null },
-  { key: 'telegram', label: 'Telegram', href: K.telegram },
-  { key: 'whatsapp', label: 'WhatsApp', href: K.whatsapp },
-  { key: 'vk', label: 'ВКонтакте', href: K.vk },
-  { key: 'youtube', label: 'YouTube', href: K.youtube }
-].filter(c => c.href);
 const msk = D.cities[0];
-const mapQ = encodeURIComponent(`Москва, ${msk.address}`);
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -67,8 +58,9 @@ const jsonld = {
     <nav class="pill glass-d nav hdr-d" aria-label="Основное меню">
       <a class="lnk" href="#making">Инструменты</a><a class="lnk" href={u('cources')}>Обучение</a><a class="lnk" href="#contacts">Контакты</a>
     </nav>
+    <!-- Петербург — отдельный сайт филиала (правка 08.11) -->
     <div class="pill glass-d city s1-city hdr-d" role="group" aria-label="Город">
-      <button type="button" data-city="msk" aria-pressed="true">Москва</button><button type="button" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+      <button type="button" data-city="msk" aria-pressed="true">Москва</button><a href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург</a>
     </div>
     <div class="hdr-n">
       <a class="pill glass-d city-short" href="#contacts">Москва · СПб</a>
@@ -81,17 +73,17 @@ const jsonld = {
       <!-- один H1: слоган + подзаголовок с ключевыми словами (SEO-MIGRATION.md, раздел 3); подзаголовок — первая фраза текста со 2-й колонки -->
       <h1 class="s1-h1">
         <span class="h-hero s1-slogan"><span>Найди</span> <span class="cap cap--hero s1-cap">Свой звук</span></span>
-        <span class="s1-sub">Собственное производство хангов, школа и сообщество в Москве и Санкт-Петербурге.</span>
+        <span class="s1-sub">Собственное производство хангов, школа и сообщество.</span>
       </h1>
       <div class="stack s1-text">
-        <p class="s1-lead">От первого касания до своей музыки – вместе с вами</p>
+        <p class="s1-lead">От первого касания до своей музыки — мы проходим этот путь вместе с вами.</p>
         <div class="btns s1-btns">
-          <button type="button" class="btn btn--52 btn--blue s1-try" data-open="trial">Попробовать · 900 ₽</button>
-          <a class="btn btn--52 btn--line-d" href="#making">Выбрать ханг</a>
+          <button type="button" class="btn btn--52 btn--line-d s1-try" data-open="trial">Попробовать занятие</button>
+          <button type="button" class="btn btn--52 btn--blue" data-open="buy">Выбрать ханг</button>
         </div>
         <a class="s1-help" href={u('test')} data-quiz-open>Не знаете, с чего начать? Поможем определиться →</a>
         <button type="button" class="s1-play-n" data-play>
-          <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span>
+          <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="U-GENE — послушай наши ханги" data-on="Играет U-GENE">U-GENE — послушай наши ханги</span>
         </button>
       </div>
     </div>
@@ -99,13 +91,12 @@ const jsonld = {
       <div class="s1-player">
         <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
         <div class="stack s1-pmeta">
-          <span class="s1-plabel"><span data-play-label data-off="Послушать ханг" data-on="Играет D Kurd">Послушать ханг</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
+          <span class="s1-plabel"><span data-play-label data-off="U-GENE — послушай наши ханги" data-on="Играет U-GENE">U-GENE — послушай наши ханги</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
           <div class="wave" data-wave="40" aria-hidden="true"></div>
         </div>
       </div>
+      <!-- миниатюры убраны: не сочетались (правка 05.11) -->
       <a class="s1-thumbs" href="#making" aria-label="Инструменты: больше 20 в студии">
-        <img src={u('img/thumb-pedestal.webp')} alt="" width="120" height="120">
-        <img src={u('img/thumb-hang.webp')} alt="" width="120" height="120">
         <span class="glass-d">20+<small>инструментов<br>в студии →</small></span>
       </a>
     </div>
@@ -121,7 +112,7 @@ const jsonld = {
     <a href="#making">Инструменты</a><a href={u('cources')}>Обучение</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
-    <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><button type="button" class="chip" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
+    <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург ↗</a>
   </div>
 </nav>
 <button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
@@ -136,24 +127,28 @@ const jsonld = {
       <div class="mono">A · 2/10</div>
       <div class="s2-title">
         <h2 id="h-s2" class="h-display">Ханг</h2>
-        <button type="button" class="ast" data-toggle="ast" aria-label="Что значит слово «ханг»">*</button>
+        <!-- звёздочка заменена пульсацией (правка 05.11) -->
+        <button type="button" class="ast" data-toggle="ast" data-pulse-hint aria-label="Что значит слово «ханг»"><span class="ast-pulse" aria-hidden="true"></span></button>
       </div>
       <div class="s2-tip" data-panel="ast" hidden>Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
       <div class="s2-sub ind">перкуссия нового времени</div>
-      <p class="body ind">Стальной инструмент, на котором вы одновременно задаёте ритм и ведёте мелодию. Поэтому его называют мелодической перкуссией</p>
+      <p class="body ind">Мелодический идиофон из стали – ханг, он же хендпан. Этот инструмент уникален: играя на нем, вы получаете одновременно ритмический акцент и мелодическую ноту. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
+      <p class="body ind">Это инструмент, который хочется не просто слушать – к нему хочется прикоснуться.</p>
       <div class="btns ind">
-        <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать 20+ инструментов</button>
+        <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать 40+ инструментов в студии</button>
         <button type="button" class="btn btn--line-d" data-toggle="hist">История ханга <span data-sign>+</span></button>
       </div>
       <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
     </div>
     <div class="s2-scheme">
       <div class="hang">
+        <span class="hang-hint" aria-hidden="true" data-hang-hint></span>
         <img class="hang-photo" src={u('img/handpan-fsharp-cutout.png')} alt="Хэндпан Фа-диез гармоник: вид на тональные поля" width="1254" height="1254" loading="lazy">
         <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>
       </div>
-      <div class="mono">Коснитесь поля — услышите звук</div>
+      <div class="mono">Коснитесь поля — услышьте звук</div>
       <p class="hang-sound-note" id="hang-sound-note">Синтезированный пример звучания</p>
+      <a class="btn btn--line-d s2-sim" href="#" data-pending="P-14">Симулятор ханга 👆</a>
     </div>
   </div>
 </section>
@@ -162,26 +157,17 @@ const jsonld = {
 <section class="sec s3 bg-sand" aria-labelledby="h-s3">
   <div class="stack s3-text">
     <span class="mono s3-count">B♭ · 3/10</span>
-    <div class="s3-heading">
-      <div class="s3-info" data-sculpture>
-        <button type="button" class="mono s3-info-trigger" aria-expanded="false" aria-controls="sculpture-note" data-sculpture-trigger>
-          <span>Звуковая</span><span>скульптура</span><span class="s3-info-dot" aria-hidden="true"></span>
-        </button>
-        <div class="s3-info-panel" id="sculpture-note" role="region" aria-label="Почему ханг называют звуковой скульптурой" tabindex="0" hidden>
-          <button type="button" class="s3-info-close" aria-label="Закрыть пояснение" data-sculpture-close>×</button>
-          <p>Сами создатели называют ханг «звуковой скульптурой», рассматривая его как художественное произведение, с которым вступаешь в диалог. В руководстве PANArt писали: не ставьте целью мелодию или ритм. Следуйте за звуком и ощущением прикосновения.</p>
-          <p>С тех пор, конечно, ханг вышел далеко за пределы этого интуитивного подхода: его используют в академической музыке, неоклассике, электронике и кино. Исполнители мирового уровня — от сольных перкуссионистов до оркестровых проектов — играют на нём на больших сценах и в студиях. Это полноправный голос современной музыки.</p>
-          <p>И всё же суть осталась прежней: вы можете играть легко. И вот почему:</p>
-        </div>
-      </div>
-      <h2 id="h-s3" class="h2 stack"><span>Почему</span><span>так</span><span>легко?</span></h2>
-    </div>
-    <p class="body">Внутри каждого ханга ноты выстроены в ладовую систему — гармоническая архитектура, где все звуки связаны. Вы не можете сыграть «неправильно» — инструмент сам ведёт к гармонии. Можно интуитивно выводить руки по полям, и это уже будет музыкальная фраза.</p>
-    <p class="body body--2">За несколько занятий, без опыта, вы начинаете импровизировать, звучать гармонично и чувствовать себя творцом. Именно это мы называем «найти свой звук». Состояние, когда музыка рождается естественно, а вы просто наслаждаетесь процессом.</p>
-    <p class="s3-support">Мы помогаем найти ваш звук. И сопровождаем на каждом этапе музыкального развития.</p>
+    <!-- заголовок и текст целиком по правке 08.11; всплывающее пояснение «Звуковая скульптура» убрано — текст теперь в теле экрана -->
+    <h2 id="h-s3" class="h2 s3-h"><span class="s3-kick">Звуковая скульптура или</span> <span class="s3-q">«Почему так легко?»</span></h2>
+    <p class="body">Сами создатели называют ханг «звуковой скульптурой», рассматривая его как художественное произведение, с которым вступаешь в диалог.</p>
+    <blockquote class="s3-quote">В руководстве PANArt писали: не ставьте целью мелодию или ритм. Следуйте за звуком и ощущением прикосновения.</blockquote>
+    <p class="body body--2">С тех пор, ханг вышел далеко за пределы этого интуитивного подхода: его используют в академической музыке, неоклассике, электронике и кино. Исполнители мирового уровня — от сольных перкуссионистов до оркестровых проектов — играют на нём на больших сценах и в студиях. Это полноправный голос современной музыки.</p>
+    <p class="body">И всё же суть осталась прежней: вы можете играть легко. И вот почему: внутри каждого ханга ноты выстроены в ладовую систему — гармоническая архитектура, где все звуки связаны. Вы не можете сыграть «неправильно» — инструмент сам ведёт к гармонии. Можно интуитивно выводить руки по полям, и это уже будет музыкальная фраза.</p>
     <div class="btns">
-      <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на обучение</button>
+      <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Попробовать урок</button>
     </div>
+    <p class="body body--2">За несколько занятий вы начнете импровизировать, звучать гармонично и чувствовать себя творцом.</p>
+    <p class="s3-support">Мы поможем найти ваш звук. И сопроводим на каждом этапе вашего музыкального развития.</p>
   </div>
   <div class="s3-photo">
     <img src={u('img/easy-m.webp')} alt="Руки на ханге" width="733" height="1100" loading="lazy">
@@ -242,6 +228,7 @@ const jsonld = {
       <article class="aud" id={`aud-${i}`} data-snd={a.snd}>
         <h3 class="aud-name">{a.name}</h3>
         <p class="aud-text">{a.text}</p>
+        {a.fit && <p class="aud-fit"><span>Подходит:</span> {a.fit}</p>}
         <div class="aud-bottom">
           {a.rec
             ? <p class="aud-rec"><span>Рекомендуем</span><br>{a.rec}</p>
@@ -250,6 +237,11 @@ const jsonld = {
         </div>
       </article>
     ))}
+  </div>
+  <!-- две кнопки по правке 08.11: каталог (страницы пока нет — P-12) и запись на тест инструментов -->
+  <div class="btns s5-btns">
+    <a class="btn btn--line" href="#" data-pending="P-12">Смотреть каталог</a>
+    <button type="button" class="btn btn--blue" data-open="visit">Записаться на тест инструментов</button>
   </div>
 </section>
 
@@ -321,9 +313,12 @@ const jsonld = {
       <span class="s8-sub">Ханг нельзя сделать на конвейере</span>
       <h2 id="h-s8" class="h-display stack"><span>Десятки</span><span>тысяч</span><span class="s8-hl">ударов</span></h2>
     </div>
+    <!-- текст по правке 09.11: «200 касаний» неверно (мастер: тысячи ударов на ноту) -->
     <div class="stack s8-copy">
-      <p class="body">Его создают руками, снова и снова возвращаясь к каждому звуку. На настройку одной ноты уходит от 200 до нескольких тысяч касаний</p>
-      <div class="s8-plate">Вы покупаете время мастеров, вложенное в каждый удар</div>
+      <blockquote class="s8-quote">Мастера говорят: «чтобы понять инструмент, нужно изготовить 150 хангов — только тогда приходит настоящее чувство металла»</blockquote>
+      <p class="body">На каждый уходит десятки тысяч ударов молотка. Настройка одной ноты может занять несколько тысяч касаний. И это не «работа» — это разговор с металлом, который длится неделями.</p>
+      <p class="s8-then">Но именно поэтому… <strong>ханг живёт десятилетиями</strong></p>
+      <p class="body">При бережном обращении качественный инструмент сохраняет строй годами. А регулярная подстройка раз в несколько лет — это уход, а не ремонт.</p>
       <div class="btns">
         <a class="btn btn--milk s8-btn" href="#" data-pending="P-12">Смотреть инструменты</a>
         <button type="button" class="btn btn--line-d s8-btn" data-open="help">Помочь выбрать</button>
@@ -340,8 +335,7 @@ const jsonld = {
       <h2 id="h-s9" class="h2 stack"><span>Ханг</span><span>объединяет</span></h2>
       <p class="s9-intro">Круг, где ты становишься частью культуры.</p>
       <p class="body">Хэндпан-сообщества — одни из самых гостеприимных в мире музыки.</p>
-      <h3 class="accent">Почему?</h3>
-      <p class="body">Потому что здесь ценится не статус, опыт или уровень мастерства, а сам интерес к звуку. На одном джеме могут встретиться виртуоз, человек с первым хангом и тот, кто пришёл просто послушать.</p>
+      <p class="body">Здесь ценится не статус, опыт или уровень мастерства, а сам интерес к звуку. На одном джеме могут встретиться виртуоз, человек с первым хангом и тот, кто пришёл просто послушать.</p>
       <p class="body">Это культура, в которой знания передают друг другу, музыкой делятся, а знакомства легко превращаются в дружбу и совместные проекты.</p>
       <p class="body">Джемы, концерты, выезды, фестивали, встречи с мастерами и музыкантами. Доступ к самым актуальным событиям и знаниям. Люди, с которыми хочется продолжать играть уже за пределами музыки.</p>
       <span class="accent ind s9-acc">Ты приходишь за звуком. А находишь своё окружение</span>
@@ -367,40 +361,6 @@ const jsonld = {
       <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue">свой</span> <span>звук</span></span>
       <span class="s10-l2">за 45 минут</span>
     </h2>
-  </div>
-  <div class="s10-grid">
-    <div class="glass-l s10-form">
-      <p class="s10-lead">Пробное занятие – 900 ₽. Инструмент даём, опыт не нужен</p>
-      <div data-final><LeadForm id="f" interest="trial" /></div>
-      <div class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</div>
-    </div>
-    <div class="stack s10-side">
-      <div class="s10-cities">
-        {D.cities.map(c => (
-          <div class="cityc">
-            <div class="cityc-n">{c.name}</div>
-            {c.address
-              ? <div class="cityc-a">{c.address}{c.metro && <Fragment><br>{c.metro}</Fragment>}</div>
-              : <div class="cityc-a" data-pending="P-02">Адрес – уточнить</div>}
-          </div>
-        ))}
-      </div>
-      <!-- карта: виджет Яндекса грузится только по клику — он тяжёлый (SEO-MIGRATION.md, раздел 9) -->
-      <div class="s10-map" data-map={`https://yandex.ru/map-widget/v1/?text=${mapQ}&z=16`}>
-        <span class="contour contour--inner map-line" aria-hidden="true"></span>
-        <div class="map-in">
-          <span class="mono">Москва · студия</span>
-          <span class="map-addr">{msk.address}{msk.metro && `, ${msk.metro}`}</span>
-          <div class="btns">
-            <button type="button" class="btn btn--48 btn--ink" data-map-show>Показать карту</button>
-            <a class="btn btn--48 btn--line" href={`https://yandex.ru/maps/?text=${mapQ}`} target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
-          </div>
-        </div>
-      </div>
-      {contacts.length > 0 && <div class="s10-contacts">
-        {contacts.map(c => <a href={c.href} target={c.key === 'phone' ? undefined : '_blank'} rel={c.key === 'phone' ? undefined : 'noopener'}>{c.label}</a>)}
-      </div>}
-    </div>
   </div>
   <BranchContacts />
   <footer class="foot">

@@ -71,6 +71,8 @@
         if (e.type === 'keydown' && (e.repeat || !['Enter', ' '].includes(e.key))) return;
         e.preventDefault();
         tone(FREQS[i], .25, i === 0 ? 6 : 4);
+        const hint = svg.parentElement.querySelector('[data-hang-hint]');
+        if (hint) hint.classList.add('is-gone');
         g.classList.add('is-active');
         clearTimeout(timer); timer = setTimeout(() => g.classList.remove('is-active'), 450);
       };
@@ -193,12 +195,6 @@
   });
   setT(0);
 
-  /* ---------- 10: карта по клику ---------- */
-  $$('[data-map-show]').forEach(b => b.addEventListener('click', () => {
-    const box = b.closest('[data-map]');
-    box.innerHTML = `<iframe title="Карта: ${box.querySelector('.map-addr').textContent}" src="${box.dataset.map}" allowfullscreen></iframe>`;
-  }));
-
   /* ---------- тест «Поможем определиться»: окно, quiz.js — по первому открытию ---------- */
   const qm = $('[data-quiz-modal]');
   let qmFocus = null;
@@ -228,9 +224,6 @@
   addEventListener('keydown', e => { if (e.key === 'Escape' && !qm.hidden) qmClose(); });
 
   /* ---------- формы ---------- */
-  const fin = $('[data-final] form'), finThanks = $('.s10-form [data-thanks]');
-  HS.bindForm(fin, () => { fin.hidden = true; finThanks.hidden = false; finThanks.focus(); });
-
   // модалка: кнопка на странице заранее выбирает «Что интересно»
   const TITLES = {
     visit: 'Визит в студию',
