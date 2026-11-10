@@ -555,3 +555,7 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .hang-photo{transition:opacity .26s ease}
 .hang-photo.is-swapping{opacity:0}
 @media(max-width:420px){.hang-switch-l{display:none}}
+
+/* 1: основная кнопка первого экрана — цвет из макета Figma (правка 10.11) */
+.s1-btns .btn--blue{background:#5F1822;border-color:#5F1822;color:#fff}
+.s1-btns .btn--blue:hover{background:#74202D;border-color:#74202D}
