@@ -66,3 +66,7 @@
   .i1 .e1-h1{font-size:min(clamp(52px,calc((5.5 * var(--cw) + 120px) / 7.15),126px),10.5vh)}
   .i1 .e1-body{padding-top:clamp(8px,1.5vh,20px)}
 }
+
+/* воздух между пунктами и кнопками; цифры одинаковой ширины, чтобы при досчёте не прыгала строка (правка 10.11) */
+.i1 .e1-btns{margin-top:clamp(10px,2.4vh,26px)}
+.i1-facts b{font-variant-numeric:tabular-nums}

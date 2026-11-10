@@ -53,5 +53,30 @@
     new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); }), { threshold: .2 }).observe(stage);
   }
 
+  /* ---------- 01: цифры досчитываются от нуля, когда строка появляется на экране ---------- */
+  const facts = [...document.querySelectorAll('.i1-facts b')];
+  if (facts.length && !HS.reduce && 'IntersectionObserver' in window) {
+    const items = facts.map(el => {
+      const m = el.textContent.match(/^(\d+)(.*)$/);
+      return m ? { el, n: +m[1], suf: m[2] } : null;
+    }).filter(Boolean);
+    items.forEach(it => { it.el.textContent = '0' + it.suf; });
+    const run = () => {
+      const t0 = performance.now(), dur = 1600;
+      const tick = now => {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);   // плавное замедление в конце
+        items.forEach((it, i) => {
+          const q = Math.max(0, Math.min(1, (e * dur - i * 90) / (dur - i * 90)));  // лёгкий сдвиг между цифрами
+          it.el.textContent = Math.round(it.n * q) + it.suf;
+        });
+        if (p < 1) requestAnimationFrame(tick);
+        else items.forEach(it => { it.el.textContent = it.n + it.suf; });
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); setTimeout(run, 250); } }, { threshold: .6 });
+    io.observe(document.querySelector('.i1-facts'));
+  }
+
   HS.ready();
 })();
