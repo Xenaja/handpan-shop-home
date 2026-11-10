@@ -11,7 +11,12 @@
       "key": "msk",
       "name": "Москва",
       "address": "Нижний Сусальный пер., 5",
-      "metro": "м. Курская"
+      "metro": "м. Курская",
+      "contacts": {
+        "phone": "+79031302889",
+        "phoneLabel": "+7 (903) 130-28-89",
+        "email": "handpanshop@mail.ru"
+      }
     },
     {
       "key": "spb",

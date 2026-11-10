@@ -28,6 +28,7 @@ const jsonld = {
       inLanguage: 'ru', publisher: { '@id': 'https://handpanshop.pro/#org' } },
     { '@type': 'MusicStore', '@id': 'https://handpanshop.pro/#moscow', name: 'U-GENE sound vibe — студия в Москве',
       parentOrganization: { '@id': 'https://handpanshop.pro/#org' }, url: 'https://handpanshop.pro/',
+      telephone: msk.contacts?.phone, email: msk.contacts?.email,
       address: { '@type': 'PostalAddress', streetAddress: msk.address, addressLocality: 'Москва', addressCountry: 'RU' } }
   ]
 };

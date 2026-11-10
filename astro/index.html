@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1110t">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1110u">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1110t"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1110t"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1110t">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1110u"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1110u"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1110u">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -39,7 +39,7 @@
       if (V[k].includes(v)) h.dataset[k] = v;
     } })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://handpanshop.pro/#org","name":"U-GENE sound vibe","alternateName":"Handpan Shop","url":"https://handpanshop.pro/","logo":"https://handpanshop.pro/img/apple-touch-icon.png","foundingDate":"2019"},{"@type":"WebSite","@id":"https://handpanshop.pro/#website","url":"https://handpanshop.pro/","name":"U-GENE sound vibe","inLanguage":"ru","publisher":{"@id":"https://handpanshop.pro/#org"}},{"@type":"MusicStore","@id":"https://handpanshop.pro/#moscow","name":"U-GENE sound vibe — студия в Москве","parentOrganization":{"@id":"https://handpanshop.pro/#org"},"url":"https://handpanshop.pro/","address":{"@type":"PostalAddress","streetAddress":"Нижний Сусальный пер., 5","addressLocality":"Москва","addressCountry":"RU"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://handpanshop.pro/#org","name":"U-GENE sound vibe","alternateName":"Handpan Shop","url":"https://handpanshop.pro/","logo":"https://handpanshop.pro/img/apple-touch-icon.png","foundingDate":"2019"},{"@type":"WebSite","@id":"https://handpanshop.pro/#website","url":"https://handpanshop.pro/","name":"U-GENE sound vibe","inLanguage":"ru","publisher":{"@id":"https://handpanshop.pro/#org"}},{"@type":"MusicStore","@id":"https://handpanshop.pro/#moscow","name":"U-GENE sound vibe — студия в Москве","parentOrganization":{"@id":"https://handpanshop.pro/#org"},"url":"https://handpanshop.pro/","telephone":"+79031302889","email":"handpanshop@mail.ru","address":{"@type":"PostalAddress","streetAddress":"Нижний Сусальный пер., 5","addressLocality":"Москва","addressCountry":"RU"}}]}</script>
 <script>
   // Яндекс Метрика — тот же счётчик 90206720, что на Тильде (SEO-MIGRATION.md, п. 1.9). Только на боевом домене,
   // чтобы превью не портило статистику. Вебвизор выключен: включать или нет — решает заказчик.
@@ -438,8 +438,11 @@
         <div class="branch-main">
           <h3 class="branch-title" id="branch-msk-title">Студия в Москве</h3>
           <p class="branch-address">Нижний Сусальный пер., 5<span>м. Курская</span></p>
-          
-          
+          <a class="branch-phone" href="tel:+79031302889">+7 (903) 130-28-89</a>
+          <div class="branch-direct">
+            
+            <a href="mailto:handpanshop@mail.ru">handpanshop@mail.ru</a>
+          </div>
           <div class="branch-booking">
             <p class="branch-booking-note">Пробное занятие — 45 минут. Инструмент предоставляем</p>
             <button type="button" class="btn btn--blue branch-book" data-open="trial">Записаться на пробное</button>
@@ -770,6 +773,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1110t"></script><script src="/handpan-shop-home/astro/home.js?v=1110t"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1110u"></script><script src="/handpan-shop-home/astro/home.js?v=1110u"></script>
 </body>
 </html>
