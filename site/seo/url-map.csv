@@ -26,7 +26,7 @@ old_path,new_path,action,note
 /d_sabai_9_note,/d_sabai_9_note,keep,TODO: карточка
 /b_kurd_9_note,/b_kurd_9_note,keep,TODO: карточка
 /f2_minor_9_not,/f2_minor_9_not,keep,TODO: карточка — адрес с опечаткой сохраняем
-/d_kurd_9_note,/d_kurd_9_note,keep,TODO: карточка
+/d_kurd_9_note,/d_kurd_9_note,keep,пробная карточка по шаблону (10.11): данные src/content/instruments/d_kurd_9_note.json, старые мета — seo/old
 /f_pygmy_9_note,/f_pygmy_9_note,keep,TODO: карточка
 /f2_pygmy_11_note,/f2_pygmy_11_note,keep,TODO: карточка
 /d_kurd_17_note,/d_kurd_17_note,keep,TODO: карточка

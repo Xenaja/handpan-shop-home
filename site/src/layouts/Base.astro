@@ -13,13 +13,14 @@ interface Props {
   jsonld?: object;
   robots?: string;         // служебные и юридические страницы: 'noindex, follow'
   canonical?: boolean;     // false — без canonical (страница 404)
+  ogType?: string;         // 'product' для карточек каталога (SEO-MIGRATION.md, раздел 4)
 }
-const { title, description, path, ogTitle = title, ogDescription = description, ogImage, theme = '#E8EEF4', styles, scripts, jsonld, robots, canonical: withCanonical = true } = Astro.props;
+const { title, description, path, ogTitle = title, ogDescription = description, ogImage, theme = '#E8EEF4', styles, scripts, jsonld, robots, canonical: withCanonical = true, ogType = 'website' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const canonical = new URL(path, Astro.site).href;
 const preview = base !== '';   // превью на GitHub Pages собирается с префиксом адресов, боевой сайт — от корня
-const V = '1110r';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+const V = '1110t';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -31,7 +32,7 @@ const V = '1110r';   // версия ресурсов: браузер не де�
 <title>{title}</title>
 <meta name="description" content={description}>
 {withCanonical && <link rel="canonical" href={canonical}>}
-<meta property="og:type" content="website">
+<meta property="og:type" content={ogType}>
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="U-GENE sound vibe">
 <meta property="og:title" content={ogTitle}>

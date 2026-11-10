@@ -1,6 +1,6 @@
 // sitemap.xml при сборке: только индексируемые страницы с кодом 200 (SEO-MIGRATION.md, раздел 8).
 // Новая страница попадает сюда, когда её добавят в PAGES.
-const PAGES = ['/', '/cources', '/instruments'];
+const PAGES = ['/', '/cources', '/instruments', '/d_kurd_9_note'];
 
 export function GET() {
   const lastmod = new Date().toISOString().slice(0, 10);

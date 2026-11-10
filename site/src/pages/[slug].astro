@@ -1,0 +1,226 @@
+---
+// Карточка инструмента по шаблону SEO-MIGRATION.md, раздел 6: один шаблон, данные — src/content/instruments/<slug>.json.
+// Адрес — ровно старый путь с Тильды (slug), без изменений. Разметка — Product + Offer + BreadcrumbList (раздел 7):
+// только то, что видно на странице; цена в разметке совпадает с ценой на странице, отзывов и рейтингов не выдумываем.
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import LeadForm from '../components/LeadForm.astro';
+import BranchContacts from '../components/BranchContacts.astro';
+import D from '../data/site.json';
+
+export function getStaticPaths() {
+  const files = import.meta.glob('../content/instruments/*.json', { eager: true });
+  return Object.values(files).map((m: any) => ({ params: { slug: m.default.slug }, props: { it: m.default } }));
+}
+const { it } = Astro.props as { it: any };
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (p: string) => `${base}/${p}`;
+const home = `${base}/`;
+const SITE = 'https://handpanshop.pro';
+// «Bb3» → «B♭3»; единое написание названий (раздел 6): «D Kurd 9 нот»
+const noteLabel = (n: string) => n.replace(/^([A-G])b/, '$1♭').replace(/^([A-G])#/, '$1♯');
+const nb = ' ';
+const money = (n: number) => n.toLocaleString('ru-RU').replace(/\s/g, nb) + nb + '₽';
+const plural = (n: number) => (n % 10 === 1 && n % 100 !== 11) ? 'нота' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 'ноты' : 'нот';
+const title = `${it.name} ${it.notesCount}${nb}${plural(it.notesCount)}`;            // «D Kurd 9 нот»
+const fullName = `Хэндпан ${title}`;
+const ding = noteLabel(it.notes[0]), ring = it.notes.slice(1).map(noteLabel).join(' ');
+const AVAIL: Record<string, string> = { in_stock: 'В наличии в Москве', preorder: `Под заказ${it.preorderWeeks ? `, ${it.preorderWeeks} недель` : ''}` };
+const SCHEMA_AVAIL: Record<string, string> = { in_stock: 'https://schema.org/InStock', preorder: 'https://schema.org/PreOrder' };
+// «f_pygmy_9_note» → «F Pygmy, 9 нот» — названия соседних карточек, пока их данных нет
+const prettySlug = (s: string) => {
+  const m = s.match(/^([a-g]\d?)_([a-z]+)_(\d+)/i);
+  if (!m) return s;
+  const cap = (w: string) => w[0].toUpperCase() + w.slice(1);
+  return `${m[1].toUpperCase()} ${cap(m[2])}, ${m[3]} ${plural(+m[3])}`;
+};
+const photo = it.photos[0];
+const specs = [
+  ['Строй', it.name],
+  ['Количество нот', `${it.notesCount}`],
+  ['Ноты', `${ding} / ${ring}`],
+  ['Сталь', it.steel],
+  ['Диаметр', it.diameterCm && `${it.diameterCm}${nb}см`],
+  ['Вес', it.weightKg && `${it.weightKg}${nb}кг`],
+  ['Настройка', it.tuningHz && `${it.tuningHz}${nb}Гц`]
+];
+// вопрос в мессенджер с названием и ценой (раздел 6); у московской студии мессенджеров пока нет — тогда форма
+const tg = D.contacts.telegram;
+const askText = encodeURIComponent(`Здравствуйте! Интересует хэндпан ${it.name} ${it.notesCount} нот за ${it.price.toLocaleString('ru-RU')} ₽`);
+
+const description = `Ханг ${it.name} ${it.notesCount} нот (${it.name} ${it.notesCount} note), ${it.steel.toLowerCase()}, ручная работа U-GENE. Цена ${money(it.price)}. Послушайте вживую в студии в Москве — запишитесь на тест.`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Product', name: fullName.replace(nb, ' '), sku: it.slug,
+      image: it.photos.filter((p: any) => !p.placeholder).map((p: any) => `${SITE}/${p.src}`),
+      description: it.description[0], material: it.steel.toLowerCase(),
+      brand: { '@type': 'Brand', name: 'U-GENE' },          // TODO(заказчик): марка — U-GENE или Handpan Shop
+      manufacturer: { '@id': `${SITE}/#org` },
+      offers: { '@type': 'Offer', url: `${SITE}/${it.slug}`, price: String(it.price), priceCurrency: 'RUB',
+        ...(it.availability ? { availability: SCHEMA_AVAIL[it.availability] } : {}),
+        itemCondition: 'https://schema.org/NewCondition', seller: { '@id': `${SITE}/#org` } } },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Каталог', item: `${SITE}/catalog` },
+      { '@type': 'ListItem', position: 3, name: fullName.replace(nb, ' ') } ] }
+  ]
+};
+---
+<Base
+  title={`Хэндпан ${it.name} ${it.notesCount} нот — купить в Москве, цена ${money(it.price)} · U-GENE`}
+  description={description}
+  ogTitle={`${fullName} — ${money(it.price)}`}
+  path={`/${it.slug}`} ogImage={photo.src} ogType="product" theme="#0A1020"
+  styles={['common.css', 'learn.css', 'card.css', 'mobile.css']} scripts={['common.js', 'card.js']} jsonld={jsonld}>
+
+<header class="c-top on-dark" id="top">
+  <div class="hdr">
+    <Logo class="pill glass-d logo" href={home} />
+    <nav class="pill glass-d nav hdr-d" aria-label="Основное меню">
+      <a class="lnk" href={u('instruments')}>Инструменты</a><a class="lnk" href={u('cources')}>Обучение</a><a class="lnk" href="#contacts">Контакты</a>
+    </nav>
+    <div class="pill glass-d city hdr-d" role="group" aria-label="Город">
+      <button type="button" data-city="msk" aria-pressed="true">Москва</button><a href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург</a>
+    </div>
+    <div class="hdr-n"><span class="burger-slot" aria-hidden="true"></span></div>
+  </div>
+
+  <!-- хлебные крошки видны на карточке (раздел 5, «Перелинковка») -->
+  <nav class="crumbs" aria-label="Хлебные крошки">
+    <ol>
+      <li><a href={home}>Главная</a></li>
+      <li><a href={u('catalog')}>Каталог</a></li>
+      <li aria-current="page">{fullName}</li>
+    </ol>
+  </nav>
+
+  <!-- 1–3: H1, фото, цена, наличие, «Послушать», запись на тест и вопрос -->
+  <div class="c-hero">
+    <figure class="c-photo">
+      <img src={u(photo.src)} alt={photo.alt} width={photo.width} height={photo.height} fetchpriority="high">
+      {photo.placeholder && <figcaption data-pending="P-C1">Фото для примера — ждём снимки этого инструмента</figcaption>}
+    </figure>
+    <div class="stack c-info">
+      <span class="mono">{it.steel} · ручная работа U-GENE</span>
+      <h1 class="c-h1">Хэндпан {it.name.replace(/ /g, nb)}<span>, {it.notesCount}{nb}{plural(it.notesCount)}</span></h1>
+      <p class="c-lead">{it.lead}</p>
+      <div class="c-price">
+        <span class="c-sum">{money(it.price)}</span>
+        {it.oldPrice && <s class="c-old">{money(it.oldPrice)}</s>}
+        {it.availability
+          ? <span class="c-avail">{AVAIL[it.availability]}</span>
+          : <span class="c-avail c-avail--ask">Наличие и сроки — уточним при записи</span>}
+      </div>
+      <button type="button" class="c-listen" data-listen={JSON.stringify(it.notes)} aria-label={`Послушать строй ${it.name}: ноты ${ding}, ${ring}`}>
+        <span class="play glass-d" aria-hidden="true"><svg viewBox="0 0 22 22" width="20" height="20"><path d="M7 4 L18 11 L7 18 Z" fill="currentColor"/></svg></span>
+        <span class="stack"><b>Послушать {it.name}</b><small>{it.audio ? 'Запись этого инструмента' : 'Синтезированный пример нот строя'}</small></span>
+      </button>
+      <div class="btns c-btns">
+        <button type="button" class="btn btn--52 btn--blue" data-open="buy">Записаться на тест этого инструмента</button>
+        {tg
+          ? <a class="btn btn--52 btn--line-d" href={`${tg}?text=${askText}`} target="_blank" rel="noopener">Задать вопрос</a>
+          : <button type="button" class="btn btn--52 btn--line-d" data-open="help">Задать вопрос</button>}
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="menu menu--sand" id="menu" hidden aria-label="Меню">
+  <div class="menu-top">
+    <Logo style="padding:0" href={home} />
+    <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
+  </div>
+  <div class="menu-links">
+    <a href={u('instruments')}>Инструменты</a><a href={u('catalog')}>Каталог</a><a href={u('cources')}>Обучение</a><a href="#contacts">Контакты</a>
+  </div>
+</nav>
+<button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
+
+<main id="main">
+
+<!-- 4–5: характеристики и описание строя -->
+<section class="sec bg-sand c-about" aria-labelledby="h-sound">
+  <div class="stack c-specs-w">
+    <h2 class="h2 c-h2">Характеристики</h2>
+    <dl class="c-specs">
+      {specs.map(([k, v]) => v
+        ? <div><dt>{k}</dt><dd>{v}</dd></div>
+        : <div data-pending="P-C2"><dt>{k}</dt><dd>уточняется</dd></div>)}
+    </dl>
+  </div>
+  <div class="stack c-text">
+    <h2 id="h-sound" class="h2 c-h2">Как звучит {it.name}</h2>
+    {it.description.map((p: string) => <p class="body">{p}</p>)}
+    <p class="small c-note">{it.name} {it.notesCount} note — так этот строй называют в каталогах и на зарубежных сайтах.</p>
+  </div>
+</section>
+
+<!-- 6: комплектация и гарантия, оплата, доставка -->
+<section class="sec c-terms" aria-labelledby="h-terms">
+  <h2 id="h-terms" class="h2 c-h2">Комплектация и условия</h2>
+  <div class="c-terms-grid">
+    <div class="stack c-term">
+      <h3>Комплектация и гарантия</h3>
+      <ul>{it.inBox.map((x: string) => <li>{x}</li>)}</ul>
+      <p class="small" data-pending="P-C3">Чехол и что ещё входит в комплект — уточняется</p>
+    </div>
+    <div class="stack c-term">
+      <h3>Тест перед покупкой</h3>
+      <p>Приходите в студию: послушайте этот инструмент вживую и сравните с другими — в студии больше 20 хангов.</p>
+    </div>
+    <div class="stack c-term">
+      <h3>Оплата и доставка</h3>
+      <p>Доставляем по России и миру — <a class="lnk-u" href={u('delivery')}>условия доставки</a>.</p>
+      <p class="small" data-pending="P-C4">Способы оплаты и рассрочка — уточняется</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7: похожие инструменты (отзывов этого строя пока нет — не показываем) -->
+<section class="sec bg-sand c-related" aria-labelledby="h-rel">
+  <div class="c-rel-head">
+    <h2 id="h-rel" class="h2 c-h2">Похожие инструменты</h2>
+    <a class="btn btn--line" href={u('catalog')}>Весь каталог →</a>
+  </div>
+  <ul class="c-rel">
+    {it.related.map((s: string) => <li><a href={u(s)}><span class="c-rel-n">Хэндпан {prettySlug(s)}</span><span aria-hidden="true">→</span></a></li>)}
+  </ul>
+</section>
+
+<section class="sec bg-dark on-dark c-contacts" id="contacts" aria-label="Студии и контакты">
+  <BranchContacts />
+  <footer class="efoot">
+    <span>© U-GENE sound vibe · Москва · СПб</span>
+    <nav class="efoot-nav" aria-label="Документы и разделы"><a class="lnk" href={u('politikaconfidencialnosti')}>Политика конфиденциальности</a><a class="lnk" href={u('instruments')}>Все инструменты →</a></nav>
+  </footer>
+</section>
+
+</main>
+
+<div class="bar bar--edu" data-sticky="520">
+  <div class="glass-l bar-in">
+    <div class="bar-txt"><span class="bar-name">{fullName}</span><span class="mono">{money(it.price)}</span></div>
+    <button type="button" class="btn btn--48 btn--blue" data-open="buy">Записаться на тест</button>
+  </div>
+</div>
+
+<div class="sheet" data-sheet hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="sheet-title" data-sheet-title>Тест инструмента</div>
+      <button type="button" class="x" data-close aria-label="Закрыть">×</button>
+    </div>
+    <p class="small body--2">{fullName} · {money(it.price)}</p>
+    <LeadForm id="m" note="Перезвоним, договоримся о времени теста и ответим на вопросы">
+      <input type="hidden" name="instrument" value={`${it.name} ${it.notesCount} нот (${it.slug})`}>
+    </LeadForm>
+    <div class="stack thanks-box" data-thanks hidden tabindex="-1">
+      <span class="sheet-title">Спасибо!</span>
+      <span>Перезвоним в течение дня</span>
+      <button type="button" class="btn btn--52 btn--ink" data-close>Закрыть</button>
+    </div>
+  </div>
+</div>
+</Base>
