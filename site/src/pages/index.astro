@@ -141,6 +141,12 @@ const jsonld = {
       <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
     </div>
     <div class="s2-scheme">
+      <!-- сравнение вариантов ханга (правка 10.11): переключение на месте, выбор помнится в рамках визита -->
+      <div class="hang-switch" role="group" aria-label="Вариант ханга">
+        <span class="hang-switch-l">Сравнить:</span>
+        <button type="button" data-hang-variant="iridescent" aria-pressed="true"><i style="--sw:#6b5a7a" aria-hidden="true"></i>Иридисцентный</button>
+        <button type="button" data-hang-variant="bronze" aria-pressed="false"><i style="--sw:#a07a4a" aria-hidden="true"></i>Бронзовый</button>
+      </div>
       <div class="hang">
         <img class="hang-photo" src={u('img/handpan-iridescent-cutout.webp')} alt="Иридисцентный хэндпан: вид сверху на тональные поля" width="878" height="878" loading="lazy">
         <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>

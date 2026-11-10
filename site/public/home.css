@@ -543,3 +543,15 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 @keyframes aud-breathe{0%,100%{transform:scale(1)}45%{transform:scale(1.1)}}
 @keyframes aud-ring{0%,30%{transform:scale(.85);opacity:0}45%{opacity:.45}100%{transform:scale(1.45);opacity:0}}
 @keyframes aud-spin{to{transform:rotate(360deg)}}
+
+/* 2: переключатель вариантов ханга — маленькая подсказка под инструментом */
+.hang-switch{display:inline-flex;align-items:center;gap:4px;padding:4px;border-radius:999px;background:rgba(232,238,244,.1);border:1px solid rgba(232,238,244,.22);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hang-switch-l{padding:0 8px 0 10px;font-size:12px;letter-spacing:.04em;color:var(--milk);opacity:.7}
+.hang-switch button{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 14px;border:0;border-radius:999px;background:none;color:var(--milk);font-size:13px;font-weight:500;cursor:pointer;transition:background-color .35s,color .35s}
+.hang-switch button i{width:10px;height:10px;border-radius:50%;background:var(--sw);box-shadow:0 0 0 1.5px rgba(232,238,244,.5)}
+.hang-switch button:hover{background:rgba(232,238,244,.12)}
+.hang-switch button[aria-pressed="true"]{background:var(--milk);color:var(--ink)}
+.hang-switch button:focus-visible{outline:2px solid var(--milk);outline-offset:2px}
+.hang-photo{transition:opacity .26s ease}
+.hang-photo.is-swapping{opacity:0}
+@media(max-width:420px){.hang-switch-l{display:none}}

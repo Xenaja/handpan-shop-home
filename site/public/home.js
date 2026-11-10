@@ -68,54 +68,78 @@
       [193, 37, 26, 16, 0, 7]
     ] }
   };
-  const hangKey = new URLSearchParams(location.search).get('hang') === 'bronze' ? 'bronze' : 'iridescent';
-  const FIELDS = HANGS[hangKey].fields;
-  $$('.hang-photo').forEach(img => {
-    if (img.src.includes(HANGS[hangKey].file)) return;
-    img.src = img.src.replace(/[^/]+\.webp$/, HANGS[hangKey].file);
-    img.alt = HANGS[hangKey].alt;
-  });
+  // вариант: ?hang=bronze в адресе, иначе последний выбранный, иначе иридисцентный
+  let hangKey = new URLSearchParams(location.search).get('hang');
+  if (!HANGS[hangKey]) { try { hangKey = sessionStorage.getItem('hs-hang'); } catch (e) {} }
+  if (!HANGS[hangKey]) hangKey = 'iridescent';
+  let FIELDS = HANGS[hangKey].fields;
   const NS = 'http://www.w3.org/2000/svg';
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+  const hangs = [];
   $$('svg[data-hang]').forEach(svg => {
-    FIELDS.forEach(([x, y, rx, ry, angle, i]) => {
-      const label = i === 0 ? 'Центральный купол: послушать звук' : `Тональное поле ${i}: послушать звук`;
-      const g = svgEl('g', { class: 'hang-hit', tabindex: '0', role: 'button', 'aria-label': label });
-      const shape = svgEl('ellipse', { cx:x, cy:y, rx: rx * 1.12, ry: ry * 1.12, transform:`rotate(${angle} ${x} ${y})` });
-      const title = svgEl('title', {}); title.textContent = label;
-      g.append(title, shape);
-      let timer;
-      const play = e => {
-        if (e.type === 'keydown' && (e.repeat || !['Enter', ' '].includes(e.key))) return;
-        e.preventDefault();
-        tone(FREQS[i], .25, i === 0 ? 6 : 4);
-        g.classList.add('is-active');
-        clearTimeout(timer); timer = setTimeout(() => g.classList.remove('is-active'), 450);
-      };
-      g.addEventListener('click', play);
-      g.addEventListener('keydown', play);
-      svg.append(g);
-    });
+    let hits = [], tap = null;
+    // зоны нажатия под текущий вариант
+    const build = () => {
+      $$('.hang-hit,.hang-tap', svg).forEach(el => el.remove());
+      FIELDS.forEach(([x, y, rx, ry, angle, i]) => {
+        const label = i === 0 ? 'Центральный купол: послушать звук' : `Тональное поле ${i}: послушать звук`;
+        const g = svgEl('g', { class: 'hang-hit', tabindex: '0', role: 'button', 'aria-label': label });
+        const shape = svgEl('ellipse', { cx:x, cy:y, rx: rx * 1.12, ry: ry * 1.12, transform:`rotate(${angle} ${x} ${y})` });
+        const title = svgEl('title', {}); title.textContent = label;
+        g.append(title, shape);
+        let timer;
+        const play = e => {
+          if (e.type === 'keydown' && (e.repeat || !['Enter', ' '].includes(e.key))) return;
+          e.preventDefault();
+          tone(FREQS[i], .25, i === 0 ? 6 : 4);
+          g.classList.add('is-active');
+          clearTimeout(timer); timer = setTimeout(() => g.classList.remove('is-active'), 450);
+        };
+        g.addEventListener('click', play);
+        g.addEventListener('keydown', play);
+        svg.append(g);
+      });
+      hits = $$('.hang-hit', svg);
+      tap = svgEl('circle', { class: 'hang-tap', r: 9, cx: FIELDS[0][0], cy: FIELDS[0][1] });
+      svg.append(tap);
+    };
+    build();
     /* Подсказка (правка 10.11): пока не трогали, поля по очереди загораются и «нажимаются». */
-    const hits = $$('.hang-hit', svg), tap = svgEl('circle', { class: 'hang-tap', r: 9, cx: FIELDS[0][0], cy: FIELDS[0][1] });
-    svg.append(tap);
-    const ORDER = [0, 3, 1, 2, 4, 5, 7, 8, 6].filter(i => i < FIELDS.length);
-    let k = 0, demo = null;
+    let k = 0, demo = null, visible = false;
     const step = () => {
+      const ORDER = [0, 3, 1, 2, 4, 5, 7, 8, 6].filter(i => i < FIELDS.length);
       hits.forEach(h => h.classList.remove('is-hint'));
       const i = ORDER[k++ % ORDER.length], [x, y] = FIELDS[i];
       hits[i].classList.add('is-hint');
       tap.setAttribute('cx', x); tap.setAttribute('cy', y);
       tap.classList.remove('is-tap'); void tap.getBBox(); tap.classList.add('is-tap');
     };
-    const start = () => { if (!demo && !svg.dataset.touched) { step(); demo = setInterval(step, 1100); } };
-    const stop = () => { clearInterval(demo); demo = null; hits.forEach(h => h.classList.remove('is-hint')); tap.classList.remove('is-tap'); };
+    const start = () => { if (!demo && !svg.dataset.touched && !reduce) { step(); demo = setInterval(step, 1100); } };
+    const stop = () => { clearInterval(demo); demo = null; hits.forEach(h => h.classList.remove('is-hint')); if (tap) tap.classList.remove('is-tap'); };
     const done = () => { svg.dataset.touched = '1'; stop(); svg.classList.add('is-touched'); };
     svg.addEventListener('pointerdown', done); svg.addEventListener('keydown', done);
     svg.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') stop(); });
-    svg.addEventListener('pointerleave', () => { if (!svg.dataset.touched) start(); });
-    if (!reduce) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: .4 }).observe(svg);
+    svg.addEventListener('pointerleave', () => { if (!svg.dataset.touched && visible) start(); });
+    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); }), { threshold: .4 }).observe(svg);
+    // при смене варианта — новые зоны и короткий показ, куда нажимать
+    hangs.push(() => { stop(); build(); k = 0; delete svg.dataset.touched; svg.classList.remove('is-touched'); if (visible) start(); });
   });
+  function setHang(key, initial) {
+    if (!HANGS[key]) return;
+    hangKey = key; FIELDS = HANGS[key].fields;
+    try { sessionStorage.setItem('hs-hang', key); } catch (e) {}
+    $$('.hang-photo').forEach(img => {
+      if (img.src.endsWith(HANGS[key].file)) return;
+      const swap = () => { img.src = img.src.replace(/[^/]+\.webp$/, HANGS[key].file); img.alt = HANGS[key].alt; };
+      if (initial || reduce) return swap();
+      img.classList.add('is-swapping');
+      setTimeout(() => { swap(); img.addEventListener('load', () => img.classList.remove('is-swapping'), { once: true }); }, 260);
+    });
+    $$('[data-hang-variant]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.hangVariant === key)));
+    if (!initial) hangs.forEach(f => f());
+  }
+  setHang(hangKey, true);
+  $$('[data-hang-variant]').forEach(b => b.addEventListener('click', () => setHang(b.dataset.hangVariant)));
 
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
   $$('[data-aud-play]').forEach(b => b.addEventListener('click', () => {
