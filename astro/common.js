@@ -367,11 +367,11 @@
         // При переходе по якорю или с клавиатуры управление сразу доступно.
         if (el.contains(document.activeElement)) return;
         const stagger = el.matches('.route,.aud,.stage,.need')
-          ? ([...el.parentElement.children].indexOf(el) % 3) * 45 : 0;
+          ? ([...el.parentElement.children].indexOf(el) % 3) * 110 : 0;
         const animation = el.animate([
-          { opacity: .25, transform: 'translateY(12px)' },
+          { opacity: 0, transform: 'translateY(26px)' },
           { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 520, delay: stagger, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+        ], { duration: 1000, delay: stagger, easing: 'cubic-bezier(.22,.8,.3,1)', fill: 'backwards' });
         active.set(el, animation);
         animation.finished.then(() => active.delete(el), () => active.delete(el));
       });
