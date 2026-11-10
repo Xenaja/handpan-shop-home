@@ -102,6 +102,10 @@
 
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
   $$('[data-aud-play]').forEach(b => b.addEventListener('click', () => {
+    // знак крутится, пока звучит пример; пульсация после первого нажатия больше не нужна
+    $$('[data-aud-play]').forEach(x => x.classList.add('is-tried'));
+    b.classList.remove('is-playing'); void b.offsetWidth; b.classList.add('is-playing');
+    clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('is-playing'), 3200);
     const s = b.closest('[data-snd]').dataset.snd, F = FREQS;
     if (s === 'long') tone(F[0], 0.28, 10);
     else if (s === 'fast') [0, 5, 6, 7, 8, 6, 4].forEach((n, i) => tone(F[n], 0.16, 3, i * 0.16));

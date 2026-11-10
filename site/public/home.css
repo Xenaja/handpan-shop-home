@@ -524,3 +524,22 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .s8-then{font-size:17px;color:var(--blue-l)}
 .s8-then strong{display:block;margin-top:6px;font-family:var(--f-d);font-weight:400;font-size:clamp(26px,2.6vw,40px);line-height:1.05;text-transform:uppercase;color:var(--milk)}
 .s1-thumbs span{margin-left:0}
+
+/* 5: кнопка примера звучания — знак U-GENE с «дыханием» (правка 10.11) */
+.aud-play--mark{position:relative;flex:none;width:72px;height:72px;padding:0;border:0;border-radius:50%;background:none;color:var(--blue);cursor:pointer;display:grid;place-items:center;transition:color .2s,transform .2s}
+.aud-play--mark .logo-mark{width:60px;height:56px}
+.aud-play--mark::after{content:'';position:absolute;inset:2px;border:1.5px solid currentColor;border-radius:50%;opacity:0;pointer-events:none}
+.aud-play--mark:hover{color:var(--cta);transform:scale(1.08)}
+.aud-play--mark:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media(prefers-reduced-motion:no-preference){
+  .aud-play--mark:not(.is-tried) .logo-mark{animation:aud-breathe 2.4s ease-in-out infinite}
+  .aud-play--mark:not(.is-tried)::after{animation:aud-ring 2.4s ease-out infinite}
+  .aud:nth-child(3n+2) .aud-play--mark .logo-mark,.aud:nth-child(3n+2) .aud-play--mark::after{animation-delay:.4s}
+  .aud:nth-child(3n) .aud-play--mark .logo-mark,.aud:nth-child(3n) .aud-play--mark::after{animation-delay:.8s}
+  .aud-play--mark.is-playing{color:var(--cta)}
+  .aud-play--mark.is-playing .logo-mark{animation:aud-spin 3.2s linear}
+  html[data-motion-paused] .aud-play--mark *,html[data-motion-paused] .aud-play--mark::after{animation-play-state:paused}
+}
+@keyframes aud-breathe{0%,100%{transform:scale(1)}45%{transform:scale(1.1)}}
+@keyframes aud-ring{0%,30%{transform:scale(.85);opacity:0}45%{opacity:.45}100%{transform:scale(1.45);opacity:0}}
+@keyframes aud-spin{to{transform:rotate(360deg)}}

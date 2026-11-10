@@ -232,7 +232,7 @@ const jsonld = {
           {a.rec
             ? <p class="aud-rec"><span>Рекомендуем</span><br>{a.rec}</p>
             : <p class="aud-rec" data-pending={a.recPending}>Рекомендация уточняется</p>}
-          <button type="button" class="play aud-play" data-aud-play aria-label={`Пример звучания: ${a.name}`}><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"/></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label={`Пример звучания: ${a.name}`}><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article>
     ))}

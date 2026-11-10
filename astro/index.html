@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1110d">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1110e">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-scene-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1110d"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1110d"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1110d">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1110e"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1110e"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1110e">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -242,7 +242,7 @@
         <p class="aud-fit"><span>Подходит:</span> для новичков, тем, кто хочет инструмент «для себя», для вечерней игры, для отдыха после работы</p>
         <div class="aud-bottom">
           <p class="aud-rec"><span>Рекомендуем</span><br>Рессорная сталь 65Г или СТ-20Ф · 9 нот</p>
-          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Дома"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Дома"><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article><article class="aud" id="aud-1" data-snd="mel">
         <h3 class="aud-name">Учёба</h3>
@@ -250,7 +250,7 @@
         <p class="aud-fit"><span>Подходит:</span> тем, кто хочет учиться системно — в школе, с преподавателем или самостоятельно по курсам</p>
         <div class="aud-bottom">
           <p class="aud-rec"><span>Рекомендуем</span><br>Рессорная сталь 65Г · 9 нот · строй D Kurd</p>
-          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Учёба"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Учёба"><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article><article class="aud" id="aud-2" data-snd="fast">
         <h3 class="aud-name">Сцена</h3>
@@ -258,7 +258,7 @@
         <p class="aud-fit"><span>Подходит:</span> музыкантам и музыкальным группам</p>
         <div class="aud-bottom">
           <p class="aud-rec"><span>Рекомендуем</span><br>Рессорная 65Г или нержавеющая · 13–17 нот · двусторонние</p>
-          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Сцена"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Сцена"><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article><article class="aud" id="aud-3" data-snd="long">
         <h3 class="aud-name">Медитация</h3>
@@ -266,7 +266,7 @@
         <p class="aud-fit"><span>Подходит:</span> практикующим, терапевтам, преподавателям йоги, всем, кто работает со звуком как с инструментом</p>
         <div class="aud-bottom">
           <p class="aud-rec" data-pending="P-06">Рекомендация уточняется</p>
-          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Медитация"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Медитация"><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article><article class="aud" id="aud-4" data-snd="fast">
         <h3 class="aud-name">Музыкантам</h3>
@@ -274,7 +274,7 @@
         <p class="aud-fit"><span>Подходит:</span> гитаристам, пианистам, продюсерам, саунд-дизайнерам, композиторам — тем, кто ищет новый звук для своей музыки</p>
         <div class="aud-bottom">
           <p class="aud-rec"><span>Рекомендуем</span><br>Двусторонние модели · 13–17 нот · строи под ваш жанр</p>
-          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Музыкантам"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Музыкантам"><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article><article class="aud" id="aud-5" data-snd="mel">
         <h3 class="aud-name">Детям</h3>
@@ -282,7 +282,7 @@
         <p class="aud-fit"><span>Подходит:</span> детям от 5–6 лет, родителям, педагогам, музыкальным школам</p>
         <div class="aud-bottom">
           <p class="aud-rec"><span>Рекомендуем</span><br>9 нот · минорные или мажорные строи · компактные размеры</p>
-          <button type="button" class="play aud-play" data-aud-play aria-label="Пример звучания: Детям"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></button>
+          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Детям"><i class="logo-mark" aria-hidden="true"></i></button>
         </div>
       </article>
   </div>
@@ -764,6 +764,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1110d"></script><script src="/handpan-shop-home/astro/home.js?v=1110d"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1110e"></script><script src="/handpan-shop-home/astro/home.js?v=1110e"></script>
 </body>
 </html>
