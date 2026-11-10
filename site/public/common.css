@@ -259,7 +259,22 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(10,16,32,.14)}
 .branch-links a:hover{border-color:currentColor;background:rgba(var(--blue-rgb),.06)}
 .branch-direct a:hover{text-decoration-color:currentColor}
 .on-dark .branch-contacts{--line:rgba(232,238,244,.25)}
-@media(min-width:768px){.branch-contacts{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--g)}}
+.branch-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.branch-tabs[hidden]{display:none}
+.branch-tabs button{height:44px;padding:0 20px;border-radius:22px;border:1px solid var(--line);background:none;color:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
+.branch-tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.on-dark .branch-tabs button[aria-selected="true"]{background:var(--milk);border-color:var(--milk);color:var(--ink)}
+.branch-panel{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+.branch-panel[hidden]{display:none}
+.branch-address span{display:block;color:var(--ink3)}
+.branch-map{display:flex;flex-direction:column;gap:10px;min-width:0}
+.branch-map-frame{position:relative;min-height:260px;aspect-ratio:4/3;overflow:hidden;background:var(--sand);border:1px solid var(--line)}
+.branch-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.5)}
+.branch-map-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center}
+.branch-map-pin{width:36px;height:45px;flex:none;color:var(--blue)}
+.branch-map-label{font-family:var(--f-d);font-size:clamp(18px,1.6vw,22px);letter-spacing:-.02em}
+.branch-map-link{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:14px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+@media(min-width:900px){.branch-panel{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--g);align-items:start}}
 @media(max-width:599.98px){.branch-book{width:100%}}
 /* чипы-радиокнопки */
 .chip-r{position:relative;cursor:pointer}

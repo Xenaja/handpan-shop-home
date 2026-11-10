@@ -120,6 +120,37 @@
     $$('[data-city]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.city === c)));
     $$(`input[name="city"][value="${c}"]`).forEach(r => { r.checked = true; });
     $$('[data-form]').forEach(updateBooking);
+    showBranch(c);
+  }
+
+  /* ---------- контакты филиалов: вкладки городов (связаны с городом в шапке) и карта по кнопке ---------- */
+  const branch = $('[data-contact-switch]');
+  function showBranch(c) {
+    if (!branch) return;
+    const tabs = $$('[data-contact-city]', branch);
+    if (!tabs.some(t => t.dataset.contactCity === c)) return;
+    tabs.forEach(t => { const on = t.dataset.contactCity === c; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
+    $$('[data-contact-panel]', branch).forEach(p => { p.hidden = p.dataset.contactPanel !== c; });
+  }
+  if (branch) {
+    const tabsBox = $('[data-contact-tabs]', branch), tabs = $$('[data-contact-city]', branch);
+    if (tabs.length > 1) {
+      tabsBox.hidden = false;
+      $$('[data-contact-panel]', branch).forEach(p => p.setAttribute('role', 'tabpanel'));
+      tabsBox.addEventListener('click', e => { const t = e.target.closest('[data-contact-city]'); if (t) setCity(t.dataset.contactCity); });
+      tabsBox.addEventListener('keydown', e => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+        const i = tabs.indexOf(document.activeElement); if (i < 0) return;
+        const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        setCity(n.dataset.contactCity); n.focus(); e.preventDefault();
+      });
+    }
+    // Виджет Яндекса тяжёлый — грузим только по нажатию (SEO-MIGRATION.md, раздел 9)
+    branch.addEventListener('click', e => {
+      const b = e.target.closest('[data-map-show]'); if (!b) return;
+      const box = b.closest('[data-contact-map]');
+      box.innerHTML = `<iframe title="${esc(box.dataset.mapTitle || 'Карта')}" src="${box.dataset.contactMap}" allowfullscreen loading="lazy"></iframe>`;
+    });
   }
   document.addEventListener('click', e => { const b = e.target.closest('[data-city]'); if (b) setCity(b.dataset.city); });
   document.addEventListener('change', e => {
