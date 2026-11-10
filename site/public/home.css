@@ -483,10 +483,6 @@
 
 /* ===== Правки 05–10.11 (Правки/2026-11-05/ПРАВКИ.md) ===== */
 /* 1: Петербург — ссылка на сайт филиала в переключателе городов */
-.city a{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:19px;font-size:13px;font-weight:500;color:inherit;text-decoration:none}
-.s1-city a{color:var(--milk)}
-.s1-city a:hover{background:rgba(232,238,244,.14)}
-.menu a.chip{display:inline-flex;align-items:center;text-decoration:none;color:inherit}
 .s1-help{line-height:1.4;margin-top:-6px}
 
 /* 2: пульсация вместо звёздочки */

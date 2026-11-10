@@ -1,0 +1,167 @@
+---
+// «Инструменты» — посадочная о хэндпанах U-GENE (черновик на 2 экрана, 10.11). По принципу «Обучения».
+// Каталог — отдельно, /catalog (SEO-MIGRATION.md, п. 87): эта страница ведёт в него и не перебивает его запрос «купить хэндпан».
+// Ссылки задач ведут в каталог с фильтром ?use=… (SEO-MIGRATION.md, п. 178), canonical таких адресов — /catalog.
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import BrandLines from '../components/BrandLines.astro';
+import LeadForm from '../components/LeadForm.astro';
+import BranchContacts from '../components/BranchContacts.astro';
+import D from '../data/site.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (p: string) => `${base}/${p}`;
+const home = `${base}/`;
+const catalog = u('catalog');
+const USE = ['home', 'study', 'stage', 'meditation', 'musicians', 'kids'];
+const FACTS = [
+  ['300+', 'инструментов ручной работы с 2019 года'],
+  ['5', 'видов стали — у каждой свой характер звука'],
+  ['5 лет', 'гарантии на настройку и обслуживание'],
+  ['20+', 'инструментов в студии для теста']
+];
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://handpanshop.pro/' },
+      { '@type': 'ListItem', position: 2, name: 'Инструменты' } ] }
+  ]
+};
+---
+<Base
+  title="Хэндпаны ручной работы U-GENE — собственное производство · Москва и СПб"
+  description="Хэндпаны (ханги) собственного производства с 2019 года: 5 видов стали, гарантия 5 лет на настройку. Приходите послушать 20+ инструментов в студии в Москве и Санкт-Петербурге."
+  ogTitle="Хэндпаны ручной работы U-GENE"
+  ogDescription="Собственное производство с 2019 года. Послушайте 20+ инструментов в студии."
+  path="/instruments" ogImage="img/hero-scene-d.webp" theme="#0A1020"
+  styles={['common.css', 'learn.css', 'inst.css', 'mobile.css']} scripts={['common.js', 'inst.js']} jsonld={jsonld}>
+
+<!-- 01 · Хэндпаны ручной работы -->
+<header class="e1 i1 on-dark" id="top">
+  <div class="i1-glow" aria-hidden="true"></div>
+  <img class="i1-hang" src={u('img/handpan-bronze-cutout.webp')} alt="Бронзовый хэндпан U-GENE: вид сверху" width="880" height="880" fetchpriority="high">
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="hdr">
+    <Logo class="pill glass-d logo" href={home} />
+    <nav class="pill glass-d nav nav--edu hdr-d" aria-label="Основное меню">
+      <span class="nav-on" aria-current="page">Инструменты</span><a class="lnk" href={u('cources')}>Обучение</a><a class="lnk" href="#contacts">Контакты</a>
+    </nav>
+    <div class="pill glass-d city e1-city hdr-d" role="group" aria-label="Город">
+      <button type="button" data-city="msk" aria-pressed="true">Москва</button><a href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург</a>
+    </div>
+    <div class="hdr-n"><span class="burger-slot" aria-hidden="true"></span></div>
+  </div>
+
+  <div class="e1-body">
+    <div class="stack e1-top">
+      <h1 class="h-hero e1-h1">
+        <span>Хэндпаны</span>
+        <span class="cap cap--hero e1-cap">ручной работы</span>
+      </h1>
+      <div class="stack e1-text">
+        <p class="e1-lead">Собственное производство с 2019 года. Каждый инструмент настроен вручную и проверен мастерами, музыкантами и основателем.</p>
+        <p class="e1-copy">Подберём строй, сталь и количество нот под вашу задачу — для дома, учёбы, практик или сцены.</p>
+        <div class="btns e1-btns">
+          <a class="btn btn--52 btn--blue i1-cat" href={catalog}>Смотреть каталог</a>
+          <button type="button" class="btn btn--52 btn--line-d" data-open="visit">Записаться на тест инструментов</button>
+        </div>
+      </div>
+    </div>
+    <ul class="i1-facts" aria-label="Коротко о производстве">
+      {FACTS.map(([n, t]) => <li><b>{n}</b><span>{t}</span></li>)}
+    </ul>
+  </div>
+</header>
+
+<nav class="menu menu--sand" id="menu" hidden aria-label="Меню">
+  <div class="menu-top">
+    <Logo style="padding:0" href={home} />
+    <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
+  </div>
+  <div class="menu-links">
+    <span class="menu-on" aria-current="page">Инструменты</span><a href={catalog}>Каталог</a><a href={u('cources')}>Обучение</a><a href="#contacts">Контакты</a>
+  </div>
+  <div class="btns" role="group" aria-label="Город">
+    <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург ↗</a>
+  </div>
+</nav>
+<button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
+
+<main id="main">
+
+<!-- 02 · Какой ханг выбрать: задачи из ТЗ (экран 4 главной) со ссылками в каталог с фильтром -->
+<section class="sec bg-sand i2" aria-labelledby="h-i2">
+  <div class="g-head">
+    <div class="sec-head">
+      <span class="mono">02 · Какой ханг выбрать</span>
+      <h2 id="h-i2" class="h2">От медитации <span class="mute">до сцены</span></h2>
+    </div>
+    <p class="g-note">Инструмент, который находит место в любой практике и в любой музыке. Выберите задачу — покажем подходящие хэндпаны в каталоге</p>
+  </div>
+  <ul class="i2-grid">
+    {D.audiences.map((a, i) => (
+      <li class="i2-card">
+        <h3 class="i2-name">{a.name}</h3>
+        <p class="i2-text">{a.text}</p>
+        {a.rec && <p class="i2-rec"><span class="mono">Рекомендуем</span>{a.rec}</p>}
+        <a class="i2-link" href={`${catalog}?use=${USE[i]}`}>Смотреть {a.link.replace(/^Инструменты/, 'инструменты')} <span aria-hidden="true">→</span></a>
+      </li>
+    ))}
+  </ul>
+  <div class="btns i2-btns">
+    <a class="btn btn--blue" href={catalog}>Весь каталог →</a>
+    <button type="button" class="btn btn--line" data-open="help">Помочь выбрать</button>
+  </div>
+</section>
+
+<!-- финал: контакты студий -->
+<section class="sec bg-dark on-dark e11" id="contacts" aria-labelledby="h-i3">
+  <div class="glow e11-glow" aria-hidden="true"></div>
+  <BrandLines class="brand-lines--learn" />
+  <div class="e11-grid">
+    <div class="stack e11-l">
+      <span class="mono">Студии в Москве и Санкт-Петербурге</span>
+      <h2 id="h-i3" class="h-hero e11-h">
+        <span>Услышь</span>
+        <span class="cap cap--hero e11-cap">свой ханг</span>
+        <span>вживую</span>
+      </h2>
+    </div>
+  </div>
+  <BranchContacts />
+  <footer class="efoot">
+    <span>© U-GENE sound vibe · Москва · СПб</span>
+    <nav class="efoot-nav" aria-label="Документы и разделы"><a class="lnk" href={u('politikaconfidencialnosti')}>Политика конфиденциальности</a><a class="lnk" href={home}>На главную →</a></nav>
+  </footer>
+</section>
+
+</main>
+
+<!-- липкая панель -->
+<div class="bar bar--edu" data-sticky="520">
+  <div class="glass-l bar-in">
+    <div class="bar-txt"><span class="bar-name">Тест инструментов</span><span class="mono">20+ в студии · без обязательств</span></div>
+    <button type="button" class="btn btn--48 btn--blue" data-open="visit">Записаться</button>
+  </div>
+</div>
+
+<!-- форма заявки: модалка / bottom sheet -->
+<div class="sheet" data-sheet hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet-head">
+      <div class="sheet-title" id="sheet-title" data-sheet-title>Визит в студию</div>
+      <button type="button" class="x" data-close aria-label="Закрыть">×</button>
+    </div>
+    <p class="small body--2" data-sheet-help hidden>Расскажите, для чего нужен инструмент, — подскажем строй, сталь и количество нот</p>
+    <LeadForm id="m" note="Перезвоним, ответим на вопросы и подберём время" />
+    <div class="stack thanks-box" data-thanks hidden tabindex="-1">
+      <span class="sheet-title">Спасибо!</span>
+      <span>Перезвоним в течение дня</span>
+      <button type="button" class="btn btn--52 btn--ink" data-close>Закрыть</button>
+    </div>
+  </div>
+</div>
+</Base>
