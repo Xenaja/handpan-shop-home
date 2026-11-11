@@ -419,3 +419,23 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 .on-dark .branch-map-show{color:var(--milk);border-color:rgba(232,238,244,.4)}
 .on-dark .branch-map-show:hover{background:var(--milk);color:var(--ink);border-color:var(--milk)}
 .on-dark .branch-address span{color:var(--blue-l)}
+
+/* ===== Правки 11.11 (правки сайт 3.pdf): общие ===== */
+:root{
+  --h-blue:#1C2548;        /* «синие» заголовки — цвет из правки Ани */
+  --sky:#D8E9FF;           /* светло-голубой фон блоков */
+  --bronze-g:linear-gradient(135deg,#F3DAB2 0%,#C99A62 28%,#8C5B33 52%,#DDB27C 76%,#9E6C41 100%);
+}
+.bg-white{background:#fff}
+.bg-sky{background:var(--sky)}
+/* градиент из макета: тёмные углы, светлый овал по центру */
+.bg-grad{background:#7A98CB url(img/bg-gradient.webp) center/cover no-repeat;color:#fff}
+.accent,.c-term h3,.i2-name,.e2-hl,.fmt-price>span:first-child{color:var(--h-blue)}
+
+/* курсор-знак U-GENE на компьютере; над ссылками и кнопками — обычная «рука» */
+@media (hover:hover) and (pointer:fine){
+  html{cursor:url(img/cursor-logo.svg) 16 15,auto}
+  .on-dark,.on-blue,.bg-grad,.s1,.s8{cursor:url(img/cursor-logo-l.svg) 16 15,auto}
+  a,button,label,select,summary,[role="button"],.hang-hit{cursor:pointer}
+  input,textarea{cursor:text}
+}

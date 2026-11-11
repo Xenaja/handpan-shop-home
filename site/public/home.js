@@ -68,10 +68,8 @@
       [193, 37, 26, 16, 0, 7]
     ] }
   };
-  // вариант: ?hang=bronze в адресе, иначе последний выбранный, иначе иридисцентный
-  let hangKey = new URLSearchParams(location.search).get('hang');
-  if (!HANGS[hangKey]) { try { hangKey = sessionStorage.getItem('hs-hang'); } catch (e) {} }
-  if (!HANGS[hangKey]) hangKey = 'iridescent';
+  // с 12.11 на сайте только иридисцентный (правка Ани); бронзовый — данные на случай возврата сравнения
+  let hangKey = 'iridescent';
   let FIELDS = HANGS[hangKey].fields;
   const NS = 'http://www.w3.org/2000/svg';
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
@@ -140,6 +138,40 @@
   }
   setHang(hangKey, true);
   $$('[data-hang-variant]').forEach(b => b.addEventListener('click', () => setHang(b.dataset.hangVariant)));
+
+  /* ---------- 01: плеер стоит на ханге — точка в долях кадра пересчитывается под object-fit:cover ---------- */
+  const hp = $('[data-hang-spot]'), hImg = $('.s1-bg');
+  if (hp && hImg) {
+    const wide = matchMedia('(min-width:1000px)');
+    const place = () => {
+      const [fx, fy] = (wide.matches ? hImg.dataset.spotD : hImg.dataset.spotM).split(',').map(Number);
+      const nw = hImg.naturalWidth, nh = hImg.naturalHeight; if (!nw) return;
+      const r = hImg.getBoundingClientRect(), host = hp.offsetParent.getBoundingClientRect();
+      const s = Math.max(r.width / nw, r.height / nh), w = nw * s, h = nh * s;
+      const [px, py] = getComputedStyle(hImg).objectPosition.split(' ').map(v => parseFloat(v) / 100);
+      const x = r.left - host.left + (r.width - w) * px + fx * w, y = r.top - host.top + (r.height - h) * py + fy * h;
+      hp.style.setProperty('--hx', Math.round(x) + 'px'); hp.style.setProperty('--hy', Math.round(y) + 'px');
+      hp.classList.add('is-placed');
+    };
+    hImg.complete ? place() : hImg.addEventListener('load', place);
+    hImg.addEventListener('load', place);
+    addEventListener('resize', place); wide.addEventListener('change', place);
+  }
+
+  /* ---------- 08: видео из мастерской в окне ---------- */
+  const vd = $('[data-video]');
+  if (vd) {
+    const v = $('video', vd);
+    const close = () => { v.pause(); vd.close(); };
+    $('[data-video-open]').addEventListener('click', () => {
+      if (!v.src) v.src = v.dataset.src;
+      vd.showModal(); v.play().catch(() => {});
+      HS.goal && HS.goal('video_play', { video: 'making' });
+    });
+    $('[data-video-close]', vd).addEventListener('click', close);
+    vd.addEventListener('click', e => { if (e.target === vd) close(); });
+    vd.addEventListener('close', () => v.pause());
+  }
 
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
   $$('[data-aud-play]').forEach(b => b.addEventListener('click', () => {

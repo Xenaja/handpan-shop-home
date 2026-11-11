@@ -41,15 +41,16 @@ const jsonld = {
   path="/" ogImage="img/hero-scene-d.webp" theme="#0A1020"
   styles={['common.css', 'home.css', 'mobile.css']} scripts={['common.js', 'home.js']} jsonld={jsonld}>
   <Fragment slot="head">
-    <link rel="preload" as="image" href={u('img/hero-scene-m.webp')} media="(max-width:999.98px)" fetchpriority="high">
-    <link rel="preload" as="image" href={u('img/hero-scene-d.webp')} media="(min-width:1000px)" fetchpriority="high">
+    <link rel="preload" as="image" href={u('img/hero-hands-m.webp')} media="(max-width:999.98px)" fetchpriority="high">
+    <link rel="preload" as="image" href={u('img/hero-hands-d.webp')} media="(min-width:1000px)" fetchpriority="high">
   </Fragment>
 
 <!-- 01 · Найди свой звук -->
 <header class="s1 on-dark" id="top">
+  <!-- фото по правке 11.11: руки на ханге; плеер стоит на самом инструменте (точка — доли кадра, home.js) -->
   <picture>
-    <source media="(min-width:1000px)" srcset={u('img/hero-scene-d.webp')} width="1616" height="973">
-    <img class="s1-bg" src={u('img/hero-scene-m.webp')} alt="Стальной ханг на мокром бетоне" width="1200" height="723" fetchpriority="high">
+    <source media="(min-width:1000px)" srcset={u('img/hero-hands-d.webp')} width="2400" height="1408">
+    <img class="s1-bg" src={u('img/hero-hands-m.webp')} alt="Руки музыканта на ханге" width="1200" height="939" fetchpriority="high" data-spot-d="0.66,0.75" data-spot-m="0.3,0.8">
   </picture>
   <div class="s1-shade" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
@@ -83,25 +84,20 @@ const jsonld = {
           <button type="button" class="btn btn--52 btn--blue" data-open="buy">Выбрать ханг</button>
         </div>
         <a class="s1-help" href={u('test')} data-quiz-open>Не знаете, с чего начать? Поможем определиться →</a>
-        <button type="button" class="s1-play-n" data-play>
-          <span class="play glass-d" data-play-ic aria-hidden="true"></span><span data-play-label data-off="U-GENE — послушай наши ханги" data-on="Играет U-GENE">U-GENE — послушай наши ханги</span>
-        </button>
       </div>
     </div>
     <div class="s1-bottom hdr-d">
-      <div class="s1-player">
-        <button type="button" class="play glass-d s1-play" data-play aria-label="Послушать, как звучит ханг"></button>
-        <div class="stack s1-pmeta">
-          <span class="s1-plabel"><span data-play-label data-off="U-GENE — послушай наши ханги" data-on="Играет U-GENE">U-GENE — послушай наши ханги</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
-          <div class="wave" data-wave="40" aria-hidden="true"></div>
-        </div>
-      </div>
       <!-- миниатюры убраны: не сочетались (правка 05.11) -->
       <a class="s1-thumbs" href="#making" aria-label="Инструменты: больше 20 в студии">
         <span class="glass-d">20+<small>инструментов<br>в студии →</small></span>
       </a>
     </div>
   </div>
+  <!-- плеер на ханге (правка 11.11) -->
+  <button type="button" class="s1-hangplay" data-play data-hang-spot aria-label="Послушать, как звучит ханг">
+    <span class="play glass-d" data-play-ic aria-hidden="true"></span>
+    <span class="s1-hp-label glass-d"><span data-play-label data-off="Послушай наши ханги" data-on="Играет U-GENE">Послушай наши ханги</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
+  </button>
 </header>
 
 <nav class="menu" id="menu" hidden aria-label="Меню">
@@ -121,7 +117,7 @@ const jsonld = {
 <main id="main">
 
 <!-- 02 · Что такое ханг -->
-<section class="s2 bg-blue on-blue" aria-labelledby="h-s2">
+<section class="s2 bg-grad on-blue" aria-labelledby="h-s2">
   <div class="mq-wrap s2-strip" aria-hidden="true"><div class="mq" data-marquee="HANG|ХАНГ|HANDPAN|ХЭНДПАН|PANTAM"></div></div>
   <div class="sec s2-grid">
     <div class="stack s2-text">
@@ -136,18 +132,13 @@ const jsonld = {
       <p class="body ind">Мелодический идиофон из стали – ханг, он же хэндпан. Этот инструмент уникален: играя на нем, вы получаете одновременно ритмический акцент и мелодическую ноту. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
       <p class="body ind">Это инструмент, который хочется не просто слушать – к нему хочется прикоснуться.</p>
       <div class="btns ind">
-        <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать 40+ инструментов в студии</button>
+        <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать в студии</button>
         <button type="button" class="btn btn--line-d" data-toggle="hist">История ханга <span data-sign>+</span></button>
       </div>
       <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Тёплый объёмный звук, похожий одновременно на арфу и хор</p>
     </div>
     <div class="s2-scheme">
-      <!-- сравнение вариантов ханга (правка 10.11): переключение на месте, выбор помнится в рамках визита -->
-      <div class="hang-switch" role="group" aria-label="Вариант ханга">
-        <span class="hang-switch-l">Сравнить:</span>
-        <button type="button" data-hang-variant="iridescent" aria-pressed="true"><i style="--sw:#6b5a7a" aria-hidden="true"></i>Иридисцентный</button>
-        <button type="button" data-hang-variant="bronze" aria-pressed="false"><i style="--sw:#a07a4a" aria-hidden="true"></i>Бронзовый</button>
-      </div>
+      <!-- только иридисцентный (правка 11.11); переключатель сравнения убран -->
       <div class="hang">
         <img class="hang-photo" src={u('img/handpan-iridescent-cutout.webp')} alt="Иридисцентный хэндпан: вид сверху на тональные поля" width="878" height="878" loading="lazy">
         <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>
@@ -160,7 +151,7 @@ const jsonld = {
 </section>
 
 <!-- 03 · Почему так легко -->
-<section class="sec s3 bg-sand" aria-labelledby="h-s3">
+<section class="sec s3 bg-white" aria-labelledby="h-s3">
   <div class="stack s3-text">
     <span class="mono s3-count">B♭ · 3/10</span>
     <!-- заголовок и текст целиком по правке 08.11; всплывающее пояснение «Звуковая скульптура» убрано — текст теперь в теле экрана -->
@@ -182,7 +173,7 @@ const jsonld = {
 </section>
 
 <!-- 04 · Три маршрута -->
-<section class="sec s4" aria-labelledby="h-s4">
+<section class="sec s4 bg-grad" aria-labelledby="h-s4">
   <BrandLines class="brand-lines--routes" />
 
   <div class="head-row">
@@ -194,7 +185,7 @@ const jsonld = {
   </div>
   <div class="routes">
     <div class="route">
-      <img class="route-photo" src={u('img/aud-home.webp')} alt="Ханг в студии" width="720" height="900" loading="lazy">
+      <img class="route-photo" src={u('img/route-engraved.webp')} alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
       <h3 class="route-verb">Услышать</h3>
       <div class="stack route-info">
         <span class="mono">Хочу сначала послушать</span>
@@ -224,7 +215,7 @@ const jsonld = {
 </section>
 
 <!-- 05 · Все шесть аудиторий: карточки с рекомендацией и звуком -->
-<section class="sec s5 bg-sand" aria-labelledby="h-s5">
+<section class="sec s5 bg-sky" aria-labelledby="h-s5">
   <div class="sec-head">
     <div class="mono">D · 5/10</div>
     <h2 id="h-s5" class="h2 s5-h"><span>Кому подходит ханг</span><br>– от медитации до сцены</h2>
@@ -252,7 +243,7 @@ const jsonld = {
 </section>
 
 <!-- 06 · Почему доверяют -->
-<section class="sec s6" aria-labelledby="h-s6" data-stats-wrap>
+<section class="sec s6 bg-white" aria-labelledby="h-s6" data-stats-wrap>
   <div class="sec-head">
     <div class="mono">E · 6/10</div>
     <h2 id="h-s6" class="h2 h2--long s6-h"><span class="s6-accent">Мастера,</span> которые стоят <span class="s6-indent">у истоков культуры<br>ханга в России</span></h2>
@@ -277,7 +268,7 @@ const jsonld = {
 </section>
 
 <!-- 07 · Кто учит -->
-<section class="sec s7" id="teach" aria-labelledby="h-s7">
+<section class="sec s7 bg-sky" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
       <div class="mono">F · 7/10</div>
@@ -309,11 +300,12 @@ const jsonld = {
 
 <!-- 08 · Как делают ханг -->
 <section class="s8 bg-dark on-dark" id="making" aria-labelledby="h-s8">
-  <img class="s8-bg" src={u('img/making.webp')} alt="" width="1200" height="1800" loading="lazy">
+  <img class="s8-bg" src={u('img/making-tree.webp')} alt="" width="2400" height="1455" loading="lazy">
   <div class="sec s8-grid">
     <div class="stack s8-text">
       <div class="s8-top">
-        <span class="s8-chip" data-pending="P-09">Видео из мастерской</span>
+        <!-- видео из мастерской (правка 11.11): настройка ханга, вертикальное, открывается в окне -->
+        <button type="button" class="s8-chip s8-video-btn" data-video-open><span class="s8-vplay" aria-hidden="true"><svg viewBox="0 0 22 22" width="12" height="12"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"/></svg></span>Видео из мастерской</button>
         <span class="mono">G · 8/10</span>
       </div>
       <span class="s8-sub">Ханг нельзя сделать на конвейере</span>
@@ -334,7 +326,7 @@ const jsonld = {
 </section>
 
 <!-- 09 · Ханг объединяет -->
-<section class="sec s9" id="community" aria-labelledby="h-s9">
+<section class="sec s9 bg-white" id="community" aria-labelledby="h-s9">
   <div class="s9-grid">
     <div class="stack s9-text">
       <div class="mono">A · 9/10</div>
@@ -350,7 +342,7 @@ const jsonld = {
         : <button type="button" class="btn btn--ink s9-btn" data-open="community">Присоединиться к комьюнити →</button>}
     </div>
     <div class="mosaic">
-      <div class="m m1"><img src={u('img/community-1.webp')} alt="Зал аплодирует на концерте школы" width="1200" height="800" loading="lazy"></div>
+      <div class="m m1"><img src={u('img/community-clap.webp')} alt="Слушатели аплодируют на концерте школы" width="2000" height="1073" loading="lazy"></div>
       <div class="m m2"><img src={u('img/community-2.webp')} alt="Ансамбль хангов на отчётном концерте" width="667" height="1000" loading="lazy"></div>
       <div class="m m3"><img src={u('img/community-3.webp')} alt="Игра на хангах в поле у маяка" width="600" height="900" loading="lazy"></div>
     </div>
@@ -358,13 +350,13 @@ const jsonld = {
 </section>
 
 <!-- 10 · Финал и контакты -->
-<section class="sec s10" id="contacts" aria-labelledby="h-s10">
+<section class="sec s10 bg-sky" id="contacts" aria-labelledby="h-s10">
   <div class="glow s10-glow" aria-hidden="true"></div>
   <BrandLines class="brand-lines--contact" />
   <div class="stack s10-head">
     <div class="mono row-sb"><span>Пробное занятие</span><span>C · 10/10</span></div>
     <h2 id="h-s10" class="h-hero s10-h">
-      <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue">свой</span> <span>звук</span></span>
+      <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue cap--wine">свой</span> <span>звук</span></span>
       <span class="s10-l2">за 45 минут</span>
     </h2>
   </div>
@@ -390,6 +382,12 @@ const jsonld = {
     <button type="button" class="btn btn--48 btn--blue" data-open="trial">Записаться</button>
   </div>
 </div>
+
+<!-- видео из мастерской: грузится только при открытии -->
+<dialog class="vmodal" data-video aria-label="Видео из мастерской: настройка ханга">
+  <button type="button" class="x vmodal-x" data-video-close aria-label="Закрыть видео">×</button>
+  <video controls playsinline preload="none" poster={u('video/making-poster.jpg')} width="720" height="1280" data-src={u('video/making.mp4')}></video>
+</dialog>
 
 <!-- форма записи: модалка / bottom sheet -->
 <div class="sheet" data-sheet hidden>
