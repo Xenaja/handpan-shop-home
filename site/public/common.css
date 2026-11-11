@@ -509,3 +509,7 @@ a.branch-map-frame::before{opacity:.16}
   .branch-panel{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)!important;column-gap:clamp(24px,3vw,56px)}
   a.branch-map-frame{width:min(100%,680px);margin-right:0;justify-self:center}
 }
+/* мессенджеры и соцсети отделены от кнопки записи (правка 12.11) */
+.branch-channels{margin-top:clamp(32px,4vw,48px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--line);gap:clamp(24px,3vw,32px)}
+.on-dark .branch-channels{border-top-color:rgba(232,238,244,.14)}
+.branch-group{gap:14px}
