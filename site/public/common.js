@@ -145,12 +145,7 @@
         setCity(n.dataset.contactCity); n.focus(); e.preventDefault();
       });
     }
-    // Виджет Яндекса тяжёлый — грузим только по нажатию (SEO-MIGRATION.md, раздел 9)
-    branch.addEventListener('click', e => {
-      const b = e.target.closest('[data-map-show]'); if (!b) return;
-      const box = b.closest('[data-contact-map]');
-      box.innerHTML = `<iframe title="${esc(box.dataset.mapTitle || 'Карта')}" src="${box.dataset.contactMap}" allowfullscreen loading="lazy"></iframe>`;
-    });
+    // карта с 12.11 видна сразу: iframe с loading="lazy" в разметке (BranchContacts.astro)
   }
   document.addEventListener('click', e => { const b = e.target.closest('[data-city]'); if (b) setCity(b.dataset.city); });
   document.addEventListener('change', e => {
@@ -356,7 +351,9 @@
   function initMotion() {
     if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
-    const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.stage,.need,.s8-text,.s8-copy,.s9-text,.s10-head,.s10-grid,.e11-l,.e11-r';
+    // «Обучение» (правка 12.11): цитата, фото, навыки, этапы пути, форматы, вопросы — тоже мягко появляются
+    const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.stage,.need,.s8-text,.s8-copy,.s9-text,.s9-top,.s9-photos,.s10-head,.s10-grid,.e11-l,.e11-r,'
+      + '.e2-q,.e2-row,.e-photo,.skill,.step,.trial,.fmt,.faq-i,.chips';
     const targets = $$(selector).filter(el => !el.parentElement.closest(selector));
     const seen = new WeakSet(), active = new Map();
     const entrances = new IntersectionObserver(entries => {
@@ -366,8 +363,8 @@
         entrances.unobserve(el); seen.add(el);
         // При переходе по якорю или с клавиатуры управление сразу доступно.
         if (el.contains(document.activeElement)) return;
-        const stagger = el.matches('.route,.aud,.stage,.need')
-          ? ([...el.parentElement.children].indexOf(el) % 3) * 110 : 0;
+        const stagger = el.matches('.route,.aud,.stage,.need,.skill,.step,.fmt,.faq-i')
+          ? ([...el.parentElement.children].indexOf(el) % (el.matches('.skill') ? 5 : 3)) * 110 : 0;
         const animation = el.animate([
           { opacity: 0, transform: 'translateY(26px)' },
           { opacity: 1, transform: 'translateY(0)' }

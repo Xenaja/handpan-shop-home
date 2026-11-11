@@ -439,3 +439,14 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
   a,button,label,select,summary,[role="button"],.hang-hit{cursor:pointer}
   input,textarea{cursor:text}
 }
+
+/* Контакты (правка 12.11): текст отдельно от кнопки; карта сразу и в цветах блока —
+   серая основа + тонировка фирменным синим; на тёмном фоне — «ночная» инверсия */
+.branch-booking{gap:clamp(20px,2.4vw,28px);margin-top:clamp(18px,2vw,26px)}
+.branch-map-frame{isolation:isolate}
+.branch-map-frame iframe{filter:grayscale(1) contrast(1.05) brightness(1.03)}
+.branch-map-frame::after{content:'';position:absolute;inset:0;z-index:1;background:#3A6090;mix-blend-mode:color;opacity:.6;pointer-events:none}
+.on-dark .branch-map-frame iframe{filter:grayscale(1) invert(.92) contrast(.92) brightness(.92)}
+.on-dark .branch-map-frame::after{background:#2B4C78;opacity:.75}
+.branch-map-marker{position:absolute;left:50%;top:50%;z-index:2;width:34px;height:42px;transform:translate(-50%,-100%);pointer-events:none;filter:drop-shadow(0 4px 8px rgba(10,16,32,.35))}
+.branch-map-frame iframe{pointer-events:none}.branch-map-hit{position:absolute;inset:0;z-index:3;cursor:pointer}

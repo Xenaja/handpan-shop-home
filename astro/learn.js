@@ -28,11 +28,30 @@
     button.addEventListener('pointerenter', () => warmTeacher(teacherImages[i]), { once: true });
     button.addEventListener('focus', () => warmTeacher(teacherImages[i]), { once: true });
   });
-  let ti = 0;
+  let ti = 0, swapT = 0;
+  // плавная смена преподавателя (правка 12.11): старая карточка гаснет, новая проявляется — фото с лёгким приближением, текст со сдвигом в сторону листания
+  const EASE = 'cubic-bezier(.22,.8,.3,1)';
+  function swapPanel(from, to, dir) {
+    const show = () => {
+      tpanels.forEach((p, k) => { p.hidden = k !== to; });
+      if (HS.reduce || !Element.prototype.animate) return;
+      const p = tpanels[to], ph = $('.tphoto', p), info = $('.tinfo', p);
+      if (ph) ph.animate([{ opacity: 0, transform: 'scale(1.035)' }, { opacity: 1, transform: 'none' }], { duration: 900, easing: EASE });
+      if (info) [...info.children].forEach((el, n) => el.animate(
+        [{ opacity: 0, transform: `translateX(${dir * 28}px)` }, { opacity: 1, transform: 'none' }],
+        { duration: 750, delay: 90 + n * 70, easing: EASE, fill: 'backwards' }));
+    };
+    clearTimeout(swapT);
+    const old = tpanels[from];
+    if (from === to || HS.reduce || !old || old.hidden || !Element.prototype.animate) return show();
+    old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: 'ease-out', fill: 'forwards' });
+    swapT = setTimeout(() => { old.getAnimations().forEach(a => a.cancel()); show(); }, 250);
+  }
   function setTeacher(i, focus) {
-    ti = i;
+    const prev = ti; ti = i;
     warmTeacher(teacherImages[i]);
-    tbtns.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; tpanels[k].hidden = k !== i; });
+    tbtns.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+    swapPanel(prev, i, i >= prev ? 1 : -1);
     if (!HS.wide.matches) {
       const list = $('[data-tlist]'), button = tbtns[i];
       const listRect = list.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();

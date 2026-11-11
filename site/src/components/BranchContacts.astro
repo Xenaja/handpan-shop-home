@@ -48,12 +48,12 @@ import D from '../data/site.json';
           </div>}
         </div>
         <div class="branch-map">
-          <div class="branch-map-frame" data-contact-map={`https://yandex.ru/map-widget/v1/?text=${mapQuery}&z=16`} data-map-title={`Карта студии: ${c.name}, ${c.address}`}>
-            <div class="branch-map-cover" data-map-cover>
-              <svg class="branch-map-pin" viewBox="0 0 32 40" aria-hidden="true"><path d="M16 38S2 24 2 15a14 14 0 1 1 28 0c0 9-14 23-14 23Z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="15" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-              <span class="branch-map-label">{c.name}</span>
-              <button type="button" class="btn btn--48 btn--line branch-map-show" data-map-show>Показать карту</button>
-            </div>
+          {/* карта видна сразу (правка 12.11); грузится, только когда блок подходит к экрану; цвет — под фон блока (common.css) */}
+          <div class="branch-map-frame">
+            <iframe title={`Карта студии: ${c.name}, ${c.address}`} src={`https://yandex.ru/map-widget/v1/?text=${mapQuery}&z=16`} loading="lazy" allowfullscreen></iframe>
+            {/* карта неподвижна, клик — в Яндекс Карты; поэтому свой маркер в центре всегда указывает на студию */}
+            <a class="branch-map-hit" href={`https://yandex.ru/maps/?text=${mapQuery}`} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>
+            <svg class="branch-map-marker" viewBox="0 0 32 40" aria-hidden="true"><path d="M16 39S2 25 2 15.5a14 14 0 1 1 28 0C30 25 16 39 16 39Z" fill="#833945" stroke="#fff" stroke-width="2"/><circle cx="16" cy="15.5" r="5" fill="#fff"/></svg>
           </div>
           <a class="branch-map-link" href={`https://yandex.ru/maps/?text=${mapQuery}`} target="_blank" rel="noopener">Открыть в Яндекс Картах <span aria-hidden="true">↗</span></a>
         </div>
