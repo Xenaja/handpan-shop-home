@@ -722,3 +722,22 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .s1-hangplay.glass-d{background:rgba(10,16,32,.46);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(232,238,244,.18)}.s1-hangplay.glass-d:hover{background:rgba(10,16,32,.66)}
 @media(min-width:1000px){.s2-scheme{transform:translateX(calc(-1 * clamp(0px,(100vw - 1100px) * .22,90px)))}}
 .route:nth-child(3) .route-photo{object-position:50% 35%}
+
+/* 5: «Десятки тысяч ударов» — раскладка «текст | фото» (правка 12.11):
+   фото справа во всю высоту, обрезано на ханг и растворяется в тёмном фоне; текст слева на чистом фоне, без наложения на инструмент */
+@media(min-width:1000px){
+  .s8{background:var(--night)}
+  .s8 .s8-bg{left:auto;right:0;width:46%;object-position:74% 50%;filter:saturate(.95) brightness(.88);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 28%);mask-image:linear-gradient(90deg,transparent 0%,#000 28%)}
+  .s8 .s8-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(28px,3vw,48px);row-gap:clamp(28px,4vh,44px);width:58%;min-height:min(100svh,980px);align-content:center;padding-top:clamp(64px,9vh,110px);padding-bottom:clamp(64px,9vh,110px)}
+  .s8 .s8-text,.s8 .s8-copy{grid-column:1 / -1;max-width:none}
+  .s8 .h-display{font-size:clamp(48px,5.8vw,104px)}
+  .s8 .s8-copy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:inherit;row-gap:16px;align-items:start}
+  .s8 .s8-copy>:nth-child(1){grid-column:1;grid-row:1}
+  .s8 .s8-copy>:nth-child(2){grid-column:1;grid-row:2}
+  .s8 .s8-copy>:nth-child(3){grid-column:2;grid-row:1;align-self:end}
+  .s8 .s8-copy>:nth-child(4){grid-column:2;grid-row:2}
+  .s8 .s8-copy>.btns{grid-column:1 / -1;grid-row:3;margin-top:clamp(8px,2vh,20px)}
+  .s8 .s8-quote{font-size:clamp(17px,1.35vw,22px)}
+  .s8 .s8-copy .body{font-size:clamp(15px,1.1vw,17px)}
+  .s8-then strong{font-size:clamp(22px,2vw,32px)}
+}

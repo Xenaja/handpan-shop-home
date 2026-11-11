@@ -295,6 +295,20 @@
   });
   setT(0);
 
+  // автоперелистывание (правка 12.11): раз в 5 с, только когда карусель на экране;
+  // пауза при наведении, фокусе и касании, после ручного листания отсчёт заново; при «уменьшить движение» — выключено
+  const sec7 = $('#teach');
+  let autoT = 0, inView = false, tHold = false;
+  const stopAuto = () => clearInterval(autoT);
+  const runAuto = () => { stopAuto(); if (!reduce && inView && !tHold && !document.hidden) autoT = setInterval(() => setT(ti + 1), 5000); };
+  new IntersectionObserver(es => { inView = es[0].isIntersecting; runAuto(); }, { threshold: .35 }).observe(sec7);
+  sec7.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { tHold = true; stopAuto(); } });
+  sec7.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { tHold = false; runAuto(); } });
+  sec7.addEventListener('focusin', () => { tHold = true; stopAuto(); });
+  sec7.addEventListener('focusout', e => { if (!sec7.contains(e.relatedTarget)) { tHold = false; runAuto(); } });
+  ['click', 'touchend', 'keydown'].forEach(ev => car.parentElement.addEventListener(ev, runAuto, { passive: true }));
+  document.addEventListener('visibilitychange', runAuto);
+
   /* ---------- тест «Поможем определиться»: окно, quiz.js — по первому открытию ---------- */
   const qm = $('[data-quiz-modal]');
   let qmFocus = null;
