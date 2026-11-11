@@ -149,13 +149,18 @@
       const r = hImg.getBoundingClientRect(), host = hp.offsetParent.getBoundingClientRect();
       const s = Math.max(r.width / nw, r.height / nh), w = nw * s, h = nh * s;
       const [px, py] = getComputedStyle(hImg).objectPosition.split(' ').map(v => parseFloat(v) / 100);
-      const x = r.left - host.left + (r.width - w) * px + fx * w, y = r.top - host.top + (r.height - h) * py + fy * h;
+      const x = r.left - host.left + (r.width - w) * px + fx * w;
+      let y = r.top - host.top + (r.height - h) * py + fy * h;
+      // на компьютере — на одной линии с кнопками «Попробовать занятие» / «Выбрать ханг» (правка 12.11)
+      const btns = wide.matches && $('.s1-btns');
+      if (btns) { const b = btns.getBoundingClientRect(); y = b.top - host.top + b.height / 2; }
       hp.style.setProperty('--hx', Math.round(x) + 'px'); hp.style.setProperty('--hy', Math.round(y) + 'px');
       hp.classList.add('is-placed');
     };
     hImg.complete ? place() : hImg.addEventListener('load', place);
     hImg.addEventListener('load', place);
     addEventListener('resize', place); wide.addEventListener('change', place);
+    document.fonts && document.fonts.ready.then(place);
   }
 
   /* ---------- 08: видео из мастерской в окне ---------- */
