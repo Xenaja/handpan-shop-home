@@ -75,3 +75,22 @@
 .i2-btns{gap:clamp(16px,2vw,28px)}
 .i2-btns .btn{min-width:min(100%,300px);padding:0 40px}
 @media (max-width:599.98px){.i2-btns .btn{width:100%}}
+
+/* ===== 01 по примеру главной и «Обучения» (правка 12.11):
+   заголовок с капсулой на второй строке, блок по центру высоты, всё в одном окне, ханг крупнее справа, цифры внизу ===== */
+.i1-cap{background:linear-gradient(90deg,var(--wine),#663343 38%,#7DAFD6);box-shadow:none;color:#fff;padding:.12em .32em .15em;line-height:1.05}
+@media (min-width:1000px){
+  .i1 .e1-body{justify-content:flex-start;gap:0;padding-top:clamp(12px,3vh,40px);padding-bottom:clamp(18px,3vh,32px)}
+  .i1 .e1-top{margin:auto 0;gap:clamp(22px,4.4vh,48px);max-width:62%}
+  .i1 .e1-h1{font-size:clamp(46px,min(6vw,10.5vh),116px);gap:.14em}
+  .i1 .e1-cap{margin-left:calc(var(--cw) + var(--g) - .32em)}
+  .i1 .e1-text{gap:clamp(10px,1.8vh,18px)}
+  .i1-lead{font-size:clamp(17px,min(1.45vw,2.6vh),22px)}
+  .i1-points li{font-size:clamp(14px,min(1.1vw,2vh),16px)}
+  .i1 .e1-btns{margin-top:clamp(14px,3vh,32px)}
+  .i1-facts{flex:none;max-width:62%;margin-top:clamp(14px,2.4vh,28px)}
+  .i1-stage{right:clamp(16px,4vw,72px);top:52%;width:min(36vw,600px,64vh)}
+  .i1-glow{right:-4%;top:50%;transform:translateY(-50%);width:min(980px,66vw)}
+}
+@media(max-width:999.98px){.i1-cap{margin-left:.08em}}
+@media (min-width:1000px){.i1 .e1-h1{font-size:clamp(44px,min(5.1vw,10vh),104px)}.i1-stage{width:min(34vw,600px,62vh)}}
