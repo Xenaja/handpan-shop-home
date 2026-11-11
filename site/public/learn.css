@@ -358,3 +358,11 @@
 .e3.bg-grad .sec-head .mono{color:rgba(255,255,255,.85)}
 .e5.bg-grad .step p,.e5.bg-grad .step-h .mono{color:var(--h-blue)}
 .e5.bg-grad .path,.e5.bg-grad .step,.e5.bg-grad .step+.step{border-color:rgba(28,37,72,.22)}
+/* «Форматы и цены»: больше воздуха, цена пробного соразмерна остальным (правка 12.11) */
+@media(min-width:1000px){
+  .fmt{padding:clamp(28px,4.2vh,44px) 0}
+  .trial{padding:clamp(36px,3.4vw,52px);gap:clamp(28px,4vh,44px)}
+  .trial-t{gap:14px}
+  .trial-price>span:first-child{font-size:clamp(40px,3.4vw,56px)}
+  .e6{gap:clamp(48px,6vw,80px)}
+}
