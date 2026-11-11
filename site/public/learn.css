@@ -344,3 +344,17 @@
   .fmt-btn{justify-self:end;min-width:150px}
   .trial{justify-content:space-between}
 }
+
+/* Градиент из главной на «Что вы освоите» и «Путь ученика» (правка 12.11).
+   Как в «Как начать» на главной: крупный заголовок белый, акцент и мелкий текст — #1C2548 */
+.e3.bg-grad .h2 .mute{color:var(--h-blue)}
+.e3.bg-grad .mono,.e3.bg-grad .g-note{color:var(--h-blue)}
+.e3.bg-grad .skills,.e3.bg-grad .skill+.skill{border-color:rgba(28,37,72,.22)}
+.e3.bg-grad .skill-w{color:var(--h-blue)}
+.e3.bg-grad .skill-t{color:rgba(28,37,72,.85)}
+.e3.bg-grad .skill:hover{color:inherit}
+.e3.bg-grad .skill:hover .skill-w{color:#fff}
+@media(min-width:1000px){.e3.bg-grad .skill{border-right-color:rgba(28,37,72,.22)}}
+.e3.bg-grad .sec-head .mono{color:rgba(255,255,255,.85)}
+.e5.bg-grad .step p,.e5.bg-grad .step-h .mono{color:var(--h-blue)}
+.e5.bg-grad .path,.e5.bg-grad .step,.e5.bg-grad .step+.step{border-color:rgba(28,37,72,.22)}
