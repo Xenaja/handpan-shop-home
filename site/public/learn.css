@@ -331,3 +331,16 @@
 .e5>.e5-l,.e5>.path{position:relative;z-index:1}
 .brand-lines--path{background:var(--bronze-g);opacity:1;-webkit-mask-image:url(img/logo-mark.svg);mask-image:url(img/logo-mark.svg);aspect-ratio:296.4/277.6;width:clamp(150px,15vw,250px);left:calc(var(--gut) + var(--cw) + var(--g));bottom:var(--sec-y)}
 @media(max-width:999.98px){.brand-lines--path{width:84px;left:auto;right:var(--gut);bottom:auto;top:calc(var(--sec-y) - 8px)}}
+
+/* «Форматы и цены»: общая сетка колонок для всех строк, строки одной высоты = высота карточки пробного (правка 12.11) */
+@media(min-width:1000px){
+  .e6-grid{align-items:stretch}
+  .fmts{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.45fr) max-content max-content;grid-auto-rows:1fr;column-gap:clamp(20px,2.4vw,40px);border-bottom:1px solid var(--line)}
+  .fmt{grid-column:1 / -1;grid-template-columns:subgrid;column-gap:inherit;align-items:center;padding:clamp(16px,2vh,24px) 0}
+  .fmt-name{font-size:clamp(18px,1.5vw,24px);line-height:1.2}
+  .fmt-who{font-size:15px;line-height:1.45;color:var(--ink3);max-width:30ch}
+  .fmt-price{flex-direction:column;align-items:flex-start;gap:4px;min-width:9ch}
+  .fmt-price>span:first-child{font-size:clamp(24px,2vw,32px);line-height:1;color:var(--h-blue)}
+  .fmt-btn{justify-self:end;min-width:150px}
+  .trial{justify-content:space-between}
+}
