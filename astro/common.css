@@ -477,3 +477,20 @@ a.branch-map-frame:hover .branch-map-img{transform:scale(1.025)}
 a.branch-map-frame:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 /* бронзовый знак мягче (правка 12.11): тонкий контурный вариант знака вместо залитого, приглушённая бронза */
 .brand-lines--routes,.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours.svg);mask-image:url(img/lines/logo-contours.svg);aspect-ratio:308/290;background:linear-gradient(135deg,#E9D2B0 0%,#C49A6C 45%,#A97E57 70%,#D8B892 100%);opacity:.72}
+
+/* Карта в форме знака U-GENE (правка 12.11): карта видна внутри внешнего контура знака,
+   поверх — тонкие линии знака как изолинии, маркер студии в центре внутреннего кольца */
+a.branch-map-frame{aspect-ratio:308/290;max-height:none;min-height:0;background:none;border:0;overflow:visible;width:min(100%,560px);justify-self:center;align-self:center}
+.branch-map-img{-webkit-mask:url(img/lines/logo-shape.svg) center/contain no-repeat;mask:url(img/lines/logo-shape.svg) center/contain no-repeat}
+a.branch-map-frame::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:var(--h-blue);opacity:.7;-webkit-mask:url(img/lines/logo-contours.svg) center/contain no-repeat;mask:url(img/lines/logo-contours.svg) center/contain no-repeat}
+.on-dark a.branch-map-frame::before{background:var(--milk);opacity:.6}
+a.branch-map-frame::after{display:none}
+.branch-map-marker{left:42.9%;top:50.7%}
+.branch-map-osm{right:auto;left:50%;bottom:-22px;transform:translateX(-50%);background:none!important}
+a.branch-map-frame:hover .branch-map-img{transform:scale(1.03)}
+.branch-map{align-items:center}
+.branch-map-link{align-self:center;margin-top:18px}
+.branch-map-img{object-position:78% 50%}
+.branch-map-img{filter:grayscale(1) sepia(.45) hue-rotate(178deg) saturate(1.7) brightness(1.02)}
+.on-dark .branch-map-img{filter:grayscale(1) invert(.92) sepia(.5) hue-rotate(180deg) saturate(1.8) brightness(.85) contrast(.92)}
+.on-dark a.branch-map-frame{background:none;border:0}
