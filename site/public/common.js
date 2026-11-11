@@ -400,12 +400,27 @@
     applyPreference();
   }
 
+  /* стрелка «наверх» на всех страницах (правка 12.11): появляется после первого экрана */
+  function initToTop() {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'totop'; b.setAttribute('aria-label', 'Наверх страницы');
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    document.body.appendChild(b);
+    b.addEventListener('click', () => {
+      scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      const skip = $('.skip'); if (skip) skip.focus({ preventScroll: true });
+    });
+    const upd = () => b.classList.toggle('is-on', scrollY > innerHeight * 1.1);
+    addEventListener('scroll', upd, { passive: true }); upd();
+  }
+
   /* после отрисовки страницы: типограф и начальные состояния */
   function ready() {
     setCity(city);
     onScroll();
     typo();
     initMotion();
+    initToTop();
   }
 
   window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready, updateSticky: onScroll };

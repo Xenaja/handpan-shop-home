@@ -12,6 +12,7 @@
       "name": "Москва",
       "address": "Нижний Сусальный пер., 5",
       "metro": "м. Курская",
+      "coords": [37.66405, 55.76119],
       "contacts": {
         "phone": "+79031302889",
         "phoneLabel": "+7 (903) 130-28-89",
@@ -23,6 +24,7 @@
       "name": "Санкт-Петербург",
       "address": "проспект Чернышевского, 17",
       "metro": null,
+      "coords": [30.35840, 59.94455],
       "bookingUrl": "https://n1548111.yclients.com",
       "contacts": {
         "website": "https://handpanstudiospb.ru",

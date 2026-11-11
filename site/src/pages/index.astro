@@ -58,7 +58,7 @@ const jsonld = {
   <div class="hdr">
     <Logo class="pill glass-d logo" href="#top" />
     <nav class="pill glass-d nav hdr-d" aria-label="Основное меню">
-      <a class="lnk" href={u('instruments')}>Инструменты</a><a class="lnk" href={u('cources')}>Обучение</a><a class="lnk" href="#contacts">Контакты</a>
+      <a class="lnk" href={u('cources')}>Обучение</a><a class="lnk" href={u('instruments')}>Инструменты</a><a class="lnk" href="#contacts">Контакты</a>
     </nav>
     <!-- Петербург — отдельный сайт филиала (правка 08.11) -->
     <div class="pill glass-d city s1-city hdr-d" role="group" aria-label="Город">
@@ -94,9 +94,9 @@ const jsonld = {
     </div>
   </div>
   <!-- плеер на ханге (правка 11.11) -->
-  <button type="button" class="s1-hangplay" data-play data-hang-spot aria-label="Послушать, как звучит ханг">
+  <button type="button" class="s1-hangplay glass-d" data-play data-hang-spot aria-label="Послушать, как звучит ханг">
     <span class="play glass-d" data-play-ic aria-hidden="true"></span>
-    <span class="s1-hp-label glass-d"><span data-play-label data-off="Послушай наши ханги" data-on="Играет U-GENE">Послушай наши ханги</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
+    <span class="s1-hp-label"><span data-play-label data-off="Послушай наши ханги" data-on="Играет U-GENE">Послушай наши ханги</span><span class="s1-ptime" data-time-wrap hidden> · <span data-time>0:00</span></span></span>
   </button>
 </header>
 
@@ -106,7 +106,7 @@ const jsonld = {
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href={u('instruments')}>Инструменты</a><a href={u('cources')}>Обучение</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+    <a href={u('cources')}>Обучение</a><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург ↗</a>
@@ -354,7 +354,7 @@ const jsonld = {
 </section>
 
 <!-- 10 · Финал и контакты -->
-<section class="sec s10 bg-sky" id="contacts" aria-labelledby="h-s10">
+<section class="sec s10 bg-sky" id="final" aria-labelledby="h-s10">
   <div class="glow s10-glow" aria-hidden="true"></div>
   <BrandLines class="brand-lines--contact" />
   <div class="stack s10-head">

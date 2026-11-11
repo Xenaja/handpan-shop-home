@@ -1,7 +1,8 @@
 ---
 import D from '../data/site.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
-<div class="branch-contacts" data-contact-switch>
+<div class="branch-contacts" id="contacts" data-contact-switch>
   <div class="branch-tabs" role="tablist" aria-label="Город студии" data-contact-tabs hidden>
     {D.cities.map((c, i) => <button type="button" role="tab" id={`contact-tab-${c.key}`} aria-controls={`contacts-${c.key}`} aria-selected={String(i === 0)} tabindex={i === 0 ? 0 : -1} data-contact-city={c.key}>{c.name}</button>)}
   </div>
@@ -48,13 +49,13 @@ import D from '../data/site.json';
           </div>}
         </div>
         <div class="branch-map">
-          {/* карта видна сразу (правка 12.11); грузится, только когда блок подходит к экрану; цвет — под фон блока (common.css) */}
-          <div class="branch-map-frame">
-            <iframe title={`Карта студии: ${c.name}, ${c.address}`} src={`https://yandex.ru/map-widget/v1/?text=${mapQuery}&z=16`} loading="lazy" allowfullscreen></iframe>
-            {/* карта неподвижна, клик — в Яндекс Карты; поэтому свой маркер в центре всегда указывает на студию */}
-            <a class="branch-map-hit" href={`https://yandex.ru/maps/?text=${mapQuery}`} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>
+          {/* карта (правка 12.11): статичная картинка из OpenStreetMap с центром на студии (img/map-<город>.webp, собрана один раз) —
+              без рекламного слота виджета Яндекса и без чужих скриптов; цвет — под фон блока (common.css); клик — в Яндекс Карты */}
+          <a class="branch-map-frame" href={`https://yandex.ru/maps/?text=${mapQuery}`} target="_blank" rel="noopener" aria-label={`Студия на карте: ${c.address} — открыть в Яндекс Картах`}>
+            <img class="branch-map-img" src={`${base}/img/map-${c.key}.webp`} alt="" width="1400" height="1050" loading="lazy" decoding="async">
+            <span class="branch-map-osm">© OpenStreetMap</span>
             <svg class="branch-map-marker" viewBox="0 0 32 40" aria-hidden="true"><path d="M16 39S2 25 2 15.5a14 14 0 1 1 28 0C30 25 16 39 16 39Z" fill="#833945" stroke="#fff" stroke-width="2"/><circle cx="16" cy="15.5" r="5" fill="#fff"/></svg>
-          </div>
+          </a>
           <a class="branch-map-link" href={`https://yandex.ru/maps/?text=${mapQuery}`} target="_blank" rel="noopener">Открыть в Яндекс Картах <span aria-hidden="true">↗</span></a>
         </div>
       </section>

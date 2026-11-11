@@ -708,3 +708,15 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
   .s9-photos .m,.s9-photos .m:last-child{aspect-ratio:auto;height:clamp(280px,30vw,460px)}
 }
 @media(max-width:699.98px){.s9-col+.s9-col{margin-top:-12px}}
+
+/* 1: «Послушай наши ханги» — одна кнопка-капсула высотой как основные кнопки, значок в начале (правка 12.11) */
+.s1-hangplay{--hp-h:56px;gap:14px;min-height:var(--hp-h);padding:6px 26px 6px 6px;border-radius:999px;font-size:15px;font-weight:600;transform:translate(calc(var(--hp-h) / -2),-50%);transition:opacity .8s var(--ease),background-color .35s}
+.s1-hangplay .play{width:calc(var(--hp-h) - 12px);height:calc(var(--hp-h) - 12px);background:rgba(232,238,244,.14);border:0}
+.s1-hangplay .play svg{width:15px;height:15px}
+.s1-hp-label{display:inline-flex;align-items:center;min-height:0;padding:0;border:0;background:none;font-size:inherit}
+.s1-hangplay:hover{background:rgba(10,16,32,.62)}
+.s1-hangplay:hover .play{background:var(--cta);transform:none}
+.s1-hangplay[aria-pressed="true"] .play{background:var(--cta)}
+@media(min-width:1000px){.s1-hangplay{--hp-h:clamp(56px,7.6vh,68px);font-size:clamp(16px,1.2vw,18px)}}
+@media(max-width:999.98px){.s1-hangplay{--hp-h:52px;font-size:14px;transform:translate(calc(var(--hp-h) / -2),-50%)}.s1-hangplay .play{width:40px;height:40px}}
+.s1-hangplay.glass-d{background:rgba(10,16,32,.46);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(232,238,244,.18)}.s1-hangplay.glass-d:hover{background:rgba(10,16,32,.66)}
