@@ -721,3 +721,4 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 @media(max-width:999.98px){.s1-hangplay{--hp-h:52px;font-size:14px;transform:translate(calc(var(--hp-h) / -2),-50%)}.s1-hangplay .play{width:40px;height:40px}}
 .s1-hangplay.glass-d{background:rgba(10,16,32,.46);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(232,238,244,.18)}.s1-hangplay.glass-d:hover{background:rgba(10,16,32,.66)}
 @media(min-width:1000px){.s2-scheme{transform:translateX(calc(-1 * clamp(0px,(100vw - 1100px) * .22,90px)))}}
+.route:nth-child(3) .route-photo{object-position:50% 35%}
