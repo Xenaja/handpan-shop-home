@@ -328,25 +328,28 @@ const jsonld = {
 
 <!-- 09 · Ханг объединяет -->
 <section class="sec s9 bg-white" id="community" aria-labelledby="h-s9">
-  <div class="s9-grid">
-    <div class="stack s9-text">
-      <div class="mono">A · 9/10</div>
-      <h2 id="h-s9" class="h2 stack"><span>Ханг</span><span>объединяет</span></h2>
-      <p class="s9-intro">Круг, где ты становишься частью культуры.</p>
-      <p class="body">Хэндпан-сообщества — одни из самых гостеприимных в мире музыки.</p>
-      <p class="body">Здесь ценится не статус, опыт или уровень мастерства, а сам интерес к звуку. На одном джеме могут встретиться виртуоз, человек с первым хангом и тот, кто пришёл просто послушать.</p>
-      <p class="body">Это культура, в которой знания передают друг другу, музыкой делятся, а знакомства легко превращаются в дружбу и совместные проекты.</p>
-      <p class="body">Джемы, концерты, выезды, фестивали, встречи с мастерами и музыкантами. Доступ к самым актуальным событиям и знаниям. Люди, с которыми хочется продолжать играть уже за пределами музыки.</p>
-      <span class="accent ind s9-acc">Ты приходишь за звуком. А находишь своё окружение</span>
+  <!-- раскладка по макету 12.11: заголовок с акцентом и кнопкой, две колонки текста, ниже два фото в ряд -->
+  <div class="s9-top">
+    <div class="stack s9-head">
+      <h2 id="h-s9" class="h2 s9-h">Ханг объединяет</h2>
+      <p class="s9-acc">Ты приходишь за звуком. А&nbsp;находишь своё окружение</p>
       {D.communityUrl
-        ? <a class="btn btn--ink s9-btn" href={D.communityUrl}>Присоединиться к комьюнити →</a>
-        : <button type="button" class="btn btn--ink s9-btn" data-open="community">Присоединиться к комьюнити →</button>}
+        ? <a class="btn btn--blue s9-btn" href={D.communityUrl}>Присоединиться к комьюнити →</a>
+        : <button type="button" class="btn btn--blue s9-btn" data-open="community">Присоединиться к комьюнити →</button>}
     </div>
-    <div class="mosaic">
-      <div class="m m1"><img src={u('img/community-clap.webp')} alt="Слушатели аплодируют на концерте школы" width="2000" height="1073" loading="lazy"></div>
-      <div class="m m2"><img src={u('img/community-2.webp')} alt="Ансамбль хангов на отчётном концерте" width="667" height="1000" loading="lazy"></div>
-      <div class="m m3"><img src={u('img/community-3.webp')} alt="Игра на хангах в поле у маяка" width="600" height="900" loading="lazy"></div>
+    <div class="stack s9-col">
+      <p class="s9-intro">Круг, где ты становишься частью культуры.</p>
+      <p>Хэндпан-сообщества — одни из самых гостеприимных в мире музыки.</p>
+      <p>Здесь ценится не статус, опыт или уровень мастерства, а сам интерес к звуку. На одном джеме могут встретиться виртуоз, человек с первым хангом и тот, кто пришёл просто послушать.</p>
     </div>
+    <div class="stack s9-col">
+      <p>Это культура, в которой знания передают друг другу, музыкой делятся, а знакомства легко превращаются в дружбу и совместные проекты.</p>
+      <p>Джемы, концерты, выезды, фестивали, встречи с мастерами и музыкантами. Доступ к самым актуальным событиям и знаниям. Люди, с которыми хочется продолжать играть уже за пределами музыки.</p>
+    </div>
+  </div>
+  <div class="s9-photos">
+    <div class="m"><img src={u('img/community-hands.webp')} alt="Руки на хангах: игра в кругу на траве" width="1400" height="1129" loading="lazy"></div>
+    <div class="m"><img src={u('img/community-clap.webp')} alt="Слушатели аплодируют на концерте школы" width="2000" height="1073" loading="lazy"></div>
   </div>
 </section>
 

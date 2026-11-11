@@ -681,3 +681,30 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .route:nth-child(2) .route-photo{object-position:60% 88%}
 .route:nth-child(3) .route-photo{object-position:50% 85%}
 @media(max-width:999.98px){.brand-lines--routes{top:100px;right:var(--gut);width:84px}}
+
+/* 6: «Ханг объединяет» — раскладка по макету 12.11 */
+.s9{gap:clamp(36px,4.4vw,64px)}
+.s9-top{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:28px}
+.s9-head{gap:18px;align-items:flex-start}
+.s9 .s9-h{color:var(--h-blue);font-size:clamp(26px,2.6vw,40px);line-height:1.05;white-space:nowrap}
+.s9-acc{margin:0 0 0 clamp(0px,4vw,56px);max-width:none;font-family:var(--f-d);font-weight:400;font-size:clamp(18px,1.6vw,24px);line-height:1.12;letter-spacing:-.02em;color:#5F1822;text-wrap:balance}
+.s9 .s9-btn{margin-left:clamp(0px,4vw,56px);background:#5F1822;border-color:#5F1822;color:#fff}
+.s9 .s9-btn:hover{background:#74202D;border-color:#74202D;color:#fff}
+.s9-col{gap:14px;font-size:15px;line-height:1.5;color:var(--ink2);max-width:460px}
+.s9-col .s9-intro{font-size:16px;color:var(--ink2)}
+.s9-photos{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:clamp(12px,1.6vw,20px)}
+.s9-photos .m{aspect-ratio:1.24}
+.s9-photos .m:last-child{aspect-ratio:1.86}
+.s9-photos img{filter:none}
+@media(min-width:700px) and (max-width:999.98px){
+  .s9-top{grid-template-columns:1fr 1fr}
+  .s9-head{grid-column:1 / -1}
+}
+@media(min-width:1000px){
+  .s9-top{grid-template-columns:4.2fr 3.9fr 3.9fr;column-gap:clamp(32px,4vw,64px);align-items:start}
+  .s9-head{gap:22px}
+  .s9 .s9-btn{min-width:min(100%,250px)}
+  .s9-photos{grid-template-columns:4fr 6fr;align-items:stretch}
+  .s9-photos .m,.s9-photos .m:last-child{aspect-ratio:auto;height:clamp(280px,30vw,460px)}
+}
+@media(max-width:699.98px){.s9-col+.s9-col{margin-top:-12px}}
