@@ -1,0 +1,77 @@
+/* «Инструменты» (черновик 10.11). Каркас первого экрана и финала — из learn.css (e1, e11), здесь только своё. */
+
+/* ---------- 01 · ханг-вырез на тёмном фоне вместо фото ---------- */
+.i1{background:radial-gradient(120% 90% at 78% 55%,#1B2C4A 0%,var(--night) 62%)}
+.i1-glow{position:absolute;right:-10%;top:12%;width:min(900px,120vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(160,122,74,.28) 0%,rgba(58,96,144,.18) 38%,rgba(10,16,32,0) 68%);pointer-events:none}
+.i1-stage{position:absolute;z-index:1;right:-18vw;bottom:-6vw;width:min(92vw,560px);aspect-ratio:1;pointer-events:none}
+.i1-float{position:absolute;inset:0}
+.i1-hang{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));opacity:0;will-change:transform}
+.i1-hang.is-on{opacity:1}
+.i1 .e1-body{position:relative;z-index:3}
+.i1-facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:640px}
+.i1-facts li{display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:1.4;color:var(--blue-l)}
+.i1-facts b{font-family:var(--f-d);font-weight:400;font-size:clamp(26px,2.4vw,36px);line-height:1;letter-spacing:-.02em;color:var(--milk)}
+@media (min-width:1000px){
+  .i1-stage{right:3vw;top:54%;bottom:auto;width:min(34vw,520px);transform:translateY(-50%)}
+  .i1-glow{right:-6%;top:6%;width:min(760px,60vw)}
+  .i1-facts{grid-template-columns:repeat(4,minmax(0,1fr));max-width:min(62vw,880px);padding-left:calc(var(--cw) + var(--g));border-top:1px solid rgba(232,238,244,.16);padding-top:20px}
+}
+@media (max-width:999.98px){
+  .i1 .e1-body{padding-bottom:clamp(340px,96vw,500px)}
+  .i1-stage{right:50%;transform:translateX(50%);bottom:-10vw;width:min(96vw,520px)}
+  .i1-facts{order:3}
+}
+@media (prefers-reduced-motion:no-preference){
+  .i1-float{animation:i1-float 9s ease-in-out infinite}
+  @keyframes i1-float{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -10px;rotate:4deg}}
+}
+
+/* ---------- 02 · Какой ханг выбрать ---------- */
+.i2{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)}
+.i2-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.i2-card{display:flex;flex-direction:column;gap:14px;padding:clamp(24px,2.6vw,36px);background:var(--card);min-width:0}
+.i2-name{font-family:var(--f-d);font-weight:400;font-size:clamp(22px,2vw,28px);letter-spacing:-.02em;color:var(--blue);text-transform:uppercase}
+.i2-text{font-size:16px;line-height:1.5;color:var(--ink2);text-wrap:pretty}
+.i2-rec{display:flex;flex-direction:column;gap:6px;margin-top:auto;padding-top:12px;font-size:14px;line-height:1.4;color:var(--ink3)}
+.i2-rec .mono{color:var(--ink3)}
+.i2-link{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;transition:color .35s,gap .35s}
+.i2-link:hover{color:var(--cta);gap:10px}
+.i2-btns{justify-content:center}
+@media (min-width:700px){.i2-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.i2-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
+
+/* ---------- 01 · заголовок без плашки, короткий текст, подстройка под высоту окна (правка 10.11) ---------- */
+.i1-l2{display:block;padding-left:.3em;background:linear-gradient(90deg,var(--milk) 0%,var(--blue-l) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.i1-lead{font-size:clamp(17px,1.5vw,22px);line-height:1.35;font-weight:500;color:var(--milk)}
+.i1-points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.i1-points li{position:relative;padding-left:22px;font-size:15px;line-height:1.4;color:rgba(232,238,244,.78)}
+.i1-points li::before{content:'';position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--blue-l)}
+.i1 .e1-text{gap:clamp(14px,2.2vh,22px)}
+@media (min-width:1000px){
+  .i1{min-height:100svh}
+  .i1 .e1-body{padding-top:clamp(20px,7vh,104px);padding-bottom:clamp(16px,3vh,40px);gap:clamp(20px,4vh,56px)}
+  .i1 .e1-top{gap:clamp(16px,3.2vh,32px)}
+  /* размер заголовка ограничен и шириной, и высотой окна */
+  .i1 .e1-h1{font-size:min(clamp(52px,calc((5.5 * var(--cw) + 120px) / 7.15),126px),12.5vh)}
+  .i1 .e1-btns .btn{min-height:min(52px,6.4vh)}
+  .i1-facts b{font-size:min(clamp(26px,2.4vw,36px),4.6vh)}
+  .i1-facts{padding-top:clamp(12px,2vh,20px)}
+  .i1-stage{right:2vw;width:min(30vw,470px,56vh)}
+}
+@media (min-width:1000px) and (max-height:700px){
+  .i1-points li:nth-child(n+3){display:none}
+  .i1-facts li span{font-size:12px}
+}
+@media (min-width:1000px) and (max-height:760px){
+  .i1 .e1-h1{font-size:min(clamp(52px,calc((5.5 * var(--cw) + 120px) / 7.15),126px),10.5vh)}
+  .i1 .e1-body{padding-top:clamp(8px,1.5vh,20px)}
+}
+
+/* воздух между пунктами и кнопками; цифры одинаковой ширины, чтобы при досчёте не прыгала строка (правка 10.11) */
+.i1 .e1-btns{margin-top:clamp(10px,2.4vh,26px)}
+.i1-facts b{font-variant-numeric:tabular-nums}
+
+/* 02: кнопки под задачами длиннее и с большим промежутком (правка 10.11) */
+.i2-btns{gap:clamp(16px,2vw,28px)}
+.i2-btns .btn{min-width:min(100%,300px);padding:0 40px}
+@media (max-width:599.98px){.i2-btns .btn{width:100%}}
