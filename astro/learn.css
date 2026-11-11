@@ -314,3 +314,14 @@
   .e1:not(.i1) .e1-play .play{width:52px;height:52px}
   .e1:not(.i1) .e1-pmeta{text-shadow:0 1px 8px rgba(10,16,32,.6)}
 }
+
+/* «Разные подходы»: фото и текст — одна высота, верх фото = верх цитаты, низ = последняя строка (правка 12.11) */
+@media(min-width:1000px){
+  .e2{position:relative;align-items:stretch}
+  .e2-l{grid-column:1 / 5;gap:0}
+  .e2-l>.mono{position:absolute;top:calc(var(--sec-y) - 34px);left:var(--gut)}
+  .e2-photo{flex:1;aspect-ratio:auto;min-height:420px}
+  .e2-photo img{position:absolute;inset:0;object-position:50% 40%}
+  .e2-r{grid-column:5 / 13;justify-content:space-between}
+  .e2-q{font-size:clamp(24px,2.7vw,44px)}
+}
