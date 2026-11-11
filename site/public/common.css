@@ -494,3 +494,8 @@ a.branch-map-frame:hover .branch-map-img{transform:scale(1.03)}
 .branch-map-img{filter:grayscale(1) sepia(.45) hue-rotate(178deg) saturate(1.7) brightness(1.02)}
 .on-dark .branch-map-img{filter:grayscale(1) invert(.92) sepia(.5) hue-rotate(180deg) saturate(1.8) brightness(.85) contrast(.92)}
 .on-dark a.branch-map-frame{background:none;border:0}
+/* карта-знак крупнее, линии поверх карты едва заметны (правка 12.11) */
+a.branch-map-frame{width:min(100%,760px)}
+a.branch-map-frame::before{opacity:.16}
+.on-dark a.branch-map-frame::before{opacity:.14}
+@media(min-width:900px){.branch-panel{grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr)!important}}
