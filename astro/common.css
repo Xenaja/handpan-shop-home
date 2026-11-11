@@ -499,3 +499,8 @@ a.branch-map-frame{width:min(100%,760px)}
 a.branch-map-frame::before{opacity:.16}
 .on-dark a.branch-map-frame::before{opacity:.14}
 @media(min-width:900px){.branch-panel{grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr)!important}}
+/* карта-знак значительно крупнее (правка 12.11): колонка текста уже, знак выходит к правому краю экрана */
+@media(min-width:900px){
+  .branch-panel{grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr)!important;column-gap:clamp(16px,2vw,40px)}
+  a.branch-map-frame{width:min(calc(100% + var(--gut)),1100px);margin-right:calc(-1 * var(--gut));justify-self:end}
+}
