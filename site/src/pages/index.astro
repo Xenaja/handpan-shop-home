@@ -17,7 +17,7 @@ const fmtN = (n: number) => n >= 1000 ? n.toLocaleString('ru-RU') : String(n);
 const pad = (n: number) => String(n).padStart(2, '0');
 // hidden — преподаватель временно не показывается (Андрей Лето — добавим позже)
 const TEACH = D.teachers.filter(t => !t.hidden);
-const msk = D.cities[0];
+const msk = D.cities[0], spb = D.cities.find(c => c.key === 'spb');
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -29,7 +29,14 @@ const jsonld = {
     { '@type': 'MusicStore', '@id': 'https://handpanshop.pro/#moscow', name: 'U-GENE sound vibe — студия в Москве',
       parentOrganization: { '@id': 'https://handpanshop.pro/#org' }, url: 'https://handpanshop.pro/',
       telephone: msk.contacts?.phone, email: msk.contacts?.email,
-      address: { '@type': 'PostalAddress', streetAddress: msk.address, addressLocality: 'Москва', addressCountry: 'RU' } }
+      address: { '@type': 'PostalAddress', streetAddress: msk.address, addressLocality: 'Москва', addressCountry: 'RU' },
+      geo: msk.coords ? { '@type': 'GeoCoordinates', latitude: msk.coords[1], longitude: msk.coords[0] } : undefined },
+    // филиал в Петербурге (SEO-MIGRATION.md, раздел 7: MusicStore ×2); у филиала свой сайт
+    { '@type': 'MusicStore', '@id': 'https://handpanshop.pro/#spb', name: 'U-GENE sound vibe — студия в Санкт-Петербурге',
+      parentOrganization: { '@id': 'https://handpanshop.pro/#org' }, url: spb.contacts?.website || D.spbSite,
+      telephone: spb.contacts?.phone, email: spb.contacts?.email,
+      address: { '@type': 'PostalAddress', streetAddress: spb.address, addressLocality: 'Санкт-Петербург', addressCountry: 'RU' },
+      geo: spb.coords ? { '@type': 'GeoCoordinates', latitude: spb.coords[1], longitude: spb.coords[0] } : undefined }
   ]
 };
 ---
