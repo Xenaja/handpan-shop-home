@@ -644,3 +644,21 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 @media(min-width:1000px){.s2-sub{white-space:nowrap;font-size:clamp(24px,2.3vw,36px)}}
 .s8-video-btn{min-height:48px;padding:4px 20px 4px 4px;font-size:14px;font-weight:500}
 .s8-vplay{width:40px;height:40px}
+
+/* 1: ритм первого экрана (правка 12.11) — блок по центру высоты, отступы от высоты окна:
+   заголовок → подзаголовок крупнее, подзаголовок и текст — одна группа, до кнопок отдельная пауза */
+@media(min-width:1000px){
+  .s1-body{justify-content:flex-start;gap:0}
+  .s1-top{margin:auto 0;padding:clamp(8px,2vh,32px) 0}
+  .s1-h1{gap:clamp(22px,5vh,56px)}
+  .s1-text{gap:0;margin-top:clamp(8px,1.4vh,14px)}
+  .s1-lead{margin:0}
+  .s1-btns{margin-top:clamp(22px,4.4vh,48px)}
+  .s1-help{margin-top:clamp(12px,2.2vh,22px)}
+  .s1-bottom{flex:none}
+}
+@media(min-width:1000px){
+  .s1-bottom{position:absolute;right:var(--gut);bottom:clamp(20px,3.5vh,36px);z-index:3}
+  .s1-body{padding-bottom:clamp(24px,4vh,48px)}
+}
+@media(min-width:1000px){.s1{min-height:100svh}}
