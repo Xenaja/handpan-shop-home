@@ -377,3 +377,14 @@
 .stage::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--bronze-g);transform:scaleX(0);transform-origin:left;pointer-events:none}
 .stage.is-ringing::after{animation:stage-ring 1.4s cubic-bezier(.22,.8,.3,1)}
 @keyframes stage-ring{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+/* финальный заголовок в две строки, как на главной (правка 12.11) */
+.e11-h{gap:.04em}
+.e11-l1{display:flex;flex-wrap:wrap;gap:0 .25em;align-items:center}
+.e11-cap{margin-left:0;padding:.12em .3em .15em;line-height:1.05}
+@media (min-width:1000px){ .e11-h{font-size:clamp(40px,6.6vw,108px)} }
+@media (min-width:1000px){
+  .e11-l{grid-column:1 / -1}
+  .e11-l1{flex-wrap:nowrap;white-space:nowrap}
+  .e11-h{font-size:clamp(40px,min(6.2vw,13vh),104px)}
+  .e11{gap:clamp(40px,5vw,64px);padding-top:clamp(64px,7vw,104px)}
+}
