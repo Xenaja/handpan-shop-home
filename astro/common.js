@@ -352,7 +352,7 @@
     if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
     // «Обучение» (правка 12.11): цитата, фото, навыки, этапы пути, форматы, вопросы — тоже мягко появляются
-    const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.stage,.need,.s8-text,.s8-copy,.s9-text,.s9-top,.s9-photos,.s10-head,.s10-grid,.e11-l,.e11-r,'
+    const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.need,.s8-text,.s8-copy,.s9-text,.s9-top,.s9-photos,.s10-head,.s10-grid,.e11-l,.e11-r,'
       + '.e2-q,.e2-row,.e-photo,.skill,.step,.trial,.fmt,.faq-i,.chips';
     const targets = $$(selector).filter(el => !el.parentElement.closest(selector));
     const seen = new WeakSet(), active = new Map();
@@ -363,7 +363,7 @@
         entrances.unobserve(el); seen.add(el);
         // При переходе по якорю или с клавиатуры управление сразу доступно.
         if (el.contains(document.activeElement)) return;
-        const stagger = el.matches('.route,.aud,.stage,.need,.skill,.step,.fmt,.faq-i')
+        const stagger = el.matches('.route,.aud,.need,.skill,.step,.fmt,.faq-i')
           ? ([...el.parentElement.children].indexOf(el) % (el.matches('.skill') ? 5 : 3)) * 110 : 0;
         const animation = el.animate([
           { opacity: 0, transform: 'translateY(26px)' },
