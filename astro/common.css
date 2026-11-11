@@ -504,3 +504,8 @@ a.branch-map-frame::before{opacity:.16}
   .branch-panel{grid-template-columns:minmax(0,.72fr) minmax(0,1.5fr)!important;column-gap:clamp(16px,2vw,40px)}
   a.branch-map-frame{width:min(calc(100% + var(--gut)),1100px);margin-right:calc(-1 * var(--gut));justify-self:end}
 }
+/* карта-знак — середина между прошлыми размерами (правка 12.11): форма читается целиком, текст контактов не теряется */
+@media(min-width:900px){
+  .branch-panel{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)!important;column-gap:clamp(24px,3vw,56px)}
+  a.branch-map-frame{width:min(100%,680px);margin-right:0;justify-self:center}
+}
