@@ -746,3 +746,5 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
   .s8 .s8-bg{width:52%;object-position:60% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 6%,rgba(0,0,0,.5) 12%,rgba(0,0,0,.82) 18%,#000 24%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 6%,rgba(0,0,0,.5) 12%,rgba(0,0,0,.82) 18%,#000 24%)}
   .s8 .s8-grid{width:54%}
 }
+.brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours.svg);mask-image:url(img/lines/logo-contours.svg);aspect-ratio:308/290;background:linear-gradient(135deg,#E9D2B0 0%,#C49A6C 45%,#A97E57 70%,#D8B892 100%);opacity:.72}
+.brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{background:linear-gradient(135deg,#E2B98A 0%,#B47E4E 50%,#D2A26F 100%);opacity:.95}

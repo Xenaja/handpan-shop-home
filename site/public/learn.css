@@ -388,3 +388,7 @@
   .e11-h{font-size:clamp(40px,min(6.2vw,13vh),104px)}
   .e11{gap:clamp(40px,5vw,64px);padding-top:clamp(64px,7vw,104px)}
 }
+/* «Как мы учим»: без бронзовой полоски снизу — остаются подъём ступени и звук (правка 12.11) */
+.stage::after{content:none}
+.brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours.svg);mask-image:url(img/lines/logo-contours.svg);aspect-ratio:308/290;background:linear-gradient(135deg,#E9D2B0 0%,#C49A6C 45%,#A97E57 70%,#D8B892 100%);opacity:.72}
+.brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{background:linear-gradient(135deg,#E2B98A 0%,#B47E4E 50%,#D2A26F 100%);opacity:.95}

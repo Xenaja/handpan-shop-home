@@ -475,3 +475,5 @@ a.branch-map-frame:hover .branch-map-img{transform:scale(1.025)}
 .branch-map-osm{position:absolute;right:6px;bottom:4px;z-index:3;padding:1px 6px;font-size:10px;line-height:1.5;color:var(--ink3);background:rgba(255,255,255,.7)}
 .on-dark .branch-map-osm{color:var(--blue-l);background:rgba(10,16,32,.6)}
 a.branch-map-frame:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+/* бронзовый знак мягче (правка 12.11): тонкий контурный вариант знака вместо залитого, приглушённая бронза */
+.brand-lines--routes,.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours.svg);mask-image:url(img/lines/logo-contours.svg);aspect-ratio:308/290;background:linear-gradient(135deg,#E9D2B0 0%,#C49A6C 45%,#A97E57 70%,#D8B892 100%);opacity:.72}
