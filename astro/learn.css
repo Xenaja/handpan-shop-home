@@ -325,3 +325,9 @@
   .e2-r{grid-column:5 / 13;justify-content:space-between}
   .e2-q{font-size:clamp(24px,2.7vw,44px)}
 }
+
+/* «Путь ученика»: бронзовый знак в пустой зоне под заголовком (правка 12.11) */
+.e5{position:relative;overflow:hidden;isolation:isolate}
+.e5>.e5-l,.e5>.path{position:relative;z-index:1}
+.brand-lines--path{background:var(--bronze-g);opacity:1;-webkit-mask-image:url(img/logo-mark.svg);mask-image:url(img/logo-mark.svg);aspect-ratio:296.4/277.6;width:clamp(150px,15vw,250px);left:calc(var(--gut) + var(--cw) + var(--g));bottom:var(--sec-y)}
+@media(max-width:999.98px){.brand-lines--path{width:84px;left:auto;right:var(--gut);bottom:auto;top:calc(var(--sec-y) - 8px)}}
