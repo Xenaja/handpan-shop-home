@@ -295,3 +295,22 @@
 @media(max-width:999.98px){.brand-lines--learn{width:160px;right:var(--gut);top:24px;opacity:.12}}
 
 .e1-copy{font-size:clamp(16px,1.25vw,18px);line-height:1.5;max-width:470px;text-wrap:pretty}
+
+/* Первый экран «Обучения» целиком в окне, как на главной (правка 12.11):
+   блок по центру высоты, заголовок и отступы зависят от высоты окна */
+@media(min-width:1000px){
+  .e1:not(.i1){min-height:100svh}
+  .e1:not(.i1) .e1-body{justify-content:flex-start;gap:0;padding-top:clamp(12px,3vh,48px);padding-bottom:clamp(16px,3vh,32px)}
+  .e1:not(.i1) .e1-top{margin:auto 0;gap:clamp(18px,4vh,48px)}
+  .e1:not(.i1) .e1-h1{font-size:clamp(48px,min(6.6vw,10.5vh),126px)}
+  .e1:not(.i1) .e1-text{gap:clamp(8px,1.5vh,16px)}
+  .e1:not(.i1) .e1-lead,.e1:not(.i1) .e1-copy{font-size:clamp(15px,min(1.3vw,2.3vh),19px)}
+  .e1:not(.i1) .e1-btns{margin-top:clamp(12px,3vh,32px)}
+  .e1:not(.i1) .e1-bottom{flex:none;margin-top:clamp(12px,2vh,24px)}
+}
+@media(min-width:1000px){
+  .e1:not(.i1) .e1-h1{font-size:clamp(48px,min(6.6vw,10vh),126px)}
+  .e1:not(.i1) .e1-bottom{position:absolute;right:var(--gut);bottom:clamp(16px,3vh,32px);z-index:4;margin:0;gap:clamp(16px,2vw,28px);align-items:center}
+  .e1:not(.i1) .e1-play .play{width:52px;height:52px}
+  .e1:not(.i1) .e1-pmeta{text-shadow:0 1px 8px rgba(10,16,32,.6)}
+}
