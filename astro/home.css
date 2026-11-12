@@ -681,6 +681,8 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .route:nth-child(2) .route-photo{object-position:60% 88%}
 .route:nth-child(3) .route-photo{object-position:50% 85%}
 @media(max-width:999.98px){.brand-lines--routes{top:100px;right:var(--gut);width:84px}}
+/* узкие телефоны: знак наезжал на «знакомство» — меньше и выше, рядом с короткой строкой «Как начать» */
+@media(max-width:419.98px){.brand-lines--routes{top:40px;width:64px}}
 
 /* 6: «Ханг объединяет» — раскладка по макету 12.11 */
 .s9{gap:clamp(36px,4.4vw,64px)}
@@ -749,3 +751,13 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours.svg);mask-image:url(img/lines/logo-contours.svg);aspect-ratio:308/290;background:linear-gradient(135deg,#E9D2B0 0%,#C49A6C 45%,#A97E57 70%,#D8B892 100%);opacity:.72}
 .brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{background:linear-gradient(135deg,#E2B98A 0%,#B47E4E 50%,#D2A26F 100%);opacity:.95}
 .brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours-play.svg);mask-image:url(img/lines/logo-contours-play.svg)}
+
+/* 6: подзаголовок «Ханг объединяет» — ровно две строки и на узких телефонах */
+@media(max-width:699.98px){.s9-acc-2{display:block}}
+@media(max-width:419.98px){.s9-acc{font-size:min(18px,4.6vw)}}
+
+/* 3: планшет — кнопки трёх маршрутов на одной линии, даже если текст разной длины */
+@media(min-width:700px) and (max-width:999.98px){
+  .routes{align-items:stretch}
+  .route .route-btn{margin-top:auto}
+}
