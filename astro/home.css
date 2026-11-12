@@ -613,8 +613,8 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
   .s2-sub,.s2-text>.body,.s2-text>.btns,.s2-more{margin-left:clamp(16px,6vw,40px)}
 }
 
-/* 3: «Как начать знакомство»: тот же градиент, «знакомство» — #1C2548, знак в бронзе */
-.s4.bg-grad{background:#7A98CB url(img/bg-gradient.webp) center/cover no-repeat;color:var(--h-blue)}
+/* 3: «Как начать знакомство»: свой фон (Правки/11.11), «знакомство» — #1C2548, знак в бронзе */
+.s4.bg-grad{background:#7F9BCB url(img/bg-routes.webp) center/cover no-repeat;color:var(--h-blue)}
 .s4.bg-grad .h2{color:#fff}
 .s4.bg-grad .mono,.s4.bg-grad .s4-note,.s4.bg-grad .route-info{color:var(--h-blue)}
 .s4.bg-grad .route-btn{border-color:rgba(28,37,72,.55);color:var(--h-blue)}
