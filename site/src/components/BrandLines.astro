@@ -1,5 +1,6 @@
 ---
 // Все три контура исходного знака в общей системе координат, без трансформаций.
+// Внутри — три слоя-контура (img/lines/wave-*.svg) для пульсации «звуковой волной» (правка 14.11, CSS в common.css).
 const { class: cls = '' } = Astro.props;
 ---
-<span class={`brand-lines ${cls}`} aria-hidden="true"></span>
+<span class={`brand-lines ${cls}`} aria-hidden="true"><i class="bl-w bl-w1"></i><i class="bl-w bl-w2"></i><i class="bl-w bl-w3"></i></span>

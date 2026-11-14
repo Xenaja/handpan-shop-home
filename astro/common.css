@@ -575,3 +575,18 @@ html.intro .intro-w{animation:intro-in .9s cubic-bezier(.22,.8,.3,1) .15s both,i
 /* мягкий переход (правка 14.11): первый экран проявляется из затемнения и «оседает», пока уходит тёмный фон */
 html.intro :is(.s1,.e1){animation:intro-settle 1.9s cubic-bezier(.22,.8,.3,1) 1.15s backwards}
 @keyframes intro-settle{from{scale:1.05;filter:brightness(.45)}to{scale:1;filter:none}}
+
+/* бронзовый знак: пульсация «звуковой волной» (правка 14.11) — от треугольника play по контурам изнутри наружу
+   пробегает светлая волна, сам знак чуть «дышит». Слои лежат внутри знака и видны только по его контурам. */
+.bl-w{display:none}
+@media (prefers-reduced-motion:no-preference){
+  :is(.brand-lines--routes,.brand-lines--path) .bl-w{display:block;position:absolute;inset:0;background:#FFF1DC;opacity:0;
+    -webkit-mask:center/contain no-repeat;mask:center/contain no-repeat;animation:bl-wave 3.2s ease-out infinite}
+  :is(.brand-lines--routes,.brand-lines--path) .bl-w1{-webkit-mask-image:url(img/lines/wave-inner.svg);mask-image:url(img/lines/wave-inner.svg)}
+  :is(.brand-lines--routes,.brand-lines--path) .bl-w2{-webkit-mask-image:url(img/lines/wave-middle.svg);mask-image:url(img/lines/wave-middle.svg);animation-delay:.32s}
+  :is(.brand-lines--routes,.brand-lines--path) .bl-w3{-webkit-mask-image:url(img/lines/wave-outer.svg);mask-image:url(img/lines/wave-outer.svg);animation-delay:.64s}
+  .brand-lines--routes,.brand-lines--path{animation:bl-breathe 3.2s ease-in-out infinite}
+  html[data-motion-paused] :is(.brand-lines--routes,.brand-lines--path),html[data-motion-paused] .bl-w{animation-play-state:paused}
+}
+@keyframes bl-wave{0%{opacity:0}18%{opacity:.85}55%,100%{opacity:0}}
+@keyframes bl-breathe{0%,100%{scale:1}20%{scale:1.04}}
