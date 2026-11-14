@@ -926,3 +926,12 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 /* 1: видео-фон первого экрана (правка 14.11) — поверх фото, проявляется, когда пошло; затемнение остаётся сверху */
 .s1-vid{position:absolute;inset:0;width:100%;height:calc(100% + var(--seam,0px));object-fit:cover;object-position:50% 50%;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
 .s1-vid.is-on{opacity:1}
+
+/* 8 (правка 14.11): текст под заголовком — две колонки: слева крупная цитата, справа три абзаца */
+@media(min-width:1000px){
+  .s8n-copy{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);column-gap:clamp(24px,2.6vw,44px);row-gap:clamp(10px,1.4vh,16px);align-items:start;padding-left:0;margin-top:clamp(14px,2.4vh,28px)}
+  .s8n-copy .s8n-acc{grid-column:1;grid-row:1 / span 3;margin:0;font-size:clamp(20px,1.7vw,28px);line-height:1.25}
+  .s8n-copy .s8n-lead,.s8n-copy .s8n-b2,.s8n-copy .s8n-sup{grid-column:2;max-width:none}
+  .s8n-copy .s8n-lead{font-size:clamp(16px,1.15vw,18px)}
+  .s8n-copy .s8n-b2{font-size:clamp(15px,1.05vw,17px)}
+}
