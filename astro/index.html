@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1115m">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1115o">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1115m"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1115m"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1115m">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1115o"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1115o"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1115o">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -69,6 +69,9 @@
     <source media="(min-width:1000px)" srcset="/handpan-shop-home/astro/img/hero-hands-d.webp" width="2400" height="1408">
     <img class="s1-bg" src="/handpan-shop-home/astro/img/hero-hands-m.webp" alt="Руки музыканта на ханге" width="1200" height="939" fetchpriority="high" data-spot-d="0.66,0.75" data-spot-m="0.3,0.8">
   </picture>
+  <!-- видео-фон (правка 14.11): крупные планы из «Играем в студии»; на компьютере горизонтальная версия, на телефоне вертикальная;
+       фото под ним остаётся заставкой и опорой для плеера «Послушай» -->
+  <video class="s1-vid" muted loop playsinline preload="none" aria-hidden="true" data-src-d="/handpan-shop-home/astro/video/hero-d.mp4" data-src-m="/handpan-shop-home/astro/video/hero-m.mp4" data-poster-d="/handpan-shop-home/astro/video/hero-d.jpg" data-poster-m="/handpan-shop-home/astro/video/hero-m.jpg"></video>
   <div class="s1-shade" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
@@ -394,7 +397,7 @@
     </div>
     <div class="s8n-media">
       <video class="s8n-video" data-video-open title="Смотреть со звуком" muted loop playsinline preload="none" poster="/handpan-shop-home/astro/video/making-loop.jpg" width="720" height="1280" data-loop-src="/handpan-shop-home/astro/video/making-loop.mp4" aria-label="Мастер настраивает ханг в мастерской"></video>
-      <button type="button" class="s8n-watch glass-d" data-video-open><span class="s8-vplay" aria-hidden="true"><svg viewBox="0 0 22 22" width="12" height="12"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></span>Смотреть видео из мастерской</button>
+      <button type="button" class="s8n-watch glass-d" data-video-open><span class="s8-vplay" aria-hidden="true"><svg viewBox="0 0 22 22" width="12" height="12"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></span>Полное видео из мастерской</button>
     </div>
   </div>
 </section>
@@ -784,6 +787,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1115m"></script><script src="/handpan-shop-home/astro/home.js?v=1115m"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1115o"></script><script src="/handpan-shop-home/astro/home.js?v=1115o"></script>
 </body>
 </html>

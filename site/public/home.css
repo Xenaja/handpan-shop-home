@@ -922,3 +922,7 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   .s8n-video{-webkit-mask-image:none;mask-image:none}
 }
 @media(min-width:600px) and (max-width:999.98px){.s8n-copy .s8n-acc{margin-left:calc(-1.8 * clamp(26px,8.2vw,84px))}}
+
+/* 1: видео-фон первого экрана (правка 14.11) — поверх фото, проявляется, когда пошло; затемнение остаётся сверху */
+.s1-vid{position:absolute;inset:0;width:100%;height:calc(100% + var(--seam,0px));object-fit:cover;object-position:50% 50%;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.s1-vid.is-on{opacity:1}

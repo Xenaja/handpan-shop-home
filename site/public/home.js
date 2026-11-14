@@ -214,6 +214,23 @@
     vd.addEventListener('close', () => v.pause());
   }
 
+  /* ---------- 01: видео-фон первого экрана (правка 14.11) — версия под ширину экрана, играет, пока экран виден ---------- */
+  const hv = $('.s1-vid');
+  if (hv && !reduce && 'IntersectionObserver' in window) {
+    const wideV = matchMedia('(min-width: 1000px)');
+    const pick = () => {
+      const k = wideV.matches ? 'd' : 'm', src = hv.dataset['src' + k.toUpperCase()];
+      if (hv.dataset.cur === src) return;
+      hv.dataset.cur = src; hv.poster = hv.dataset['poster' + k.toUpperCase()]; hv.src = src;
+      hv.play().catch(() => {});
+    };
+    hv.addEventListener('playing', () => hv.classList.add('is-on'));
+    wideV.addEventListener('change', pick);
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { pick(); hv.play().catch(() => {}); } else hv.pause();
+    }), { threshold: .05 }).observe(hv.closest('.s1'));
+  }
+
   /* ---------- 08: беззвучная петля из мастерской справа (правка 14.11) ----------
      грузится и играет, только пока экран виден; при «меньше движения» — только кадр; клик — полное видео со звуком */
   const loop = $('[data-loop-src]');
