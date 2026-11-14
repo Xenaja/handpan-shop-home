@@ -128,13 +128,13 @@
       tap.setAttribute('cx', x); tap.setAttribute('cy', y);
       tap.classList.remove('is-tap'); void tap.getBBox(); tap.classList.add('is-tap');
     };
-    const start = () => { if (!demo && !svg.dataset.touched && !reduce) { step(); demo = setInterval(step, 1100); } };
+    const start = () => { if (!demo && !svg.dataset.touched && !reduce) { step(); demo = setInterval(step, 850); } };
     const stop = () => { clearInterval(demo); demo = null; hits.forEach(h => h.classList.remove('is-hint')); if (tap) tap.classList.remove('is-tap'); };
     const done = () => { svg.dataset.touched = '1'; stop(); svg.classList.add('is-touched'); };
     svg.addEventListener('pointerdown', done); svg.addEventListener('keydown', done);
-    svg.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') stop(); });
-    svg.addEventListener('pointerleave', () => { if (!svg.dataset.touched && visible) start(); });
-    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); }), { threshold: .4 }).observe(svg);
+    // при наведении демо не останавливаем (правка 14.11): иначе при прокрутке колесом курсор стоит над хангом и подсказки не видно
+    // (останавливается только после настоящего касания — pointerdown)
+    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); }), { threshold: .12 }).observe(svg);
     // при смене варианта — новые зоны и короткий показ, куда нажимать
     hangs.push(() => { stop(); build(); k = 0; delete svg.dataset.touched; svg.classList.remove('is-touched'); if (visible) start(); });
   });
