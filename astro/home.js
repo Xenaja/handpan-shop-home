@@ -232,7 +232,7 @@
   let si = 0, siv = null, seen = false, hold = false;
   function setStat(i) {
     si = i;
-    col.style.transform = `translateY(${0.55 - i}em)`;
+    col.style.transform = `translateY(${1.15 - i}em)`;
     nums.forEach((n, k) => n.classList.toggle('on', k === i));
     dots.forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
     labels.forEach((l, k) => { l.hidden = k !== i; });
@@ -371,11 +371,11 @@
   const sec7 = $('#teach');
   let autoT = 0, inView = false, tHold = false;
   const stopAuto = () => clearInterval(autoT);
-  const runAuto = () => { stopAuto(); if (!reduce && inView && !tHold && !document.hidden) autoT = setInterval(() => setT(ti + 1), 5000); };
+  const runAuto = () => { stopAuto(); if (!reduce && inView && !tHold && !document.hidden) autoT = setInterval(() => setT(ti + 1), 4000); };
   new IntersectionObserver(es => { inView = es[0].isIntersecting; runAuto(); }, { threshold: .35 }).observe(sec7);
-  sec7.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { tHold = true; stopAuto(); } });
-  sec7.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { tHold = false; runAuto(); } });
-  sec7.addEventListener('focusin', () => { tHold = true; stopAuto(); });
+  car.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { tHold = true; stopAuto(); } });
+  car.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { tHold = false; runAuto(); } });
+  sec7.addEventListener('focusin', e => { if (e.target.matches(':focus-visible')) { tHold = true; stopAuto(); } });
   sec7.addEventListener('focusout', e => { if (!sec7.contains(e.relatedTarget)) { tHold = false; runAuto(); } });
   ['click', 'touchend', 'keydown'].forEach(ev => car.parentElement.addEventListener(ev, runAuto, { passive: true }));
   document.addEventListener('visibilitychange', runAuto);

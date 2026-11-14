@@ -792,3 +792,14 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .tcar img{-webkit-user-drag:none;pointer-events:none}
 .tcar.is-drag{cursor:grabbing}
 .tcar.is-drag .tcard{transition:width .8s var(--ease),opacity .8s,border-radius .8s,background-color .8s,color .8s}
+
+/* 6: «Мастера…» (правка 14.11): блок выше, цифра и заголовок крупнее; предыдущая цифра дольше видна сверху и мягко тает */
+.s6-num{height:2.15em;-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.16) 22%,rgba(0,0,0,.45) 42%,#000 56%);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.16) 22%,rgba(0,0,0,.45) 42%,#000 56%)}
+.s6-col{transform:translateY(1.15em);transition:transform 1.1s cubic-bezier(.65,0,.2,1)}
+.s6-h{font-size:clamp(28px,2.75vw,48px)}
+@media(min-width:1000px){.s6-num{font-size:clamp(76px,8.6vw,164px)}}
+
+/* 7: плавное автолистание преподавателей (правка 14.11) — медленный мягкий переход, раз в 4 с */
+.tcard{transition:transform 1.3s cubic-bezier(.45,.05,.25,1),width 1.3s cubic-bezier(.45,.05,.25,1),opacity 1s,border-radius 1.3s,background-color 1s,color 1s}
+.tcar.is-drag .tcard{transition:width 1.3s cubic-bezier(.45,.05,.25,1),opacity 1s,border-radius 1.3s,background-color 1s,color 1s}
+.tcard[data-o="0"] .tcard-cap{transition-delay:.45s}
