@@ -66,6 +66,25 @@
     const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
     if (k) { e.preventDefault(); setTeacher((ti + k + tbtns.length) % tbtns.length, true); }
   });
+  // автолистание преподавателей (правка 14.11): стартует, когда фото целиком на экране, шаг 5 с;
+  // после ручного выбора — пауза 12 с; уходит с экрана или открыто «Читать дальше» — стоп
+  if (!HS.reduce && 'IntersectionObserver' in window && tbtns.length > 1) {
+    let autoT = 0, holdUntil = 0, inView = false;
+    const tick = () => {
+      if (!inView || document.hidden || Date.now() < holdUntil || $('.tbio.open')) return;
+      setTeacher((ti + 1) % tbtns.length);
+    };
+    const run = () => { clearInterval(autoT); if (inView) autoT = setInterval(tick, 5000); };
+    const photoIO = new IntersectionObserver(es => es.forEach(e => {
+      if (e.target.closest('.tpanel').hidden) return;
+      const full = e.intersectionRatio >= .97;
+      if (full && !inView) { inView = true; run(); }
+      else if (!e.isIntersecting && inView) { inView = false; clearInterval(autoT); }
+    }), { threshold: [0, .97] });
+    tpanels.forEach(p => { const ph = $('.tphoto', p); if (ph) photoIO.observe(ph); });
+    tbtns.forEach(b => b.addEventListener('click', e => { if (e.isTrusted) { holdUntil = Date.now() + 12000; run(); } }));
+  }
+
   // на узких второй абзац био — по «Читать дальше»
   $$('[data-t-more]').forEach(more => more.addEventListener('click', () => {
     const bio = $('.tbio', more.parentNode), open = !bio.classList.contains('open');
