@@ -182,6 +182,9 @@
     hImg.complete ? place() : hImg.addEventListener('load', place);
     hImg.addEventListener('load', place);
     addEventListener('resize', place); wide.addEventListener('change', place);
+    // во время интро первый экран чуть увеличен — пересчитываем, когда он «осел» (правка 14.11)
+    const hero = hp.closest('.s1');
+    if (hero) hero.addEventListener('animationend', e => { if (e.target === hero) place(); });
     document.fonts && document.fonts.ready.then(place);
   }
 
