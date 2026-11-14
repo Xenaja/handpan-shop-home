@@ -30,6 +30,22 @@
     });
   });
 
+  /* Справка у точки «Ханг»: попап с плавным появлением; закрывается повторным нажатием, Escape и нажатием мимо */
+  $$('[data-pop-btn]').forEach(b => {
+    const pop = $(`[data-pop="${b.dataset.popBtn}"]`), box = pop.parentElement;
+    b.setAttribute('aria-controls', pop.id); b.setAttribute('aria-expanded', 'false');
+    const set = open => {
+      if (open) { // уголок попапа — точно под центром точки
+        const bx = b.getBoundingClientRect(), px = box.getBoundingClientRect();
+        pop.style.setProperty('--ax', Math.round(bx.left + bx.width / 2 - px.left) + 'px');
+      }
+      pop.classList.toggle('is-open', open); b.setAttribute('aria-expanded', String(open));
+    };
+    b.addEventListener('click', () => set(!pop.classList.contains('is-open')));
+    document.addEventListener('click', e => { if (!box.contains(e.target)) set(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && pop.classList.contains('is-open')) { set(false); b.focus(); } });
+  });
+
   /* Звуковая скульптура: наведение, фиксация нажатием, Escape и внешнее нажатие. */
   const sculpture = $('[data-sculpture]');
   if (sculpture) {

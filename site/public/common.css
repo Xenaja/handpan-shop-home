@@ -537,3 +537,39 @@ html:not(.stack) .stack-dim{display:none}
 }
 html.stack body{background:#0A1020}
 html.stack .is-cov{will-change:transform}
+
+/* ---------- Моушн, этап 3 ---------- */
+/* перелив «как металл» на основных кнопках (правка ANN 12.11, №47): блик проходит раз в несколько секунд */
+.btn--blue{position:relative;overflow:hidden;isolation:isolate}
+.btn--blue::after{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.08) 40%,rgba(255,255,255,.42) 50%,rgba(255,255,255,.08) 60%,transparent 70%);
+  transform:translateX(-130%)}
+@media (prefers-reduced-motion:no-preference){
+  .btn--blue::after{animation:btn-sheen 6s cubic-bezier(.45,0,.25,1) infinite;animation-delay:var(--sheen-d,1.4s)}
+  .btns .btn--blue:nth-child(2)::after{--sheen-d:2.1s}
+  .btn--blue:hover::after{animation:none;opacity:0}
+  html[data-motion-paused] .btn--blue::after{animation-play-state:paused}
+}
+@keyframes btn-sheen{0%,72%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+
+/* курсор-хэндпан (№52 ANN, №39 Alina): маленький ханг плывёт чуть ниже стрелки, над ссылками увеличивается */
+.hcur{position:fixed;left:0;top:0;z-index:150;width:30px;height:30px;margin:-15px 0 0 -15px;pointer-events:none;color:var(--h-blue,#1C2548);
+  opacity:0;transition:opacity .3s,color .3s}
+.hcur.is-on{opacity:.9}
+.hcur.is-dark{color:#E8EEF4}
+.hcur svg{display:block;width:100%;height:100%;transition:transform .35s var(--ease);animation:hcur-spin 14s linear infinite}
+.hcur .hc-f{fill:transparent;transition:fill .3s}
+.hcur.is-hot svg{transform:scale(1.55)}
+.hcur.is-hot .hc-f{fill:currentColor}
+@keyframes hcur-spin{to{rotate:360deg}}
+
+/* интро при первом заходе (№55, 60; рефы PLACEBO/25, TAU): знак проявляется из темноты, шторка уезжает вверх */
+.intro-v{display:none}
+html.intro .intro-v{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.6vw,20px);pointer-events:none;
+  background:#0A1020;color:#E8EEF4;animation:intro-out .8s cubic-bezier(.76,0,.24,1) 1.05s forwards}
+html.intro .intro-v .logo-mark{font-size:clamp(22px,2.6vw,34px);animation:intro-in .9s cubic-bezier(.22,.8,.3,1) both}
+.intro-w{font-family:var(--f-d);font-size:clamp(18px,2vw,26px);letter-spacing:.02em;white-space:nowrap}
+.intro-w span{font-family:var(--f-t);font-weight:400;opacity:.75}
+html.intro .intro-w{animation:intro-in .9s cubic-bezier(.22,.8,.3,1) .15s both}
+@keyframes intro-in{from{opacity:0;filter:blur(10px);transform:translateY(8px) scale(.94)}to{opacity:1;filter:none;transform:none}}
+@keyframes intro-out{to{clip-path:inset(0 0 100% 0);visibility:hidden}}

@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114d">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/edu-hero-zhenya-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/edu-hero-zhenya-d2.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114b"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=1114b"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1114b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114d"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=1114d"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1114d">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -37,7 +37,11 @@
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
       if (V[k].includes(v)) h.dataset[k] = v;
-    } })();
+    }
+    // интро (моушн, этап 3): логотип из темноты — один раз за визит, не при «меньше движения»
+    try { if (!sessionStorage.getItem('hs-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.add('intro'); sessionStorage.setItem('hs-intro', '1'); } } catch (e) {}
+  })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Course","name":"Обучение игре на ханге (хэндпане) с нуля","description":"Групповые, индивидуальные и онлайн-занятия. Пробный урок 45 минут — 900 ₽, инструмент предоставляем.","inLanguage":"ru","provider":{"@type":"Organization","@id":"https://handpanshop.pro/#org","name":"U-GENE sound vibe","url":"https://handpanshop.pro/"},"offers":[{"@type":"Offer","name":"Пробное занятие, 45 минут","price":"900","priceCurrency":"RUB","category":"Paid"},{"@type":"Offer","name":"Группа до 8 человек, мес · 4 занятия","price":"7000","priceCurrency":"RUB","category":"Paid"},{"@type":"Offer","name":"Индивидуально, час","price":"3500","priceCurrency":"RUB","category":"Paid"},{"@type":"Offer","name":"Индивидуально с Евгением, час","price":"5000","priceCurrency":"RUB","category":"Paid"},{"@type":"Offer","name":"Онлайн, час","price":"3500","priceCurrency":"RUB","category":"Paid"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Нужен ли свой инструмент для начала?","acceptedAnswer":{"@type":"Answer","text":"Нет. На занятиях предоставляем хэндпан. Если захотите заниматься дома, можно взять в аренду от 8 000 ₽/мес"}},{"@type":"Question","name":"Я никогда не занимался музыкой. Получится?","acceptedAnswer":{"@type":"Answer","text":"Да. Хэндпан – один из самых интуитивных инструментов. Первые мелодии получаются на первом занятии"}},{"@type":"Question","name":"Сколько нужно заниматься, чтобы начать играть красиво?","acceptedAnswer":{"@type":"Answer","text":"Базовые основы – около 6 месяцев при занятиях раз в неделю"}},{"@type":"Question","name":"Можно ли учиться онлайн?","acceptedAnswer":{"@type":"Answer","text":"Да. Индивидуальные занятия – 3 500 ₽/час"}},{"@type":"Question","name":"Есть ли занятия для детей?","acceptedAnswer":{"@type":"Answer","text":"Да, от 12 лет. Для младшего возраста – индивидуально, по запросу"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://handpanshop.pro/"},{"@type":"ListItem","position":2,"name":"Обучение"}]}]}</script>
 <script>
@@ -54,6 +58,7 @@
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
+<div class="intro-v" aria-hidden="true"><i class="logo-mark"></i><span class="intro-w">U-GENE <span>sound vibe</span></span></div>
 
   
 
@@ -532,6 +537,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1114b"></script><script src="/handpan-shop-home/astro/learn.js?v=1114b"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1114d"></script><script src="/handpan-shop-home/astro/learn.js?v=1114d"></script>
 </body>
 </html>

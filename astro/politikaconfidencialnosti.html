@@ -21,9 +21,9 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114d">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114d">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -34,7 +34,11 @@
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
       if (V[k].includes(v)) h.dataset[k] = v;
-    } })();
+    }
+    // интро (моушн, этап 3): логотип из темноты — один раз за визит, не при «меньше движения»
+    try { if (!sessionStorage.getItem('hs-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.add('intro'); sessionStorage.setItem('hs-intro', '1'); } } catch (e) {}
+  })();
 </script>
 
 <script>
@@ -51,6 +55,7 @@
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
+<div class="intro-v" aria-hidden="true"><i class="logo-mark"></i><span class="intro-w">U-GENE <span>sound vibe</span></span></div>
 
   <div class="doc-hdr hdr"><a class="logo" href="/handpan-shop-home/astro/"><i class="logo-mark" aria-hidden="true"></i><span>U-GENE<span class="logo-sub">sound vibe</span></span></a></div>
   <main id="main" class="sec doc">

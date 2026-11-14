@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114d">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114b"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1114b"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1114b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114d"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1114d"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1114d">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -37,7 +37,11 @@
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
       if (V[k].includes(v)) h.dataset[k] = v;
-    } })();
+    }
+    // интро (моушн, этап 3): логотип из темноты — один раз за визит, не при «меньше движения»
+    try { if (!sessionStorage.getItem('hs-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.add('intro'); sessionStorage.setItem('hs-intro', '1'); } } catch (e) {}
+  })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://handpanshop.pro/#org","name":"U-GENE sound vibe","alternateName":"Handpan Shop","url":"https://handpanshop.pro/","logo":"https://handpanshop.pro/img/apple-touch-icon.png","foundingDate":"2019"},{"@type":"WebSite","@id":"https://handpanshop.pro/#website","url":"https://handpanshop.pro/","name":"U-GENE sound vibe","inLanguage":"ru","publisher":{"@id":"https://handpanshop.pro/#org"}},{"@type":"MusicStore","@id":"https://handpanshop.pro/#moscow","name":"U-GENE sound vibe — студия в Москве","parentOrganization":{"@id":"https://handpanshop.pro/#org"},"url":"https://handpanshop.pro/","telephone":"+79031302889","email":"handpanshop@mail.ru","address":{"@type":"PostalAddress","streetAddress":"Нижний Сусальный пер., 5","addressLocality":"Москва","addressCountry":"RU"},"geo":{"@type":"GeoCoordinates","latitude":55.76119,"longitude":37.66405}},{"@type":"MusicStore","@id":"https://handpanshop.pro/#spb","name":"U-GENE sound vibe — студия в Санкт-Петербурге","parentOrganization":{"@id":"https://handpanshop.pro/#org"},"url":"https://handpanstudiospb.ru","telephone":"+79031177210","email":"handpanstudiospb@yandex.ru","address":{"@type":"PostalAddress","streetAddress":"проспект Чернышевского, 17","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"geo":{"@type":"GeoCoordinates","latitude":59.94455,"longitude":30.3584}}]}</script>
 <script>
@@ -54,6 +58,7 @@
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
+<div class="intro-v" aria-hidden="true"><i class="logo-mark"></i><span class="intro-w">U-GENE <span>sound vibe</span></span></div>
 
   
 
@@ -137,9 +142,10 @@
       <div class="s2-title">
         <h2 id="h-s2" class="h-display">Ханг</h2>
         <!-- звёздочка заменена пульсацией (правка 05.11) -->
-        <button type="button" class="ast" data-toggle="ast" data-pulse-hint aria-label="Что значит слово «ханг»"><span class="ast-pulse" aria-hidden="true"></span></button>
+        <button type="button" class="ast" data-pop-btn="ast" data-pulse-hint aria-label="Что значит слово «ханг»"><span class="ast-pulse" aria-hidden="true"></span></button>
+        <!-- справка — мягкий попап у точки вместо резко раскрывающейся плашки (правка 14.11) -->
+        <div class="s2-pop" id="pop-ast" data-pop="ast" role="note">Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
       </div>
-      <div class="s2-tip" data-panel="ast" hidden>Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
       <div class="s2-sub ind">перкуссия нового времени</div>
       <p class="body ind">Мелодический идиофон из стали – ханг, он же хэндпан. Этот инструмент уникален: играя на нем, вы получаете одновременно ритмический акцент и мелодическую ноту. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
       <p class="body ind">Это инструмент, который хочется не просто слушать – к нему хочется прикоснуться.</p>
@@ -774,6 +780,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1114b"></script><script src="/handpan-shop-home/astro/home.js?v=1114b"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1114d"></script><script src="/handpan-shop-home/astro/home.js?v=1114d"></script>
 </body>
 </html>

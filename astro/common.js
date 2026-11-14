@@ -444,6 +444,42 @@
     apply();
   }
 
+  /* Курсор-хэндпан (моушн, этап 3): маленький ханг плывёт чуть ниже-правее стрелки с мягким запаздыванием.
+     Только мышь и только без «меньше движения»; над ссылками и кнопками — крупнее, ноты закрашены. */
+  function initHangCursor() {
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const el = document.createElement('div');
+    el.className = 'hcur'; el.setAttribute('aria-hidden', 'true');
+    const fields = Array.from({ length: 7 }, (_, i) => {
+      const a = (i / 7) * Math.PI * 2 - Math.PI / 2, x = (15 + Math.cos(a) * 9.2).toFixed(2), y = (15 + Math.sin(a) * 9.2).toFixed(2);
+      return `<ellipse class="hc-f" cx="${x}" cy="${y}" rx="2.3" ry="1.7" transform="rotate(${(a * 180 / Math.PI + 90).toFixed(1)} ${x} ${y})" stroke="currentColor" stroke-width=".9"/>`;
+    }).join('');
+    el.innerHTML = `<svg viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13.6" stroke="currentColor" stroke-width="1.1"/><circle class="hc-f" cx="15" cy="15" r="3.6" stroke="currentColor" stroke-width="1"/>${fields}</svg>`;
+    document.body.appendChild(el);
+    const OFF = 26; // ханг висит ниже-правее стрелки и не закрывает то, на что наводят
+    let tx = -100, ty = -100, x = -100, y = -100, raf = 0, last = 0;
+    const DARK = '.on-dark,.on-blue,.bg-grad,.s1,.s8,.bg-dark,.bg-aubergine';
+    const loop = () => {
+      x += (tx - x) * 0.16; y += (ty - y) * 0.16;
+      el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0;
+    };
+    addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      tx = e.clientX + OFF; ty = e.clientY + OFF;
+      if (!el.classList.contains('is-on')) { x = tx; y = ty; el.classList.add('is-on'); }
+      const now = performance.now();
+      if (now - last > 80) { // тему и «горячее» состояние проверяем не на каждом движении
+        last = now;
+        const t = e.target instanceof Element ? e.target : null;
+        el.classList.toggle('is-hot', !!(t && t.closest('a[href],button,[role="tab"],summary,label,input,select')));
+        el.classList.toggle('is-dark', !!(t && t.closest(DARK)) && !(t && t.closest('.bg-white,.bg-sky,.bg-sand,.sheet-card,.menu')));
+      }
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => el.classList.remove('is-on'));
+  }
+
   /* стрелка «наверх» на всех страницах (правка 12.11): появляется после первого экрана */
   function initToTop() {
     const b = document.createElement('button');
@@ -465,6 +501,7 @@
     typo();
     initMotion();
     initStack();
+    initHangCursor();
     initToTop();
   }
 

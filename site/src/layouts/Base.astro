@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const canonical = new URL(path, Astro.site).href;
 const preview = base !== '';   // превью на GitHub Pages собирается с префиксом адресов, боевой сайт — от корня
-const V = '1114b';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+const V = '1114d';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -58,7 +58,11 @@ const V = '1114b';   // версия ресурсов: браузер не де�
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}
       if (V[k].includes(v)) h.dataset[k] = v;
-    } })();
+    }
+    // интро (моушн, этап 3): логотип из темноты — один раз за визит, не при «меньше движения»
+    try { if (!sessionStorage.getItem('hs-intro') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      h.classList.add('intro'); sessionStorage.setItem('hs-intro', '1'); } } catch (e) {}
+  })();
 </script>
 {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
 <script is:inline>
@@ -75,6 +79,7 @@ const V = '1114b';   // версия ресурсов: браузер не де�
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
+<div class="intro-v" aria-hidden="true"><i class="logo-mark"></i><span class="intro-w">U-GENE <span>sound vibe</span></span></div>
 <slot />
 {scripts.map(s => <script is:inline src={`${u(s)}?v=${V}`}></script>)}
 </body>
