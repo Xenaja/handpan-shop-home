@@ -895,3 +895,16 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 }
 @media (prefers-reduced-motion:reduce){.s9-reel{overflow-x:auto}}
 @keyframes s9-run{to{transform:translateX(calc(-50% - clamp(10px,1.2vw,16px) / 2))}}
+
+/* 8 (правка 14.11): капсула под «точной работы»; текст выровнен по «с металлом»;
+   абзацы разной величины и цвета — как в «Почему так легко играть» */
+.s8n-copy{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,1.6vh,18px);margin-top:clamp(6px,1.4vh,14px)}
+.s8n-lead{font-size:clamp(17px,1.25vw,20px);line-height:1.5;color:var(--milk)}
+.s8n-b2{font-size:clamp(16px,1.15vw,18px);color:var(--breeze)}
+.s8n-sup{font-size:clamp(14px,1vw,16px);color:rgba(232,238,244,.62);max-width:460px}
+.s8n-h>span:nth-child(3){margin:0}
+.s8n-h>span:nth-child(2){margin:.1em 0 .12em}
+@media(min-width:1000px){.s8n-copy{padding-left:calc(1.8 * clamp(38px,4.4vw,80px))}}
+@media(max-width:999.98px){.s8n-copy{padding-left:calc(1.8 * clamp(26px,8.2vw,84px))}}
+@media(max-width:599.98px){.s8n-copy{padding-left:0}}
+@media(max-width:599.98px){.s8n-h>span:nth-child(2){padding-left:.3em}.s8n-h>span:nth-child(3){padding-left:1.2em}}
