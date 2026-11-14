@@ -865,3 +865,22 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   html[data-motion-paused] .hf-in{animation-play-state:paused}
 }
 @keyframes hf-tap{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(-1.2px,-1.6px) scale(.9)}55%{transform:translate(-1.2px,-1.6px) scale(.9)}}
+
+/* 8 (правка 14.11, третья версия): градиентный фон вместо плоского тёмного, «с металлом» в капсуле,
+   видео плавно проявляется из фона, кнопка «смотреть полностью» поверх видео */
+.s8.bg-dark{background:radial-gradient(ellipse 70% 60% at 16% 20%,rgba(78,110,178,.42),transparent 70%),
+  radial-gradient(ellipse 55% 65% at 62% 105%,rgba(122,52,72,.26),transparent 70%),
+  linear-gradient(160deg,#131c40 0%,#0d1532 55%,#0a1020 100%)}
+.s8n-cap{font-size:1em;margin-left:-.12em}
+.s8n-media{position:relative}
+.s8n-video{-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 9%,#000 20%);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 9%,#000 20%)}
+.s8n-watch{position:absolute;z-index:2;left:50%;bottom:calc(28px + var(--seam));transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;
+  min-height:52px;padding:6px 22px 6px 6px;border-radius:999px;border:1px solid rgba(232,238,244,.3);color:#fff;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background-color .35s}
+.s8n-watch .s8-vplay{width:40px;height:40px}
+.s8n-watch:hover{background:rgba(232,238,244,.26)}
+@media(min-width:1000px){
+  .s8n-video{-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.3) 10%,rgba(0,0,0,.72) 22%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.3) 10%,rgba(0,0,0,.72) 22%,#000 34%)}
+  .s8n-watch{left:auto;right:clamp(24px,3vw,48px);transform:none;bottom:calc(clamp(56px,8vh,96px) + var(--seam))}
+}
+.vmodal.is-wide video{height:auto;width:min(92vw,1400px);max-height:86svh;aspect-ratio:16/9}
+.s8n-h>span:nth-child(3){margin:.14em 0 .1em}

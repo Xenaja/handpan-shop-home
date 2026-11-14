@@ -316,7 +316,7 @@ const jsonld = {
     <div class="s8n-text">
       <span class="mono">G · 8/10</span>
       <p class="s8n-kick">Ханг — это</p>
-      <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span>точной работы</span> <span class="s8-hl">с металлом</span></h2>
+      <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span>точной работы</span> <span><span class="cap cap--hero s8n-cap">с металлом</span></span></h2>
       <p class="s8n-body">Изготовление музыкального инструмента требует качественной стали, точной формовки звуковых полей и кропотливой настройки каждой ноты.</p>
       <p class="s8n-acc">Каждый инструмент проходит <em>несколько циклов ручной настройки</em></p>
       <p class="s8n-body">U-GENE — это годы практики, накопленный опыт и любовь к своему делу.</p>
@@ -330,6 +330,7 @@ const jsonld = {
     </div>
     <div class="s8n-media">
       <video class="s8n-video" data-video-open title="Смотреть со звуком" muted loop playsinline preload="none" poster={u('video/making-loop.jpg')} width="720" height="1280" data-loop-src={u('video/making-loop.mp4')} aria-label="Мастер настраивает ханг в мастерской"></video>
+      <button type="button" class="s8n-watch glass-d" data-video-open><span class="s8-vplay" aria-hidden="true"><svg viewBox="0 0 22 22" width="12" height="12"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"/></svg></span>Смотреть видео из мастерской</button>
     </div>
   </div>
 </section>
@@ -398,7 +399,7 @@ const jsonld = {
 <!-- видео из мастерской: грузится только при открытии -->
 <dialog class="vmodal" data-video aria-label="Видео из мастерской: настройка ханга">
   <button type="button" class="x vmodal-x" data-video-close aria-label="Закрыть видео">×</button>
-  <video controls playsinline preload="none" poster={u('video/making-poster.jpg')} width="720" height="1280" data-src={u('video/making.mp4')}></video>
+  <video controls playsinline preload="none" poster={u('video/making-poster.jpg')} width="720" height="1280" data-src={u('video/making.mp4')} data-poster={u('video/making-poster.jpg')} data-src-wide={u('video/making-full.mp4')} data-poster-wide={u('video/making-full.jpg')}></video>
 </dialog>
 
 <!-- форма записи: модалка / bottom sheet -->

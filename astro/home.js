@@ -199,11 +199,15 @@
   if (vd) {
     const v = $('video', vd);
     const close = () => { v.pause(); vd.close(); };
-    $('[data-video-open]').addEventListener('click', () => {
-      if (!v.src) v.src = v.dataset.src;
+    // на компьютере — горизонтальное полное видео (правка 14.11), на телефоне — вертикальное
+    $$('[data-video-open]').forEach(b => b.addEventListener('click', () => {
+      const wideNow = matchMedia('(min-width: 1000px)').matches && v.dataset.srcWide;
+      const want = wideNow ? v.dataset.srcWide : v.dataset.src;
+      if (v.dataset.cur !== want) { v.dataset.cur = want; v.poster = wideNow ? v.dataset.posterWide : v.dataset.poster; v.src = want; }
+      vd.classList.toggle('is-wide', !!wideNow);
       vd.showModal(); v.play().catch(() => {});
       HS.goal && HS.goal('video_play', { video: 'making' });
-    });
+    }));
     $('[data-video-close]', vd).addEventListener('click', close);
     vd.addEventListener('click', e => { if (e.target === vd) close(); });
     vd.addEventListener('close', () => v.pause());
