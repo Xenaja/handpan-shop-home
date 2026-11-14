@@ -437,6 +437,18 @@
     document.documentElement.addEventListener('pointerleave', () => el.classList.remove('is-on'));
   }
 
+  /* свет на основной кнопке идёт за курсором (правка 14.11): координаты мыши в долях кнопки → --px/--py */
+  function initBtnLight() {
+    if (!matchMedia('(hover: hover)').matches) return;
+    document.addEventListener('pointermove', e => {
+      const b = e.pointerType === 'mouse' && e.target instanceof Element && e.target.closest('.btn--blue');
+      if (!b) return;
+      const r = b.getBoundingClientRect();
+      b.style.setProperty('--px', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      b.style.setProperty('--py', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+    }, { passive: true });
+  }
+
   /* стрелка «наверх» на всех страницах (правка 12.11): появляется после первого экрана */
   function initToTop() {
     const b = document.createElement('button');
@@ -458,6 +470,7 @@
     typo();
     initMotion();
     initHangCursor();
+    initBtnLight();
     initToTop();
   }
 

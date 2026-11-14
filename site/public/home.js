@@ -165,11 +165,17 @@
       const r = hImg.getBoundingClientRect(), host = hp.offsetParent.getBoundingClientRect();
       const s = Math.max(r.width / nw, r.height / nh), w = nw * s, h = nh * s;
       const [px, py] = getComputedStyle(hImg).objectPosition.split(' ').map(v => parseFloat(v) / 100);
-      const x = r.left - host.left + (r.width - w) * px + fx * w;
+      let x = r.left - host.left + (r.width - w) * px + fx * w;
       let y = r.top - host.top + (r.height - h) * py + fy * h;
       // на компьютере — на одной линии с кнопками «Попробовать занятие» / «Выбрать ханг» (правка 12.11)
       const btns = wide.matches && $('.s1-btns');
       if (btns) { const b = btns.getBoundingClientRect(); y = b.top - host.top + b.height / 2; }
+      // на телефоне (правка 14.11) — у левого поля, посередине между заголовком и текстом с кнопками
+      if (!wide.matches) {
+        const a = $('.s1-h1').getBoundingClientRect(), t = $('.s1-text').getBoundingClientRect();
+        y = (a.bottom + t.top) / 2 - host.top;
+        x = parseFloat(getComputedStyle($('.s1-body')).paddingLeft) + hp.offsetHeight / 2;
+      }
       hp.style.setProperty('--hx', Math.round(x) + 'px'); hp.style.setProperty('--hy', Math.round(y) + 'px');
       hp.classList.add('is-placed');
     };

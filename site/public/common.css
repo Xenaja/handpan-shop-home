@@ -537,18 +537,26 @@ main>section{position:relative;border-radius:var(--seam) var(--seam) 0 0;margin-
 }
 
 /* ---------- Моушн, этап 3 ---------- */
-/* перелив «как металл» на основных кнопках (правка ANN 12.11, №47): блик проходит раз в несколько секунд */
-.btn--blue{position:relative;overflow:hidden;isolation:isolate}
-.btn--blue::after{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;
-  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.08) 40%,rgba(255,255,255,.42) 50%,rgba(255,255,255,.08) 60%,transparent 70%);
-  transform:translateX(-130%)}
+/* основные кнопки (правка 14.11, вместо «ретро-блика»): внутри медленно перетекает мягкое световое пятно,
+   при наведении мышью свет идёт за курсором, кнопка чуть приподнимается и мягко светится */
+@property --mx{syntax:'<percentage>';inherits:false;initial-value:30%}
+@property --my{syntax:'<percentage>';inherits:false;initial-value:40%}
+.btn--blue{position:relative;overflow:hidden;isolation:isolate;
+  transition:background-color .35s,color .35s,border-color .35s,transform .45s var(--ease),box-shadow .45s var(--ease)}
+.btn--blue::after{content:'';position:absolute;inset:-1px;z-index:-1;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(140px circle at var(--mx) var(--my),rgba(255,236,226,.30),rgba(255,236,226,.08) 45%,transparent 70%);
+  opacity:.75;transition:opacity .4s,--mx .25s ease-out,--my .25s ease-out}
+.btn--blue:hover{background:var(--cta);color:var(--white-w);border-color:transparent}
+@media (hover:hover){
+  .btn--blue:hover{transform:translateY(-2px);box-shadow:0 14px 34px -12px rgba(110,30,45,.65)}
+  .btn--blue:hover::after{opacity:1;animation:none;--mx:var(--px,50%);--my:var(--py,50%)}
+}
 @media (prefers-reduced-motion:no-preference){
-  .btn--blue::after{animation:btn-sheen 6s cubic-bezier(.45,0,.25,1) infinite;animation-delay:var(--sheen-d,1.4s)}
-  .btns .btn--blue:nth-child(2)::after{--sheen-d:2.1s}
-  .btn--blue:hover::after{animation:none;opacity:0}
+  .btn--blue::after{animation:btn-drift 7s ease-in-out infinite alternate}
+  .btns .btn--blue:nth-child(2)::after{animation-delay:-3.5s}
   html[data-motion-paused] .btn--blue::after{animation-play-state:paused}
 }
-@keyframes btn-sheen{0%,72%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+@keyframes btn-drift{0%{--mx:12%;--my:30%}50%{--mx:60%;--my:75%}100%{--mx:90%;--my:35%}}
 
 /* курсор-хэндпан (№52 ANN, №39 Alina): маленький ханг плывёт чуть ниже стрелки, над ссылками увеличивается */
 .hcur{position:fixed;left:0;top:0;z-index:150;width:30px;height:30px;margin:-15px 0 0 -15px;pointer-events:none;color:var(--h-blue,#1C2548);
