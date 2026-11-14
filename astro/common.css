@@ -519,3 +519,21 @@ a.branch-map-frame::before{opacity:.16}
   .on-dark,.on-blue,.bg-grad,.s1,.s8{cursor:url(img/cursor-play-l.svg) 3 3,auto}
   a,button,label,select,summary,[role="button"],.hang-hit,.stage{cursor:pointer}
 }
+
+/* ---------- Моушн, этап 2 (правки 12.11, рефы PLACEBO/25, Roche): экраны наплывают друг на друга ----------
+   Экран доезжает до низа окна и останавливается, следующий наезжает поверх со скруглением,
+   а предыдущий слегка уходит вглубь и темнеет. Включает common.js (html.stack), при «меньше движения» — выкл. */
+html.stack :is(.s1,.e1,main>section){position:sticky;top:min(0px,calc(100svh - var(--h,100svh)));isolation:isolate;
+  transform:scale(calc(1 - var(--cv,0) * .05));transform-origin:50% var(--o,50%)}
+html.stack main>section{border-radius:clamp(22px,2.6vw,40px) clamp(22px,2.6vw,40px) 0 0;box-shadow:0 -18px 50px rgba(10,16,32,.16)}
+.stack-dim{position:absolute;inset:0;z-index:60;pointer-events:none;background:#0A1020;opacity:calc(var(--cv,0) * .5);border-radius:inherit}
+html:not(.stack) .stack-dim{display:none}
+
+/* фото проявляются при прокрутке: раскрываются из рамки и «оседают» по масштабу (рефы Roche, Substance) */
+@supports (animation-timeline: view()){
+  html.stack :is(.s3-photo img,.route-photo,.s9-photos img,.e-photo img,.tphoto img,.s5-photo img){
+    animation:img-in linear both;animation-timeline:view();animation-range:entry 0% cover 38%}
+  @keyframes img-in{from{clip-path:inset(14% 10% 14% 10% round 28px);transform:scale(1.18)}to{clip-path:inset(0 0 0 0 round 0);transform:scale(1)}}
+}
+html.stack body{background:#0A1020}
+html.stack .is-cov{will-change:transform}
