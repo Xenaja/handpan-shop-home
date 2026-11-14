@@ -911,3 +911,14 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 /* подсказка-треугольник (правка 14.11): мягко «дышит» в центре подсвеченного поля */
 @keyframes hf-tap{0%,100%{transform:scale(1);opacity:.95}45%{transform:scale(.82);opacity:.75}60%{transform:scale(.82);opacity:.75}}
 .hf-in{transform-origin:50% 50%}
+
+/* 8 (правка 14.11): строки заголовка свободнее; цитата — по линии «Сотни этапов»;
+   видео шире и без размытого перехода */
+.s8 .s8n-h.h-display{line-height:1.08}
+.s8n-h>span:nth-child(2){margin:.2em 0 .18em}
+@media(min-width:1000px){
+  .s8n-copy .s8n-acc{margin-left:calc(-1.8 * clamp(38px,4.4vw,80px))}
+  .s8n{grid-template-columns:minmax(0,1fr) 46%}
+  .s8n-video{-webkit-mask-image:none;mask-image:none}
+}
+@media(min-width:600px) and (max-width:999.98px){.s8n-copy .s8n-acc{margin-left:calc(-1.8 * clamp(26px,8.2vw,84px))}}
