@@ -576,16 +576,17 @@ html :is(.s1-shade,.e1-shade),html .s2.bg-grad::before{bottom:calc(-1 * var(--se
 /* интро при первом заходе (№55, 60; рефы PLACEBO/25, TAU): знак проявляется из темноты, шторка уезжает вверх */
 .intro-v{display:none}
 html.intro .intro-v{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.6vw,20px);pointer-events:none;
-  background:#0A1020;color:#E8EEF4;animation:intro-out 1.3s cubic-bezier(.33,0,.2,1) 1.25s forwards}
-html.intro .intro-v .logo-mark{font-size:clamp(22px,2.6vw,34px);animation:intro-in .9s cubic-bezier(.22,.8,.3,1) both,intro-fade .6s ease-in .95s forwards}
+  background:#0A1020;color:#E8EEF4;animation:intro-out 1.3s cubic-bezier(.33,0,.2,1) 2.1s forwards}
+html.intro .intro-v .logo-mark{font-size:clamp(22px,2.6vw,34px);animation:intro-in 1s cubic-bezier(.22,.8,.3,1) both,intro-grow 2.8s cubic-bezier(.3,0,.25,1) both,intro-fade .7s ease-in 1.85s forwards}
 .intro-w{font-family:var(--f-d);font-size:clamp(18px,2vw,26px);letter-spacing:.02em;white-space:nowrap}
 .intro-w span{font-family:var(--f-t);font-weight:400;opacity:.75}
-html.intro .intro-w{animation:intro-in .9s cubic-bezier(.22,.8,.3,1) .15s both,intro-fade .6s ease-in 1s forwards}
+html.intro .intro-w{animation:intro-in 1s cubic-bezier(.22,.8,.3,1) .2s both,intro-grow 2.8s cubic-bezier(.3,0,.25,1) both,intro-fade .7s ease-in 1.9s forwards}
 @keyframes intro-in{from{opacity:0;filter:blur(10px);transform:translateY(8px) scale(.94)}to{opacity:1;filter:none;transform:none}}
 @keyframes intro-out{to{opacity:0;visibility:hidden}}
+@keyframes intro-grow{from{scale:.9}to{scale:1.18}}  /* логотип плавно растёт всё время, пока виден (правка 14.11) */
 @keyframes intro-fade{to{opacity:0;filter:blur(6px);transform:scale(1.04)}}
 /* мягкий переход (правка 14.11): первый экран проявляется из затемнения и «оседает», пока уходит тёмный фон */
-html.intro :is(.s1,.e1){animation:intro-settle 1.9s cubic-bezier(.22,.8,.3,1) 1.15s backwards}
+html.intro :is(.s1,.e1){animation:intro-settle 2s cubic-bezier(.22,.8,.3,1) 2s backwards}
 @keyframes intro-settle{from{scale:1.05;filter:brightness(.45)}to{scale:1;filter:none}}
 
 /* бронзовый знак: пульсация «звуковой волной» (правка 14.11) — от треугольника play по контурам изнутри наружу
