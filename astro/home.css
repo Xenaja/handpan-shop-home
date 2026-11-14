@@ -935,3 +935,12 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   .s8n-copy .s8n-lead{font-size:clamp(16px,1.15vw,18px)}
   .s8n-copy .s8n-b2{font-size:clamp(15px,1.05vw,17px)}
 }
+/* подсказка-треугольник (правка 14.11): подъезжает по диагонали снизу-справа к полю, «нажимает» и растворяется */
+@keyframes hf-tap{
+  0%{transform:translate(38px,46px) scale(1);opacity:0}
+  18%{opacity:1}
+  52%{transform:translate(0,0) scale(1);opacity:1}
+  62%{transform:translate(0,0) scale(.78)}
+  74%{transform:translate(0,0) scale(1);opacity:1}
+  92%,100%{transform:translate(0,0) scale(1);opacity:0}}
+@media (prefers-reduced-motion:no-preference){.hf-in{animation:hf-tap 2.6s cubic-bezier(.4,0,.2,1) infinite}}
