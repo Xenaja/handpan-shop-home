@@ -372,10 +372,16 @@
   // автоперелистывание (правка 12.11): раз в 5 с, только когда карусель на экране;
   // пауза при наведении, фокусе и касании, после ручного листания отсчёт заново; при «уменьшить движение» — выключено
   const sec7 = $('#teach');
-  let autoT = 0, inView = false, tHold = false;
-  const stopAuto = () => clearInterval(autoT);
-  const runAuto = () => { stopAuto(); if (!reduce && inView && !tHold && !document.hidden) autoT = setInterval(() => setT(ti + 1), 4000); };
-  new IntersectionObserver(es => { inView = es[0].isIntersecting; runAuto(); }, { threshold: .35 }).observe(sec7);
+  let autoT = 0, firstT = 0, inView = false, tHold = false, started = false;
+  const stopAuto = () => { clearInterval(autoT); clearTimeout(firstT); };
+  // первое перелистывание — вскоре после появления ленты на экране, чтобы было видно, что она листается (правка 14.11)
+  const runAuto = () => {
+    stopAuto();
+    if (reduce || !inView || tHold || document.hidden) return;
+    const go = () => { setT(ti + 1); autoT = setInterval(() => setT(ti + 1), 4000); };
+    if (!started) { started = true; firstT = setTimeout(go, 1200); } else autoT = setInterval(() => setT(ti + 1), 4000);
+  };
+  new IntersectionObserver(es => { inView = es[0].isIntersecting; runAuto(); }, { threshold: .3 }).observe(car);
   car.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { tHold = true; stopAuto(); } });
   car.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { tHold = false; runAuto(); } });
   sec7.addEventListener('focusin', e => { if (e.target.matches(':focus-visible')) { tHold = true; stopAuto(); } });

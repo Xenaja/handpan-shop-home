@@ -357,23 +357,37 @@
       + '.e2-q,.e2-row,.e-photo,.skill,.step,.trial,.fmt,.faq-i,.chips';
     const targets = $$(selector).filter(el => !el.parentElement.closest(selector));
     const seen = new WeakSet(), active = new Map();
-    const entrances = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting || preference.matches) return;
-        const el = entry.target;
-        entrances.unobserve(el); seen.add(el);
+    const enter = el => {
+        if (seen.has(el) || preference.matches) return;
+        entrances.unobserve(el); seen.add(el); el.style.opacity = '';
         // При переходе по якорю или с клавиатуры управление сразу доступно.
         if (el.contains(document.activeElement)) return;
         const stagger = el.matches('.route,.aud,.need,.skill,.step,.fmt,.faq-i')
           ? ([...el.parentElement.children].indexOf(el) % (el.matches('.skill') ? 5 : 3)) * 110 : 0;
-        const animation = el.animate([
-          { opacity: 0, transform: 'translateY(26px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 1000, delay: stagger, easing: 'cubic-bezier(.22,.8,.3,1)', fill: 'backwards' });
+        // «Как начать» на компьютере (правка 14.11): карточки по очереди, начиная с левой, вылетают из-за правого края экрана
+        const fly = el.matches('.route') && matchMedia('(min-width: 1000px)').matches;
+        const animation = fly
+          ? el.animate([
+              { opacity: 0, transform: `translateX(${Math.round(innerWidth - el.getBoundingClientRect().left)}px)` },
+              { opacity: 1, offset: .35 },
+              { opacity: 1, transform: 'translateX(0)' }
+            ], { duration: 1300, delay: [...el.parentElement.children].indexOf(el) * 260, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' })
+          : el.animate([
+              { opacity: 0, transform: 'translateY(26px)' },
+              { opacity: 1, transform: 'translateY(0)' }
+            ], { duration: 1000, delay: stagger, easing: 'cubic-bezier(.22,.8,.3,1)', fill: 'backwards' });
         active.set(el, animation);
         animation.finished.then(() => active.delete(el), () => active.delete(el));
-      });
+    };
+    const entrances = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) enter(entry.target); });
     }, { threshold: .08 });
+    const routes = targets.filter(el => el.matches('.route'));
+    // страховка для скрытых карточек «Как начать»: запускаем и по прокрутке, как только они в окне
+    const checkRoutes = () => routes.forEach(el => {
+      if (!seen.has(el) && el.style.opacity === '0') { const r = el.getBoundingClientRect(); if (r.top < innerHeight * .92 && r.bottom > 0) enter(el); }
+    });
+    addEventListener('scroll', checkRoutes, { passive: true });
     const hint = $('[data-sculpture-trigger],[data-pulse-hint]');
     const pulse = new IntersectionObserver(entries => {
       entries.forEach(entry => entry.target.toggleAttribute('data-pulse-visible', entry.isIntersecting));
@@ -383,10 +397,14 @@
       if (hint) hint.removeAttribute('data-pulse-visible');
       if (preference.matches) {
         active.forEach(animation => animation.cancel()); active.clear();
+        routes.forEach(el => { el.style.opacity = ''; });
         return;
       }
+      // карточки «Как начать» на компьютере скрыты до вылета, чтобы не мелькнули на месте
+      if (matchMedia('(min-width: 1000px)').matches) routes.forEach(el => { if (!seen.has(el)) el.style.opacity = '0'; });
       targets.forEach(el => { if (!seen.has(el)) entrances.observe(el); });
       if (hint) pulse.observe(hint);
+      requestAnimationFrame(checkRoutes);
     };
     preference.addEventListener('change', applyPreference);
     // Скрытая вкладка не тратит ресурсы на повторяющуюся пульсацию.
