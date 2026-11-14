@@ -603,3 +603,5 @@ html.intro :is(.s1,.e1){animation:intro-settle 2s cubic-bezier(.22,.8,.3,1) 2s b
 }
 @keyframes bl-wave{0%{opacity:0}18%{opacity:.85}55%,100%{opacity:0}}
 @keyframes bl-breathe{0%,100%{scale:1}20%{scale:1.04}}
+/* кнопка записи в контактах ниже по высоте — на всех страницах (правка 14.11) */
+html body .branch-book.btn.btn{min-height:48px;height:auto;padding:12px 26px;font-size:15px;line-height:1.2;border-radius:24px}

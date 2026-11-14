@@ -430,3 +430,4 @@
 /* «Форматы»: кнопка при наведении — заливка бордовым, как основные кнопки (правка 14.11) */
 .fmt-btn.btn{transition:background-color .3s,color .3s,border-color .3s,transform .35s var(--ease),box-shadow .35s var(--ease)}
 .fmt-btn.btn:hover,.fmt-btn.btn:focus-visible{background:var(--cta);border-color:var(--cta);color:#fff;transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(110,30,45,.6)}
+.e8{position:relative;overflow-x:clip}  /* перелистывание преподавателей не вылезает за экран */

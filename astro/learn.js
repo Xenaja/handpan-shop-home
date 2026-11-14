@@ -44,8 +44,17 @@
     clearTimeout(swapT);
     const old = tpanels[from];
     if (from === to || HS.reduce || !old || old.hidden || !Element.prototype.animate) return show();
-    old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: 'ease-out', fill: 'forwards' });
-    swapT = setTimeout(() => { old.getAnimations().forEach(a => a.cancel()); show(); }, 250);
+    // перелистывание (правка 14.11): старая карточка уезжает в сторону, новая одновременно въезжает с другой стороны
+    tpanels.forEach(p => p.getAnimations().forEach(a => a.finish()));
+    const top = old.offsetTop, left = old.offsetLeft, w = old.offsetWidth;
+    Object.assign(old.style, { position: 'absolute', top: top + 'px', left: left + 'px', width: w + 'px', margin: '0', pointerEvents: 'none' });
+    const nw = tpanels[to];
+    nw.hidden = false;
+    tpanels.forEach((p, k) => { if (k !== to && p !== old) p.hidden = true; });
+    const D = 900, E = 'cubic-bezier(.65,0,.25,1)';
+    old.animate([{ transform: 'none', opacity: 1 }, { transform: `translateX(${-dir * 100}%)`, opacity: .2 }], { duration: D, easing: E })
+      .finished.then(() => { old.hidden = true; old.removeAttribute('style'); }, () => { old.hidden = true; old.removeAttribute('style'); });
+    nw.animate([{ transform: `translateX(${dir * 100}%)`, opacity: .2 }, { transform: 'none', opacity: 1 }], { duration: D, easing: E });
   }
   function setTeacher(i, focus) {
     const prev = ti; ti = i;
@@ -66,10 +75,10 @@
     const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
     if (k) { e.preventDefault(); setTeacher((ti + k + tbtns.length) % tbtns.length, true); }
   });
-  // автолистание преподавателей (правка 14.11): стартует, когда фото целиком на экране, шаг 5 с;
+  // автолистание преподавателей (правка 14.11): первое перелистывание через 1,5 с после появления фото (30% на экране), дальше каждые 5 с;
   // после ручного выбора — пауза 12 с; уходит с экрана или открыто «Читать дальше» — стоп
   if (!HS.reduce && 'IntersectionObserver' in window && tbtns.length > 1) {
-    let autoT = 0, holdUntil = 0, inView = false;
+    let autoT = 0, firstT = 0, holdUntil = 0, inView = false;
     const tick = () => {
       if (!inView || document.hidden || Date.now() < holdUntil || $('.tbio.open')) return;
       setTeacher((ti + 1) % tbtns.length);
@@ -77,10 +86,10 @@
     const run = () => { clearInterval(autoT); if (inView) autoT = setInterval(tick, 5000); };
     const photoIO = new IntersectionObserver(es => es.forEach(e => {
       if (e.target.closest('.tpanel').hidden) return;
-      const full = e.intersectionRatio >= .97;
-      if (full && !inView) { inView = true; run(); }
+      const full = e.intersectionRatio >= .3;
+      if (full && !inView) { inView = true; run(); clearTimeout(firstT); firstT = setTimeout(tick, 1500); }
       else if (!e.isIntersecting && inView) { inView = false; clearInterval(autoT); }
-    }), { threshold: [0, .97] });
+    }), { threshold: [0, .3] });
     tpanels.forEach(p => { const ph = $('.tphoto', p); if (ph) photoIO.observe(ph); });
     tbtns.forEach(b => b.addEventListener('click', e => { if (e.isTrusted) { holdUntil = Date.now() + 12000; run(); } }));
   }
