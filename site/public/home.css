@@ -908,3 +908,6 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 @media(max-width:999.98px){.s8n-copy{padding-left:calc(1.8 * clamp(26px,8.2vw,84px))}}
 @media(max-width:599.98px){.s8n-copy{padding-left:0}}
 @media(max-width:599.98px){.s8n-h>span:nth-child(2){padding-left:.3em}.s8n-h>span:nth-child(3){padding-left:1.2em}}
+/* подсказка-треугольник (правка 14.11): мягко «дышит» в центре подсвеченного поля */
+@keyframes hf-tap{0%,100%{transform:scale(1);opacity:.95}45%{transform:scale(.82);opacity:.75}60%{transform:scale(.82);opacity:.75}}
+.hf-in{transform-origin:50% 50%}

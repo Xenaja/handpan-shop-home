@@ -121,16 +121,17 @@
     /* Подсказка (правка 14.11, вместо бегающей по полям): сразу видно подсвеченное поле справа внизу
        и пальчик, который мягко «нажимает» на него. Пропадает после первого касания ханга. */
     let finger = null;
-    const FINGER = 'M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z';
+    // треугольник play из знака U-GENE, как на курсоре (правка 14.11, вместо пальчика)
+    const FINGER = 'M406.204 388.605C390.035 384.327 397.9 404.324 396.127 414.445C390.187 448.344 436.604 415.515 433.67 405.174C432.055 399.485 411.352 389.967 406.204 388.605Z';
     const hint = () => {
       if (svg.dataset.touched) return;
       // поле справа внизу — с наибольшей суммой координат (центральный купол не берём)
       let best = 1; FIELDS.forEach((f, i) => { if (i && f[0] + f[1] > FIELDS[best][0] + FIELDS[best][1]) best = i; });
       hits.forEach(h => h.classList.remove('is-hint'));
       hits[best].classList.add('is-hint');
-      const [x, y] = FIELDS[best], s = 2.6;
+      const [x, y] = FIELDS[best], s = .5;
       if (finger) finger.remove();
-      finger = svgEl('g', { class: 'hang-finger', 'aria-hidden': 'true', transform: `translate(${(x - 11.5 * s).toFixed(1)} ${(y - 5 * s).toFixed(1)}) scale(${s})` });
+      finger = svgEl('g', { class: 'hang-finger', 'aria-hidden': 'true', transform: `translate(${(x - 413 * s).toFixed(1)} ${(y - 410 * s).toFixed(1)}) scale(${s})` });
       const inner = svgEl('g', { class: 'hf-in' });
       inner.append(svgEl('path', { d: FINGER }));
       finger.append(inner); svg.append(finger);
