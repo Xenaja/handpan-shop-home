@@ -380,12 +380,13 @@
         animation.finished.then(() => active.delete(el), () => active.delete(el));
     };
     const entrances = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting) enter(entry.target); });
+      // карточки «Как начать» ждут, пока поднимутся выше трети окна (правка 14.11) — их запускает checkRoutes по прокрутке
+      entries.forEach(entry => { if (entry.isIntersecting && !(entry.target.matches('.route') && entry.target.style.opacity === '0')) enter(entry.target); });
     }, { threshold: .08 });
     const routes = targets.filter(el => el.matches('.route'));
     // страховка для скрытых карточек «Как начать»: запускаем и по прокрутке, как только они в окне
     const checkRoutes = () => routes.forEach(el => {
-      if (!seen.has(el) && el.style.opacity === '0') { const r = el.getBoundingClientRect(); if (r.top < innerHeight * .92 && r.bottom > 0) enter(el); }
+      if (!seen.has(el) && el.style.opacity === '0') { const r = el.getBoundingClientRect(); if (r.top < innerHeight * .62 && r.bottom > 0) enter(el); }
     });
     addEventListener('scroll', checkRoutes, { passive: true });
     const hint = $('[data-sculpture-trigger],[data-pulse-hint]');
