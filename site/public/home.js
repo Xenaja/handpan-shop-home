@@ -229,6 +229,15 @@
     }
   }
 
+  /* ---------- 09: лента комьюнити — фото за правым краем грузим заранее, иначе въезжают пустыми ---------- */
+  const reel = $('.s9-reel');
+  if (reel && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => {
+      if (es[0].isIntersecting) { io.disconnect(); $$('img', reel).forEach(img => { img.loading = 'eager'; }); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(reel);
+  }
+
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
   // Повторное нажатие выключает звук (правка 12.11, №37): запущенные ноты гаснут плавно
   const audStop = b => {

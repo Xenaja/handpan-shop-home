@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1115f">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1115i">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1115f"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1115f"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1115f">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1115i"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1115i"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1115i">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -416,9 +416,11 @@
       <p>Джемы, концерты, выезды, фестивали, встречи с мастерами и музыкантами. Доступ к самым актуальным событиям и знаниям. Люди, с которыми хочется продолжать играть уже за пределами музыки.</p>
     </div>
   </div>
-  <div class="s9-photos">
-    <div class="m"><img src="/handpan-shop-home/astro/img/community-hands.webp" alt="Руки на хангах: игра в кругу на траве" width="1400" height="1129" loading="lazy"></div>
-    <div class="m"><img src="/handpan-shop-home/astro/img/community-clap.webp" alt="Слушатели аплодируют на концерте школы" width="2000" height="1073" loading="lazy"></div>
+  <!-- лента фото комьюнити (правка 14.11): медленно и непрерывно едет сама; второй проход — копия для бесшовной петли -->
+  <div class="s9-reel" aria-label="Фото комьюнити">
+    <div class="s9-track">
+      <img src="/handpan-shop-home/astro/img/community-hands.webp" alt="Руки на хангах: игра в кругу на траве" width="1400" height="1129" decoding="async"><img src="/handpan-shop-home/astro/img/community-workshop.webp" alt="Мастер-класс по игре на ханге на открытом воздухе" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-1.webp" alt="Отчётный концерт школы: зал поддерживает исполнительницу" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-team.webp" alt="Музыкант с хангом в руках улыбается" width="720" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-clap.webp" alt="Слушатели аплодируют на концерте школы" width="2000" height="1073" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-2.webp" alt="Преподаватель на отчётном концерте школы" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-3.webp" alt="Зрители аплодируют на отчётном концерте" width="600" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-4.webp" alt="Зрители слушают концерт школы" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-hands.webp" alt aria-hidden="true" width="1400" height="1129" decoding="async"><img src="/handpan-shop-home/astro/img/community-workshop.webp" alt aria-hidden="true" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-1.webp" alt aria-hidden="true" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-team.webp" alt aria-hidden="true" width="720" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-clap.webp" alt aria-hidden="true" width="2000" height="1073" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-2.webp" alt aria-hidden="true" width="1350" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-3.webp" alt aria-hidden="true" width="600" height="900" decoding="async"><img src="/handpan-shop-home/astro/img/community-concert-4.webp" alt aria-hidden="true" width="1350" height="900" decoding="async">
+    </div>
   </div>
 </section>
 
@@ -780,6 +782,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1115f"></script><script src="/handpan-shop-home/astro/home.js?v=1115f"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1115i"></script><script src="/handpan-shop-home/astro/home.js?v=1115i"></script>
 </body>
 </html>

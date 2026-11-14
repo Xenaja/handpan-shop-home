@@ -884,3 +884,14 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 }
 .vmodal.is-wide video{height:auto;width:min(92vw,1400px);max-height:86svh;aspect-ratio:16/9}
 .s8n-h>span:nth-child(3){margin:.14em 0 .1em}
+
+/* 9: лента фото комьюнити (правка 14.11) — медленно и непрерывно едет сама, без пауз и рывков */
+.s9-reel{position:relative;z-index:1;overflow:hidden;margin:0 calc(-1 * var(--gut))}
+.s9-track{display:flex;gap:clamp(10px,1.2vw,16px);width:max-content}
+.s9-track img{display:block;height:clamp(220px,28vw,420px);width:auto;object-fit:cover;filter:saturate(.85)}
+@media (prefers-reduced-motion:no-preference){
+  .s9-track{animation:s9-run 70s linear infinite}
+  html[data-motion-paused] .s9-track{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:reduce){.s9-reel{overflow-x:auto}}
+@keyframes s9-run{to{transform:translateX(calc(-50% - clamp(10px,1.2vw,16px) / 2))}}

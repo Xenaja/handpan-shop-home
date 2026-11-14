@@ -18,6 +18,17 @@ const pad = (n: number) => String(n).padStart(2, '0');
 // hidden — преподаватель временно не показывается (Андрей Лето — добавим позже)
 const TEACH = D.teachers.filter(t => !t.hidden);
 const msk = D.cities[0], spb = D.cities.find(c => c.key === 'spb');
+// фото ленты «Ханг объединяет» (правка 14.11)
+const COMM = [
+  { src: 'img/community-hands.webp', w: 1400, h: 1129, alt: 'Руки на хангах: игра в кругу на траве' },
+  { src: 'img/community-workshop.webp', w: 1350, h: 900, alt: 'Мастер-класс по игре на ханге на открытом воздухе' },
+  { src: 'img/community-concert-1.webp', w: 1350, h: 900, alt: 'Отчётный концерт школы: зал поддерживает исполнительницу' },
+  { src: 'img/community-team.webp', w: 720, h: 900, alt: 'Музыкант с хангом в руках улыбается' },
+  { src: 'img/community-clap.webp', w: 2000, h: 1073, alt: 'Слушатели аплодируют на концерте школы' },
+  { src: 'img/community-concert-2.webp', w: 1350, h: 900, alt: 'Преподаватель на отчётном концерте школы' },
+  { src: 'img/community-concert-3.webp', w: 600, h: 900, alt: 'Зрители аплодируют на отчётном концерте' },
+  { src: 'img/community-concert-4.webp', w: 1350, h: 900, alt: 'Зрители слушают концерт школы' }
+];
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -356,9 +367,13 @@ const jsonld = {
       <p>Джемы, концерты, выезды, фестивали, встречи с мастерами и музыкантами. Доступ к самым актуальным событиям и знаниям. Люди, с которыми хочется продолжать играть уже за пределами музыки.</p>
     </div>
   </div>
-  <div class="s9-photos">
-    <div class="m"><img src={u('img/community-hands.webp')} alt="Руки на хангах: игра в кругу на траве" width="1400" height="1129" loading="lazy"></div>
-    <div class="m"><img src={u('img/community-clap.webp')} alt="Слушатели аплодируют на концерте школы" width="2000" height="1073" loading="lazy"></div>
+  <!-- лента фото комьюнити (правка 14.11): медленно и непрерывно едет сама; второй проход — копия для бесшовной петли -->
+  <div class="s9-reel" aria-label="Фото комьюнити">
+    <div class="s9-track">
+      {[0, 1].map(pass => COMM.map(p => (
+        <img src={u(p.src)} alt={pass ? '' : p.alt} aria-hidden={pass ? 'true' : undefined} width={p.w} height={p.h} decoding="async">
+      )))}
+    </div>
   </div>
 </section>
 
