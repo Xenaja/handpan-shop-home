@@ -111,5 +111,15 @@
     if (r) r.checked = true;
   });
 
+  /* «Как строится путь» (правка 14.11): этапы по очереди — линия прорисовывается слева, цифра выезжает, текст проявляется */
+  const pathEl = document.querySelector('.path');
+  if (pathEl && !HS.reduce && 'IntersectionObserver' in window) {
+    pathEl.classList.add('path-anim');
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -18% 0px' });
+    pathEl.querySelectorAll('.step').forEach((st, i) => { st.style.setProperty('--d', (i * .25) + 's'); io.observe(st); });
+  }
+
   HS.ready();
 })();

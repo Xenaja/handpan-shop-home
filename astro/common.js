@@ -354,7 +354,7 @@
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
     // «Обучение» (правка 12.11): цитата, фото, навыки, этапы пути, форматы, вопросы — тоже мягко появляются
     const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.need,.s8-text,.s8-copy,.s9-text,.s9-top,.s9-photos,.s10-head,.s10-grid,.e11-l,.e11-r,'
-      + '.e2-q,.e2-row,.e-photo,.skill,.step,.trial,.fmt,.faq-i,.chips';
+      + '.e2-q,.e2-row,.e-photo,.skill,.trial,.fmt,.faq-i,.chips'  /* .step — своя анимация в learn.js (правка 14.11) */;
     const targets = $$(selector).filter(el => !el.parentElement.closest(selector));
     const seen = new WeakSet(), active = new Map();
     const enter = el => {

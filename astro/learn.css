@@ -401,3 +401,29 @@
 @media(min-width:1000px){.e1:not(.i1) .e1-h1{font-size:clamp(44px,min(5.4vw,8.4vh),104px)}}
 .e3.bg-grad .skill:hover .skill-t,.e3.bg-grad .skill:hover .skill-n{color:#fff}  /* активная карточка — весь текст белый (правка 14.11) */
 .e3.bg-grad .skill-t,.e3.bg-grad .skill-n{transition:color .35s}
+
+/* 5: «Как строится путь» — анимация этапов (правка 14.11) */
+.path-anim .step{position:relative;border-top-color:transparent!important}
+.path-anim .step::before{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;background:rgba(28,37,72,.3);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.1s cubic-bezier(.65,0,.2,1) var(--d)}
+.path-anim .step-num{display:inline-block;opacity:0;transform:translateX(-36px);transition:opacity .9s ease calc(var(--d) + .25s),transform 1.1s cubic-bezier(.16,1,.3,1) calc(var(--d) + .25s)}
+.path-anim .step-h .mono,.path-anim .step p{opacity:0;transform:translateY(14px);transition:opacity .9s ease calc(var(--d) + .5s),transform .9s cubic-bezier(.22,.8,.3,1) calc(var(--d) + .5s)}
+.path-anim .step.is-in::before{transform:scaleX(1)}
+.path-anim .step.is-in .step-num,.path-anim .step.is-in .step-h .mono,.path-anim .step.is-in p{opacity:1;transform:none}
+
+/* знак у «Как строится путь»: пульсация заметнее — ярче волна и сильнее «дыхание» */
+.brand-lines--path .bl-w{background:#FFF6E8!important;filter:drop-shadow(0 0 6px rgba(255,236,210,.9))}
+.brand-lines--path{animation-name:bl-breathe-strong!important}
+@keyframes bl-breathe-strong{0%,100%{scale:1}20%{scale:1.08}}
+.path-anim .step.is-in::before{transform:scaleX(0);animation:path-line 1.1s cubic-bezier(.65,0,.2,1) var(--d) forwards}
+@keyframes path-line{to{transform:scaleX(1)}}
+/* линии этапов — статичные (надёжнее), анимируются цифры и текст */
+.path-anim .step{border-top-color:rgba(28,37,72,.22)!important}
+.path-anim .step::before{content:none}
+
+/* 6: «Форматы обучения» (правка 14.11) — кнопки «Записаться» крупнее, колонка с описанием уже */
+@media(min-width:1000px){
+  .fmts{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) max-content max-content}
+  .fmt-who{max-width:24ch}
+  .fmt-btn.btn{min-height:56px;min-width:190px;padding:0 30px;font-size:16px;border-radius:28px}
+}
+.fmt-btn.btn{min-height:52px;font-size:15px}
