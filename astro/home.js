@@ -393,12 +393,13 @@
   const runAuto = () => {
     stopAuto();
     if (reduce || !inView || tHold || document.hidden) return;
-    const go = () => { setT(ti + 1); autoT = setInterval(() => setT(ti + 1), 4000); };
-    if (!started) { started = true; firstT = setTimeout(go, 1200); } else autoT = setInterval(() => setT(ti + 1), 4000);
+    const go = () => { setT(ti + 1); autoT = setInterval(() => setT(ti + 1), 3000); };
+    if (!started) { started = true; firstT = setTimeout(go, 900); } else autoT = setInterval(() => setT(ti + 1), 3000);
   };
   new IntersectionObserver(es => { inView = es[0].isIntersecting; runAuto(); }, { threshold: .3 }).observe(car);
-  car.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { tHold = true; stopAuto(); } });
-  car.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { tHold = false; runAuto(); } });
+  // пауза только пока ленту тянут (правка 14.11): при простом наведении курсор часто стоит над карточками, и лента «не листалась»
+  car.addEventListener('pointerdown', () => { tHold = true; stopAuto(); });
+  ['pointerup', 'pointercancel'].forEach(ev => car.addEventListener(ev, () => { tHold = false; runAuto(); }));
   sec7.addEventListener('focusin', e => { if (e.target.matches(':focus-visible')) { tHold = true; stopAuto(); } });
   sec7.addEventListener('focusout', e => { if (!sec7.contains(e.relatedTarget)) { tHold = false; runAuto(); } });
   ['click', 'touchend', 'keydown'].forEach(ev => car.parentElement.addEventListener(ev, runAuto, { passive: true }));
