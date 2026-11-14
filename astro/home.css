@@ -850,3 +850,9 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   .s8n-video{position:absolute;inset:0;width:100%;height:100%}
 }
 @media(max-width:999.98px){.s8n-media{width:100vw;max-width:none;justify-self:start;margin-left:calc(-1 * var(--gut));margin-right:0}}
+/* 8: заголовок лесенкой (правка 14.11) — каждая часть одной строкой со сдвигом вправо */
+.s8n-h>span{white-space:nowrap}
+.s8n-h>span:nth-child(2){padding-left:.9em}
+.s8n-h>span:nth-child(3){padding-left:1.8em}
+.s8 .s8n-h.h-display{font-size:clamp(26px,8.2vw,84px)}
+@media(min-width:1000px){.s8 .s8n-h.h-display{font-size:clamp(38px,4.4vw,80px)}}
