@@ -526,6 +526,10 @@ main>section{position:relative;border-radius:var(--seam) var(--seam) 0 0;margin-
 :root{--seam:clamp(22px,2.6vw,40px)}
 /* запас снизу на величину захода — низ предыдущего экрана не прячется под скругление */
 :is(.s1,.e1,main>section:not(:last-child)){border-bottom:var(--seam) solid transparent}
+/* фон экрана тянется и под эту полосу, иначе в углах следующего экрана виден ровный цвет (правка 14.11) */
+:is(.s1,.e1,main>section){background-origin:border-box!important}
+html :is(.s1,.e1,.s8) :is(.s1-bg,.e1-bg,.s8-bg){height:calc(100% + var(--seam))}
+html :is(.s1-shade,.e1-shade),html .s2.bg-grad::before{bottom:calc(-1 * var(--seam))}
 
 /* фото при прокрутке плавно «оседают» по масштабу (рефы Roche, Substance); только transform — считает видеокарта */
 @media (prefers-reduced-motion:no-preference){
