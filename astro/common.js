@@ -456,11 +456,11 @@
     }).join('');
     el.innerHTML = `<svg viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="13.6" stroke="currentColor" stroke-width="1.1"/><circle class="hc-f" cx="15" cy="15" r="3.6" stroke="currentColor" stroke-width="1"/>${fields}</svg>`;
     document.body.appendChild(el);
-    const OFF = 26; // ханг висит ниже-правее стрелки и не закрывает то, на что наводят
+    const OFF = 22; // ханг висит ниже-правее стрелки и не закрывает то, на что наводят
     let tx = -100, ty = -100, x = -100, y = -100, raf = 0, last = 0;
     const DARK = '.on-dark,.on-blue,.bg-grad,.s1,.s8,.bg-dark,.bg-aubergine';
     const loop = () => {
-      x += (tx - x) * 0.16; y += (ty - y) * 0.16;
+      x += (tx - x) * 0.42; y += (ty - y) * 0.42; // лёгкое сглаживание, почти без запаздывания (правка 14.11)
       el.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
       raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0;
     };
