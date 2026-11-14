@@ -434,3 +434,7 @@
 /* «Как мы учим»: ступени вырастают медленнее (правка 14.11) — 2,2 с на ступень, пауза 0,4 с между ними */
 .stages.is-armed .stage{transition:clip-path 2.2s cubic-bezier(.33,0,.2,1) calc(var(--i) * 400ms),transform .45s var(--ease)}
 .stages.is-armed .stage>*{transition:opacity 1.2s ease calc(var(--i) * 400ms + 1.2s),transform 1.2s cubic-bezier(.22,.8,.3,1) calc(var(--i) * 400ms + 1.2s)}
+/* «Кто вас учит»: карточку можно тянуть курсором и пальцем (правка 14.11) */
+.e8 .tpanel{cursor:grab;touch-action:pan-y}
+.e8.is-drag,.e8.is-drag .tpanel{cursor:grabbing;-webkit-user-select:none;user-select:none}
+.e8 .tphoto img{-webkit-user-drag:none}

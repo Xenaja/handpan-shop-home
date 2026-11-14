@@ -44,23 +44,28 @@
     clearTimeout(swapT);
     const old = tpanels[from];
     if (from === to || HS.reduce || !old || old.hidden || !Element.prototype.animate) return show();
-    // перелистывание (правка 14.11): старая карточка уезжает в сторону, новая одновременно въезжает с другой стороны
+    // перелистывание (правка 14.11): старая карточка уезжает в сторону, новая одновременно въезжает с другой стороны;
+    // startX — с какого сдвига начинать (после перетаскивания курсором/пальцем), без рывка
     tpanels.forEach(p => p.getAnimations().forEach(a => a.finish()));
+    const sx = swapPanel.startX || 0; swapPanel.startX = 0;
+    old.style.transform = '';
     const top = old.offsetTop, left = old.offsetLeft, w = old.offsetWidth;
     Object.assign(old.style, { position: 'absolute', top: top + 'px', left: left + 'px', width: w + 'px', margin: '0', pointerEvents: 'none' });
     const nw = tpanels[to];
     nw.hidden = false;
     tpanels.forEach((p, k) => { if (k !== to && p !== old) p.hidden = true; });
-    const D = 900, E = 'cubic-bezier(.65,0,.25,1)';
-    old.animate([{ transform: 'none', opacity: 1 }, { transform: `translateX(${-dir * 100}%)`, opacity: .2 }], { duration: D, easing: E })
-      .finished.then(() => { old.hidden = true; old.removeAttribute('style'); }, () => { old.hidden = true; old.removeAttribute('style'); });
-    nw.animate([{ transform: `translateX(${dir * 100}%)`, opacity: .2 }, { transform: 'none', opacity: 1 }], { duration: D, easing: E });
+    const D = 1300, E = 'cubic-bezier(.45,.05,.2,1)';
+    const done = () => { old.hidden = true; old.removeAttribute('style'); };
+    old.animate([{ transform: `translateX(${sx}px)`, opacity: 1 }, { transform: `translateX(${-dir * 100}%)`, opacity: 0 }], { duration: D, easing: E })
+      .finished.then(done, done);
+    nw.animate([{ transform: `translateX(calc(${dir * 100}% + ${sx}px))`, opacity: 0 }, { opacity: .6, offset: .5 }, { transform: 'none', opacity: 1 }], { duration: D, easing: E });
   }
   function setTeacher(i, focus) {
     const prev = ti; ti = i;
     warmTeacher(teacherImages[i]);
     tbtns.forEach((b, k) => { b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
-    swapPanel(prev, i, i >= prev ? 1 : -1);
+    const n = tbtns.length, fwd = (i - prev + n) % n;
+    swapPanel(prev, i, fwd === 0 ? 1 : (fwd <= n / 2 ? 1 : -1));
     if (!HS.wide.matches) {
       const list = $('[data-tlist]'), button = tbtns[i];
       const listRect = list.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
@@ -75,23 +80,59 @@
     const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
     if (k) { e.preventDefault(); setTeacher((ti + k + tbtns.length) % tbtns.length, true); }
   });
-  // автолистание преподавателей (правка 14.11): первое перелистывание через 1,5 с после появления фото (30% на экране), дальше каждые 5 с;
-  // после ручного выбора — пауза 12 с; уходит с экрана или открыто «Читать дальше» — стоп
+  // автолистание преподавателей (правка 14.11): стартует, когда ряд имён на экране (фото сразу под ним), шаг 5 с, по кругу;
+  // после ручного выбора или перетаскивания — пауза 10 с; блок ушёл с экрана или открыто «Читать дальше» — стоп
   if (!HS.reduce && 'IntersectionObserver' in window && tbtns.length > 1) {
-    let autoT = 0, firstT = 0, holdUntil = 0, inView = false;
+    let autoT = 0, holdUntil = 0, inView = false;
     const tick = () => {
       if (!inView || document.hidden || Date.now() < holdUntil || $('.tbio.open')) return;
       setTeacher((ti + 1) % tbtns.length);
     };
-    const run = () => { clearInterval(autoT); if (inView) autoT = setInterval(tick, 5000); };
-    const photoIO = new IntersectionObserver(es => es.forEach(e => {
-      if (e.target.closest('.tpanel').hidden) return;
-      const full = e.intersectionRatio >= .3;
-      if (full && !inView) { inView = true; run(); clearTimeout(firstT); firstT = setTimeout(tick, 1500); }
-      else if (!e.isIntersecting && inView) { inView = false; clearInterval(autoT); }
-    }), { threshold: [0, .3] });
-    tpanels.forEach(p => { const ph = $('.tphoto', p); if (ph) photoIO.observe(ph); });
-    tbtns.forEach(b => b.addEventListener('click', e => { if (e.isTrusted) { holdUntil = Date.now() + 12000; run(); } }));
+    const start = () => { if (inView) return; inView = true; clearInterval(autoT); setTimeout(tick, 1200); autoT = setInterval(tick, 5000); };
+    const stop = () => { inView = false; clearInterval(autoT); };
+    const sec = $('#teachers'), list = $('[data-tlist]');
+    new IntersectionObserver(es => { if (es[0].isIntersecting) start(); }, { rootMargin: '0px 0px -25% 0px' }).observe(list);
+    new IntersectionObserver(es => { if (!es[0].isIntersecting) stop(); }).observe(sec);
+    HS.teachHold = () => { holdUntil = Date.now() + 10000; };
+    tbtns.forEach(b => b.addEventListener('click', e => { if (e.isTrusted) HS.teachHold(); }));
+  }
+
+  // листание курсором и пальцем (правка 14.11): карточка едет за указателем, отпустили дальше порога — следующий/предыдущий
+  {
+    const area = $('#teachers');
+    let x0 = null, y0 = 0, dx = 0, drag = false, pid = null;
+    const cur = () => tpanels[ti];
+    area.addEventListener('pointerdown', e => {
+      if (e.button !== 0 || e.target.closest('button,a,[data-tlist]')) return;
+      if (!e.target.closest('.tpanel')) return;
+      x0 = e.clientX; y0 = e.clientY; dx = 0; drag = false; pid = e.pointerId;
+    });
+    area.addEventListener('pointermove', e => {
+      if (x0 === null || e.pointerId !== pid) return;
+      dx = e.clientX - x0;
+      if (!drag) {
+        if (Math.abs(e.clientY - y0) > 10 && Math.abs(dx) < 10) { x0 = null; return; } // вертикальная прокрутка
+        if (Math.abs(dx) > 8) { drag = true; area.setPointerCapture(pid); area.classList.add('is-drag'); }
+      }
+      if (drag) cur().style.transform = `translateX(${dx}px)`;
+    });
+    const end = e => {
+      if (x0 === null || (e && e.pointerId !== pid)) return;
+      x0 = null; area.classList.remove('is-drag');
+      if (!drag) return;
+      const p = cur();
+      if (HS.teachHold) HS.teachHold();
+      if (Math.abs(dx) > 70) {
+        swapPanel.startX = dx;
+        setTeacher((ti + (dx < 0 ? 1 : -1) + tbtns.length) % tbtns.length);
+      } else {
+        p.animate([{ transform: `translateX(${dx}px)` }, { transform: 'none' }], { duration: 400, easing: 'cubic-bezier(.22,.8,.3,1)' });
+        p.style.transform = '';
+      }
+      drag = false;
+    };
+    area.addEventListener('pointerup', end);
+    area.addEventListener('pointercancel', end);
   }
 
   // на узких второй абзац био — по «Читать дальше»
