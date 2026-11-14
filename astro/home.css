@@ -803,3 +803,10 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .tcard{transition:transform 1.3s cubic-bezier(.45,.05,.25,1),width 1.3s cubic-bezier(.45,.05,.25,1),opacity 1s,border-radius 1.3s,background-color 1s,color 1s}
 .tcar.is-drag .tcard{transition:width 1.3s cubic-bezier(.45,.05,.25,1),opacity 1s,border-radius 1.3s,background-color 1s,color 1s}
 .tcard[data-o="0"] .tcard-cap{transition-delay:.45s}
+
+/* 8: переход от тёмной части к фото — длинный и плавный, без заметной границы (правка 14.11) */
+@media(min-width:1000px){
+  .s8 .s8-bg{width:64%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 10%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.26) 26%,rgba(0,0,0,.45) 34%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.95) 57%,#000 64%);
+    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 10%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.26) 26%,rgba(0,0,0,.45) 34%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.95) 57%,#000 64%)}
+}
