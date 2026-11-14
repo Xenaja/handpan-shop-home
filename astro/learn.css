@@ -399,3 +399,5 @@
 
 /* заголовок по ТЗ в три строки («…с нуля», правка 13.11): чуть меньше, чтобы не упирался в фото */
 @media(min-width:1000px){.e1:not(.i1) .e1-h1{font-size:clamp(44px,min(5.4vw,8.4vh),104px)}}
+.e3.bg-grad .skill:hover .skill-t,.e3.bg-grad .skill:hover .skill-n{color:#fff}  /* активная карточка — весь текст белый (правка 14.11) */
+.e3.bg-grad .skill-t,.e3.bg-grad .skill-n{transition:color .35s}
