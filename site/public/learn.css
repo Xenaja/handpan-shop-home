@@ -431,3 +431,6 @@
 .fmt-btn.btn{transition:background-color .3s,color .3s,border-color .3s,transform .35s var(--ease),box-shadow .35s var(--ease)}
 .fmt-btn.btn:hover,.fmt-btn.btn:focus-visible{background:var(--cta);border-color:var(--cta);color:#fff;transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(110,30,45,.6)}
 .e8{position:relative;overflow-x:clip}  /* перелистывание преподавателей не вылезает за экран */
+/* «Как мы учим»: ступени вырастают медленнее (правка 14.11) — 2,2 с на ступень, пауза 0,4 с между ними */
+.stages.is-armed .stage{transition:clip-path 2.2s cubic-bezier(.33,0,.2,1) calc(var(--i) * 400ms),transform .45s var(--ease)}
+.stages.is-armed .stage>*{transition:opacity 1.2s ease calc(var(--i) * 400ms + 1.2s),transform 1.2s cubic-bezier(.22,.8,.3,1) calc(var(--i) * 400ms + 1.2s)}

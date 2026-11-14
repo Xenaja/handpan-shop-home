@@ -947,3 +947,13 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 @media(min-width:1000px){.s8n{grid-template-columns:minmax(0,1fr) 40%}}  /* видео чуть уже (правка 14.11) */
 /* экран 8 «Ханг — это» — бордовый градиент, как «Кто вас учит» на «Обучении» (правка 14.11) */
 .s8.bg-dark{background:var(--aubergine-bg)}
+
+/* 1: «Послушай» — звуковая волна (правка 14.11): в покое тихо «дышит», когда играет — во всю высоту */
+.s1-wave{margin-left:2px;height:18px;color:rgba(255,255,255,.85)}
+.s1-wave span{max-height:18px}
+@media (prefers-reduced-motion:no-preference){
+  .s1-hangplay .s1-wave span{animation:wv-idle calc(var(--d) * 1.8) ease-in-out var(--dl) infinite alternate}
+  .is-playing .s1-hangplay .s1-wave span{animation:wv var(--d) ease-in-out var(--dl) infinite alternate}
+  html[data-motion-paused] .s1-wave span{animation-play-state:paused}
+}
+@keyframes wv-idle{from{transform:scaleY(.2)}to{transform:scaleY(.5)}}
