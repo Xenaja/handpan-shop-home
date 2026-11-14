@@ -401,49 +401,6 @@
     applyPreference();
   }
 
-  /* Экраны наплывают друг на друга (моушн, этап 2): высоту каждого экрана отдаём в CSS (--h),
-     а долю, на которую его уже накрыл следующий, — в --cv (0…1): от неё масштаб и затемнение. */
-  function initStack() {
-    const pref = matchMedia('(prefers-reduced-motion: reduce)');
-    const secs = $$('.s1, .e1, main > section').filter(s => getComputedStyle(s).display !== 'none');
-    if (secs.length < 2 || !('ResizeObserver' in window)) return;
-    secs.forEach(s => { const d = document.createElement('i'); d.className = 'stack-dim'; d.setAttribute('aria-hidden', 'true'); s.appendChild(d); });
-    let on = false, raf = 0, vh = innerHeight;
-    const measure = () => {
-      vh = innerHeight;
-      secs.forEach(s => {
-        const h = s.offsetHeight;
-        s.style.setProperty('--h', h + 'px');
-        s.style.setProperty('--o', Math.round(h - Math.min(h, vh) / 2) + 'px'); // центр видимой части
-      });
-    };
-    const frame = () => {
-      raf = 0;
-      const tops = secs.map(s => s.getBoundingClientRect().top);
-      for (let i = 0; i < secs.length - 1; i++) {
-        const p = Math.max(0, Math.min(1, (vh - tops[i + 1]) / vh));
-        const v = p.toFixed(3);
-        if (secs[i]._cv !== v) {
-          secs[i]._cv = v; secs[i].style.setProperty('--cv', v);
-          // слой под анимацию держим только во время наплыва
-          secs[i].classList.toggle('is-cov', p > 0 && p < 1);
-        }
-      }
-    };
-    const onScroll = () => { if (on && !raf) raf = requestAnimationFrame(frame); };
-    const ro = new ResizeObserver(() => { if (on) { measure(); onScroll(); } });
-    const apply = () => {
-      on = !pref.matches;
-      root.classList.toggle('stack', on);
-      if (on) { measure(); frame(); secs.forEach(s => ro.observe(s)); }
-      else { ro.disconnect(); secs.forEach(s => { s.style.removeProperty('--cv'); s._cv = null; s.classList.remove('is-cov'); }); }
-    };
-    addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', () => { if (on) { measure(); onScroll(); } });
-    pref.addEventListener('change', apply);
-    apply();
-  }
-
   /* Курсор-хэндпан (моушн, этап 3): маленький ханг плывёт чуть ниже-правее стрелки с мягким запаздыванием.
      Только мышь и только без «меньше движения»; над ссылками и кнопками — крупнее, ноты закрашены. */
   function initHangCursor() {
@@ -500,7 +457,6 @@
     onScroll();
     typo();
     initMotion();
-    initStack();
     initHangCursor();
     initToTop();
   }
