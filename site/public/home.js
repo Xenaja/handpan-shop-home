@@ -118,25 +118,31 @@
       svg.append(tap);
     };
     build();
-    /* Подсказка (правка 10.11): пока не трогали, поля по очереди загораются и «нажимаются». */
-    let k = 0, demo = null, visible = false;
-    const step = () => {
-      const ORDER = [0, 3, 1, 2, 4, 5, 7, 8, 6].filter(i => i < FIELDS.length);
+    /* Подсказка (правка 14.11, вместо бегающей по полям): сразу видно подсвеченное поле справа внизу
+       и пальчик, который мягко «нажимает» на него. Пропадает после первого касания ханга. */
+    let finger = null;
+    const FINGER = 'M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z';
+    const hint = () => {
+      if (svg.dataset.touched) return;
+      // поле справа внизу — с наибольшей суммой координат (центральный купол не берём)
+      let best = 1; FIELDS.forEach((f, i) => { if (i && f[0] + f[1] > FIELDS[best][0] + FIELDS[best][1]) best = i; });
       hits.forEach(h => h.classList.remove('is-hint'));
-      const i = ORDER[k++ % ORDER.length], [x, y] = FIELDS[i];
-      hits[i].classList.add('is-hint');
-      tap.setAttribute('cx', x); tap.setAttribute('cy', y);
-      tap.classList.remove('is-tap'); void tap.getBBox(); tap.classList.add('is-tap');
+      hits[best].classList.add('is-hint');
+      const [x, y] = FIELDS[best], s = 2.6;
+      if (finger) finger.remove();
+      finger = svgEl('g', { class: 'hang-finger', 'aria-hidden': 'true', transform: `translate(${(x - 11.5 * s).toFixed(1)} ${(y - 5 * s).toFixed(1)}) scale(${s})` });
+      const inner = svgEl('g', { class: 'hf-in' });
+      inner.append(svgEl('path', { d: FINGER }));
+      finger.append(inner); svg.append(finger);
     };
-    const start = () => { if (!demo && !svg.dataset.touched && !reduce) { step(); demo = setInterval(step, 850); } };
-    const stop = () => { clearInterval(demo); demo = null; hits.forEach(h => h.classList.remove('is-hint')); if (tap) tap.classList.remove('is-tap'); };
-    const done = () => { svg.dataset.touched = '1'; stop(); svg.classList.add('is-touched'); };
+    const done = () => {
+      svg.dataset.touched = '1'; svg.classList.add('is-touched');
+      hits.forEach(h => h.classList.remove('is-hint')); if (finger) { finger.remove(); finger = null; }
+    };
     svg.addEventListener('pointerdown', done); svg.addEventListener('keydown', done);
-    // при наведении демо не останавливаем (правка 14.11): иначе при прокрутке колесом курсор стоит над хангом и подсказки не видно
-    // (останавливается только после настоящего касания — pointerdown)
-    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; visible ? start() : stop(); }), { threshold: .12 }).observe(svg);
-    // при смене варианта — новые зоны и короткий показ, куда нажимать
-    hangs.push(() => { stop(); build(); k = 0; delete svg.dataset.touched; svg.classList.remove('is-touched'); if (visible) start(); });
+    hint();
+    // при смене варианта — новые зоны и снова подсказка
+    hangs.push(() => { build(); delete svg.dataset.touched; svg.classList.remove('is-touched'); hint(); });
   });
   function setHang(key, initial) {
     if (!HANGS[key]) return;

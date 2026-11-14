@@ -856,3 +856,12 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 .s8n-h>span:nth-child(3){padding-left:1.8em}
 .s8 .s8n-h.h-display{font-size:clamp(26px,8.2vw,84px)}
 @media(min-width:1000px){.s8 .s8n-h.h-display{font-size:clamp(38px,4.4vw,80px)}}
+
+/* 2: подсказка на ханге — пальчик с подсветкой мягко «нажимает» на поле справа внизу (правка 14.11) */
+.hang-finger{fill:#fff;pointer-events:none;filter:drop-shadow(0 0 2px rgba(255,255,255,.9)) drop-shadow(0 0 6px rgba(255,236,210,.55))}
+.hf-in{transform-box:fill-box;transform-origin:50% 0}
+@media (prefers-reduced-motion:no-preference){
+  .hf-in{animation:hf-tap 1.8s cubic-bezier(.45,0,.25,1) infinite}
+  html[data-motion-paused] .hf-in{animation-play-state:paused}
+}
+@keyframes hf-tap{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(-1.2px,-1.6px) scale(.9)}55%{transform:translate(-1.2px,-1.6px) scale(.9)}}
