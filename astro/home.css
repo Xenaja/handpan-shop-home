@@ -784,3 +784,11 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .s2-pop.is-open{opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--ease),transform .45s var(--ease),visibility 0s}
 @media(min-width:1000px){.s2-pop{width:400px}}
 @media (prefers-reduced-motion:reduce){.s2-pop{transition:opacity .2s,visibility 0s .2s;transform:none}}
+
+/* 7: ленту преподавателей тянут курсором и пальцем (правка 14.11) */
+.tcard{transform:translate(calc(-50% + var(--x) + var(--drag,0px)),-50%)}
+.tcar{cursor:grab;-webkit-user-select:none;user-select:none}
+.tcar .tcard{cursor:inherit}
+.tcar img{-webkit-user-drag:none;pointer-events:none}
+.tcar.is-drag{cursor:grabbing}
+.tcar.is-drag .tcard{transition:width .8s var(--ease),opacity .8s,border-radius .8s,background-color .8s,color .8s}

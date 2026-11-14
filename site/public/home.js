@@ -308,16 +308,52 @@
     });
     $('[data-t-count]').textContent = String(ti + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
   }
-  cards.forEach((c, i) => c.addEventListener('click', () => { if (off(i)) setT(ti + off(i)); }));
+  let dragged = false;
+  cards.forEach((c, i) => c.addEventListener('click', e => {
+    if (dragged) { e.preventDefault(); return; }   // это был перетаск, а не нажатие
+    if (off(i)) setT(ti + off(i));
+  }));
   $('[data-t-prev]').addEventListener('click', () => setT(ti - 1));
   $('[data-t-next]').addEventListener('click', () => setT(ti + 1));
-  let tx = null;
-  car.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  car.addEventListener('touchend', e => {
-    if (tx === null) return;
-    const dx = e.changedTouches[0].clientX - tx; tx = null;
-    if (Math.abs(dx) > 40) setT(ti + (dx < 0 ? 1 : -1));
+
+  // Лента тянется мышью и пальцем (правка 14.11): карточки едут за курсором, при отпускании —
+  // к ближайшему преподавателю; далеко протянул — перелистнёт на несколько
+  let px = null, pid = null, step = 1;
+  const setDrag = v => car.style.setProperty('--drag', v + 'px');
+  car.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    px = e.clientX; pid = e.pointerId; dragged = false;
+    const a = cards[ti].getBoundingClientRect(), b = cards[(ti + 1) % n].getBoundingClientRect();
+    step = Math.max(80, (b.left + b.width / 2) - (a.left + a.width / 2));
   });
+  car.addEventListener('pointermove', e => {
+    if (px === null || e.pointerId !== pid) return;
+    const dx = e.clientX - px;
+    if (!dragged && Math.abs(dx) > 6) { dragged = true; car.classList.add('is-drag'); car.setPointerCapture(pid); runAuto(); }
+    if (dragged) setDrag(dx);
+  });
+  const endDrag = e => {
+    if (px === null || (e && e.pointerId !== pid)) return;
+    const dx = e && e.type !== 'pointercancel' ? e.clientX - px : 0;
+    px = null; car.classList.remove('is-drag');
+    if (dragged) {
+      const k = Math.abs(dx) > step * 0.22 ? -Math.sign(dx) * Math.max(1, Math.round(Math.abs(dx) / step)) : 0;
+      setDrag(0);
+      if (k) setT(ti + k);
+      setTimeout(() => { dragged = false; }, 0);   // клик после перетаска не считаем
+    }
+  };
+  car.addEventListener('pointerup', endDrag);
+  car.addEventListener('pointercancel', endDrag);
+  // горизонтальный жест на тачпаде листает по одной карточке
+  let wheelLock = 0;
+  car.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) || Math.abs(e.deltaX) < 12) return;
+    e.preventDefault();
+    const now = performance.now();
+    if (now - wheelLock < 450) return;
+    wheelLock = now; setT(ti + (e.deltaX > 0 ? 1 : -1)); runAuto();
+  }, { passive: false });
   car.addEventListener('keydown', e => {
     const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
     if (k) { e.preventDefault(); setT(ti + k); cards[ti].focus({ preventScroll: true }); }
