@@ -810,3 +810,4 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
     -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 10%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.26) 26%,rgba(0,0,0,.45) 34%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.95) 57%,#000 64%);
     mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 10%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.26) 26%,rgba(0,0,0,.45) 34%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.95) 57%,#000 64%)}
 }
+html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом заходе «Послушай» появляется после интро, уже на своём месте */
