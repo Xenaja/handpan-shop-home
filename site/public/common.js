@@ -371,7 +371,7 @@
               { opacity: 0, transform: `translateX(${Math.round(innerWidth - el.getBoundingClientRect().left)}px)` },
               { opacity: 1, offset: .35 },
               { opacity: 1, transform: 'translateX(0)' }
-            ], { duration: 1300, delay: [...el.parentElement.children].indexOf(el) * 260, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' })
+            ], { duration: 2600, delay: [...el.parentElement.children].indexOf(el) * 600, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' })
           : el.animate([
               { opacity: 0, transform: 'translateY(26px)' },
               { opacity: 1, transform: 'translateY(0)' }

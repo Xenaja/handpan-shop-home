@@ -203,6 +203,21 @@
     vd.addEventListener('close', () => v.pause());
   }
 
+  /* ---------- 08: беззвучная петля из мастерской справа (правка 14.11) ----------
+     грузится и играет, только пока экран виден; при «меньше движения» — только кадр; клик — полное видео со звуком */
+  const loop = $('[data-loop-src]');
+  if (loop) {
+    loop.addEventListener('click', () => { const b = $('[data-video-open]'); if (b) b.click(); });
+    if (!reduce && 'IntersectionObserver' in window) {
+      new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) {
+          if (!loop.src) loop.src = loop.dataset.loopSrc;
+          loop.play().catch(() => {});
+        } else loop.pause();
+      }), { threshold: .2 }).observe(loop);
+    }
+  }
+
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
   // Повторное нажатие выключает звук (правка 12.11, №37): запущенные ноты гаснут плавно
   const audStop = b => {

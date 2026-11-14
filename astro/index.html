@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114v">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1114x">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114v"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1114v"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1114v">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1114x"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1114x"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1114x">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -372,27 +372,27 @@
 
 <!-- 08 · Как делают ханг -->
 <section class="s8 bg-dark on-dark" id="making" aria-labelledby="h-s8">
-  <img class="s8-bg" src="/handpan-shop-home/astro/img/making-tree.webp" alt="" width="2400" height="1455" loading="lazy">
-  <div class="sec s8-grid">
-    <div class="stack s8-text">
+  <!-- переделано 14.11: новый текст, справа вертикальное видео из мастерской (беззвучная петля);
+       кнопка открывает полное видео со звуком в окне -->
+  <div class="sec s8n">
+    <div class="s8n-text">
       <div class="s8-top">
-        <!-- видео из мастерской (правка 11.11): настройка ханга, вертикальное, открывается в окне -->
         <button type="button" class="s8-chip s8-video-btn" data-video-open><span class="s8-vplay" aria-hidden="true"><svg viewBox="0 0 22 22" width="12" height="12"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></span>Видео из мастерской</button>
         <span class="mono">G · 8/10</span>
       </div>
-      <!-- «Ханг нельзя сделать на конвейере» убрано по правке 12.11 (ANN, №48) -->
-      <h2 id="h-s8" class="h-display stack"><span>Десятки</span><span>тысяч</span><span class="s8-hl">ударов</span></h2>
-    </div>
-    <!-- текст по правке 09.11: «200 касаний» неверно (мастер: тысячи ударов на ноту) -->
-    <div class="stack s8-copy">
-      <blockquote class="s8-quote">Мастера говорят: «чтобы понять инструмент, нужно изготовить 150 хангов — только тогда приходит настоящее чувство металла»</blockquote>
-      <p class="body">На каждый уходит десятки тысяч ударов молотка. Настройка одной ноты может занять несколько тысяч касаний. И это не «работа» — это разговор с металлом, который длится неделями.</p>
-      <p class="s8-then">Но именно поэтому… <strong>ханг живёт десятилетиями</strong></p>
-      <p class="body">При бережном обращении качественный инструмент сохраняет строй годами. А регулярная подстройка раз в несколько лет — это уход, а не ремонт.</p>
-      <div class="btns">
+      <p class="s8n-kick">Ханг — это</p>
+      <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span>точной работы</span> <span class="s8-hl">с металлом</span></h2>
+      <p class="s8n-body">Изготовление музыкального инструмента требует качественной стали, точной формовки звуковых полей и кропотливой настройки каждой ноты.</p>
+      <p class="s8n-acc">Каждый инструмент проходит <em>несколько циклов ручной настройки</em></p>
+      <p class="s8n-body">U-GENE — это годы практики, накопленный опыт и любовь к своему делу.</p>
+      <p class="s8n-body">Мы создаём инструменты, соответствующие высоким профессиональным стандартам мирового хэндпан-сообщества.</p>
+      <div class="btns s8n-btns">
         <a class="btn btn--milk s8-btn" href="#" data-pending="P-12">Смотреть инструменты</a>
         <button type="button" class="btn btn--line-d s8-btn" data-open="help">Помочь выбрать</button>
       </div>
+    </div>
+    <div class="s8n-media">
+      <video class="s8n-video" muted loop playsinline preload="none" poster="/handpan-shop-home/astro/video/making-loop.jpg" width="720" height="1280" data-loop-src="/handpan-shop-home/astro/video/making-loop.mp4" aria-label="Мастер настраивает ханг в мастерской"></video>
     </div>
   </div>
 </section>
@@ -780,6 +780,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1114v"></script><script src="/handpan-shop-home/astro/home.js?v=1114v"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1114x"></script><script src="/handpan-shop-home/astro/home.js?v=1114x"></script>
 </body>
 </html>
