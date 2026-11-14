@@ -207,11 +207,12 @@
      грузится и играет, только пока экран виден; при «меньше движения» — только кадр; клик — полное видео со звуком */
   const loop = $('[data-loop-src]');
   if (loop) {
-    loop.addEventListener('click', () => { const b = $('[data-video-open]'); if (b) b.click(); });
+    // клик по петле открывает полное видео со звуком (data-video-open на самом видео)
     if (!reduce && 'IntersectionObserver' in window) {
       new IntersectionObserver(es => es.forEach(e => {
         if (e.isIntersecting) {
-          if (!loop.src) loop.src = loop.dataset.loopSrc;
+          if (!loop.src) { loop.defaultPlaybackRate = .7; loop.src = loop.dataset.loopSrc; }
+          loop.playbackRate = .7; // медленнее — без мельтешения (правка 14.11)
           loop.play().catch(() => {});
         } else loop.pause();
       }), { threshold: .2 }).observe(loop);

@@ -835,3 +835,18 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 @media(min-width:1000px){.s8 .s8n-h.h-display{font-size:clamp(38px,4.6vw,84px)}}
 /* 4: «Как начать знакомство» — меньше воздуха сверху и снизу (правка 14.11) */
 .s4.sec{padding-top:calc(var(--sec-y) * .6);padding-bottom:calc(var(--sec-y) * .6)}
+
+/* 8 (правка 14.11, вторая версия): видео на всю высоту экрана справа, вплотную к краю, без скруглений;
+   выделение — светло-голубым, как «с металлом» (без бронзы) */
+.s8n-acc{border-left-color:var(--blue-l)}
+.s8n-acc em{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--breeze)}
+.s8n-media::before{content:none}
+.s8n-media{justify-self:stretch;margin:0 calc(-1 * var(--gut)) calc(-1 * var(--sec-y) - var(--seam))}
+.s8n-video{width:100%;height:min(80svh,720px);aspect-ratio:auto;border-radius:0;box-shadow:none}
+@media(min-width:1000px){
+  .s8n{grid-template-columns:minmax(0,1fr) 38%;align-items:stretch;padding-right:0}
+  .s8n-text{align-self:center}
+  .s8n-media{position:relative;margin:calc(-1 * clamp(56px,8vh,96px)) 0 calc(-1 * clamp(56px,8vh,96px) - var(--seam)) 0}
+  .s8n-video{position:absolute;inset:0;width:100%;height:100%}
+}
+@media(max-width:999.98px){.s8n-media{width:100vw;max-width:none;justify-self:start;margin-left:calc(-1 * var(--gut));margin-right:0}}
