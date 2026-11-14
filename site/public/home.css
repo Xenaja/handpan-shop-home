@@ -597,7 +597,10 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 /* 2: фон-градиент, ханг иридисцентный, текст «лесенкой», отступы по макету */
 .s2.bg-grad::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,28,62,.5) 0%,rgba(20,28,62,.28) 40%,rgba(20,28,62,0) 62%);pointer-events:none}
 .s2>*{position:relative}
-.s2-strip{background:rgba(255,255,255,.14);color:#fff}
+/* бегущая строка (правка 12.11, №57): без подложки, прямо на градиенте, точки остаются, вдвое медленнее */
+.s2-strip{background:none;color:#fff}
+.s2-strip .mq{animation-duration:60s}
+.s2-strip .mq i{background:rgba(255,255,255,.75)}
 .s2-sub{margin-top:-12px}
 .s2-text>.body+.body{margin-top:-10px}
 .s2-text>.btns{margin-top:14px;gap:12px}
@@ -625,7 +628,14 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 /* 4: «Кому подходит»: фон #D8E9FF, знак-кнопка всегда справа, при наведении — бронзовый градиент */
 .aud-bottom{justify-content:space-between}
 .aud-play--mark{margin-left:auto}
-.aud-play.aud-play--mark:hover,.aud-play.aud-play--mark.is-playing{background:var(--bronze-g);color:#fff}
+/* правка 12.11 (№37): без бронзы — кнопка прозрачная, пока звучит — мягкое свечение и круги;
+   :hover только для мыши, иначе на телефоне кнопка «залипает» включённой */
+.aud-play.aud-play--mark.is-playing{background:transparent;color:var(--h-blue);animation:aud-glow 1.6s ease-out infinite}
+.aud-play.aud-play--mark.is-playing::after{animation:aud-ring 1.6s ease-out infinite}
+@media (hover:hover){.aud-play.aud-play--mark:hover{background:transparent;color:var(--blue)}}
+@media (hover:none){.aud-play--mark:hover{transform:none;color:var(--h-blue)}}
+@keyframes aud-glow{0%{box-shadow:0 0 0 0 rgba(125,175,214,.6)}100%{box-shadow:0 0 0 18px rgba(125,175,214,0)}}
+@media (prefers-reduced-motion:reduce){.aud-play.aud-play--mark.is-playing,.aud-play.aud-play--mark.is-playing::after{animation:none}}
 
 /* фоны блоков по правке: цифры и «Ханг объединяет» — белые, «Кто учит» и контакты — #D8E9FF */
 .s7.bg-sky{background:var(--sky)}

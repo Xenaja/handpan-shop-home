@@ -59,6 +59,7 @@
         o.frequency.value = f * m; gg.gain.value = g;
         o.connect(gg); gg.connect(out); o.start(t); o.stop(t + dur + 0.05);
       });
+      return out; // чтобы звук можно было погасить раньше времени
     } catch (e) { /* без звука */ }
   }
   const ICON = '<svg class="ic-play" viewBox="0 0 22 22" aria-hidden="true"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"/></svg>' +

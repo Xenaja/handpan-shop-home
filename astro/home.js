@@ -179,15 +179,28 @@
   }
 
   /* ---------- 05: примеры звучания в карточках аудиторий ---------- */
+  // Повторное нажатие выключает звук (правка 12.11, №37): запущенные ноты гаснут плавно
+  const audStop = b => {
+    clearTimeout(b._t); b.classList.remove('is-playing'); b.setAttribute('aria-pressed', 'false');
+    (b._outs || []).forEach(o => { try {
+      const t = o.context.currentTime; o.gain.cancelScheduledValues(t);
+      o.gain.setValueAtTime(o.gain.value, t); o.gain.linearRampToValueAtTime(0, t + 0.15);
+    } catch (e) {} });
+    b._outs = [];
+  };
   $$('[data-aud-play]').forEach(b => b.addEventListener('click', () => {
-    // знак крутится, пока звучит пример; пульсация после первого нажатия больше не нужна
+    if (b.classList.contains('is-playing')) { audStop(b); return; }
+    $$('[data-aud-play].is-playing').forEach(audStop);
+    // пульсация после первого нажатия больше не нужна
     $$('[data-aud-play]').forEach(x => x.classList.add('is-tried'));
-    b.classList.remove('is-playing'); void b.offsetWidth; b.classList.add('is-playing');
-    clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('is-playing'), 3200);
+    b.classList.add('is-playing'); b.setAttribute('aria-pressed', 'true');
     const s = b.closest('[data-snd]').dataset.snd, F = FREQS;
-    if (s === 'long') tone(F[0], 0.28, 10);
-    else if (s === 'fast') [0, 5, 6, 7, 8, 6, 4].forEach((n, i) => tone(F[n], 0.16, 3, i * 0.16));
-    else [0, 4, 5, 6, 4].forEach((n, i) => tone(F[n], 0.17, 3.5, i * 0.38));
+    let notes, len;
+    if (s === 'long') { notes = [tone(F[0], 0.28, 10)]; len = 10; }
+    else if (s === 'fast') { notes = [0, 5, 6, 7, 8, 6, 4].map((n, i) => tone(F[n], 0.16, 3, i * 0.16)); len = 4; }
+    else { notes = [0, 4, 5, 6, 4].map((n, i) => tone(F[n], 0.17, 3.5, i * 0.38)); len = 5; }
+    b._outs = notes.filter(Boolean);
+    b._t = setTimeout(() => audStop(b), len * 1000);
   }));
 
   /* ---------- 06: одна большая цифра, столбик прокручивается вверх ---------- */

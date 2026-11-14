@@ -18,9 +18,9 @@ const T = D.teachers.filter(t => !t.hidden);
 const priceNum = (p: string) => p.replace(/\D/g, '');
 const NEEDS = [
   { label: 'Инструмент', big: 'Не обязателен', text: 'На занятиях предоставляем хэндпан' },
-  { label: 'Опыт', big: 'Не нужен', text: 'Большинство учеников начинали с нуля' },
-  { label: 'Возраст', big: 'От 12 лет', text: 'Для детей младше – индивидуально' },
-  { label: 'Что взять', big: 'Желание', text: 'Попробовать новое. Остальное есть в студии' }
+  { label: 'Опыт', big: 'Не нужен', text: 'Большинство наших учеников начинали с нуля' },
+  { label: 'Возраст', big: 'От 12 лет', text: 'Для детей младше — индивидуально' },
+  { label: 'Что взять', big: 'Желание', text: 'Попробовать новое' }
 ];
 
 const jsonld = {
@@ -75,14 +75,15 @@ const jsonld = {
 
   <div class="e1-body">
     <div class="stack e1-top">
+      <!-- тексты страницы — дословно по ТЗ (правка 13.11, ANN, №63) -->
       <h1 class="h-hero e1-h1">
-        <span>Научись играть</span>
+        <span>Научитесь играть</span>
         <span class="cap cap--hero e1-cap">на ханге</span>
+        <span class="e1-l3">с нуля</span>
       </h1>
       <div class="stack e1-text">
-        <p class="e1-lead">С нуля до первой мелодии — или от базовых навыков к сложным техникам.</p>
-        <p class="e1-copy">За 45 минут познакомишься с инструментом, освоишь основы звукоизвлечения и сыграешь свою первую мелодию.</p>
-        <p class="e1-copy">Без музыкального образования, собственного инструмента и предварительной подготовки.</p>
+        <p class="e1-lead">45 минут. Без опыта. Без своего инструмента. Первая мелодия — уже на первом занятии.</p>
+        <p class="e1-copy">Пробное занятие — 900 ₽ / 45 минут. Инструмент предоставляем, опыт не нужен.</p>
         <div class="btns e1-btns">
           <button type="button" class="btn btn--52 btn--blue" data-open="trial">Записаться на пробное</button>
           <a class="btn btn--52 btn--line-d" href="#formats">Форматы и цены</a>
@@ -130,11 +131,11 @@ const jsonld = {
     <div class="e-photo e2-photo"><img src={u('img/edu-46-m.webp')} alt="Ученица играет на ханге на отчётном концерте школы" width="1200" height="1800" loading="lazy"></div>
   </div>
   <div class="stack e2-r">
-    <p class="e2-q">Мастера играют на ханге по-разному: для <b>Manu Delago</b> он звучит как арфа или перкуссия, для <b>Liron Meyuhas</b> – как инструмент сердца, тела и духа, <span class="mute">а создатели PANArt советуют просто следовать за звуком</span></p>
+    <p class="e2-q">Мастера играют на ханге по-разному: для ханг-пионера <b>Manu Delago</b> он звучит как арфа или перкуссия, для <b>Liron Meyuhas</b> — как инструмент сердца, тела и духа, <span class="mute">а создатели PANArt советуют просто следовать за звуком, не ставя целью мелодию</span></p>
     <div class="e2-row">
-      <p class="body">Ханг не требует музыкального образования, но вознаграждает за внимание к звуку. <span class="e2-hl">Мы поможем найти свой подход</span></p>
-      <div class="e-item"><span class="mono">Первый урок</span><span>Без музыкального образования, своего инструмента и подготовки</span></div>
-      <div class="e-item"><span class="mono">За 45 минут</span><span>Знакомство с инструментом, базовые приёмы и первая мелодия</span></div>
+      <p class="body">Ханг не требует музыкального образования, но вознаграждает за внимание к звуку. <span class="e2-hl">Мы поможем вам познакомиться с разными подходами и найти свой</span></p>
+      <div class="e-item"><span class="mono">Первый урок</span><span>Без музыкального образования, собственного инструмента и предварительной подготовки</span></div>
+      <div class="e-item"><span class="mono">За 45 минут</span><span>Познакомитесь с инструментом, освоите базовые приёмы звукоизвлечения и попробуете сыграть первую мелодию</span></div>
     </div>
   </div>
 </section>
@@ -146,7 +147,7 @@ const jsonld = {
       <span class="mono">03 · Что вы освоите</span>
       <h2 id="h-e3" class="h2">От первого звука <span class="mute">– к собственной музыке</span></h2>
     </div>
-    <p class="g-note">На ханге легко начать. Но чтобы владеть инструментом, одной интуиции мало: соединяем технику, ритм, слух, мелодию и импровизацию</p>
+    <p class="g-note">На ханге легко начать играть. Но чтобы действительно владеть инструментом, одной интуиции недостаточно. В обучении соединяем технику, ритм, слух, мелодию и импровизацию — постепенно переходя от повторения за преподавателем к самостоятельной игре. <b>На занятиях вы учитесь:</b></p>
   </div>
   <ol class="skills" lang="ru">
     {D.skills.map((s, i) => <li class="skill"><span class="mono skill-n">{pad(i + 1)}</span><span class="skill-w">{s.w}</span><span class="skill-t">{s.t}</span></li>)}
@@ -158,14 +159,14 @@ const jsonld = {
   <div class="g-head">
     <div class="sec-head">
       <span class="mono">04 · Как мы учим</span>
-      <h2 id="h-e4" class="h2">Не просто набор <span class="mute">упражнений</span></h2>
+      <h2 id="h-e4" class="h2">Мы не даём ученику <span class="mute">просто набор упражнений</span></h2>
     </div>
-    <p class="g-note">Каждый этап добавляет новый уровень контроля: звук и движение, ритм и мелодия, затем импровизация и собственная музыкальная речь</p>
+    <p class="g-note">Каждый этап обучения постепенно добавляет новый уровень контроля над инструментом: звук и движение, затем ритм и мелодия, после — импровизация и собственная музыкальная речь</p>
   </div>
   <ol class="stages" lang="ru">
     {D.stages.map((s, i) => <li class="stage" style={`--i:${i}`}><span class="mono stage-n">{pad(i + 1)}</span><span class="stack stage-b"><span class="stage-t">{s.h}</span><span class="stage-x">{s.t}</span></span></li>)}
   </ol>
-  <span class="e4-more">+ сложные техники и приёмы, разные размеры, разборы композиций</span>
+  <span class="e4-more">+ изучение сложных техник и приёмов, разных размеров</span>
 </section>
 
 <!-- 05 · Как строится путь: 1–5 заголовок · 7–12 три этапа -->
@@ -185,16 +186,16 @@ const jsonld = {
   <div class="g-head">
     <div class="sec-head">
       <span class="mono">06 · Форматы и цены</span>
-      <h2 id="h-e6" class="h2">Выберите <span class="mute">свой темп</span></h2>
+      <h2 id="h-e6" class="h2">Форматы <span class="mute">обучения</span></h2>
     </div>
-    <p class="g-note">Не знаете, какой формат выбрать? Начните с пробного занятия – подскажем на месте</p>
+    <p class="g-note">Не знаете, какой формат выбрать? Начните с пробного занятия.</p>
   </div>
   <div class="e6-grid">
     <div class="trial on-dark">
       <div class="stack trial-t">
         <span class="mono">Начните отсюда</span>
         <h3 class="trial-name">Пробное занятие</h3>
-        <span class="trial-x">Попробовать без обязательств. Инструмент дадим</span>
+        <span class="trial-x">Попробовать без обязательств</span>
       </div>
       <div class="trial-price"><span>900 ₽</span><span class="mono">/ 45 мин</span></div>
       <button type="button" class="btn btn--52 btn--blue" data-open="trial">Записаться на пробное</button>
@@ -218,7 +219,7 @@ const jsonld = {
   <div class="stack e7-r">
     <div class="sec-head">
       <span class="mono">07 · Перед первым занятием</span>
-      <h2 id="h-e7" class="h2">Что нужно <span class="mute">для старта</span></h2>
+      <h2 id="h-e7" class="h2">Что нужно <span class="mute">для занятий</span></h2>
     </div>
     <div class="needs">
       {NEEDS.map(n => <div class="need"><span class="mono">{n.label}</span><span class="need-big">{n.big}</span><span class="need-x">{n.text}</span></div>)}
@@ -233,7 +234,7 @@ const jsonld = {
       <span class="mono">08 · Кто вас учит</span>
       <h2 id="h-e8" class="h2">Учимся у тех, кто двигает <span class="mute">культуру ханга вперёд</span></h2>
     </div>
-    <p class="g-note">Наши преподаватели формировали российскую культуру ханга с самого начала и продолжают учиться у мастеров мировой сцены</p>
+    <p class="g-note">Наши преподаватели формировали российскую культуру ханга с самого её начала. Сегодня они продолжают развивать собственную практику, исследовать возможности инструмента и учиться у мастеров мировой сцены</p>
   </div>
   <div class="chips" role="tablist" aria-label="Преподаватели" data-tlist>
     {T.map((t, i) => <button type="button" class="chip" role="tab" id={`t-${i}`} aria-controls={`tp-${i}`} aria-selected={String(i === 0)} tabindex={i === 0 ? 0 : -1}>{t.name}</button>)}

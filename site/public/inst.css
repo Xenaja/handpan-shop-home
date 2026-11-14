@@ -103,3 +103,10 @@
   .i1 .e1-h1{font-size:clamp(44px,min(4.8vw,10vh),100px)}
 }
 @media (max-width:999.98px){.i1-stage{width:min(108vw,600px)}}
+/* первый экран по тексту ANN 13.11: H1 = «Выбери свой инструмент» + подзаголовок; две цифры вместо четырёх */
+.i1-h1{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(14px,2.4vh,24px);margin:0;font:inherit}
+.i1-h1 .i1-lead{display:block;max-width:34em}
+@media (min-width:1000px){.i1-h1 .i1-lead{padding-left:calc(var(--cw) + var(--g))}}
+.i1-facts.i1-facts--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:1000px){.i1-facts.i1-facts--2{grid-template-columns:repeat(2,minmax(0,max-content));column-gap:clamp(32px,5vw,96px)}}
+.i1-more{font-size:.5em;letter-spacing:0;text-transform:none;vertical-align:.3em;color:var(--blue-l)}

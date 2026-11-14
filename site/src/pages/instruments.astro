@@ -14,12 +14,8 @@ const u = (p: string) => `${base}/${p}`;
 const home = `${base}/`;
 const catalog = u('catalog');
 const USE = ['home', 'study', 'stage', 'meditation', 'musicians', 'kids'];
-const FACTS = [
-  ['300+', 'инструментов ручной работы с 2019 года'],
-  ['5', 'видов стали — у каждой свой характер звука'],
-  ['5 лет', 'гарантии на настройку и обслуживание'],
-  ['20+', 'инструментов в студии для теста']
-];
+// первый экран — текст ANN 13.11 (правка №62): счётчик «Более 2000» и «40+ в студии»
+const MADE = 2000, IN_STUDIO = 40;
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -32,9 +28,9 @@ const jsonld = {
 ---
 <Base
   title="Хэндпаны ручной работы — собственное производство · U-GENE"
-  description="Хэндпаны (ханги) собственного производства с 2019 года: 5 видов стали, гарантия 5 лет. Послушайте 20+ инструментов в студии в Москве и Санкт-Петербурге."
+  description="Хэндпаны (ханги) собственного производства с 2019 года: 5 видов стали, гарантия 5 лет. Послушайте 40+ инструментов в студии в Москве и Санкт-Петербурге."
   ogTitle="Хэндпаны ручной работы U-GENE"
-  ogDescription="Собственное производство с 2019 года. Послушайте 20+ инструментов в студии."
+  ogDescription="Собственное производство с 2019 года. Послушайте 40+ инструментов в студии."
   path="/instruments" ogImage="img/hero-scene-d.webp" theme="#0A1020"
   styles={['common.css', 'learn.css', 'inst.css', 'mobile.css']} scripts={['common.js', 'inst.js']} jsonld={jsonld}>
 
@@ -64,12 +60,16 @@ const jsonld = {
 
   <div class="e1-body">
     <div class="stack e1-top">
-      <h1 class="h-hero e1-h1">
-        <span>Хэндпаны</span>
-        <span class="cap cap--hero e1-cap i1-cap">ручной работы</span>
+      <!-- один H1: призыв + подзаголовок с ключевыми словами «хэндпаны ручной работы» (как на главной) -->
+      <h1 class="i1-h1">
+        <span class="h-hero e1-h1">
+          <span>Выбери</span>
+          <span class="cap cap--hero e1-cap i1-cap">свой</span>
+          <span>инструмент</span>
+        </span>
+        <span class="i1-lead">Хэндпаны ручной работы от U-GENE. Собственное производство с 2019 года.</span>
       </h1>
       <div class="stack e1-text">
-        <p class="i1-lead">Собственное производство U-GENE с 2019 года</p>
         <ul class="i1-points">
           <li>Каждый инструмент настроен вручную</li>
           <li>Проверен мастерами, музыкантами и основателем</li>
@@ -77,12 +77,13 @@ const jsonld = {
         </ul>
         <div class="btns e1-btns">
           <a class="btn btn--52 btn--blue i1-cat" href={catalog}>Смотреть каталог</a>
-          <button type="button" class="btn btn--52 btn--line-d" data-open="visit">Записаться на тест инструментов</button>
+          <button type="button" class="btn btn--52 btn--line-d" data-open="help">Подобрать свой хэндпан</button>
         </div>
       </div>
     </div>
-    <ul class="i1-facts" aria-label="Коротко о производстве">
-      {FACTS.map(([n, t]) => <li><b>{n}</b><span>{t}</span></li>)}
+    <ul class="i1-facts i1-facts--2" aria-label="Коротко о производстве">
+      <li><b><span class="i1-more">более</span> <span data-count={MADE}>{MADE.toLocaleString('ru-RU')}</span></b><span>инструментов сделано для вас</span></li>
+      <li><b>{IN_STUDIO}+</b><span>инструментов для знакомства и тестирования в студии</span></li>
     </ul>
   </div>
 </header>
@@ -153,7 +154,7 @@ const jsonld = {
 <!-- липкая панель -->
 <div class="bar bar--edu" data-sticky="520">
   <div class="glass-l bar-in">
-    <div class="bar-txt"><span class="bar-name">Тест инструментов</span><span class="mono">20+ в студии · без обязательств</span></div>
+    <div class="bar-txt"><span class="bar-name">Тест инструментов</span><span class="mono">40+ в студии · без обязательств</span></div>
     <button type="button" class="btn btn--48 btn--blue" data-open="visit">Записаться</button>
   </div>
 </div>
