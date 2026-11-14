@@ -944,3 +944,4 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   74%{transform:translate(0,0) scale(1);opacity:1}
   92%,100%{transform:translate(0,0) scale(1);opacity:0}}
 @media (prefers-reduced-motion:no-preference){.hf-in{animation:hf-tap 2.6s cubic-bezier(.4,0,.2,1) infinite}}
+@media(min-width:1000px){.s8n{grid-template-columns:minmax(0,1fr) 40%}}  /* видео чуть уже (правка 14.11) */
