@@ -142,7 +142,12 @@ const jsonld = {
 
 <!-- 02 · Что такое ханг -->
 <section class="s2 bg-grad on-blue" aria-labelledby="h-s2">
-  <div class="mq-wrap s2-strip" aria-hidden="true"><div class="mq" data-marquee="HANG|ХАНГ|HANDPAN|ХЭНДПАН|PANTAM"></div></div>
+  <!-- бегущая строка (22.11): по умолчанию цифры вместо отдельного экрана; ?strip=words — прежние названия инструмента и экран с цифрами -->
+  <div class="mq-wrap s2-strip" aria-hidden="true">
+    <div class="mq mq--nums" data-marquee={D.stripFacts.join('|')} data-marquee-reps="4"></div>
+    <div class="mq mq--words" data-marquee="HANG|ХАНГ|HANDPAN|ХЭНДПАН|PANTAM"></div>
+  </div>
+  <ul class="sr s2-facts">{D.stripFacts.map(f => <li>{f}</li>)}</ul>
   <div class="sec s2-grid">
     <div class="stack s2-text">
       <div class="mono">A · 2/8</div>
@@ -261,9 +266,9 @@ const jsonld = {
 <!-- «Кому подходит ханг» убран с главной по правке 21.11: этот блок есть на «Инструментах» -->
 
 <!-- 06 · Почему доверяют -->
+<!-- экран с цифрами виден только в варианте ?strip=words (сравнение с бегущей строкой) -->
 <section class="sec s6 bg-white" aria-labelledby="h-s6" data-stats-wrap>
   <div class="sec-head">
-    <div class="mono">D · 5/8</div>
     <h2 id="h-s6" class="h2 h2--long s6-h"><span class="s6-accent">Мастера,</span> которые стоят <span class="s6-indent">у истоков культуры<br>ханга в России</span></h2>
   </div>
   <div class="s6-grid">
@@ -289,7 +294,7 @@ const jsonld = {
 <section class="sec s7 bg-sky" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
-      <div class="mono">E · 6/8</div>
+      <div class="mono">D · 5/8</div>
       <!-- правка 21.11: вместо «Кто учит» -->
       <h2 id="h-s7" class="h-display">Преподаватели</h2>
     </div>
@@ -323,7 +328,7 @@ const jsonld = {
        кнопка открывает полное видео со звуком в окне -->
   <div class="sec s8n">
     <div class="s8n-text">
-      <span class="mono">F · 7/8</span>
+      <span class="mono">E · 6/8</span>
       <p class="s8n-kick">Ханг — это</p>
       <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span><span class="cap cap--hero s8n-cap">точной работы</span></span> <span class="s8-hl">с металлом</span></h2>
       <div class="s8n-copy">
@@ -383,7 +388,7 @@ const jsonld = {
   <div class="glow s10-glow" aria-hidden="true"></div>
   <BrandLines class="brand-lines--contact" />
   <div class="stack s10-head">
-    <div class="mono row-sb"><span>Пробное занятие</span><span>G · 8/8</span></div>
+    <div class="mono row-sb"><span>Пробное занятие</span><span>F · 8/8</span></div>
     <h2 id="h-s10" class="h-hero s10-h">
       <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue cap--wine">свой</span> <span>звук</span></span>
       <span class="s10-l2">за 45 минут</span>

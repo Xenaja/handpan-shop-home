@@ -985,3 +985,9 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 .s9-soc-a:hover{background:#74202D}
 .s9-soc-a svg{width:22px;height:22px;flex:0 0 22px}
 .s9-soc-note{margin-left:clamp(0px,4vw,56px);max-width:340px;font-size:11px;line-height:1.4;color:var(--ink3)}
+
+/* бегущая строка (22.11): цифры по умолчанию, ?strip=words — прежние слова и экран с цифрами */
+html:not([data-strip="words"]) .mq--words,html:not([data-strip="words"]) .s6,html[data-strip="words"] .mq--nums,html[data-strip="words"] .s2-facts{display:none}
+.s2-strip .mq--nums{animation-duration:110s}
+.s2-strip:hover .mq{animation-play-state:paused}
+.s2-strip{pointer-events:auto}

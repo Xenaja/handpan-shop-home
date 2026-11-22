@@ -50,10 +50,10 @@ const V = '1122a';   // версия ресурсов: браузер не де�
 {styles.map(s => <link rel="stylesheet" href={`${u(s)}?v=${V}`}>)}
 <script is:inline>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
-  // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
+  // ?hang=bronze | dark — купол на схеме ханга; ?strip=words — бегущая строка словами + экран с цифрами (выбор помним между страницами)
   (() => { const q = new URLSearchParams(location.search), h = document.documentElement;
     if (q.has('dev')) h.dataset.env = 'dev';
-    const V = { hang: ['bronze', 'dark'] };
+    const V = { hang: ['bronze', 'dark'], strip: ['words'] };
     for (const k in V) {
       let v = q.get(k);
       try { if (v === null) v = sessionStorage.getItem('hs-' + k); else sessionStorage.setItem('hs-' + k, v); } catch (e) {}

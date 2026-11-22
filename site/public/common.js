@@ -108,7 +108,7 @@
 
   /* ---------- бегущие строки: контент продублирован для бесшовного цикла ---------- */
   $$('[data-marquee]').forEach(m => {
-    const words = Array.from({ length: 8 }, () => m.dataset.marquee.split('|')).flat();
+    const words = Array.from({ length: +m.dataset.marqueeReps || 8 }, () => m.dataset.marquee.split('|')).flat();
     m.innerHTML = words.map(w => `<span>${esc(w)}<i></i></span>`).join('');
   });
 
@@ -491,6 +491,29 @@
     initHangCursor();
     initBtnLight();
     initToTop();
+  }
+
+  /* ---------- служебный переключатель вариантов для заказчика (перед продом убрать) ----------
+     ?strip=words — бегущая строка прежними словами и отдельный экран с цифрами; выбор помним между страницами */
+  const VARIANTS = [
+    { key: 'strip', cap: 'Строка', label: 'Бегущая строка на экране 2', when: '.s2-strip',
+      opts: [['', 'Цифры'], ['words', 'Слова + экран с цифрами']] }
+  ].filter(g => $(g.when));
+  if (VARIANTS.length) {
+    document.body.insertAdjacentHTML('beforeend', '<div class="vswitch">' + VARIANTS.map(g =>
+      `<div class="vswitch-g" role="group" aria-label="${g.label}"><span class="vswitch-cap">${g.cap}</span>` +
+      g.opts.map(([v, l]) => `<button type="button" data-v-key="${g.key}" data-v="${v}">${l}</button>`).join('') + '</div>').join('') + '</div>');
+    const mark = () => $$('[data-v-key]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === (root.dataset[b.dataset.vKey] || ''))));
+    $$('[data-v-key]').forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.vKey, v = b.dataset.v, q = new URLSearchParams(location.search);
+      if (v) { root.dataset[k] = v; q.set(k, v); } else { delete root.dataset[k]; q.delete(k); }
+      try { sessionStorage.setItem('hs-' + k, v); } catch (e) {}
+      const qs = q.toString();
+      history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+      mark();
+      dispatchEvent(new Event('resize'));
+    }));
+    mark();
   }
 
   /* кнопки сайта → пункт «Что интересно» в форме (правка 21.11: визита и сообщества в списке больше нет) */
