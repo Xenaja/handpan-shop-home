@@ -1,7 +1,7 @@
 ---
 import D from '../data/site.json';
 // Одна форма заявки на весь сайт (SEO-MIGRATION.md, раздел 10): видимые подписи, отдельная галочка согласия на /consent
-// (152-ФЗ, с 01.09.2025 согласие оформляется отдельно), город с онлайном, удобное время. Отправку и проверку ведёт common.js.
+// (152-ФЗ, с 01.09.2025 согласие оформляется отдельно), город с онлайном, свободный комментарий. Отправку и проверку ведёт common.js.
 interface Props {
   id: string;                         // префикс id полей: несколько форм на странице
   interest?: 'select' | string;       // 'select' — выбор «Что интересно»; строка — скрытое значение
@@ -11,13 +11,12 @@ interface Props {
 const { id, interest = 'select', submit = 'Записаться', note } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
+// правка 21.11: пробное — первым, без «частного визита» и «консультации»; визит в студию идёт как подбор (HS.interest)
 const INTERESTS = [
-  ['visit', 'Частный визит в студию'],
   ['trial', 'Пробное занятие · 900 ₽'],
   ['buy', 'Подбор и покупка инструмента'],
   ['rent', 'Аренда инструмента'],
-  ['help', 'Помочь определиться'],
-  ['community', 'Сообщество и мероприятия']
+  ['help', 'Задать вопрос']
 ];
 const CITIES = [['msk', 'Москва'], ['spb', 'Санкт-Петербург'], ['online', 'Онлайн']];
 const bookingBranches = D.cities.filter(c => c.bookingUrl);
@@ -52,9 +51,10 @@ const bookingBranches = D.cities.filter(c => c.bookingUrl);
     <input id={`${id}-phone`} name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required aria-describedby={`${id}-phone-err`}>
     <div class="err" id={`${id}-phone-err`} aria-live="polite"></div>
   </div>
+  <!-- правка 21.11: вместо «Удобного времени» — свободный комментарий -->
   <div class="fld">
-    <label class="fl" for={`${id}-time`}>Удобное время <span class="fl-opt">— необязательно</span></label>
-    <input id={`${id}-time`} name="time" placeholder="Например, будни после 18:00">
+    <label class="fl" for={`${id}-comment`}>Комментарий <span class="fl-opt">— необязательно</span></label>
+    <textarea id={`${id}-comment`} name="comment" rows="2" maxlength="1000" placeholder="Когда удобно созвониться, пожелания по записи или ваш вопрос"></textarea>
   </div>
   <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
   <label class="consent"><input type="checkbox" name="consent" required><span>Даю <a href={u('consent')} target="_blank">согласие на обработку персональных данных</a></span></label>

@@ -102,8 +102,9 @@ const jsonld = {
       <div class="stack s1-text">
         <p class="s1-lead">От первого касания до своей музыки — мы проходим этот путь вместе с вами.</p>
         <div class="btns s1-btns">
-          <button type="button" class="btn btn--52 btn--line-d s1-try" data-open="trial">Попробовать занятие</button>
-          <button type="button" class="btn btn--52 btn--blue" data-open="buy">Выбрать ханг</button>
+          <!-- правка 21.11: единая кнопка «Попробовать урок»; «Выбрать ханг» ведёт на «Инструменты» -->
+          <button type="button" class="btn btn--52 btn--line-d s1-try" data-open="trial">Попробовать урок</button>
+          <a class="btn btn--52 btn--blue" href={u('instruments')}>Выбрать ханг</a>
         </div>
         <a class="s1-help" href={u('test')} data-quiz-open>Не знаете, с чего начать? Поможем определиться →</a>
       </div>
@@ -144,22 +145,22 @@ const jsonld = {
   <div class="mq-wrap s2-strip" aria-hidden="true"><div class="mq" data-marquee="HANG|ХАНГ|HANDPAN|ХЭНДПАН|PANTAM"></div></div>
   <div class="sec s2-grid">
     <div class="stack s2-text">
-      <div class="mono">A · 2/10</div>
+      <div class="mono">A · 2/8</div>
       <div class="s2-title">
         <h2 id="h-s2" class="h-display">Ханг</h2>
         <!-- звёздочка заменена пульсацией (правка 05.11) -->
         <button type="button" class="ast" data-pop-btn="ast" data-pulse-hint aria-label="Что значит слово «ханг»"><span class="ast-pulse" aria-hidden="true"></span></button>
         <!-- справка — мягкий попап у точки вместо резко раскрывающейся плашки (правка 14.11) -->
-        <div class="s2-pop" id="pop-ast" data-pop="ast" role="note">Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
+        <!-- правка 21.11: в справке только «он же хэндпан» -->
+        <div class="s2-pop" id="pop-ast" data-pop="ast" role="note">Он же хэндпан. Hang – оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
       </div>
       <div class="s2-sub ind">перкуссия нового времени</div>
-      <p class="body ind">Мелодический идиофон из стали – ханг, он же хэндпан. Этот инструмент уникален: играя на нем, вы получаете одновременно ритмический акцент и мелодическую ноту. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
-      <p class="body ind">Это инструмент, который хочется не просто слушать – к нему хочется прикоснуться.</p>
+      <!-- текст по правке 21.11; история ханга переезжает на «Инструменты» -->
+      <p class="body ind">Стальной мелодический инструмент, на котором играют руками. Интересен тем, что вы можете создавать на нём и мелодию, и ритм. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
+      <p class="body ind">На ханге можно играть мягко и созерцательно, ритмично и энергично – от свободной импровизации до виртуозных композиций. Мастерство приходит с практикой, а первые музыкальные фразы можно сыграть даже на первом занятии.</p>
       <div class="btns ind">
         <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать в студии</button>
-        <button type="button" class="btn btn--line-d" data-toggle="hist">История ханга <span data-sign>+</span></button>
       </div>
-      <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Две соединённые стальные полусферы: в центре — «динг» (Ding), основной тон, вокруг — тональные поля. Снизу — «гу» (Gu), резонатор Гельмгольца, который даёт глубокий бас.</p>
     </div>
     <div class="s2-scheme">
       <!-- только иридисцентный (правка 11.11); переключатель сравнения убран -->
@@ -168,6 +169,7 @@ const jsonld = {
         <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>
       </div>
       <div class="mono">Коснитесь поля — услышьте звук</div>
+      <p class="mono s2-scale">Представлен строй D Kurd</p>
       <p class="hang-sound-note" id="hang-sound-note">Синтезированный пример звучания</p>
       <a class="btn btn--line-d s2-sim" href="#" data-pending="P-14">Симулятор ханга 👆</a>
     </div>
@@ -177,19 +179,23 @@ const jsonld = {
 <!-- 03 · Почему так легко -->
 <section class="sec s3 bg-white" aria-labelledby="h-s3">
   <div class="stack s3-text">
-    <span class="mono s3-count">B♭ · 3/10</span>
-    <!-- текст целиком по правке 13.11 (ANN, №61): «или» из заголовка убрано -->
-    <!-- правки 14.11 (№64–68): без подзаголовка «Звуковая скульптура», фраза PANArt — в абзаце, не цитатой -->
+    <span class="mono s3-count">B♭ · 3/8</span>
+    <!-- текст целиком по правке 21.11 («ОБНОВЛЕНО»): начать можно без образования, дальше — техника и практика; всё ведёт к пробному уроку -->
     <h2 id="h-s3" class="h2 s3-h"><span class="s3-q">Почему так легко?</span></h2>
-    <p class="body">Создатели PANArt называли ханг «звуковой скульптурой» и предлагали «не ставить целью мелодию, а следовать за звуком и ощущением прикосновения».</p>
-    <p class="body body--2">С тех пор ханг вышел далеко за пределы интуитивного подхода: сегодня он звучит на больших сценах, его используют в академической музыке, неоклассике, электронике и кино.</p>
-    <p class="body"><strong>Но главное осталось неизменным: играть может каждый.</strong></p>
-    <p class="body">Ноты ханга подобраны в единую гармоническую систему. Поэтому даже без музыкального образования можно интуитивно создавать собственные мелодии.</p>
-    <div class="btns">
+    <p class="body">Секрет в том, как устроен инструмент. Ноты подобраны так, что даже при интуитивной игре получается гармоничная мелодия. При этом, чтобы начать, не обязательно разбираться в нотной грамоте и иметь музыкальное образование. Можно прислушиваться к звуку, пробовать разные сочетания и постепенно складывать свою мелодию.</p>
+    <p class="body"><strong>Уже на первом уроке преподаватель поможет почувствовать инструмент. Вы сможете:</strong></p>
+    <ul class="body s3-list">
+      <li>научиться извлекать чистый звук</li>
+      <li>освоить простой ритм</li>
+      <li>соединить всё в музыкальную фразу</li>
+      <li>почувствовать, как создаёте музыку своими руками</li>
+    </ul>
+    <p class="body body--2">А дальше – развивать технику, осваивать разные приёмы и раскрывать свой творческий потенциал через возможности инструмента. С практикой появляется больше свободы: точнее движения, сложнее ритмы, выразительнее музыка.</p>
+    <p class="s3-support">Мы поможем найти ваш звук и поддержим на каждом этапе музыкального развития.</p>
+    <div class="btns s3-btns">
       <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Попробовать урок</button>
+      <span class="mono s3-meta">Пробный урок · 45 минут · 900 ₽</span>
     </div>
-    <p class="body body--2">За несколько занятий вы начнёте импровизировать, звучать гармонично и чувствовать себя творцом.</p>
-    <p class="s3-support">А мы — поможем найти ваш звук. И сопроводим на каждом этапе вашего музыкального развития.</p>
   </div>
   <div class="s3-photo">
     <img src={u('img/easy-m.webp')} alt="Руки на ханге" width="733" height="1100" loading="lazy">
@@ -203,75 +209,61 @@ const jsonld = {
 
   <div class="head-row">
     <div class="sec-head">
-      <div class="mono">C · 4/10</div>
-      <h2 id="h-s4" class="h2"><span>Как начать</span> <span class="s4-title-indent"><em>знакомство</em><br>с хангом?</span></h2>
+      <div class="mono">C · 4/8</div>
+      <!-- заголовок по правке 21.11 -->
+      <h2 id="h-s4" class="h2"><span>3 пути</span> <span class="s4-title-indent"><em>знакомства</em><br>с хангом</span></h2>
     </div>
   </div>
-  <!-- раскладка по макету 11.11: три фото в ряд сразу под заголовком, от левого поля, по верхнему краю -->
+  <!-- три пути по правке 21.11: учиться, выбрать свой, арендовать; карточки одного размера, без выделенной средней -->
   <div class="routes">
     <div class="route">
-      <img class="route-photo" src={u('img/route-engraved.webp')} alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
-      <h3 class="route-verb">Услышать</h3>
-      <div class="stack route-info">
-        <span class="mono">Хочу сначала послушать</span>
-        <span>Частный визит в студию: 20+ инструментов разных строёв, можно играть на каждом. Без обязательств и без покупки</span>
-      </div>
-      <button type="button" class="btn btn--52 btn--line route-btn" data-open="visit">Записаться на визит →</button>
-    </div>
-    <div class="route">
       <img class="route-photo" src={u('img/easy-d.webp')} alt="Первое знакомство с хангом на занятии" width="720" height="900" loading="lazy">
-      <h3 class="route-verb">Попробовать</h3>
+      <h3 class="route-verb">Научиться играть</h3>
       <div class="stack route-info">
-        <span class="mono">Хочу взять инструмент в руки</span>
-        <span>Пробное занятие с преподавателем: 45 минут, 900 ₽. Инструмент даём, опыт не нужен</span>
+        <span>Приходи в студию U-GENE и попробуй сыграть свою первую мелодию вместе с преподавателем.</span>
+        <span>Для начала не нужно иметь музыкальное образование и не обязательно покупать инструмент. Можно обучаться в группе или индивидуально, получить новый навык и позже решить, хочешь ли ты приобрести собственный хэндпан.</span>
       </div>
-      <button type="button" class="btn btn--52 btn--line route-btn" data-open="trial">Попробовать занятие →</button>
+      <div class="route-btns">
+        <button type="button" class="btn btn--52 btn--line route-btn" data-open="trial">Пробный урок — 900 ₽ / 45 минут</button>
+        <a class="route-more" href={u('cources')}>Подробнее об обучении →</a>
+      </div>
     </div>
     <div class="route">
       <img class="route-photo" src={u('img/route-tuning2.webp')} alt="Мастер настраивает ноты ханга по меловой разметке" width="1200" height="1044" loading="lazy">
-      <h3 class="route-verb">Выбрать</h3>
+      <h3 class="route-verb">Выбрать свой ханг</h3>
       <div class="stack route-info">
-        <span class="mono">Хочу свой ханг</span>
-        <span>Консультация мастера: строй, сталь, количество нот, бюджет. Покажем инструменты в наличии и под заказ</span>
+        <span>Хочешь играть дома, обучаться самостоятельно или онлайн, сочинять музыку или выступать? В U-GENE мы создаём хэндпаны вручную и помогаем подобрать инструмент под твои задачи и музыкальные предпочтения.</span>
+        <span>Можно приехать в студию, сравнить звучание разных хэндпанов, поиграть самостоятельно, выбрать тот самый или сделать на заказ.</span>
       </div>
-      <button type="button" class="btn btn--52 btn--line route-btn" data-open="buy">Получить консультацию →</button>
+      <div class="route-btns">
+        <a class="btn btn--52 btn--line route-btn" href={u('instruments')}>Об инструментах →</a>
+      </div>
+    </div>
+    <div class="route">
+      <img class="route-photo" src={u('img/route-engraved.webp')} alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
+      <h3 class="route-verb">Арендовать инструмент</h3>
+      <div class="stack route-info">
+        <span class="route-sub">Попробуй играть в своём ритме</span>
+        <span>Не готов к занятиям в студии? Можно взять хэндпан в аренду и начать знакомство с инструментом самостоятельно.</span>
+        <span>А чтобы первые шаги были проще, мы подготовили бесплатный видеоурок: покажем, как правильно извлекать звук, освоить базовые движения и сыграть первые сочетания нот. Смотри урок в удобное время и возвращайся к нему, когда захочешь.</span>
+      </div>
+      <div class="route-btns">
+        <button type="button" class="btn btn--52 btn--line route-btn" data-open="rent">Подробнее об аренде</button>
+        <!-- где разместить урок — пока решают (комментарий 21.11) -->
+        <a class="route-more" href="#" data-pending="P-15">Забрать бесплатный урок →</a>
+      </div>
     </div>
   </div>
-  <p class="small s4-note">Не знаете, какой маршрут ваш? Начните с любого, остальное подскажем на месте</p>
+  <!-- куда ведёт — обсуждается (правка 21.11); пока открывает тест «Поможем определиться» -->
+  <p class="small s4-note"><a href={u('test')} data-quiz-open>Не знаете, какой путь ваш? Мы поможем определиться →</a></p>
 </section>
 
-<!-- 05 · Все шесть аудиторий: карточки с рекомендацией и звуком -->
-<section class="sec s5 bg-sky" aria-labelledby="h-s5">
-  <div class="sec-head">
-    <div class="mono">D · 5/10</div>
-    <h2 id="h-s5" class="h2 s5-h"><span>Кому подходит ханг</span><br>– от медитации до сцены</h2>
-  </div>
-  <div class="audiences">
-    {D.audiences.map((a, i) => (
-      <article class="aud" id={`aud-${i}`} data-snd={a.snd}>
-        <h3 class="aud-name">{a.name}</h3>
-        <p class="aud-text">{a.text}</p>
-        {a.fit && <p class="aud-fit"><span>Подходит:</span> {a.fit}</p>}
-        <div class="aud-bottom">
-          {a.rec
-            ? <p class="aud-rec"><span>Рекомендуем</span><br>{a.rec}</p>
-            : <p class="aud-rec" data-pending={a.recPending}>Рекомендация уточняется</p>}
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label={`Пример звучания: ${a.name}`}><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article>
-    ))}
-  </div>
-  <!-- две кнопки по правке 08.11: каталог (страницы пока нет — P-12) и запись на тест инструментов -->
-  <div class="btns s5-btns">
-    <a class="btn btn--line" href="#" data-pending="P-12">Смотреть каталог</a>
-    <button type="button" class="btn btn--blue" data-open="visit">Записаться на тест инструментов</button>
-  </div>
-</section>
+<!-- «Кому подходит ханг» убран с главной по правке 21.11: этот блок есть на «Инструментах» -->
 
 <!-- 06 · Почему доверяют -->
 <section class="sec s6 bg-white" aria-labelledby="h-s6" data-stats-wrap>
   <div class="sec-head">
-    <div class="mono">E · 6/10</div>
+    <div class="mono">D · 5/8</div>
     <h2 id="h-s6" class="h2 h2--long s6-h"><span class="s6-accent">Мастера,</span> которые стоят <span class="s6-indent">у истоков культуры<br>ханга в России</span></h2>
   </div>
   <div class="s6-grid">
@@ -297,8 +289,9 @@ const jsonld = {
 <section class="sec s7 bg-sky" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
-      <div class="mono">F · 7/10</div>
-      <h2 id="h-s7" class="h-display">Кто учит</h2>
+      <div class="mono">E · 6/8</div>
+      <!-- правка 21.11: вместо «Кто учит» -->
+      <h2 id="h-s7" class="h-display">Преподаватели</h2>
     </div>
     <p class="small s7-note">Научиться можно с нуля, в любом возрасте и без музыкального опыта. Главное – преподаватель, который слышит вас</p>
   </div>
@@ -319,7 +312,7 @@ const jsonld = {
     <button type="button" class="arr arr--ink" data-t-next aria-label="Следующий преподаватель">→</button>
   </div>
   <div class="btns">
-    <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на пробное занятие</button>
+    <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Попробовать урок</button>
     <a class="btn btn--line btn--wrap" href={u('cources#teachers')}>Все преподаватели и форматы →</a>
   </div>
 </section>
@@ -330,7 +323,7 @@ const jsonld = {
        кнопка открывает полное видео со звуком в окне -->
   <div class="sec s8n">
     <div class="s8n-text">
-      <span class="mono">G · 8/10</span>
+      <span class="mono">F · 7/8</span>
       <p class="s8n-kick">Ханг — это</p>
       <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span><span class="cap cap--hero s8n-cap">точной работы</span></span> <span class="s8-hl">с металлом</span></h2>
       <div class="s8n-copy">
@@ -358,9 +351,12 @@ const jsonld = {
     <div class="stack s9-head">
       <h2 id="h-s9" class="h2 s9-h">Ханг объединяет</h2>
       <p class="s9-acc">Ты приходишь за звуком. <span class="s9-acc-2">А&nbsp;находишь своё окружение</span></p>
-      {D.communityUrl
-        ? <a class="btn btn--blue s9-btn" href={D.communityUrl}>Присоединиться к комьюнити →</a>
-        : <button type="button" class="btn btn--blue s9-btn" data-open="community">Присоединиться к комьюнити →</button>}
+      <!-- правка 21.11: форму вступления убрали, вместо неё — соцсети (Telegram и Instagram) -->
+      <div class="s9-soc" role="group" aria-label="Мы в соцсетях">
+        {D.socials.telegram && <a class="s9-soc-a" href={D.socials.telegram} target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.7-1.4ZM8.8 13.4l9.3-5.9c.5-.3.9-.1.5.2l-7.9 7.2-.3 3.3-1.6-4.8Z" fill="currentColor"/></svg><span>Telegram</span></a>}
+        {D.socials.instagram && <a class="s9-soc-a" href={D.socials.instagram} target="_blank" rel="noopener" aria-label="Instagram*"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg><span>Instagram*</span></a>}
+      </div>
+      {D.socials.instagram && <p class="s9-soc-note">*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в России</p>}
     </div>
     <div class="stack s9-col">
       <p class="s9-intro">Круг, где ты становишься частью культуры.</p>
@@ -387,7 +383,7 @@ const jsonld = {
   <div class="glow s10-glow" aria-hidden="true"></div>
   <BrandLines class="brand-lines--contact" />
   <div class="stack s10-head">
-    <div class="mono row-sb"><span>Пробное занятие</span><span>C · 10/10</span></div>
+    <div class="mono row-sb"><span>Пробное занятие</span><span>G · 8/8</span></div>
     <h2 id="h-s10" class="h-hero s10-h">
       <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue cap--wine">свой</span> <span>звук</span></span>
       <span class="s10-l2">за 45 минут</span>
@@ -412,7 +408,7 @@ const jsonld = {
         <div class="bar-prog"><div data-progress></div></div>
       </div>
     </div>
-    <button type="button" class="btn btn--48 btn--blue" data-open="trial">Записаться</button>
+    <button type="button" class="btn btn--48 btn--blue" data-open="trial">Пробный урок</button>
   </div>
 </div>
 
@@ -438,7 +434,7 @@ const jsonld = {
 <div class="sheet qsheet" data-quiz-modal hidden>
   <div class="sheet-card qsheet-card" role="dialog" aria-modal="true" aria-labelledby="qm-title">
     <div class="sheet-head">
-      <div class="sheet-title" id="qm-title">С чего вам начать</div>
+      <div class="sheet-title" id="qm-title">{QD.title}</div>
       <button type="button" class="x" data-quiz-close aria-label="Закрыть">×</button>
     </div>
     <p class="small">{QD.intro}</p>

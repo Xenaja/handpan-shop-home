@@ -26,11 +26,11 @@
   }
 
   /* ---------- форма: «тест этого инструмента» — подбор и покупка, «вопрос» — помочь определиться ---------- */
-  const TITLES = { buy: 'Тест инструмента', help: 'Вопрос об инструменте', visit: 'Визит в студию', trial: 'Пробное занятие' };
+  const TITLES = { buy: 'Тест инструмента', help: 'Вопрос об инструменте', visit: 'Визит в студию', trial: 'Пробный урок' };
   const sheet = $('[data-sheet]'), sRoute = $('[data-interest]', sheet);
   const setRoute = r => {
     if (!TITLES[r]) r = 'buy';
-    if (sRoute) sRoute.value = r;
+    if (sRoute) sRoute.value = HS.interest(r);
     $('[data-sheet-title]', sheet).textContent = TITLES[r];
   };
   if (sRoute) sRoute.addEventListener('change', () => setRoute(sRoute.value));

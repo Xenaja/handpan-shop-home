@@ -493,5 +493,9 @@
     initToTop();
   }
 
-  window.HS = { $, $$, esc, nb, typo, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready, updateSticky: onScroll };
+  /* кнопки сайта → пункт «Что интересно» в форме (правка 21.11: визита и сообщества в списке больше нет) */
+  const INTEREST = { visit: 'buy', community: 'help', lessons: 'trial', group: 'trial' };
+  const interest = r => INTEREST[r] || r;
+
+  window.HS = { $, $$, esc, nb, typo, interest, DEV, wide, reduce, FREQS, tone, player, fmtTime, bindForm, initSheet, setCity, goal, ready, updateSticky: onScroll };
 })();

@@ -21,12 +21,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1116h">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1122a">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1116h"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1116h"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1116h">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1122a"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1122a"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1122a">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга (выбор помним между страницами)
@@ -100,8 +100,9 @@
       <div class="stack s1-text">
         <p class="s1-lead">От первого касания до своей музыки — мы проходим этот путь вместе с вами.</p>
         <div class="btns s1-btns">
-          <button type="button" class="btn btn--52 btn--line-d s1-try" data-open="trial">Попробовать занятие</button>
-          <button type="button" class="btn btn--52 btn--blue" data-open="buy">Выбрать ханг</button>
+          <!-- правка 21.11: единая кнопка «Попробовать урок»; «Выбрать ханг» ведёт на «Инструменты» -->
+          <button type="button" class="btn btn--52 btn--line-d s1-try" data-open="trial">Попробовать урок</button>
+          <a class="btn btn--52 btn--blue" href="/handpan-shop-home/astro/instruments">Выбрать ханг</a>
         </div>
         <a class="s1-help" href="/handpan-shop-home/astro/test" data-quiz-open>Не знаете, с чего начать? Поможем определиться →</a>
       </div>
@@ -142,22 +143,22 @@
   <div class="mq-wrap s2-strip" aria-hidden="true"><div class="mq" data-marquee="HANG|ХАНГ|HANDPAN|ХЭНДПАН|PANTAM"></div></div>
   <div class="sec s2-grid">
     <div class="stack s2-text">
-      <div class="mono">A · 2/10</div>
+      <div class="mono">A · 2/8</div>
       <div class="s2-title">
         <h2 id="h-s2" class="h-display">Ханг</h2>
         <!-- звёздочка заменена пульсацией (правка 05.11) -->
         <button type="button" class="ast" data-pop-btn="ast" data-pulse-hint aria-label="Что значит слово «ханг»"><span class="ast-pulse" aria-hidden="true"></span></button>
         <!-- справка — мягкий попап у точки вместо резко раскрывающейся плашки (правка 14.11) -->
-        <div class="s2-pop" id="pop-ast" data-pop="ast" role="note">Hang на бернском диалекте значит «рука». Так называется оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
+        <!-- правка 21.11: в справке только «он же хэндпан» -->
+        <div class="s2-pop" id="pop-ast" data-pop="ast" role="note">Он же хэндпан. Hang – оригинальная модель из Швейцарии, а хэндпан – общее название подобных инструментов</div>
       </div>
       <div class="s2-sub ind">перкуссия нового времени</div>
-      <p class="body ind">Мелодический идиофон из стали – ханг, он же хэндпан. Этот инструмент уникален: играя на нем, вы получаете одновременно ритмический акцент и мелодическую ноту. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
-      <p class="body ind">Это инструмент, который хочется не просто слушать – к нему хочется прикоснуться.</p>
+      <!-- текст по правке 21.11; история ханга переезжает на «Инструменты» -->
+      <p class="body ind">Стальной мелодический инструмент, на котором играют руками. Интересен тем, что вы можете создавать на нём и мелодию, и ритм. Тёплый, объёмный звук, похожий одновременно на арфу и хор.</p>
+      <p class="body ind">На ханге можно играть мягко и созерцательно, ритмично и энергично – от свободной импровизации до виртуозных композиций. Мастерство приходит с практикой, а первые музыкальные фразы можно сыграть даже на первом занятии.</p>
       <div class="btns ind">
         <button type="button" class="btn btn--milk btn--wrap" data-open="visit">Прийти и послушать в студии</button>
-        <button type="button" class="btn btn--line-d" data-toggle="hist">История ханга <span data-sign>+</span></button>
       </div>
-      <p class="body ind s2-more" data-panel="hist" hidden>Создан в Швейцарии в 2000 году Феликсом Ронером и Сабиной Шерер, основателями мастерской PANArt. Две соединённые стальные полусферы: в центре — «динг» (Ding), основной тон, вокруг — тональные поля. Снизу — «гу» (Gu), резонатор Гельмгольца, который даёт глубокий бас.</p>
     </div>
     <div class="s2-scheme">
       <!-- только иридисцентный (правка 11.11); переключатель сравнения убран -->
@@ -166,6 +167,7 @@
         <svg viewBox="0 0 400 400" data-hang role="group" aria-label="Интерактивный хэндпан: коснитесь тонального поля" aria-describedby="hang-sound-note"></svg>
       </div>
       <div class="mono">Коснитесь поля — услышьте звук</div>
+      <p class="mono s2-scale">Представлен строй D Kurd</p>
       <p class="hang-sound-note" id="hang-sound-note">Синтезированный пример звучания</p>
       <a class="btn btn--line-d s2-sim" href="#" data-pending="P-14">Симулятор ханга 👆</a>
     </div>
@@ -175,19 +177,23 @@
 <!-- 03 · Почему так легко -->
 <section class="sec s3 bg-white" aria-labelledby="h-s3">
   <div class="stack s3-text">
-    <span class="mono s3-count">B♭ · 3/10</span>
-    <!-- текст целиком по правке 13.11 (ANN, №61): «или» из заголовка убрано -->
-    <!-- правки 14.11 (№64–68): без подзаголовка «Звуковая скульптура», фраза PANArt — в абзаце, не цитатой -->
+    <span class="mono s3-count">B♭ · 3/8</span>
+    <!-- текст целиком по правке 21.11 («ОБНОВЛЕНО»): начать можно без образования, дальше — техника и практика; всё ведёт к пробному уроку -->
     <h2 id="h-s3" class="h2 s3-h"><span class="s3-q">Почему так легко?</span></h2>
-    <p class="body">Создатели PANArt называли ханг «звуковой скульптурой» и предлагали «не ставить целью мелодию, а следовать за звуком и ощущением прикосновения».</p>
-    <p class="body body--2">С тех пор ханг вышел далеко за пределы интуитивного подхода: сегодня он звучит на больших сценах, его используют в академической музыке, неоклассике, электронике и кино.</p>
-    <p class="body"><strong>Но главное осталось неизменным: играть может каждый.</strong></p>
-    <p class="body">Ноты ханга подобраны в единую гармоническую систему. Поэтому даже без музыкального образования можно интуитивно создавать собственные мелодии.</p>
-    <div class="btns">
+    <p class="body">Секрет в том, как устроен инструмент. Ноты подобраны так, что даже при интуитивной игре получается гармоничная мелодия. При этом, чтобы начать, не обязательно разбираться в нотной грамоте и иметь музыкальное образование. Можно прислушиваться к звуку, пробовать разные сочетания и постепенно складывать свою мелодию.</p>
+    <p class="body"><strong>Уже на первом уроке преподаватель поможет почувствовать инструмент. Вы сможете:</strong></p>
+    <ul class="body s3-list">
+      <li>научиться извлекать чистый звук</li>
+      <li>освоить простой ритм</li>
+      <li>соединить всё в музыкальную фразу</li>
+      <li>почувствовать, как создаёте музыку своими руками</li>
+    </ul>
+    <p class="body body--2">А дальше – развивать технику, осваивать разные приёмы и раскрывать свой творческий потенциал через возможности инструмента. С практикой появляется больше свободы: точнее движения, сложнее ритмы, выразительнее музыка.</p>
+    <p class="s3-support">Мы поможем найти ваш звук и поддержим на каждом этапе музыкального развития.</p>
+    <div class="btns s3-btns">
       <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Попробовать урок</button>
+      <span class="mono s3-meta">Пробный урок · 45 минут · 900 ₽</span>
     </div>
-    <p class="body body--2">За несколько занятий вы начнёте импровизировать, звучать гармонично и чувствовать себя творцом.</p>
-    <p class="s3-support">А мы — поможем найти ваш звук. И сопроводим на каждом этапе вашего музыкального развития.</p>
   </div>
   <div class="s3-photo">
     <img src="/handpan-shop-home/astro/img/easy-m.webp" alt="Руки на ханге" width="733" height="1100" loading="lazy">
@@ -201,111 +207,61 @@
 
   <div class="head-row">
     <div class="sec-head">
-      <div class="mono">C · 4/10</div>
-      <h2 id="h-s4" class="h2"><span>Как начать</span> <span class="s4-title-indent"><em>знакомство</em><br>с хангом?</span></h2>
+      <div class="mono">C · 4/8</div>
+      <!-- заголовок по правке 21.11 -->
+      <h2 id="h-s4" class="h2"><span>3 пути</span> <span class="s4-title-indent"><em>знакомства</em><br>с хангом</span></h2>
     </div>
   </div>
-  <!-- раскладка по макету 11.11: три фото в ряд сразу под заголовком, от левого поля, по верхнему краю -->
+  <!-- три пути по правке 21.11: учиться, выбрать свой, арендовать; карточки одного размера, без выделенной средней -->
   <div class="routes">
     <div class="route">
-      <img class="route-photo" src="/handpan-shop-home/astro/img/route-engraved.webp" alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
-      <h3 class="route-verb">Услышать</h3>
-      <div class="stack route-info">
-        <span class="mono">Хочу сначала послушать</span>
-        <span>Частный визит в студию: 20+ инструментов разных строёв, можно играть на каждом. Без обязательств и без покупки</span>
-      </div>
-      <button type="button" class="btn btn--52 btn--line route-btn" data-open="visit">Записаться на визит →</button>
-    </div>
-    <div class="route">
       <img class="route-photo" src="/handpan-shop-home/astro/img/easy-d.webp" alt="Первое знакомство с хангом на занятии" width="720" height="900" loading="lazy">
-      <h3 class="route-verb">Попробовать</h3>
+      <h3 class="route-verb">Научиться играть</h3>
       <div class="stack route-info">
-        <span class="mono">Хочу взять инструмент в руки</span>
-        <span>Пробное занятие с преподавателем: 45 минут, 900 ₽. Инструмент даём, опыт не нужен</span>
+        <span>Приходи в студию U-GENE и попробуй сыграть свою первую мелодию вместе с преподавателем.</span>
+        <span>Для начала не нужно иметь музыкальное образование и не обязательно покупать инструмент. Можно обучаться в группе или индивидуально, получить новый навык и позже решить, хочешь ли ты приобрести собственный хэндпан.</span>
       </div>
-      <button type="button" class="btn btn--52 btn--line route-btn" data-open="trial">Попробовать занятие →</button>
+      <div class="route-btns">
+        <button type="button" class="btn btn--52 btn--line route-btn" data-open="trial">Пробный урок — 900 ₽ / 45 минут</button>
+        <a class="route-more" href="/handpan-shop-home/astro/cources">Подробнее об обучении →</a>
+      </div>
     </div>
     <div class="route">
       <img class="route-photo" src="/handpan-shop-home/astro/img/route-tuning2.webp" alt="Мастер настраивает ноты ханга по меловой разметке" width="1200" height="1044" loading="lazy">
-      <h3 class="route-verb">Выбрать</h3>
+      <h3 class="route-verb">Выбрать свой ханг</h3>
       <div class="stack route-info">
-        <span class="mono">Хочу свой ханг</span>
-        <span>Консультация мастера: строй, сталь, количество нот, бюджет. Покажем инструменты в наличии и под заказ</span>
+        <span>Хочешь играть дома, обучаться самостоятельно или онлайн, сочинять музыку или выступать? В U-GENE мы создаём хэндпаны вручную и помогаем подобрать инструмент под твои задачи и музыкальные предпочтения.</span>
+        <span>Можно приехать в студию, сравнить звучание разных хэндпанов, поиграть самостоятельно, выбрать тот самый или сделать на заказ.</span>
       </div>
-      <button type="button" class="btn btn--52 btn--line route-btn" data-open="buy">Получить консультацию →</button>
+      <div class="route-btns">
+        <a class="btn btn--52 btn--line route-btn" href="/handpan-shop-home/astro/instruments">Об инструментах →</a>
+      </div>
+    </div>
+    <div class="route">
+      <img class="route-photo" src="/handpan-shop-home/astro/img/route-engraved.webp" alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
+      <h3 class="route-verb">Арендовать инструмент</h3>
+      <div class="stack route-info">
+        <span class="route-sub">Попробуй играть в своём ритме</span>
+        <span>Не готов к занятиям в студии? Можно взять хэндпан в аренду и начать знакомство с инструментом самостоятельно.</span>
+        <span>А чтобы первые шаги были проще, мы подготовили бесплатный видеоурок: покажем, как правильно извлекать звук, освоить базовые движения и сыграть первые сочетания нот. Смотри урок в удобное время и возвращайся к нему, когда захочешь.</span>
+      </div>
+      <div class="route-btns">
+        <button type="button" class="btn btn--52 btn--line route-btn" data-open="rent">Подробнее об аренде</button>
+        <!-- где разместить урок — пока решают (комментарий 21.11) -->
+        <a class="route-more" href="#" data-pending="P-15">Забрать бесплатный урок →</a>
+      </div>
     </div>
   </div>
-  <p class="small s4-note">Не знаете, какой маршрут ваш? Начните с любого, остальное подскажем на месте</p>
+  <!-- куда ведёт — обсуждается (правка 21.11); пока открывает тест «Поможем определиться» -->
+  <p class="small s4-note"><a href="/handpan-shop-home/astro/test" data-quiz-open>Не знаете, какой путь ваш? Мы поможем определиться →</a></p>
 </section>
 
-<!-- 05 · Все шесть аудиторий: карточки с рекомендацией и звуком -->
-<section class="sec s5 bg-sky" aria-labelledby="h-s5">
-  <div class="sec-head">
-    <div class="mono">D · 5/10</div>
-    <h2 id="h-s5" class="h2 s5-h"><span>Кому подходит ханг</span><br>– от медитации до сцены</h2>
-  </div>
-  <div class="audiences">
-    <article class="aud" id="aud-0" data-snd="mel">
-        <h3 class="aud-name">Дома</h3>
-        <p class="aud-text">Тёплый, мелодичный звук. Не требует опыта: первая мелодия получается в первый день.</p>
-        <p class="aud-fit"><span>Подходит:</span> для новичков, тем, кто хочет инструмент «для себя», для вечерней игры, для отдыха после работы</p>
-        <div class="aud-bottom">
-          <p class="aud-rec"><span>Рекомендуем</span><br>Рессорная сталь 65Г или СТ-20Ф · 9 нот</p>
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Дома"><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article><article class="aud" id="aud-1" data-snd="mel">
-        <h3 class="aud-name">Обучение</h3>
-        <p class="aud-text">Сбалансированный инструмент. Не перегружен нотами, но с запасом для роста. D Kurd — самый популярный строй в мире: на нём построены большинство школ, онлайн-курсов и обучающих материалов.</p>
-        <p class="aud-fit"><span>Подходит:</span> тем, кто хочет учиться системно — в школе, с преподавателем или самостоятельно по курсам</p>
-        <div class="aud-bottom">
-          <p class="aud-rec"><span>Рекомендуем</span><br>Рессорная сталь 65Г · 9 нот · строй D Kurd</p>
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Обучение"><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article><article class="aud" id="aud-2" data-snd="fast">
-        <h3 class="aud-name">Сцена</h3>
-        <p class="aud-text">Инструмент на заказ для музыкантов с учётом манеры игры и репертуара для выступлений на сцене и других площадках. Индивидуально подберём строй, характер и продолжительность звучания нот (сустейн), а также материал и дизайн.</p>
-        <p class="aud-fit"><span>Подходит:</span> музыкантам и музыкальным группам</p>
-        <div class="aud-bottom">
-          <p class="aud-rec"><span>Рекомендуем</span><br>Рессорная 65Г или нержавеющая · 13–17 нот · двусторонние</p>
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Сцена"><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article><article class="aud" id="aud-3" data-snd="long">
-        <h3 class="aud-name">Медитация</h3>
-        <p class="aud-text">Глубокий, долгий, «обволакивающий» звук. Используется в звукотерапии, дыхательных практиках, йоге, работе с состоянием.</p>
-        <p class="aud-fit"><span>Подходит:</span> практикующим, терапевтам, преподавателям йоги, всем, кто работает со звуком как с инструментом</p>
-        <div class="aud-bottom">
-          <p class="aud-rec"><span>Рекомендуем</span><br>Нержавеющая сталь · строй пигми · 10–13 нот</p>
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Медитация"><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article><article class="aud" id="aud-4" data-snd="fast">
-        <h3 class="aud-name">Музыкантам</h3>
-        <p class="aud-text">Хэндпан всё чаще звучит в современной музыке: эмбиент, неоклассика, киномузыка, электроника, джаз. Его добавляют в аранжировки, используют как сольный инструмент или как текстуру.</p>
-        <p class="aud-fit"><span>Подходит:</span> гитаристам, пианистам, продюсерам, саунд-дизайнерам, композиторам — тем, кто ищет новый звук для своей музыки</p>
-        <div class="aud-bottom">
-          <p class="aud-rec"><span>Рекомендуем</span><br>Двусторонние модели · 13–17 нот · строи под ваш жанр</p>
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Музыкантам"><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article><article class="aud" id="aud-5" data-snd="mel">
-        <h3 class="aud-name">Детям</h3>
-        <p class="aud-text">Игра на ханге не требует знания нот, техники и усидчивости. Ребёнок просто касается металла и получает красивый звук. Это развивает слух, чувство ритма и даёт опыт «я умею» без давления и оценок. Расслабляет и увлекает.</p>
-        <p class="aud-fit"><span>Подходит:</span> детям от 5–6 лет, родителям, педагогам, музыкальным школам</p>
-        <div class="aud-bottom">
-          <p class="aud-rec"><span>Рекомендуем</span><br>9 нот · минорные или мажорные строи · компактные размеры</p>
-          <button type="button" class="aud-play aud-play--mark" data-aud-play aria-label="Пример звучания: Детям"><i class="logo-mark" aria-hidden="true"></i></button>
-        </div>
-      </article>
-  </div>
-  <!-- две кнопки по правке 08.11: каталог (страницы пока нет — P-12) и запись на тест инструментов -->
-  <div class="btns s5-btns">
-    <a class="btn btn--line" href="#" data-pending="P-12">Смотреть каталог</a>
-    <button type="button" class="btn btn--blue" data-open="visit">Записаться на тест инструментов</button>
-  </div>
-</section>
+<!-- «Кому подходит ханг» убран с главной по правке 21.11: этот блок есть на «Инструментах» -->
 
 <!-- 06 · Почему доверяют -->
 <section class="sec s6 bg-white" aria-labelledby="h-s6" data-stats-wrap>
   <div class="sec-head">
-    <div class="mono">E · 6/10</div>
+    <div class="mono">D · 5/8</div>
     <h2 id="h-s6" class="h2 h2--long s6-h"><span class="s6-accent">Мастера,</span> которые стоят <span class="s6-indent">у истоков культуры<br>ханга в России</span></h2>
   </div>
   <div class="s6-grid">
@@ -331,8 +287,9 @@
 <section class="sec s7 bg-sky" id="teach" aria-labelledby="h-s7">
   <div class="head-row">
     <div class="sec-head">
-      <div class="mono">F · 7/10</div>
-      <h2 id="h-s7" class="h-display">Кто учит</h2>
+      <div class="mono">E · 6/8</div>
+      <!-- правка 21.11: вместо «Кто учит» -->
+      <h2 id="h-s7" class="h-display">Преподаватели</h2>
     </div>
     <p class="small s7-note">Научиться можно с нуля, в любом возрасте и без музыкального опыта. Главное – преподаватель, который слышит вас</p>
   </div>
@@ -348,19 +305,19 @@
       </button><button type="button" class="tcard" data-i="2" aria-label="Анастасия Акмальдинова">
         <img src="/handpan-shop-home/astro/img/teachers/akmaldinova-960.webp" srcset="/handpan-shop-home/astro/img/teachers/akmaldinova-480.webp 480w, /handpan-shop-home/astro/img/teachers/akmaldinova-960.webp 960w" sizes="(min-width:1000px) 26vw, 62vw" alt="Портрет: Анастасия Акмальдинова" width="960" height="1440" loading="lazy">
         <span class="tcard-shade"></span>
-        <span class="tcard-cap"><span class="tcard-name">Анастасия Акмальдинова</span><span class="tcard-role">10 лет преподавания, 30+ своих композиций</span></span>
+        <span class="tcard-cap"><span class="tcard-name">Анастасия Акмальдинова</span><span class="tcard-role">Преподаватель · 10+ лет преподавания</span></span>
       </button><button type="button" class="tcard" data-i="3" aria-label="Дарина Ямчук">
         <img src="/handpan-shop-home/astro/img/teachers/yamchuk-960.webp" srcset="/handpan-shop-home/astro/img/teachers/yamchuk-480.webp 480w, /handpan-shop-home/astro/img/teachers/yamchuk-960.webp 960w" sizes="(min-width:1000px) 26vw, 62vw" alt="Портрет: Дарина Ямчук" width="960" height="1440" loading="lazy">
         <span class="tcard-shade"></span>
-        <span class="tcard-cap"><span class="tcard-name">Дарина Ямчук</span><span class="tcard-role">Дирижёр хора по образованию, 5 лет преподавания</span></span>
+        <span class="tcard-cap"><span class="tcard-name">Дарина Ямчук</span><span class="tcard-role">Преподаватель · 5+ лет преподавания</span></span>
       </button><button type="button" class="tcard" data-i="4" aria-label="Фейгина Милитина">
         <img src="/handpan-shop-home/astro/img/teachers/feigina-960.webp" srcset="/handpan-shop-home/astro/img/teachers/feigina-480.webp 480w, /handpan-shop-home/astro/img/teachers/feigina-960.webp 960w" sizes="(min-width:1000px) 26vw, 62vw" alt="Портрет: Фейгина Милитина" width="960" height="1440" loading="lazy">
         <span class="tcard-shade"></span>
-        <span class="tcard-cap"><span class="tcard-name">Фейгина Милитина</span><span class="tcard-role">Преподаёт с 2021, кино и ТВ с хангом</span></span>
+        <span class="tcard-cap"><span class="tcard-name">Фейгина Милитина</span><span class="tcard-role">Преподаватель · 4+ года преподавания</span></span>
       </button><button type="button" class="tcard" data-i="5" aria-label="Алёна Жевайкина">
         <img src="/handpan-shop-home/astro/img/teachers/alena-960.webp" srcset="/handpan-shop-home/astro/img/teachers/alena-480.webp 480w, /handpan-shop-home/astro/img/teachers/alena-960.webp 960w" sizes="(min-width:1000px) 26vw, 62vw" alt="Портрет: Алёна Жевайкина" width="960" height="1138" loading="lazy">
         <span class="tcard-shade"></span>
-        <span class="tcard-cap"><span class="tcard-name">Алёна Жевайкина</span><span class="tcard-role">8 лет игры, 6 из них – преподавание</span></span>
+        <span class="tcard-cap"><span class="tcard-name">Алёна Жевайкина</span><span class="tcard-role">Преподаватель · 6+ лет преподавания</span></span>
       </button>
   </div>
   <div class="tnav">
@@ -369,7 +326,7 @@
     <button type="button" class="arr arr--ink" data-t-next aria-label="Следующий преподаватель">→</button>
   </div>
   <div class="btns">
-    <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Записаться на пробное занятие</button>
+    <button type="button" class="btn btn--blue btn--full-n" data-open="trial">Попробовать урок</button>
     <a class="btn btn--line btn--wrap" href="/handpan-shop-home/astro/cources#teachers">Все преподаватели и форматы →</a>
   </div>
 </section>
@@ -380,7 +337,7 @@
        кнопка открывает полное видео со звуком в окне -->
   <div class="sec s8n">
     <div class="s8n-text">
-      <span class="mono">G · 8/10</span>
+      <span class="mono">F · 7/8</span>
       <p class="s8n-kick">Ханг — это</p>
       <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span><span class="cap cap--hero s8n-cap">точной работы</span></span> <span class="s8-hl">с металлом</span></h2>
       <div class="s8n-copy">
@@ -408,7 +365,12 @@
     <div class="stack s9-head">
       <h2 id="h-s9" class="h2 s9-h">Ханг объединяет</h2>
       <p class="s9-acc">Ты приходишь за звуком. <span class="s9-acc-2">А&nbsp;находишь своё окружение</span></p>
-      <button type="button" class="btn btn--blue s9-btn" data-open="community">Присоединиться к комьюнити →</button>
+      <!-- правка 21.11: форму вступления убрали, вместо неё — соцсети (Telegram и Instagram) -->
+      <div class="s9-soc" role="group" aria-label="Мы в соцсетях">
+        <a class="s9-soc-a" href="https://t.me/handpanshop_pro" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.2 3.6 2.9 10.7c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.7-1.4ZM8.8 13.4l9.3-5.9c.5-.3.9-.1.5.2l-7.9 7.2-.3 3.3-1.6-4.8Z" fill="currentColor"></path></svg><span>Telegram</span></a>
+        <a class="s9-soc-a" href="https://www.instagram.com/handpanshop.pro" target="_blank" rel="noopener" aria-label="Instagram*"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"></rect><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"></circle></svg><span>Instagram*</span></a>
+      </div>
+      <p class="s9-soc-note">*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в России</p>
     </div>
     <div class="stack s9-col">
       <p class="s9-intro">Круг, где ты становишься частью культуры.</p>
@@ -433,7 +395,7 @@
   <div class="glow s10-glow" aria-hidden="true"></div>
   <span class="brand-lines brand-lines--contact" aria-hidden="true"><i class="bl-w bl-w1"></i><i class="bl-w bl-w2"></i><i class="bl-w bl-w3"></i></span>
   <div class="stack s10-head">
-    <div class="mono row-sb"><span>Пробное занятие</span><span>C · 10/10</span></div>
+    <div class="mono row-sb"><span>Пробное занятие</span><span>G · 8/8</span></div>
     <h2 id="h-s10" class="h-hero s10-h">
       <span class="s10-l1"><span>Найди</span> <span class="cap cap--blue cap--wine">свой</span> <span>звук</span></span>
       <span class="s10-l2">за 45 минут</span>
@@ -454,7 +416,7 @@
           </div>
           <div class="branch-booking">
             <p class="branch-booking-note">Пробное занятие — 45 минут. Инструмент предоставляем</p>
-            <button type="button" class="btn btn--blue branch-book" data-open="trial">Записаться на пробное</button>
+            <button type="button" class="btn btn--blue branch-book" data-open="trial">Попробовать урок</button>
           </div>
           
         </div>
@@ -520,7 +482,7 @@
         <div class="bar-prog"><div data-progress></div></div>
       </div>
     </div>
-    <button type="button" class="btn btn--48 btn--blue" data-open="trial">Записаться</button>
+    <button type="button" class="btn btn--48 btn--blue" data-open="trial">Пробный урок</button>
   </div>
 </div>
 
@@ -543,7 +505,7 @@
   <div class="fld">
         <label class="fl" for="m-interest">Что интересно</label>
         <select id="m-interest" name="interest" data-interest>
-          <option value="visit">Частный визит в студию</option><option value="trial">Пробное занятие · 900 ₽</option><option value="buy">Подбор и покупка инструмента</option><option value="rent">Аренда инструмента</option><option value="help">Помочь определиться</option><option value="community">Сообщество и мероприятия</option>
+          <option value="trial">Пробное занятие · 900 ₽</option><option value="buy">Подбор и покупка инструмента</option><option value="rent">Аренда инструмента</option><option value="help">Задать вопрос</option>
         </select>
       </div>
   <fieldset class="fs fld">
@@ -566,9 +528,10 @@
     <input id="m-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required aria-describedby="m-phone-err">
     <div class="err" id="m-phone-err" aria-live="polite"></div>
   </div>
+  <!-- правка 21.11: вместо «Удобного времени» — свободный комментарий -->
   <div class="fld">
-    <label class="fl" for="m-time">Удобное время <span class="fl-opt">— необязательно</span></label>
-    <input id="m-time" name="time" placeholder="Например, будни после 18:00">
+    <label class="fl" for="m-comment">Комментарий <span class="fl-opt">— необязательно</span></label>
+    <textarea id="m-comment" name="comment" rows="2" maxlength="1000" placeholder="Когда удобно созвониться, пожелания по записи или ваш вопрос"></textarea>
   </div>
   <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
   <label class="consent"><input type="checkbox" name="consent" required><span>Даю <a href="/handpan-shop-home/astro/consent" target="_blank">согласие на обработку персональных данных</a></span></label>
@@ -585,197 +548,135 @@
 <div class="sheet qsheet" data-quiz-modal hidden>
   <div class="sheet-card qsheet-card" role="dialog" aria-modal="true" aria-labelledby="qm-title">
     <div class="sheet-head">
-      <div class="sheet-title" id="qm-title">С чего вам начать</div>
+      <div class="sheet-title" id="qm-title">С чего начать?</div>
       <button type="button" class="x" data-quiz-close aria-label="Закрыть">×</button>
     </div>
-    <p class="small">6 коротких вопросов – и подскажем первый шаг: пробное занятие, подбор инструмента, аренда или сообщество</p>
-    <div class="quiz" data-quiz id="hq" data-lead="{&#34;unsure&#34;:&#34;Вы пока не уверены, ваш ли это инструмент – и это нормально.&#34;,&#34;curious&#34;:&#34;Вы пока присматриваетесь – и это лучший момент попробовать вживую.&#34;,&#34;howlearn&#34;:&#34;Вам интересно научиться играть, но непонятно, с чего начать.&#34;,&#34;quit&#34;:&#34;Покупать инструмент пока не нужно – сначала стоит понять, хочется ли продолжать.&#34;,&#34;notready&#34;:&#34;Покупать инструмент пока не нужно – сначала стоит понять, хочется ли продолжать.&#34;,&#34;alone&#34;:&#34;Вам важно учиться не в одиночку – на занятиях и джемах вы будете среди своих.&#34;,&#34;choose&#34;:&#34;Выбрать инструмент проще, когда уже знаешь, как он звучит у тебя в руках.&#34;,&#34;none&#34;:&#34;Вы готовы пробовать – отличный момент начать.&#34;}">
+    <p class="small">Несколько вопросов помогут выбрать первый шаг: познакомиться с инструментом, начать обучение, подобрать свой ханг или взять его в аренду.</p>
+    <div class="quiz" data-quiz id="hq" data-doubts="{&#34;trial&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходит урок.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;ind&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходят занятия.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;group&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходят занятия в группе.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;format&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, чем отличаются форматы.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;buy&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходит подбор.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Поможем сравнить звучание и подобрать инструмент под ваши задачи.&#34;},&#34;rent&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как оформить аренду.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Поможем сравнить звучание и подобрать инструмент под ваши задачи.&#34;}}">
   <div class="quiz-top">
     <div class="quiz-prog" aria-hidden="true"><i data-quiz-bar></i></div>
-    <span class="mono quiz-count" data-quiz-count aria-live="polite">01 / 06</span>
+    <span class="mono quiz-count" data-quiz-count aria-live="polite">01 / 03</span>
   </div>
-  <fieldset class="quiz-step" data-quiz-step="0">
-      <legend class="quiz-q">Что привело вас к хэндпану?</legend>
+  <fieldset class="quiz-step" data-quiz-step="0" data-key="dir">
+      <legend class="quiz-q">Что вам сейчас интересно?</legend>
       <div class="quiz-opts">
         <label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="0" data-tags="{&#34;t&#34;:&#34;Хочу научиться играть на необычном инструменте&#34;,&#34;stage&#34;:&#34;learn&#34;,&#34;motive&#34;:&#34;music&#34;}">
-            <span>Хочу научиться играть на необычном инструменте</span>
+            <input type="radio" name="hq-q0" value="try">
+            <span>Послушать ханг вживую и попробовать поиграть</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="1" data-tags="{&#34;t&#34;:&#34;Хочу найти занятие для себя – переключаться, отдыхать, творить&#34;,&#34;stage&#34;:&#34;learn&#34;,&#34;motive&#34;:&#34;rest&#34;}">
-            <span>Хочу найти занятие для себя – переключаться, отдыхать, творить</span>
+            <input type="radio" name="hq-q0" value="learn">
+            <span>Учиться играть или развиваться дальше</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="2" data-tags="{&#34;t&#34;:&#34;Хочу попробовать звук и понять, моё это или нет&#34;,&#34;stage&#34;:&#34;try&#34;}">
-            <span>Хочу попробовать звук и понять, моё это или нет</span>
+            <input type="radio" name="hq-q0" value="buy">
+            <span>Выбрать и купить свой инструмент</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="3" data-tags="{&#34;t&#34;:&#34;Хочу купить хэндпан и играть самостоятельно&#34;,&#34;stage&#34;:&#34;buy&#34;}">
-            <span>Хочу купить хэндпан и играть самостоятельно</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="4" data-tags="{&#34;t&#34;:&#34;Уже играю и хочу развиваться дальше&#34;,&#34;stage&#34;:&#34;pro&#34;,&#34;motive&#34;:&#34;music&#34;}">
-            <span>Уже играю и хочу развиваться дальше</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="5" data-tags="{&#34;t&#34;:&#34;Мне интересен сам мир хэндпана – музыка, люди, события&#34;,&#34;motive&#34;:&#34;people&#34;,&#34;community&#34;:1}">
-            <span>Мне интересен сам мир хэндпана – музыка, люди, события</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="6" data-tags="{&#34;t&#34;:&#34;Пока просто смотрю и присматриваюсь&#34;,&#34;stage&#34;:&#34;curious&#34;}">
-            <span>Пока просто смотрю и присматриваюсь</span>
+            <input type="radio" name="hq-q0" value="rent">
+            <span>Взять ханг в аренду</span>
           </label>
       </div>
-    </fieldset><fieldset class="quiz-step" data-quiz-step="1" hidden>
-      <legend class="quiz-q">Как вы хотите взаимодействовать с инструментом?</legend>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="1" data-key="format" data-if="try learn" hidden>
+      <legend class="quiz-q">Если решите заниматься, какой формат вам ближе?</legend>
       <div class="quiz-opts">
         <label class="quiz-opt">
-            <input type="radio" name="hq-q1" value="0" data-tags="{&#34;t&#34;:&#34;Хочу заниматься с преподавателем&#34;,&#34;stage&#34;:&#34;learn&#34;}">
-            <span>Хочу заниматься с преподавателем</span>
+            <input type="radio" name="hq-q1" value="ind">
+            <span>Индивидуально с преподавателем</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q1" value="1" data-tags="{&#34;t&#34;:&#34;Хочу учиться самостоятельно&#34;,&#34;stage&#34;:&#34;buy&#34;}">
-            <span>Хочу учиться самостоятельно</span>
+            <input type="radio" name="hq-q1" value="group">
+            <span>В группе: учиться, джемить и знакомиться</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q1" value="2" data-tags="{&#34;t&#34;:&#34;Хочу сначала попробовать, прежде чем что-то решать&#34;,&#34;stage&#34;:&#34;try&#34;}">
-            <span>Хочу сначала попробовать, прежде чем что-то решать</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q1" value="3" data-tags="{&#34;t&#34;:&#34;Хочу взять инструмент в аренду и пожить с ним&#34;,&#34;stage&#34;:&#34;rent&#34;}">
-            <span>Хочу взять инструмент в аренду и пожить с ним</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q1" value="4" data-tags="{&#34;t&#34;:&#34;Хочу сразу подобрать и купить свой&#34;,&#34;stage&#34;:&#34;buy&#34;}">
-            <span>Хочу сразу подобрать и купить свой</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q1" value="5" data-tags="{&#34;t&#34;:&#34;Пока не знаю&#34;,&#34;stage&#34;:&#34;curious&#34;}">
-            <span>Пока не знаю</span>
+            <input type="radio" name="hq-q1" value="unknown">
+            <span>Пока не знаю, хочу разобраться</span>
           </label>
       </div>
-    </fieldset><fieldset class="quiz-step" data-quiz-step="2" hidden>
-      <legend class="quiz-q">Представьте идеальный сценарий. Что вам ближе?</legend>
+    </fieldset><fieldset class="quiz-step" data-quiz-step="2" data-key="barrier" hidden>
+      <legend class="quiz-q">Что пока останавливает?</legend>
       <div class="quiz-opts">
         <label class="quiz-opt">
-            <input type="radio" name="hq-q2" value="0" data-tags="{&#34;t&#34;:&#34;Прихожу на занятие и постепенно учусь играть&#34;,&#34;stage&#34;:&#34;learn&#34;,&#34;motive&#34;:&#34;music&#34;}">
-            <span>Прихожу на занятие и постепенно учусь играть</span>
+            <input type="radio" name="hq-q2" value="start">
+            <span>Не знаю, с чего начать</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q2" value="1" data-tags="{&#34;t&#34;:&#34;Вечером остаюсь один на один с инструментом и играю для себя&#34;,&#34;motive&#34;:&#34;rest&#34;}">
-            <span>Вечером остаюсь один на один с инструментом и играю для себя</span>
+            <input type="radio" name="hq-q2" value="quit">
+            <span>Боюсь купить и забросить</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q2" value="2" data-tags="{&#34;t&#34;:&#34;Беру хэндпан с собой в поездки, на природу, в разные места&#34;,&#34;motive&#34;:&#34;creative&#34;}">
-            <span>Беру хэндпан с собой в поездки, на природу, в разные места</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q2" value="3" data-tags="{&#34;t&#34;:&#34;Играю с другими музыкантами и участвую в джемах&#34;,&#34;motive&#34;:&#34;people&#34;,&#34;community&#34;:1}">
-            <span>Играю с другими музыкантами и участвую в джемах</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q2" value="4" data-tags="{&#34;t&#34;:&#34;Выступаю и создаю собственную музыку&#34;,&#34;motive&#34;:&#34;stage&#34;}">
-            <span>Выступаю и создаю собственную музыку</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q2" value="5" data-tags="{&#34;t&#34;:&#34;Иногда прихожу в красивое пространство, слушаю музыку и знакомлюсь с людьми&#34;,&#34;motive&#34;:&#34;people&#34;,&#34;community&#34;:2}">
-            <span>Иногда прихожу в красивое пространство, слушаю музыку и знакомлюсь с людьми</span>
-          </label>
-      </div>
-    </fieldset><fieldset class="quiz-step" data-quiz-step="3" hidden>
-      <legend class="quiz-q">Что вам сейчас важнее всего?</legend>
-      <div class="quiz-opts">
-        <label class="quiz-opt">
-            <input type="radio" name="hq-q3" value="0" data-tags="{&#34;t&#34;:&#34;Понять, моё ли это&#34;,&#34;route&#34;:&#34;try&#34;}">
-            <span>Понять, моё ли это</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q3" value="1" data-tags="{&#34;t&#34;:&#34;Научиться играть&#34;,&#34;route&#34;:&#34;learn&#34;}">
-            <span>Научиться играть</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q3" value="2" data-tags="{&#34;t&#34;:&#34;Найти свой инструмент&#34;,&#34;route&#34;:&#34;buy&#34;}">
-            <span>Найти свой инструмент</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q3" value="3" data-tags="{&#34;t&#34;:&#34;Получить инструмент на время&#34;,&#34;route&#34;:&#34;rent&#34;}">
-            <span>Получить инструмент на время</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q3" value="4" data-tags="{&#34;t&#34;:&#34;Найти людей со схожими интересами&#34;,&#34;route&#34;:&#34;community&#34;}">
-            <span>Найти людей со схожими интересами</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q3" value="5" data-tags="{&#34;t&#34;:&#34;Пока просто хочу разобраться&#34;,&#34;route&#34;:&#34;curious&#34;}">
-            <span>Пока просто хочу разобраться</span>
-          </label>
-      </div>
-    </fieldset><fieldset class="quiz-step" data-quiz-step="4" hidden>
-      <legend class="quiz-q">А что вас останавливает?</legend>
-      <div class="quiz-opts">
-        <label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="0" data-tags="{&#34;t&#34;:&#34;Боюсь купить дорогой инструмент и забросить&#34;,&#34;barrier&#34;:&#34;quit&#34;}">
-            <span>Боюсь купить дорогой инструмент и забросить</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="1" data-tags="{&#34;t&#34;:&#34;Не знаю, с чего начать обучение&#34;,&#34;barrier&#34;:&#34;howlearn&#34;}">
-            <span>Не знаю, с чего начать обучение</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="2" data-tags="{&#34;t&#34;:&#34;Не понимаю, какой инструмент выбрать&#34;,&#34;barrier&#34;:&#34;choose&#34;}">
+            <input type="radio" name="hq-q2" value="choose">
             <span>Не понимаю, какой инструмент выбрать</span>
           </label><label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="3" data-tags="{&#34;t&#34;:&#34;Пока не уверен(а), что хэндпан вообще для меня&#34;,&#34;barrier&#34;:&#34;unsure&#34;}">
-            <span>Пока не уверен(а), что хэндпан вообще для меня</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="4" data-tags="{&#34;t&#34;:&#34;Не хочу заниматься в одиночку&#34;,&#34;barrier&#34;:&#34;alone&#34;,&#34;community&#34;:1}">
-            <span>Не хочу заниматься в одиночку</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="5" data-tags="{&#34;t&#34;:&#34;Пока не готов(а) покупать&#34;,&#34;barrier&#34;:&#34;notready&#34;}">
-            <span>Пока не готов(а) покупать</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q4" value="6" data-tags="{&#34;t&#34;:&#34;Ничего не останавливает – хочу попробовать&#34;,&#34;barrier&#34;:&#34;none&#34;}">
-            <span>Ничего не останавливает – хочу попробовать</span>
-          </label>
-      </div>
-    </fieldset><fieldset class="quiz-step" data-quiz-step="5" hidden>
-      <legend class="quiz-q">Хотели бы вы быть частью сообщества вокруг хэндпана?</legend>
-      <div class="quiz-opts">
-        <label class="quiz-opt">
-            <input type="radio" name="hq-q5" value="0" data-tags="{&#34;t&#34;:&#34;Да, хочу знакомиться, играть вместе и ходить на события&#34;,&#34;community&#34;:3}">
-            <span>Да, хочу знакомиться, играть вместе и ходить на события</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q5" value="1" data-tags="{&#34;t&#34;:&#34;Было бы интересно, но сначала хочу разобраться с инструментом&#34;,&#34;community&#34;:1}">
-            <span>Было бы интересно, но сначала хочу разобраться с инструментом</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q5" value="2" data-tags="{&#34;t&#34;:&#34;Мне интереснее заниматься самостоятельно&#34;,&#34;community&#34;:-2}">
-            <span>Мне интереснее заниматься самостоятельно</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q5" value="3" data-tags="{&#34;t&#34;:&#34;Пока не знаю&#34;,&#34;community&#34;:0}">
-            <span>Пока не знаю</span>
+            <input type="radio" name="hq-q2" value="none">
+            <span>Ничего не останавливает</span>
           </label>
       </div>
     </fieldset>
   <div class="quiz-res" data-quiz-res="trial" hidden tabindex="-1">
-      <h2 class="quiz-kicker">Кажется, мы поняли, с чего вам лучше начать</h2>
-      <p class="quiz-lead" data-quiz-lead></p>
-      <p class="quiz-text">Сначала приходите на пробное занятие: познакомитесь с инструментом, попробуете сыграть и поймёте, хочется ли продолжить.</p>
+      <h2 class="quiz-kicker" data-kicker="Начните с пробного урока">Начните с пробного урока</h2>
+      <p class="quiz-text">Послушайте хэндпан, попробуйте извлекать звук и соединять первые музыкальные фразы с помощью преподавателя. Для первого знакомства не нужно музыкальное образование.</p>
+      <p class="quiz-lead" data-quiz-lead hidden></p>
       <div class="quiz-step-card">
         <span class="mono">Ваш первый шаг</span>
-        <span class="quiz-step-name">Пробное занятие</span>
-        <span class="quiz-step-meta">45 минут · 900 ₽</span>
+        <span class="quiz-step-name">Пробный урок</span>
+        <span class="quiz-step-meta">45 минут · 900 ₽ · инструмент предоставляем</span>
       </div>
-      <button type="button" class="btn btn--blue quiz-cta" data-open="trial" data-quiz-cta>Записаться на занятие →</button>
-      <p class="small quiz-after">А если после занятия захочется свой инструмент – его можно подобрать и попробовать у нас в студии.</p>
-    </div><div class="quiz-res" data-quiz-res="buy" hidden tabindex="-1">
-      <h2 class="quiz-kicker">Похоже, вы уже готовы искать свой инструмент</h2>
-      <p class="quiz-lead" data-quiz-lead></p>
-      <p class="quiz-text">Разбираться в строях, нотах и характеристиках самостоятельно не обязательно. У нас можно услышать, сравнить, попробовать, получить консультацию мастера – и выбрать свой хэндпан.</p>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="trial" data-quiz-cta>Записаться на пробный урок →</button>
+      
+      <a class="lnk quiz-link" href="/handpan-shop-home/astro/cources#formats">Посмотреть форматы обучения →</a>
+    </div><div class="quiz-res" data-quiz-res="ind" hidden tabindex="-1">
+      <h2 class="quiz-kicker" data-kicker="Найдите своё звучание с преподавателем">Найдите своё звучание с преподавателем</h2>
+      <p class="quiz-text">Начните с основ или продолжите развивать технику, чувство ритма и импровизацию. Поможем подобрать занятия с учётом вашего опыта и музыкальных целей.</p>
+      <p class="quiz-lead" data-quiz-lead hidden></p>
       <div class="quiz-step-card">
         <span class="mono">Ваш первый шаг</span>
-        <span class="quiz-step-name">Тест инструментов</span>
+        <span class="quiz-step-name">Индивидуальные занятия</span>
+        <span class="quiz-step-meta">с преподавателем · в студии или онлайн</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="lessons" data-quiz-cta>Подобрать занятия →</button>
+      
+      
+    </div><div class="quiz-res" data-quiz-res="group" hidden tabindex="-1">
+      <h2 class="quiz-kicker" data-kicker="Учитесь играть вместе с другими" data-kicker-try="Попробуйте поиграть в группе">Учитесь играть вместе с другими</h2>
+      <p class="quiz-text">Если вам важны общение и совместное творчество, начните с группового обучения. На занятиях вы будете осваивать инструмент с преподавателем, знакомиться с другими учениками и постепенно становиться частью сообщества школы.</p>
+      <p class="quiz-lead" data-quiz-lead hidden></p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Групповое обучение</span>
+        <span class="quiz-step-meta">поможем подобрать группу по вашему уровню</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="group" data-quiz-cta>Подобрать группу →</button>
+      <p class="small quiz-after">Расскажем о расписании, условиях и ближайшем наборе.</p>
+      
+    </div><div class="quiz-res" data-quiz-res="format" hidden tabindex="-1">
+      <h2 class="quiz-kicker" data-kicker="Поможем выбрать формат обучения">Поможем выбрать формат обучения</h2>
+      <p class="quiz-text">Индивидуально – занятия под ваш темп и цели, всё внимание преподавателя только вам. В группе – учитесь вместе с другими, общаетесь и становитесь частью сообщества школы.</p>
+      <p class="quiz-lead" data-quiz-lead hidden></p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Подбор занятий</span>
+        <span class="quiz-step-meta">индивидуально · в группе · онлайн</span>
+      </div>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="lessons" data-quiz-cta>Помогите выбрать занятия →</button>
+      
+      
+    </div><div class="quiz-res" data-quiz-res="buy" hidden tabindex="-1">
+      <h2 class="quiz-kicker" data-kicker="Найдите свой хэндпан">Найдите свой хэндпан</h2>
+      <p class="quiz-text">Послушайте и сравните инструменты, попробуйте поиграть и получите консультацию мастера. Поможем разобраться в строях, материалах и количестве нот, чтобы выбрать подходящее звучание под ваши задачи и бюджет.</p>
+      <p class="quiz-lead" data-quiz-lead hidden></p>
+      <div class="quiz-step-card">
+        <span class="mono">Ваш первый шаг</span>
+        <span class="quiz-step-name">Подбор инструмента</span>
         <span class="quiz-step-meta">20+ хангов в студии · консультация мастера</span>
       </div>
-      <button type="button" class="btn btn--blue quiz-cta" data-open="buy" data-quiz-cta>Записаться на тест инструментов →</button>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="buy" data-quiz-cta>Записаться на подбор →</button>
       
+      <a class="lnk quiz-link" href="/handpan-shop-home/astro/instruments">Посмотреть инструменты →</a>
     </div><div class="quiz-res" data-quiz-res="rent" hidden tabindex="-1">
-      <h2 class="quiz-kicker">Вам не обязательно покупать хэндпан сразу</h2>
-      <p class="quiz-lead" data-quiz-lead></p>
-      <p class="quiz-text">Можно идти шаг за шагом: попробовать, взять инструмент в аренду, научиться играть – и потом выбрать свой.</p>
+      <h2 class="quiz-kicker" data-kicker="Возьмите хэндпан домой">Возьмите хэндпан домой</h2>
+      <p class="quiz-text">Аренда позволит познакомиться с инструментом перед покупкой или заниматься дома между уроками. Расскажем, какие хэндпаны доступны, и поможем выбрать подходящий вариант.</p>
+      <p class="quiz-lead" data-quiz-lead hidden></p>
       <div class="quiz-step-card">
         <span class="mono">Ваш первый шаг</span>
         <span class="quiz-step-name">Аренда хэндпана</span>
         <span class="quiz-step-meta">от 8 000 ₽ в месяц</span>
       </div>
-      <button type="button" class="btn btn--blue quiz-cta" data-open="rent" data-quiz-cta>Узнать об аренде →</button>
+      <button type="button" class="btn btn--blue quiz-cta" data-open="rent" data-quiz-cta>Узнать условия аренды →</button>
       
-    </div><div class="quiz-res" data-quiz-res="community" hidden tabindex="-1">
-      <h2 class="quiz-kicker">Похоже, вам интересен не только инструмент</h2>
-      <p class="quiz-lead" data-quiz-lead></p>
-      <p class="quiz-text">U-GENE sound vibe – это не только школа и мастерская. Это люди, с которыми можно играть, знакомиться, ходить на события, участвовать в джемах и расти в музыке.</p>
-      <div class="quiz-step-card">
-        <span class="mono">Ваш первый шаг</span>
-        <span class="quiz-step-name">Знакомство с сообществом</span>
-        <span class="quiz-step-meta">джемы · концерты · выезды · встречи с мастерами</span>
-      </div>
-      <button type="button" class="btn btn--blue quiz-cta" data-open="help" data-quiz-cta>Хочу в сообщество →</button>
       
     </div>
   <div class="quiz-nav">
@@ -786,6 +687,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1116h"></script><script src="/handpan-shop-home/astro/home.js?v=1116h"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1122a"></script><script src="/handpan-shop-home/astro/home.js?v=1122a"></script>
 </body>
 </html>

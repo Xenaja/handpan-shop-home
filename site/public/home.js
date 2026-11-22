@@ -473,18 +473,20 @@
 
   /* ---------- формы ---------- */
   // модалка: кнопка на странице заранее выбирает «Что интересно»
+  // правка 21.11: «Консультация» → «Задать вопрос», визит в студию — это подбор инструмента
   const TITLES = {
     visit: 'Визит в студию',
-    trial: 'Пробное занятие',
-    buy: 'Консультация мастера',
+    trial: 'Пробный урок',
+    buy: 'Подбор инструмента',
     rent: 'Аренда инструмента',
-    help: 'Поможем определиться',
-    community: 'Присоединиться к комьюнити'
+    help: 'Задать вопрос',
+    lessons: 'Подбор занятий',
+    group: 'Подбор группы'
   };
   const sheet = $('[data-sheet]'), sRoute = $('[data-interest]', sheet);
   const setRoute = r => {
     if (!TITLES[r]) r = 'help';
-    sRoute.value = r;
+    sRoute.value = HS.interest(r);
     $('[data-sheet-title]', sheet).textContent = TITLES[r];
     $('[data-sheet-help]', sheet).hidden = r !== 'help';
   };

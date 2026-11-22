@@ -6,16 +6,15 @@
   /* ---------- форма: кнопка на странице заранее выбирает «Что интересно» ---------- */
   const TITLES = {
     visit: 'Визит в студию',
-    trial: 'Пробное занятие',
-    buy: 'Консультация мастера',
+    trial: 'Пробный урок',
+    buy: 'Подбор инструмента',
     rent: 'Аренда инструмента',
-    help: 'Поможем выбрать',
-    community: 'Присоединиться к комьюнити'
+    help: 'Поможем выбрать'
   };
   const sheet = $('[data-sheet]'), sRoute = $('[data-interest]', sheet);
   const setRoute = r => {
     if (!TITLES[r]) r = 'help';
-    if (sRoute) sRoute.value = r;
+    if (sRoute) sRoute.value = HS.interest(r);
     $('[data-sheet-title]', sheet).textContent = TITLES[r];
     $('[data-sheet-help]', sheet).hidden = r !== 'help';
   };

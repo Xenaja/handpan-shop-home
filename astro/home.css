@@ -957,3 +957,31 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   html[data-motion-paused] .s1-wave span{animation-play-state:paused}
 }
 @keyframes wv-idle{from{transform:scaleY(.2)}to{transform:scaleY(.5)}}
+
+/* Правки 21.11 */
+/* 2: подпись строя под схемой */
+.s2-scale{margin-top:-10px;opacity:.75}
+/* 3: список «Вы сможете» и подпись к кнопке */
+.s3-list{display:flex;flex-direction:column;gap:6px;margin:-8px 0 0;padding:0;list-style:none}
+.s3-list li{position:relative;padding-left:22px}
+.s3-list li::before{content:'';position:absolute;left:2px;top:.72em;width:8px;height:1.5px;background:var(--blue)}
+.s3-btns{align-items:center;gap:12px 20px}
+.s3-meta{color:var(--ink3)}
+/* 4: три пути одного размера (без выделенной средней), до двух действий в карточке */
+.route-btns{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:auto}
+.route-more{color:var(--ink);font-size:15px;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.route-more:hover{text-decoration-thickness:2px}
+.route-info .route-sub{display:block;font-weight:600;color:var(--ink)}
+.s4-note a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+@media(min-width:1000px){
+  .routes{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+  .route:nth-child(2) .route-photo,.route-photo{aspect-ratio:1.15}
+  .route:last-child{margin-left:0}
+  .route-btn{min-height:56px}
+}
+/* 8: соцсети вместо формы вступления */
+.s9-soc{display:flex;flex-wrap:wrap;gap:10px;margin-left:clamp(0px,4vw,56px)}
+.s9-soc-a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px 0 14px;background:#5F1822;color:#fff;font-size:15px;font-weight:500;transition:background-color .35s}
+.s9-soc-a:hover{background:#74202D}
+.s9-soc-a svg{width:22px;height:22px;flex:0 0 22px}
+.s9-soc-note{margin-left:clamp(0px,4vw,56px);max-width:340px;font-size:11px;line-height:1.4;color:var(--ink3)}

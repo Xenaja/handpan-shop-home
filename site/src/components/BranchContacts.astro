@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <p class="branch-booking-note">{c.bookingUrl ? 'Выберите занятие и удобное время в расписании' : 'Пробное занятие — 45 минут. Инструмент предоставляем'}</p>
             {c.bookingUrl
               ? <a class="btn btn--blue branch-book" href={c.bookingUrl} target="_blank" rel="noopener" data-booking-city={c.key}>Записаться онлайн <span aria-hidden="true">↗</span></a>
-              : <button type="button" class="btn btn--blue branch-book" data-open="trial">Записаться на пробное</button>}
+              : <button type="button" class="btn btn--blue branch-book" data-open="trial">Попробовать урок</button>}
           </div>
           {(messages.length > 0 || socials.length > 0) && <div class="branch-channels">
             {messages.length > 0 && <div class="branch-group">

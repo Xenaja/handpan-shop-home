@@ -221,8 +221,9 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(10,16,32,.14)}
 .form-booking .btn{width:100%;white-space:normal;min-height:56px;padding:14px 20px}
 .form input:not([type=checkbox]):not([type=radio]),.form select{width:100%;height:56px;padding:0 22px;border:1px solid transparent;border-radius:28px;background:var(--sand);font-family:var(--f-t);font-size:16px;color:var(--ink);outline:none;-webkit-appearance:none;appearance:none}
 .form select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 26px) 50%,calc(100% - 20px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:48px}
-.form input::placeholder{color:var(--ink3)}
-.form input:focus-visible,.form select:focus-visible{border-color:var(--blue);box-shadow:0 0 0 3px rgba(var(--blue-rgb),.22)}
+.form textarea{display:block;width:100%;min-height:96px;padding:16px 22px;border:1px solid transparent;border-radius:0;background:var(--sand);font-family:var(--f-t);font-size:16px;line-height:1.45;color:var(--ink);outline:none;resize:vertical}
+.form input::placeholder,.form textarea::placeholder{color:var(--ink3)}
+.form input:focus-visible,.form select:focus-visible,.form textarea:focus-visible{border-color:var(--blue);box-shadow:0 0 0 3px rgba(var(--blue-rgb),.22)}
 .form [aria-invalid="true"]{border-color:#B42318}
 .err{font-size:13px;line-height:1.4;padding:0 22px;color:#B42318}
 .err:empty{display:none}
@@ -605,3 +606,5 @@ html.intro :is(.s1,.e1){animation:intro-settle 2s cubic-bezier(.22,.8,.3,1) 2s b
 @keyframes bl-breathe{0%,100%{scale:1}20%{scale:1.04}}
 /* кнопка записи в контактах ниже по высоте — на всех страницах (правка 14.11) */
 html body .branch-book.btn.btn{min-height:48px;height:auto;padding:12px 26px;font-size:15px;line-height:1.2;border-radius:24px}
+/* тест: дополнительная ссылка под кнопкой результата (правка 21.11) */
+.quiz-link{align-self:flex-start;font-size:14px}
