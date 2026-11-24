@@ -12,8 +12,6 @@ import D from '../data/site.json';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const home = `${base}/`;
-const catalog = u('catalog');
-const USE = ['home', 'study', 'stage', 'meditation', 'musicians', 'kids'];
 // первый экран — текст ANN 13.11 (правка №62): счётчик «Более 2000» и «40+ в студии»
 const MADE = 2000, IN_STUDIO = 40;
 
@@ -76,8 +74,10 @@ const jsonld = {
           <li>Строй, сталь и ноты — под вашу задачу</li>
         </ul>
         <div class="btns e1-btns">
-          <a class="btn btn--52 btn--blue i1-cat" href={catalog}>Смотреть каталог</a>
-          <button type="button" class="btn btn--52 btn--line-d" data-open="help">Подобрать свой хэндпан</button>
+          <!-- «Смотреть каталог» снят (правка 24.11): каталога на новом сайте пока нет, страница — первый экран, заявка и контакты -->
+          <!-- «Подобрать» сразу выбирает «Подбор и покупка инструмента», а не «Задать вопрос» (скрин формы 24.11) -->
+          <button type="button" class="btn btn--52 btn--blue" data-open="buy">Подобрать свой хэндпан</button>
+          <button type="button" class="btn btn--52 btn--line-d" data-open="help">Задать вопрос</button>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ const jsonld = {
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href={home}>На главную</a><a href={u('cources')}>Обучение</a><span class="menu-on" aria-current="page">Инструменты</span><a href={catalog}>Каталог</a><a href="#contacts">Контакты</a>
+    <a href={home}>На главную</a><a href={u('cources')}>Обучение</a><span class="menu-on" aria-current="page">Инструменты</span><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург ↗</a>
@@ -104,30 +104,7 @@ const jsonld = {
 
 <main id="main">
 
-<!-- 02 · Какой ханг выбрать: задачи из ТЗ (экран 4 главной) со ссылками в каталог с фильтром -->
-<section class="sec bg-sand i2" aria-labelledby="h-i2">
-  <div class="g-head">
-    <div class="sec-head">
-      <span class="mono">02 · Какой ханг выбрать</span>
-      <h2 id="h-i2" class="h2">От медитации <span class="mute">до сцены</span></h2>
-    </div>
-    <p class="g-note">Инструмент, который находит место в любой практике и в любой музыке. Выберите задачу — покажем подходящие хэндпаны в каталоге</p>
-  </div>
-  <ul class="i2-grid">
-    {D.audiences.map((a, i) => (
-      <li class="i2-card">
-        <h3 class="i2-name">{a.name}</h3>
-        <p class="i2-text">{a.text}</p>
-        {a.rec && <p class="i2-rec"><span class="mono">Рекомендуем</span>{a.rec}</p>}
-        <a class="i2-link" href={`${catalog}?use=${USE[i]}`}>Смотреть {a.link.replace(/^Инструменты/, 'инструменты')} <span aria-hidden="true">→</span></a>
-      </li>
-    ))}
-  </ul>
-  <div class="btns i2-btns">
-    <a class="btn btn--blue" href={catalog}>Весь каталог →</a>
-    <button type="button" class="btn btn--line" data-open="help">Помочь выбрать</button>
-  </div>
-</section>
+<!-- 02 · «Какой ханг выбрать» со ссылками в каталог снят до переезда каталога (правка 24.11); вернуть — коммит до правок 24.11 -->
 
 <!-- финал: контакты студий -->
 <section class="sec bg-dark on-dark e11" id="final" aria-labelledby="h-i3">
@@ -144,7 +121,7 @@ const jsonld = {
   </div>
   <BranchContacts />
   <footer class="efoot">
-    <span>© U-GENE sound vibe · Москва · СПб</span>
+    <span>© Handpan Shop · Москва · СПб</span>
     <nav class="efoot-nav" aria-label="Документы и разделы"><a class="lnk" href={u('politikaconfidencialnosti')}>Политика конфиденциальности</a><a class="lnk" href={home}>На главную →</a></nav>
   </footer>
 </section>

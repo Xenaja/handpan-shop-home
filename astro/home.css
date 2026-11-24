@@ -991,3 +991,9 @@ html:not([data-strip="words"]) .mq--words,html:not([data-strip="words"]) .s6,htm
 .s2-strip .mq--nums{animation-duration:110s}
 .s2-strip:hover .mq{animation-play-state:paused}
 .s2-strip{pointer-events:auto}
+
+/* Экран 2 «Ханг»: в Safari вокруг фото был виден квадрат (правка 24.11) — его давал filter:drop-shadow на картинке
+   с прозрачностью (отдельный слой со своим фоном). Тень теперь — мягкий градиент под ханг, без фильтров */
+.hang-photo,.s2 .hang-photo{filter:none}
+.hang::before{content:'';position:absolute;z-index:-1;left:6%;right:6%;top:12%;bottom:-6%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(20,28,62,.42),rgba(20,28,62,.18) 60%,rgba(20,28,62,0));pointer-events:none}

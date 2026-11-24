@@ -258,6 +258,7 @@ html.scrolled .burger{box-shadow:0 6px 24px rgba(10,16,32,.14)}
 .branch-links{display:flex;flex-wrap:wrap;gap:8px}
 .branch-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--line);border-radius:24px;padding:10px 18px;font-size:14px;line-height:1.4;transition:border-color .35s,background-color .35s}
 .branch-links a:hover{border-color:currentColor;background:rgba(var(--blue-rgb),.06)}
+.branch-note{margin:0;font-size:12px;line-height:1.45;opacity:.6;max-width:44ch}
 .branch-direct a:hover{text-decoration-color:currentColor}
 .on-dark .branch-contacts{--line:rgba(232,238,244,.25)}
 .branch-tabs{display:flex;flex-wrap:wrap;gap:8px}
@@ -382,7 +383,7 @@ html:not([data-env="dev"]) [data-pending]{display:none!important}
 
 /* ---------- узкие экраны (проверка адаптива 28.10) ---------- */
 @media (min-width:1000px){ .h2{font-size:clamp(32px,4.4vw,68px)} }
-@media (max-width:359.98px){ .logo-sub{display:none} }
+/* «Handpan Shop» короткое — подпись видна и на узких экранах (правка 24.11) */
 /* простые страницы: длинные слова в заголовке («конфиденциальности») */
 .doc .h2{font-size:clamp(24px,6vw,48px);overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto}
 @media (max-width:429.98px){ .tpage-back{display:none} }

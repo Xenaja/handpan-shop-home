@@ -13,11 +13,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       { label: 'MAX', href: k.max },
       { label: 'WhatsApp', href: k.whatsapp }
     ].filter(l => l.href);
+    // соцсети (правка 24.11 «Добавить соцсети»): у Москвы своих в cities нет — берём общие D.socials (как в «Сообществе» на главной)
+    const soc = c.socials || D.socials || {};
     const socials = [
-      { label: 'ВКонтакте', href: c.socials?.vk || k.vk },
-      { label: 'Telegram · канал', href: c.socials?.telegram },
-      { label: 'MAX · канал', href: c.socials?.max },
-      { label: 'Instagram', href: c.socials?.instagram },
+      { label: 'ВКонтакте', href: soc.vk || k.vk },
+      { label: 'Telegram · канал', href: soc.telegram },
+      { label: 'MAX · канал', href: soc.max },
+      { label: 'Instagram*', href: soc.instagram },
       { label: 'YouTube', href: k.youtube }
     ].filter(l => l.href);
     const mapQuery = encodeURIComponent(`${c.name}, ${c.address}`);
@@ -45,6 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             {socials.length > 0 && <div class="branch-group">
               <h4 class="mono">Соцсети студии</h4>
               <div class="branch-links">{socials.map(l => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}</div>
+              {soc.instagram && <p class="branch-note">*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в России</p>}
             </div>}
           </div>}
         </div>

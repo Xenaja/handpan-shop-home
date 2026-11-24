@@ -59,20 +59,25 @@
 }
 
 /* ---------- 02 · Разные подходы ---------- */
-.e2{display:flex;flex-direction:column;gap:40px}
-.e2-l{gap:20px}
-.e2-photo{display:none;aspect-ratio:4/5}
-.e2-r{gap:clamp(32px,4vw,56px)}
-.e2-q{font-family:var(--f-d);font-weight:300;font-size:clamp(24px,3vw,46px);line-height:1.2;letter-spacing:-.03em;text-wrap:pretty}
-.e2-q b{font-weight:400}
-.e2-row{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;border-top:1px solid rgba(10,16,32,.16);padding-top:24px}
+/* «Разные подходы» (правка 24.11): короткое вступление. Цитата и фраза — сноска одного размера с миниатюрой фото
+   (по рефам Ани: мелкий текст с картинкой в углу крупной композиции), главная мысль — крупно */
+.e2{display:flex;flex-direction:column;gap:28px}
+.e2 .mono.e2-label{color:var(--ink3)}
+.e2-note{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
+.e2-thumb{aspect-ratio:3/4;overflow:hidden;background:var(--concrete)}
+.e2-thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block}
+.e2-note-t{gap:12px}
+.e2-q{font-size:15px;line-height:1.55;color:var(--ink2);text-wrap:pretty}
+.e2-q b{font-weight:600;color:var(--ink)}
+.e2-q .mute{color:var(--ink3)}
 .e2-hl{color:var(--blue);font-weight:500}
+.e2-main{text-wrap:balance;font-size:clamp(22px,6.4vw,40px);line-height:1.1;overflow-wrap:break-word}
 @media (min-width:1000px){
-  .e2{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
-  .e2-l{grid-column:1 / 4}
-  .e2-r{grid-column:4 / 13}
-  .e2-photo{display:block}
-  .e2-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .e2{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);row-gap:clamp(48px,6vw,88px);align-items:start}
+  .e2-label{grid-column:1 / 5;grid-row:1}
+  .e2-note{grid-column:7 / 13;grid-row:1;grid-template-columns:clamp(84px,7vw,112px) minmax(0,1fr);gap:clamp(16px,1.6vw,24px)}
+  .e2-q{font-size:clamp(15px,1.05vw,17px)}
+  .e2-main{grid-column:1 / 11;grid-row:2;font-size:clamp(30px,3vw,50px);line-height:1.08}
 }
 
 /* ---------- 03 · Что вы освоите: пять колонок ---------- */
@@ -315,17 +320,6 @@
   .e1:not(.i1) .e1-pmeta{text-shadow:0 1px 8px rgba(10,16,32,.6)}
 }
 
-/* «Разные подходы»: фото и текст — одна высота, верх фото = верх цитаты, низ = последняя строка (правка 12.11) */
-@media(min-width:1000px){
-  .e2{position:relative;align-items:stretch}
-  .e2-l{grid-column:1 / 5;gap:0}
-  .e2-l>.mono{position:absolute;top:calc(var(--sec-y) - 34px);left:var(--gut)}
-  .e2-photo{flex:1;aspect-ratio:auto;min-height:420px}
-  .e2-photo img{position:absolute;inset:0;object-position:50% 40%}
-  .e2-r{grid-column:5 / 13;justify-content:space-between}
-  .e2-q{font-size:clamp(24px,2.7vw,44px)}
-}
-
 /* «Путь ученика»: бронзовый знак в пустой зоне под заголовком (правка 12.11) */
 .e5{position:relative;overflow:hidden;isolation:isolate}
 .e5>.e5-l,.e5>.path{position:relative;z-index:1}
@@ -438,3 +432,13 @@
 .e8 .tpanel{cursor:grab;touch-action:pan-y}
 .e8.is-drag,.e8.is-drag .tpanel{cursor:grabbing;-webkit-user-select:none;user-select:none}
 .e8 .tphoto img{-webkit-user-drag:none}
+
+/* Экран 1 (правка 24.11): «с нуля» правее; блок преподавателей снят; нижняя строка «Послушать» выше шва —
+   иначе её срезал скруглённый угол следующего экрана («ПОПРАВИТЬ ЭТО» в доке) */
+.e1:not(.i1) .e1-l3{padding-left:1.6em}
+@media(min-width:1000px){
+  .e1:not(.i1) .e1-l3{padding-left:calc(3 * (var(--cw) + var(--g)))}
+  .e1:not(.i1) .e1-bottom{bottom:calc(var(--seam) + clamp(12px,2.4vh,24px))}
+  .e1:not(.i1) .e1-copy{max-width:none}
+}
+.stage{cursor:default}

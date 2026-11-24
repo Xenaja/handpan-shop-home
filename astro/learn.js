@@ -155,15 +155,7 @@
      ноты снизу вверх по строю D Kurd: дин D3 → A3 → C4 → D4 → A4; наведение — нота (если браузер уже разрешил звук), касание/клик — нота всегда */
   const stagesBox = $('.stages'), stages = $$('.stage');
   if (stagesBox && stages.length) {
-    const NOTES = [0, 1, 3, 4, 8];
-    const ring = (i, el) => {
-      HS.tone(HS.FREQS[NOTES[i] ?? 0], 0.15, 2.8);
-      el.classList.remove('is-ringing'); void el.offsetWidth; el.classList.add('is-ringing');
-    };
-    stages.forEach((el, i) => {
-      el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') ring(i, el); });
-      el.addEventListener('click', () => ring(i, el));
-    });
+    /* звук ступеней снят (правка 24.11: «по саунд-дизайну — убираем пока»); вернуть — коммит до правок 24.11 */
     if (!HS.reduce && 'IntersectionObserver' in window) {
       stagesBox.classList.add('is-armed');
       const io = new IntersectionObserver(es => {
