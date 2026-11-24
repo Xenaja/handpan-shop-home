@@ -352,9 +352,12 @@
   function initMotion() {
     if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const mobile = matchMedia('(max-width: 999.98px)');
     // «Обучение» (правка 12.11): цитата, фото, навыки, этапы пути, форматы, вопросы — тоже мягко появляются
     const selector = '.sec-head,.g-head,.s3-heading,.route,.aud,.need,.s8-text,.s8-copy,.s9-text,.s9-top,.s9-photos,.s10-head,.s10-grid,.e11-l,.e11-r,'
-      + '.e2-q,.e2-row,.e-photo,.skill,.trial,.fmt,.faq-i,.chips'  /* .step — своя анимация в learn.js (правка 14.11) */;
+      + '.e2-q,.e2-row,.e-photo,.skill,.trial,.fmt,.faq-i,.chips'  /* .step — своя анимация в learn.js (правка 14.11) */
+      // правка 24.11: новый экран 2 «Обучения», контакты и карта, плашки «Что нужно»
+      + ',.e2-label,.e2-note,.e2-main,.branch-main,.branch-map,.tpanel,.e4-more';
     const targets = $$(selector).filter(el => !el.parentElement.closest(selector));
     const seen = new WeakSet(), active = new Map();
     const enter = el => {
@@ -372,17 +375,23 @@
               { opacity: 1, offset: .35 },
               { opacity: 1, transform: 'translateX(0)' }
             ], { duration: 2600, delay: [...el.parentElement.children].indexOf(el) * 600, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' })
-          : el.animate([
-              { opacity: 0, transform: 'translateY(26px)' },
-              { opacity: 1, transform: 'translateY(0)' }
-            ], { duration: 1000, delay: stagger, easing: 'cubic-bezier(.22,.8,.3,1)', fill: 'backwards' });
+          : mobile.matches
+            // телефон (правка 24.11, реф alma.day): блок проявляется из размытия — прозрачность и blur 8px → резкий, 1 с
+            ? el.animate([
+                { opacity: 0, filter: 'blur(8px)' },
+                { opacity: 1, filter: 'blur(0px)' }
+              ], { duration: 1000, delay: stagger, easing: 'cubic-bezier(.21,.6,.44,1.04)', fill: 'backwards' })
+            : el.animate([
+                { opacity: 0, transform: 'translateY(26px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+              ], { duration: 1000, delay: stagger, easing: 'cubic-bezier(.22,.8,.3,1)', fill: 'backwards' });
         active.set(el, animation);
         animation.finished.then(() => active.delete(el), () => active.delete(el));
     };
     const entrances = new IntersectionObserver(entries => {
       // карточки «Как начать» ждут, пока поднимутся выше трети окна (правка 14.11) — их запускает checkRoutes по прокрутке
       entries.forEach(entry => { if (entry.isIntersecting && !(entry.target.matches('.route') && entry.target.style.opacity === '0')) enter(entry.target); });
-    }, { threshold: .08 });
+    }, { threshold: .08, rootMargin: mobile.matches ? '0px 0px -12% 0px' : '0px' });  // телефон: проявление видно, а не за краем экрана
     const routes = targets.filter(el => el.matches('.route'));
     // страховка для скрытых карточек «Как начать»: запускаем и по прокрутке, как только они в окне
     const checkRoutes = () => routes.forEach(el => {
