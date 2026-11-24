@@ -1,7 +1,7 @@
 ---
 // Знак U-GENE + название текстом (логотип вертикальный, в шапку целиком не помещается — DECISIONS.md, п. 22).
-// Название — Handpan Shop (правка 24.11, «Страница обучение»: меняем на Handpan Shop, знак U-GENE оставляем); файл лого Handpan Shop ждём от Ани
+// Название — Handpan Shop (правка 24.11, «Страница обучение»: меняем на Handpan Shop, знак U-GENE оставляем); знак — хэндпан из визитки Handpan Shop (logo/handpanshop/), название одним шрифтом и жирностью (правка 24.11)
 const { class: cls = 'logo', href, style } = Astro.props;
 const Tag = href ? 'a' : 'span';
 ---
-<Tag class={cls} href={href} style={style}><i class="logo-mark" aria-hidden="true"></i><span>Handpan<span class="logo-sub">Shop</span></span></Tag>
+<Tag class={cls} href={href} style={style}><i class="logo-mark" aria-hidden="true"></i><span class="logo-name">Handpan Shop</span></Tag>
