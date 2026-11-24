@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const u = (p: string) => `${base}/${p}`;
 const canonical = new URL(path, Astro.site).href;
 const preview = base !== '';   // превью на GitHub Pages собирается с префиксом адресов, боевой сайт — от корня
-const V = '1124b';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
+const V = '1124c';   // версия ресурсов: браузер не держит старые CSS/JS после выкладки
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -40,6 +40,8 @@ const V = '1124b';   // версия ресурсов: браузер не де�
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={new URL(ogImage, Astro.site).href}>
 <meta name="theme-color" content={theme}>
+<!-- фавикон — хэндпан Handpan Shop (правка 24.11); SVG светлеет в тёмной теме браузера, PNG — запасной -->
+<link rel="icon" type="image/svg+xml" href={u('img/favicon.svg')}>
 <link rel="icon" type="image/png" href={u('img/favicon.png')}>
 <link rel="apple-touch-icon" href={u('img/apple-touch-icon.png')}>
 <!-- шрифты со своего сервера; основные начертания — заранее -->
