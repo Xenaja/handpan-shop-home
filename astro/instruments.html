@@ -23,9 +23,9 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1125a">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1125b">
 
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1125a"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=1125a"><link rel="stylesheet" href="/handpan-shop-home/astro/inst.css?v=1125a"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1125a">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1125b"><link rel="stylesheet" href="/handpan-shop-home/astro/learn.css?v=1125b"><link rel="stylesheet" href="/handpan-shop-home/astro/inst.css?v=1125b"><link rel="stylesheet" href="/handpan-shop-home/astro/making.css?v=1125b"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1125b">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга; ?strip=words — бегущая строка словами + экран с цифрами (выбор помним между страницами)
@@ -132,6 +132,29 @@
 
 <main id="main">
 
+<!-- 02 · Как делают ханг — перенесён с главной (правка 25.11) -->
+<section class="s8 bg-dark on-dark" id="making" aria-labelledby="h-s8">
+  <!-- переделано 14.11: новый текст, справа вертикальное видео из мастерской (беззвучная петля);
+       кнопка открывает полное видео со звуком в окне -->
+  <div class="sec s8n">
+    <div class="s8n-text">
+      <span class="mono">02</span>
+      <p class="s8n-kick">Ханг — это</p>
+      <h2 id="h-s8" class="h-display s8n-h"><span>Сотни этапов</span> <span><span class="cap cap--hero s8n-cap">точной работы</span></span> <span class="s8-hl">с металлом</span></h2>
+      <div class="s8n-copy">
+      <p class="s8n-body s8n-lead">Изготовление музыкального инструмента требует качественной стали, точной формовки звуковых полей и кропотливой настройки каждой ноты.</p>
+      <p class="s8n-acc">Каждый инструмент проходит <em>несколько циклов ручной настройки</em></p>
+      <p class="s8n-body s8n-b2">U-GENE — это годы практики, накопленный опыт и любовь к своему делу.</p>
+      <p class="s8n-body s8n-sup">Мы создаём инструменты, соответствующие высоким профессиональным стандартам мирового хэндпан-сообщества.</p>
+      </div>
+    </div>
+    <div class="s8n-media">
+      <video class="s8n-video" data-video-open title="Смотреть со звуком" muted loop playsinline preload="none" poster="/handpan-shop-home/astro/video/making-loop.jpg" width="720" height="1280" data-loop-src="/handpan-shop-home/astro/video/making-loop.mp4" aria-label="Мастер настраивает ханг в мастерской"></video>
+      <button type="button" class="s8n-watch glass-d" data-video-open><span class="s8-vplay" aria-hidden="true"><svg viewBox="0 0 22 22" width="12" height="12"><path d="M6 3 L19 11 L6 19 Z" fill="currentColor"></path></svg></span>Полное видео из мастерской</button>
+    </div>
+  </div>
+</section>
+
 <!-- 02 · «Какой ханг выбрать» со ссылками в каталог снят до переезда каталога (правка 24.11); вернуть — коммит до правок 24.11 -->
 
 <!-- финал: контакты студий -->
@@ -226,6 +249,11 @@
 
 </main>
 
+<dialog class="vmodal" data-video aria-label="Видео из мастерской: настройка ханга">
+  <button type="button" class="x vmodal-x" data-video-close aria-label="Закрыть видео">×</button>
+  <video controls playsinline preload="none" poster="/handpan-shop-home/astro/video/making-poster.jpg" width="720" height="1280" data-src="/handpan-shop-home/astro/video/making.mp4" data-poster="/handpan-shop-home/astro/video/making-poster.jpg" data-src-wide="/handpan-shop-home/astro/video/making-full.mp4" data-poster-wide="/handpan-shop-home/astro/video/making-full.jpg"></video>
+</dialog>
+
 
 <div class="bar bar--edu" data-sticky="520">
   <div class="glass-l bar-in">
@@ -291,6 +319,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1125a"></script><script src="/handpan-shop-home/astro/inst.js?v=1125a"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1125b"></script><script src="/handpan-shop-home/astro/inst.js?v=1125b"></script><script src="/handpan-shop-home/astro/making.js?v=1125b"></script>
 </body>
 </html>

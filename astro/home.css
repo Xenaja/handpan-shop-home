@@ -201,20 +201,6 @@
 .s7 .arr--ink{color:var(--aubergine)}
 .s7 .arr--ink:hover{background:var(--breeze);border-color:var(--breeze);color:var(--aubergine)}
 
-/* ---------- 08 · Как делают ханг ---------- */
-.s8{position:relative;overflow:hidden}
-.s8-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.45) brightness(.5)}
-.s8-grid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:32px clamp(32px,5vw,80px);align-items:end}
-.s8-text{gap:20px}
-.s8-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.s8-chip,.s8-plate{background:rgba(232,238,244,.14);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(232,238,244,.22)}
-.s8-chip{padding:8px 14px;border-radius:18px;font-size:12px;font-weight:500}
-.s8-sub{font-family:var(--f-d);font-size:clamp(17px,1.6vw,22px);letter-spacing:-.02em}
-.s8-hl{color:var(--breeze)}
-.s8-copy{gap:18px;max-width:520px}
-.s8-plate{padding:16px 20px;border-radius:18px;font-size:16px;line-height:1.4}
-.s8-btn{flex:1 1 180px}
-
 /* ---------- 09 · Ханг объединяет ---------- */
 .s9{padding-bottom:0;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)}
 .s9-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px clamp(32px,5vw,80px);align-items:center}
@@ -295,7 +281,6 @@
   .route-verb{grid-column:1 / 7}
   .route-info{grid-column:7 / 10}
   .route-btn{grid-column:10 / 13;justify-self:end}
-  .s8-copy{grid-column:8 / 13}
   .s9-text{grid-column:1 / 6}
 }
 
@@ -360,9 +345,6 @@
 .s7 .arr--ink{background:var(--ink);color:var(--milk)}
 .s7 .tcount{color:var(--ink3)}
 .s7>.btns{justify-content:center}
-.s8-grid{min-height:100svh;align-content:center;row-gap:48px;padding-top:100px;padding-bottom:100px}
-.s8 .h-display{font-size:clamp(52px,7.5vw,128px);line-height:1.02}
-.s8-copy .body{font-size:19px}
 .s9{padding-bottom:var(--sec-y)}
 .s9-text{gap:22px}
 .s9-text .body{max-width:600px;font-size:17px;line-height:1.55}
@@ -420,7 +402,6 @@
   .tcard[data-o="1"],.tcard[data-o="-1"]{--op:1}
   .tcard-name{font-size:clamp(19px,1.7vw,30px)}
   .tcard-role{font-size:clamp(12px,.9vw,16px)}
-  .s8-grid{align-items:center}
   .s9-grid{align-items:start}
   .s9-text{grid-column:1 / 7}
   .s9-grid>.mosaic{grid-column:8 / 13;position:sticky;top:32px}
@@ -514,11 +495,6 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .aud-fit{font-size:15px;line-height:1.45;color:var(--ink3)}
 .aud-fit span{color:var(--ink2);font-weight:500}
 .s5-btns{margin-top:clamp(28px,3vw,48px);justify-content:center}
-
-/* 8: цитата мастеров и «Ханг живёт десятилетиями» */
-.s8-quote{margin:0;padding-left:18px;border-left:2px solid var(--blue-l);font-family:var(--f-d);font-size:clamp(19px,1.7vw,26px);line-height:1.3;letter-spacing:-.01em}
-.s8-then{font-size:17px;color:var(--blue-l)}
-.s8-then strong{display:block;margin-top:6px;font-family:var(--f-d);font-weight:400;font-size:clamp(26px,2.6vw,40px);line-height:1.05;text-transform:uppercase;color:var(--milk)}
 .s1-thumbs span{margin-left:0}
 
 /* 5: кнопка примера звучания — знак U-GENE с «дыханием» (правка 10.11) */
@@ -640,20 +616,7 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 /* фоны блоков по правке: цифры и «Ханг объединяет» — белые, «Кто учит» и контакты — #D8E9FF */
 .s7.bg-sky{background:var(--sky)}
 .cap--wine{background:linear-gradient(90deg,var(--wine),#663343 38%,#7DAFD6);color:#fff;box-shadow:none}
-
-/* 5: «Десятки тысяч ударов» — новое фото, кнопка видео из мастерской */
-.s8-bg{object-position:70% 50%;filter:saturate(.9) brightness(.62)}
-.s8-video-btn{display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:4px 16px 4px 4px;color:#fff;font-size:13px;transition:background-color .35s}
-.s8-vplay{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--h-blue)}
-.s8-video-btn:hover{background:rgba(232,238,244,.28)}
-.vmodal{padding:0;border:0;background:none;max-width:none;max-height:none;overflow:visible}
-.vmodal::backdrop{background:rgba(10,16,32,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.vmodal video{display:block;height:min(88svh,1280px);width:auto;max-width:calc(100vw - 32px);aspect-ratio:9/16;object-fit:contain;background:#000}
-.vmodal-x{position:absolute;top:0;right:-60px;border-color:rgba(255,255,255,.5);color:#fff;background:rgba(10,16,32,.5)}
-@media(max-width:600px){.vmodal-x{right:8px;top:8px;z-index:2}}
 @media(min-width:1000px){.s2-sub{white-space:nowrap;font-size:clamp(24px,2.3vw,36px)}}
-.s8-video-btn{min-height:48px;padding:4px 20px 4px 4px;font-size:14px;font-weight:500}
-.s8-vplay{width:40px;height:40px}
 
 /* 1: ритм первого экрана (правка 12.11) — блок по центру высоты, отступы от высоты окна:
    заголовок → подзаголовок крупнее, подзаголовок и текст — одна группа, до кнопок отдельная пауза */
@@ -734,30 +697,6 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .s1-hangplay.glass-d{background:rgba(10,16,32,.46);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(232,238,244,.18)}.s1-hangplay.glass-d:hover{background:rgba(10,16,32,.66)}
 @media(min-width:1000px){.s2-scheme{transform:translateX(calc(-1 * clamp(0px,(100vw - 1100px) * .22,90px)))}}
 .route:nth-child(3) .route-photo{object-position:50% 35%}
-
-/* 5: «Десятки тысяч ударов» — раскладка «текст | фото» (правка 12.11):
-   фото справа во всю высоту, обрезано на ханг и растворяется в тёмном фоне; текст слева на чистом фоне, без наложения на инструмент */
-@media(min-width:1000px){
-  .s8{background:var(--night)}
-  .s8 .s8-bg{left:auto;right:0;width:46%;object-position:74% 50%;filter:saturate(.95) brightness(.88);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 28%);mask-image:linear-gradient(90deg,transparent 0%,#000 28%)}
-  .s8 .s8-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(28px,3vw,48px);row-gap:clamp(28px,4vh,44px);width:58%;min-height:min(100svh,980px);align-content:center;padding-top:clamp(64px,9vh,110px);padding-bottom:clamp(64px,9vh,110px)}
-  .s8 .s8-text,.s8 .s8-copy{grid-column:1 / -1;max-width:none}
-  .s8 .h-display{font-size:clamp(48px,5.8vw,104px)}
-  .s8 .s8-copy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:inherit;row-gap:16px;align-items:start}
-  .s8 .s8-copy>:nth-child(1){grid-column:1;grid-row:1}
-  .s8 .s8-copy>:nth-child(2){grid-column:1;grid-row:2}
-  .s8 .s8-copy>:nth-child(3){grid-column:2;grid-row:1;align-self:end}
-  .s8 .s8-copy>:nth-child(4){grid-column:2;grid-row:2}
-  .s8 .s8-copy>.btns{grid-column:1 / -1;grid-row:3;margin-top:clamp(8px,2vh,20px)}
-  .s8 .s8-quote{font-size:clamp(17px,1.35vw,22px)}
-  .s8 .s8-copy .body{font-size:clamp(15px,1.1vw,17px)}
-  .s8-then strong{font-size:clamp(22px,2vw,32px)}
-}
-/* 5: мягче переход и без наложения на ханг (правка 12.11) */
-@media(min-width:1000px){
-  .s8 .s8-bg{width:52%;object-position:60% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 6%,rgba(0,0,0,.5) 12%,rgba(0,0,0,.82) 18%,#000 24%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.18) 6%,rgba(0,0,0,.5) 12%,rgba(0,0,0,.82) 18%,#000 24%)}
-  .s8 .s8-grid{width:54%}
-}
 .brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours.svg);mask-image:url(img/lines/logo-contours.svg);aspect-ratio:308/290;background:linear-gradient(135deg,#E9D2B0 0%,#C49A6C 45%,#A97E57 70%,#D8B892 100%);opacity:.72}
 .brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{background:linear-gradient(135deg,#E2B98A 0%,#B47E4E 50%,#D2A26F 100%);opacity:.95}
 .brand-lines.brand-lines--routes,.brand-lines.brand-lines--path{-webkit-mask-image:url(img/lines/logo-contours-play.svg);mask-image:url(img/lines/logo-contours-play.svg)}
@@ -803,59 +742,9 @@ svg.is-touched .hang-hit:not(:hover):not(:focus-visible):not(.is-active) ellipse
 .tcard{transition:transform 1.3s cubic-bezier(.45,.05,.25,1),width 1.3s cubic-bezier(.45,.05,.25,1),opacity 1s,border-radius 1.3s,background-color 1s,color 1s}
 .tcar.is-drag .tcard{transition:width 1.3s cubic-bezier(.45,.05,.25,1),opacity 1s,border-radius 1.3s,background-color 1s,color 1s}
 .tcard[data-o="0"] .tcard-cap{transition-delay:.45s}
-
-/* 8: переход от тёмной части к фото — длинный и плавный, без заметной границы (правка 14.11) */
-@media(min-width:1000px){
-  .s8 .s8-bg{width:64%;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 10%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.26) 26%,rgba(0,0,0,.45) 34%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.95) 57%,#000 64%);
-    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.04) 10%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.26) 26%,rgba(0,0,0,.45) 34%,rgba(0,0,0,.66) 42%,rgba(0,0,0,.84) 50%,rgba(0,0,0,.95) 57%,#000 64%)}
-}
-html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом заходе «Послушай» появляется после интро, уже на своём месте */
-
-/* 8: «Сотни этапов точной работы с металлом» (правка 14.11) — текст слева, вертикальное видео справа */
-.s8n{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(36px,5vw,64px);align-items:center}
-.s8n-text{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(14px,1.8vh,20px);max-width:660px}
-.s8n-kick{margin:clamp(8px,2vh,24px) 0 0;font-family:var(--f-d);font-size:clamp(18px,1.6vw,24px);letter-spacing:-.01em;color:var(--blue-l)}
-.s8 .s8n-h{margin:0;font-size:clamp(38px,4.6vw,84px);line-height:1.02}
-.s8n-h>span{display:block}
-.s8n-body{margin:0;max-width:540px;font-size:clamp(16px,1.15vw,18px);line-height:1.55;color:rgba(232,238,244,.84)}
-.s8n-acc{margin:4px 0;padding-left:18px;border-left:2px solid #C49A6C;font-family:var(--f-d);font-size:clamp(19px,1.6vw,26px);line-height:1.3;letter-spacing:-.01em;color:var(--milk)}
-.s8n-acc em{font-style:normal;background:linear-gradient(90deg,#F0D2A8,#C9935F 55%,#E7C08E);-webkit-background-clip:text;background-clip:text;color:transparent}
-.s8n-btns{margin-top:clamp(8px,2vh,20px)}
-.s8n-media{justify-self:center;position:relative}
-.s8n-media::before{content:'';position:absolute;inset:-12% -20%;z-index:0;background:radial-gradient(closest-side,rgba(196,154,108,.22),transparent 70%);pointer-events:none}
-.s8n-video{position:relative;z-index:1;display:block;width:min(100%,340px);height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:28px;background:#14192b;
-  box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 0 1px rgba(232,238,244,.12);cursor:pointer}
-@media(min-width:1000px){
-  .s8n{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);min-height:min(100svh,1000px);padding-top:clamp(56px,8vh,96px);padding-bottom:clamp(56px,8vh,96px)}
-  .s8n-media{justify-self:end;margin-right:clamp(0px,3vw,56px)}
-  .s8n-video{width:auto;height:min(78svh,760px)}
-}
-.s8 .s8n-h.h-display{font-size:clamp(30px,9.2vw,84px)}
-@media(min-width:1000px){.s8 .s8n-h.h-display{font-size:clamp(38px,4.6vw,84px)}}
+html.intro .s1-hangplay:not(:hover){transition-delay:4s}
 /* 4: «Как начать знакомство» — меньше воздуха сверху и снизу (правка 14.11) */
 .s4.sec{padding-top:calc(var(--sec-y) * .6);padding-bottom:calc(var(--sec-y) * .6)}
-
-/* 8 (правка 14.11, вторая версия): видео на всю высоту экрана справа, вплотную к краю, без скруглений;
-   выделение — светло-голубым, как «с металлом» (без бронзы) */
-.s8n-acc{border-left-color:var(--blue-l)}
-.s8n-acc em{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--breeze)}
-.s8n-media::before{content:none}
-.s8n-media{justify-self:stretch;margin:0 calc(-1 * var(--gut)) calc(-1 * var(--sec-y) - var(--seam))}
-.s8n-video{width:100%;height:min(80svh,720px);aspect-ratio:auto;border-radius:0;box-shadow:none}
-@media(min-width:1000px){
-  .s8n{grid-template-columns:minmax(0,1fr) 38%;align-items:stretch;padding-right:0}
-  .s8n-text{align-self:center}
-  .s8n-media{position:relative;margin:calc(-1 * clamp(56px,8vh,96px)) 0 calc(-1 * clamp(56px,8vh,96px) - var(--seam)) 0}
-  .s8n-video{position:absolute;inset:0;width:100%;height:100%}
-}
-@media(max-width:999.98px){.s8n-media{width:100vw;max-width:none;justify-self:start;margin-left:calc(-1 * var(--gut));margin-right:0}}
-/* 8: заголовок лесенкой (правка 14.11) — каждая часть одной строкой со сдвигом вправо */
-.s8n-h>span{white-space:nowrap}
-.s8n-h>span:nth-child(2){padding-left:.9em}
-.s8n-h>span:nth-child(3){padding-left:1.8em}
-.s8 .s8n-h.h-display{font-size:clamp(26px,8.2vw,84px)}
-@media(min-width:1000px){.s8 .s8n-h.h-display{font-size:clamp(38px,4.4vw,80px)}}
 
 /* 2: подсказка на ханге — пальчик с подсветкой мягко «нажимает» на поле справа внизу (правка 14.11) */
 .hang-finger{fill:#fff;pointer-events:none;filter:drop-shadow(0 0 2px rgba(255,255,255,.9)) drop-shadow(0 0 6px rgba(255,236,210,.55))}
@@ -865,25 +754,6 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   html[data-motion-paused] .hf-in{animation-play-state:paused}
 }
 @keyframes hf-tap{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(-1.2px,-1.6px) scale(.9)}55%{transform:translate(-1.2px,-1.6px) scale(.9)}}
-
-/* 8 (правка 14.11, третья версия): градиентный фон вместо плоского тёмного, «с металлом» в капсуле,
-   видео плавно проявляется из фона, кнопка «смотреть полностью» поверх видео */
-.s8.bg-dark{background:radial-gradient(ellipse 70% 60% at 16% 20%,rgba(78,110,178,.42),transparent 70%),
-  radial-gradient(ellipse 55% 65% at 62% 105%,rgba(122,52,72,.26),transparent 70%),
-  linear-gradient(160deg,#131c40 0%,#0d1532 55%,#0a1020 100%)}
-.s8n-cap{font-size:1em;margin-left:-.12em}
-.s8n-media{position:relative}
-.s8n-video{-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 9%,#000 20%);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 9%,#000 20%)}
-.s8n-watch{position:absolute;z-index:2;left:50%;bottom:calc(28px + var(--seam));transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;
-  min-height:52px;padding:6px 22px 6px 6px;border-radius:999px;border:1px solid rgba(232,238,244,.3);color:#fff;font-size:14px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background-color .35s}
-.s8n-watch .s8-vplay{width:40px;height:40px}
-.s8n-watch:hover{background:rgba(232,238,244,.26)}
-@media(min-width:1000px){
-  .s8n-video{-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.3) 10%,rgba(0,0,0,.72) 22%,#000 34%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.3) 10%,rgba(0,0,0,.72) 22%,#000 34%)}
-  .s8n-watch{left:auto;right:clamp(24px,3vw,48px);transform:none;bottom:calc(clamp(56px,8vh,96px) + var(--seam))}
-}
-.vmodal.is-wide video{height:auto;width:min(92vw,1400px);max-height:86svh;aspect-ratio:16/9}
-.s8n-h>span:nth-child(3){margin:.14em 0 .1em}
 
 /* 9: лента фото комьюнити (правка 14.11) — медленно и непрерывно едет сама, без пауз и рывков */
 .s9-reel{position:relative;z-index:1;overflow:hidden;margin:0 calc(-1 * var(--gut))}
@@ -895,46 +765,13 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
 }
 @media (prefers-reduced-motion:reduce){.s9-reel{overflow-x:auto}}
 @keyframes s9-run{to{transform:translateX(calc(-50% - clamp(10px,1.2vw,16px) / 2))}}
-
-/* 8 (правка 14.11): капсула под «точной работы»; текст выровнен по «с металлом»;
-   абзацы разной величины и цвета — как в «Почему так легко играть» */
-.s8n-copy{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,1.6vh,18px);margin-top:clamp(6px,1.4vh,14px)}
-.s8n-lead{font-size:clamp(17px,1.25vw,20px);line-height:1.5;color:var(--milk)}
-.s8n-b2{font-size:clamp(16px,1.15vw,18px);color:var(--breeze)}
-.s8n-sup{font-size:clamp(14px,1vw,16px);color:rgba(232,238,244,.62);max-width:460px}
-.s8n-h>span:nth-child(3){margin:0}
-.s8n-h>span:nth-child(2){margin:.1em 0 .12em}
-@media(min-width:1000px){.s8n-copy{padding-left:calc(1.8 * clamp(38px,4.4vw,80px))}}
-@media(max-width:999.98px){.s8n-copy{padding-left:calc(1.8 * clamp(26px,8.2vw,84px))}}
-@media(max-width:599.98px){.s8n-copy{padding-left:0}}
-@media(max-width:599.98px){.s8n-h>span:nth-child(2){padding-left:.3em}.s8n-h>span:nth-child(3){padding-left:1.2em}}
 /* подсказка-треугольник (правка 14.11): мягко «дышит» в центре подсвеченного поля */
 @keyframes hf-tap{0%,100%{transform:scale(1);opacity:.95}45%{transform:scale(.82);opacity:.75}60%{transform:scale(.82);opacity:.75}}
 .hf-in{transform-origin:50% 50%}
 
-/* 8 (правка 14.11): строки заголовка свободнее; цитата — по линии «Сотни этапов»;
-   видео шире и без размытого перехода */
-.s8 .s8n-h.h-display{line-height:1.08}
-.s8n-h>span:nth-child(2){margin:.2em 0 .18em}
-@media(min-width:1000px){
-  .s8n-copy .s8n-acc{margin-left:calc(-1.8 * clamp(38px,4.4vw,80px))}
-  .s8n{grid-template-columns:minmax(0,1fr) 46%}
-  .s8n-video{-webkit-mask-image:none;mask-image:none}
-}
-@media(min-width:600px) and (max-width:999.98px){.s8n-copy .s8n-acc{margin-left:calc(-1.8 * clamp(26px,8.2vw,84px))}}
-
 /* 1: видео-фон первого экрана (правка 14.11) — поверх фото, проявляется, когда пошло; затемнение остаётся сверху */
 .s1-vid{position:absolute;inset:0;width:100%;height:calc(100% + var(--seam,0px));object-fit:cover;object-position:50% 50%;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
 .s1-vid.is-on{opacity:1}
-
-/* 8 (правка 14.11): текст под заголовком — две колонки: слева крупная цитата, справа три абзаца */
-@media(min-width:1000px){
-  .s8n-copy{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);column-gap:clamp(24px,2.6vw,44px);row-gap:clamp(10px,1.4vh,16px);align-items:start;padding-left:0;margin-top:clamp(14px,2.4vh,28px)}
-  .s8n-copy .s8n-acc{grid-column:1;grid-row:1 / span 3;margin:0;font-size:clamp(20px,1.7vw,28px);line-height:1.25}
-  .s8n-copy .s8n-lead,.s8n-copy .s8n-b2,.s8n-copy .s8n-sup{grid-column:2;max-width:none}
-  .s8n-copy .s8n-lead{font-size:clamp(16px,1.15vw,18px)}
-  .s8n-copy .s8n-b2{font-size:clamp(15px,1.05vw,17px)}
-}
 /* подсказка-треугольник (правка 14.11): подъезжает по диагонали снизу-справа к полю, «нажимает» и растворяется */
 @keyframes hf-tap{
   0%{transform:translate(38px,46px) scale(1);opacity:0}
@@ -944,9 +781,6 @@ html.intro .s1-hangplay:not(:hover){transition-delay:4s}  /* при первом
   74%{transform:translate(0,0) scale(1);opacity:1}
   92%,100%{transform:translate(0,0) scale(1);opacity:0}}
 @media (prefers-reduced-motion:no-preference){.hf-in{animation:hf-tap 2.6s cubic-bezier(.4,0,.2,1) infinite}}
-@media(min-width:1000px){.s8n{grid-template-columns:minmax(0,1fr) 40%}}  /* видео чуть уже (правка 14.11) */
-/* экран 8 «Ханг — это» — бордовый градиент, как «Кто вас учит» на «Обучении» (правка 14.11) */
-.s8.bg-dark{background:var(--aubergine-bg)}
 
 /* 1: «Послушай» — звуковая волна (правка 14.11): в покое тихо «дышит», когда играет — во всю высоту */
 .s1-wave{margin-left:2px;height:18px;color:rgba(255,255,255,.85)}
