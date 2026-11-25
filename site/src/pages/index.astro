@@ -3,6 +3,7 @@
 // home.js только переключает их. Данные — src/data/site.json, null = данных ещё нет (PENDING.md).
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import MenuExtras from '../components/MenuExtras.astro';
 import BrandLines from '../components/BrandLines.astro';
 import LeadForm from '../components/LeadForm.astro';
 import BranchContacts from '../components/BranchContacts.astro';
@@ -130,11 +131,12 @@ const jsonld = {
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href={u('cources')}>Обучение</a><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+    <a href={u('cources')}>Обучение</a><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#routes">Аренда</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург ↗</a>
   </div>
+  <MenuExtras cta="trial" ctaLabel="Попробовать урок" />
 </nav>
 <button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
 
@@ -209,7 +211,7 @@ const jsonld = {
 </section>
 
 <!-- 04 · Три маршрута -->
-<section class="sec s4 bg-grad" aria-labelledby="h-s4">
+<section class="sec s4 bg-grad" id="routes" aria-labelledby="h-s4">
   <BrandLines class="brand-lines--routes" />
 
   <div class="head-row">

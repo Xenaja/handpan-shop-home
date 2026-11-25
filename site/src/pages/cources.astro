@@ -3,6 +3,7 @@
 // Навыки, ступени, путь, форматы, преподаватели и FAQ собираются в HTML при сборке; learn.js их только переключает.
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
+import MenuExtras from '../components/MenuExtras.astro';
 import BrandLines from '../components/BrandLines.astro';
 import LeadForm from '../components/LeadForm.astro';
 import BranchContacts from '../components/BranchContacts.astro';
@@ -111,11 +112,12 @@ const jsonld = {
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href={home}>На главную</a><span class="menu-on" aria-current="page">Обучение</span><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+    <a href={home}>На главную</a><span class="menu-on" aria-current="page">Обучение</span><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href={home + '#routes'}>Аренда</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><button type="button" class="chip" data-city="spb" aria-pressed="false">Санкт-Петербург</button>
   </div>
+  <MenuExtras cta="trial" ctaLabel="Записаться на пробный" />
 </nav>
 <button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
 

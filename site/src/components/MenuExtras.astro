@@ -1,0 +1,21 @@
+---
+// Низ мобильного меню (правка консультанта 25.11, п. 7): запись, телефон и почта Москвы, соцсети.
+// Москва — по умолчанию; у СПб свой сайт, он в переключателе города выше.
+import D from '../data/site.json';
+const { cta = 'trial', ctaLabel = 'Попробовать урок' } = Astro.props;
+const msk = D.cities.find(c => c.key === 'msk');
+const c = msk?.contacts || {};
+const soc = D.socials || {};
+---
+<div class="menu-extra">
+  <button type="button" class="btn btn--52 btn--blue menu-cta" data-open={cta}>{ctaLabel}</button>
+  <div class="menu-contacts">
+    {c.phone && <a class="menu-phone" href={`tel:${c.phone}`}>{c.phoneLabel}</a>}
+    {c.email && <a class="lnk" href={`mailto:${c.email}`}>{c.email}</a>}
+  </div>
+  <div class="menu-soc">
+    {soc.telegram && <a class="chip" href={soc.telegram} target="_blank" rel="noopener">Telegram</a>}
+    {soc.instagram && <a class="chip" href={soc.instagram} target="_blank" rel="noopener">Instagram*</a>}
+  </div>
+  {soc.instagram && <p class="branch-note">*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в России</p>}
+</div>

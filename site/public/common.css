@@ -614,3 +614,11 @@ html body .branch-book.btn.btn{min-height:48px;height:auto;padding:12px 26px;fon
    название одним шрифтом и одной жирностью, как пишется бренд */
 .logo-mark{width:2.6em;height:2.47em;-webkit-mask-image:url(img/logo-hang.svg);mask-image:url(img/logo-hang.svg)}
 .logo-name{text-transform:none;letter-spacing:.01em;font-size:1.08em}
+
+/* Меню: запись, контакты и соцсети внизу (правка консультанта 25.11, п. 7) */
+.menu-extra{display:flex;flex-direction:column;gap:18px;margin-top:auto;padding-top:24px;border-top:1px solid rgba(10,16,32,.12)}
+.menu-cta{width:100%}
+.menu-contacts{display:flex;flex-direction:column;gap:6px;font-size:16px}
+.menu-phone{font-family:var(--f-d);font-size:22px;letter-spacing:-.02em;text-decoration:none;color:inherit}
+.menu-soc{display:flex;flex-wrap:wrap;gap:10px}
+.menu-extra .branch-note{font-size:12px}

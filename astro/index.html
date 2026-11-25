@@ -23,12 +23,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1125b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1125c">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1125b"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1125b"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1125b">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1125c"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1125c"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1125c">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга; ?strip=words — бегущая строка словами + экран с цифрами (выбор помним между страницами)
@@ -130,11 +130,23 @@
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href="/handpan-shop-home/astro/cources">Обучение</a><a href="/handpan-shop-home/astro/instruments">Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
+    <a href="/handpan-shop-home/astro/cources">Обучение</a><a href="/handpan-shop-home/astro/instruments">Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#routes">Аренда</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href="https://handpanstudiospb.ru" target="_blank" rel="noopener">Санкт-Петербург ↗</a>
   </div>
+  <div class="menu-extra">
+  <button type="button" class="btn btn--52 btn--blue menu-cta" data-open="trial">Попробовать урок</button>
+  <div class="menu-contacts">
+    <a class="menu-phone" href="tel:+79031302889">+7 (903) 130-28-89</a>
+    <a class="lnk" href="mailto:handpanshop@mail.ru">handpanshop@mail.ru</a>
+  </div>
+  <div class="menu-soc">
+    <a class="chip" href="https://t.me/handpanshop_pro" target="_blank" rel="noopener">Telegram</a>
+    <a class="chip" href="https://www.instagram.com/handpanshop.pro" target="_blank" rel="noopener">Instagram*</a>
+  </div>
+  <p class="branch-note">*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в России</p>
+</div>
 </nav>
 <button type="button" class="burger" aria-expanded="false" aria-controls="menu" aria-label="Меню"><span></span><span></span></button>
 
@@ -209,7 +221,7 @@
 </section>
 
 <!-- 04 · Три маршрута -->
-<section class="sec s4 bg-grad" aria-labelledby="h-s4">
+<section class="sec s4 bg-grad" id="routes" aria-labelledby="h-s4">
   <span class="brand-lines brand-lines--routes" aria-hidden="true"><i class="bl-w bl-w1"></i><i class="bl-w bl-w2"></i><i class="bl-w bl-w3"></i></span>
 
   <div class="head-row">
@@ -673,6 +685,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1125b"></script><script src="/handpan-shop-home/astro/home.js?v=1125b"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1125c"></script><script src="/handpan-shop-home/astro/home.js?v=1125c"></script>
 </body>
 </html>

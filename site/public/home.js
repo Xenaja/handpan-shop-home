@@ -98,7 +98,8 @@
       FIELDS.forEach(([x, y, rx, ry, angle, i]) => {
         const label = i === 0 ? 'Центральный купол: послушать звук' : `Тональное поле ${i}: послушать звук`;
         const g = svgEl('g', { class: 'hang-hit', tabindex: '0', role: 'button', 'aria-label': label });
-        const shape = svgEl('ellipse', { cx:x, cy:y, rx: rx * 1.12, ry: ry * 1.12, transform:`rotate(${angle} ${x} ${y})` });
+        // зона нажатия не меньше ~44px на телефоне (консультант 25.11, п. 5): радиус от 27 единиц viewBox
+        const shape = svgEl('ellipse', { cx:x, cy:y, rx: Math.max(rx * 1.12, 27), ry: Math.max(ry * 1.12, 27), transform:`rotate(${angle} ${x} ${y})` });
         const title = svgEl('title', {}); title.textContent = label;
         g.append(title, shape);
         let timer;
@@ -210,6 +211,15 @@
     new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { pick(); hv.play().catch(() => {}); } else hv.pause();
     }), { threshold: .05 }).observe(hv.closest('.s1'));
+  }
+
+  /* ---------- 07: фото преподавателей грузим заранее, пока карусель на подходе, иначе при свайпе пустые карточки (консультант 25.11, п. 6) ---------- */
+  const tcar = $('[data-tcar]');
+  if (tcar && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => {
+      if (es[0].isIntersecting) { io.disconnect(); $$('img', tcar).forEach(img => { img.loading = 'eager'; }); }
+    }, { rootMargin: '1200px 0px' });
+    io.observe(tcar);
   }
 
   /* ---------- 09: лента комьюнити — фото за правым краем грузим заранее, иначе въезжают пустыми ---------- */
