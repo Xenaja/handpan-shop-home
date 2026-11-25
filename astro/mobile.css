@@ -159,3 +159,28 @@ html body .btn:not(.btn--48):not(.btn--44){min-height:56px;border-radius:40px}
 .aud-play.aud-play--mark,.aud-play.aud-play--mark:hover,.aud-play.aud-play--mark:focus,.aud-play.aud-play--mark:active{background:transparent}
 @media (hover:none){.aud-play.aud-play--mark:not(.is-playing){color:var(--h-blue)}}
 html body .branch-book.btn.btn{min-height:52px;padding:12px 28px;font-size:16px;border-radius:26px}  /* кнопка записи в контактах ниже (правка 14.11) */
+
+/* ===== Мобильная версия, доводка 25.11 ===== */
+@media(max-width:999.98px){
+  /* «Обучение», экран 1: фото — только в своей зоне под текстом (общее правило растягивало его на весь экран,
+     и в кадре оставались колени). Зона выше, Евгений с хангом целиком */
+  .e1:not(.i1){--mobile-photo-height:clamp(260px,78vw,440px)}
+  html .e1:not(.i1) .e1-bg{top:auto;bottom:calc(-1 * var(--seam));height:calc(var(--mobile-photo-height) + var(--seam));object-position:78% 30%}
+
+  /* главная, «Преподаватели»: длинное слово не влезало и уводило страницу вбок */
+  .s7 .h-display{font-size:min(7.4vw,44px)}
+  /* служебный переключатель вариантов для заказчика перекрывал текст у правого края — на телефоне скрыт */
+  .vswitch{display:none!important}
+
+  /* «Как мы учим»: ступени — компактные строки лесенкой вместо пяти высоких плашек */
+  .stage{height:auto;min-height:0;display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 10px;align-items:start;padding:16px 18px;margin-left:calc(var(--i) * 10px)}
+  .stage-n{padding-top:3px}
+  .stage-t{font-size:16px}
+
+  /* кнопка «наверх» спорила с липкой панелью и кнопками записи — на телефоне её нет */
+  .totop{display:none!important}
+
+  /* кнопка меню прячется, когда листаешь вниз, и возвращается при движении вверх (common.js) */
+  .burger{transition:box-shadow .43s,transform .45s var(--ease),opacity .3s}
+  html.nav-hidden .burger[aria-expanded="false"]{transform:translateY(-72px);opacity:0;pointer-events:none}
+}

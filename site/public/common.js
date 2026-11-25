@@ -198,7 +198,13 @@
       bar.classList.toggle('show', pastHero && !busy && !nearConversion && !nearAction && !typing);
     }
     root.classList.toggle('scrolled', scrollY > 40);
+    // кнопка меню (правка 25.11): прячется при прокрутке вниз, возвращается при движении вверх и у верха страницы
+    const y = scrollY, dy = y - lastY;
+    if (y < 120 || dy < -6) root.classList.remove('nav-hidden');
+    else if (dy > 6) root.classList.add('nav-hidden');
+    if (Math.abs(dy) > 6 || y < 120) lastY = y;
   }
+  var lastY = scrollY;  // var: onScroll может вызваться раньше этой строки
   let scrollFrame = 0;
   addEventListener('scroll', () => {
     if (!scrollFrame) scrollFrame = requestAnimationFrame(() => { scrollFrame = 0; onScroll(); });

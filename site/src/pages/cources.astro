@@ -15,6 +15,8 @@ const initials = (s: string) => s.split(/\s+/).map(w => w[0]).join('').slice(0, 
 const pad = (n: number) => String(n).padStart(2, '0');
 // hidden — преподаватель временно не показывается (Андрей Лето — добавим позже)
 const T = D.teachers.filter(t => !t.hidden);
+// экран 2 «Разные подходы» скрыт целиком (правка 25.11), вернуть — true
+const SHOW_E2 = false;
 const priceNum = (p: string) => p.replace(/\D/g, '');
 const NEEDS = [
   { label: 'Инструмент', big: 'Не обязателен', text: 'На занятиях предоставляем хэндпан' },
@@ -121,6 +123,7 @@ const jsonld = {
 
 <!-- 02 · Разные подходы (правка 24.11): короткое вступление. Цитата — сноска с миниатюрой, фраза тем же размером,
      главная мысль — крупно. Блоки «Первый урок» / «За 45 минут» сняты: повторяли первый экран -->
+{SHOW_E2 && (
 <section class="sec bg-white e2" aria-labelledby="h-e2">
   <span class="mono e2-label">02 · Разные подходы</span>
   <div class="e2-note">
@@ -132,12 +135,13 @@ const jsonld = {
   </div>
   <h2 id="h-e2" class="h2 e2-main">В школе U-GENE вы сможете познакомиться с разными техниками и направлениями, <span class="mute">чтобы со временем найти собственный стиль игры</span></h2>
 </section>
+)}
 
-<!-- 03 · Как мы учим: пять ступеней растущей высоты. Экран «Что вы освоите» снят (правка 24.11), его заголовок — здесь -->
+<!-- 02 · Как мы учим: пять ступеней растущей высоты. Экран «Что вы освоите» снят (правка 24.11), его заголовок — здесь -->
 <section class="sec bg-sky e4" aria-labelledby="h-e4">
   <div class="g-head">
     <div class="sec-head">
-      <span class="mono">03 · Как мы учим</span>
+      <span class="mono">02 · Как мы учим</span>
       <h2 id="h-e4" class="h2">От первого звука <span class="mute">– к собственной музыке</span></h2>
     </div>
     <p class="g-note">На ханге легко начать играть. Но чтобы действительно владеть инструментом, одной интуиции недостаточно. Каждый этап обучения постепенно добавляет новый уровень контроля над инструментом: звук и движение, ритм и мелодия, после — импровизация и собственная музыкальная речь.</p>
@@ -152,7 +156,7 @@ const jsonld = {
 <section class="sec bg-grad on-blue e5" aria-labelledby="h-e5">
   <BrandLines class="brand-lines--path" />
   <div class="sec-head e5-l">
-    <span class="mono">04 · Путь ученика</span>
+    <span class="mono">03 · Путь ученика</span>
     <h2 id="h-e5" class="h-display e5-h">Как строится путь</h2>
   </div>
   <ol class="path">
@@ -164,7 +168,7 @@ const jsonld = {
 <section class="sec bg-white e6" id="formats" aria-labelledby="h-e6">
   <div class="g-head">
     <div class="sec-head">
-      <span class="mono">05 · Форматы и цены</span>
+      <span class="mono">04 · Форматы и цены</span>
       <h2 id="h-e6" class="h2">Форматы <span class="mute">обучения</span></h2>
     </div>
     <p class="g-note">Не знаете, какой формат выбрать? Начните с пробного занятия.</p>
@@ -197,7 +201,7 @@ const jsonld = {
   <div class="e-photo e7-photo"><img src={u('img/edu-engraved.webp')} alt="Ученица играет на ханге с гравировкой" width="1800" height="1214" loading="lazy"></div>
   <div class="stack e7-r">
     <div class="sec-head">
-      <span class="mono">06 · Перед первым занятием</span>
+      <span class="mono">05 · Перед первым занятием</span>
       <h2 id="h-e7" class="h2">Что нужно <span class="mute">для занятий</span></h2>
     </div>
     <div class="needs">
@@ -206,11 +210,11 @@ const jsonld = {
   </div>
 </section>
 
-<!-- 07 · Кто вас учит: чипы → 1–4 фото · 5–12 роль, имя, био в две колонки -->
+<!-- 06 · Кто вас учит: чипы → 1–4 фото · 5–12 роль, имя, био в две колонки -->
 <section class="sec bg-aubergine on-dark e8" id="teachers" aria-labelledby="h-e8">
   <div class="g-head">
     <div class="sec-head">
-      <span class="mono">07 · Кто вас учит</span>
+      <span class="mono">06 · Кто вас учит</span>
       <h2 id="h-e8" class="h2">Учимся у тех, кто двигает <span class="mute">культуру ханга вперёд</span></h2>
     </div>
     <p class="g-note">Наши преподаватели формировали российскую культуру ханга с самого её начала. Сегодня они продолжают развивать собственную практику, исследовать возможности инструмента и учиться у мастеров мировой сцены</p>
@@ -240,7 +244,7 @@ const jsonld = {
 <!-- 09 · Что говорят ученики — ждём реальные отзывы (P-E1), до тех пор экран скрыт -->
 <section class="sec e9" aria-labelledby="h-e9" data-pending="P-E1">
   <div class="sec-head">
-    <span class="mono">08 · Отзывы</span>
+    <span class="mono">07 · Отзывы</span>
     <h2 id="h-e9" class="h2">Что говорят <span class="mute">ученики</span></h2>
   </div>
   <div class="revs">
@@ -253,7 +257,7 @@ const jsonld = {
 <!-- 10 · Частые вопросы: 1–4 заголовок · 6–12 аккордеон; ответы в HTML, открыт первый -->
 <section class="sec bg-white e10" aria-labelledby="h-e10">
   <div class="stack e10-l">
-    <span class="mono">09 · FAQ</span>
+    <span class="mono">08 · FAQ</span>
     <h2 id="h-e10" class="h2">Частые <span class="mute">вопросы</span></h2>
     <p class="g-note">Не нашли ответ? Спросите на пробном занятии или напишите нам</p>
   </div>
@@ -273,7 +277,7 @@ const jsonld = {
   <BrandLines class="brand-lines--learn" />
   <div class="e11-grid">
     <div class="stack e11-l">
-      <span class="mono">10 · Пробное занятие · 900 ₽</span>
+      <span class="mono">09 · Пробное занятие · 900 ₽</span>
       <h2 id="h-e11" class="h-hero e11-h">
         <span class="e11-l1"><span>Найди</span> <span class="cap cap--hero e11-cap">свой</span> <span>звук</span></span>
         <span>за 45 минут</span>
