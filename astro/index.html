@@ -23,12 +23,12 @@
 <!-- шрифты со своего сервера; основные начертания — заранее -->
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/unbounded-400-cyrillic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/handpan-shop-home/astro/fonts/golos-text-400-cyrillic.woff2" crossorigin>
-<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1125c">
+<link rel="stylesheet" href="/handpan-shop-home/astro/fonts.css?v=1125d">
 
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-m.webp" media="(max-width:999.98px)" fetchpriority="high">
     <link rel="preload" as="image" href="/handpan-shop-home/astro/img/hero-hands-d.webp" media="(min-width:1000px)" fetchpriority="high">
   
-<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1125c"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1125c"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1125c">
+<link rel="stylesheet" href="/handpan-shop-home/astro/common.css?v=1125d"><link rel="stylesheet" href="/handpan-shop-home/astro/home.css?v=1125d"><link rel="stylesheet" href="/handpan-shop-home/astro/mobile.css?v=1125d">
 <script>
   // ?dev — пунктиром показать места, где ждём данные (PENDING.md); служебные варианты для заказчика:
   // ?hang=bronze | dark — купол на схеме ханга; ?strip=words — бегущая строка словами + экран с цифрами (выбор помним между страницами)
@@ -130,7 +130,7 @@
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href="/handpan-shop-home/astro/cources">Обучение</a><a href="/handpan-shop-home/astro/instruments">Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#routes">Аренда</a><a href="#contacts">Контакты</a>
+    <a href="/handpan-shop-home/astro/cources">Обучение</a><a href="/handpan-shop-home/astro/instruments">Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href="https://handpanstudiospb.ru" target="_blank" rel="noopener">Санкт-Петербург ↗</a>
@@ -228,11 +228,11 @@
     <div class="sec-head">
       <div class="mono">C · 4/8</div>
       <!-- заголовок по правке 21.11 -->
-      <h2 id="h-s4" class="h2"><span>3 пути</span> <span class="s4-title-indent"><em>знакомства</em><br>с хангом</span></h2>
+      <h2 id="h-s4" class="h2"><span>2 пути</span> <span class="s4-title-indent"><em>знакомства</em><br>с хангом</span></h2>
     </div>
   </div>
   <!-- три пути по правке 21.11: учиться, выбрать свой, арендовать; карточки одного размера, без выделенной средней -->
-  <div class="routes">
+  <div class="routes routes--2">
     <div class="route">
       <img class="route-photo" src="/handpan-shop-home/astro/img/easy-d.webp" alt="Первое знакомство с хангом на занятии" width="720" height="900" loading="lazy">
       <h3 class="route-verb">Научиться играть</h3>
@@ -256,20 +256,7 @@
         <a class="btn btn--52 btn--line route-btn" href="/handpan-shop-home/astro/instruments">Об инструментах →</a>
       </div>
     </div>
-    <div class="route">
-      <img class="route-photo" src="/handpan-shop-home/astro/img/route-engraved.webp" alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
-      <h3 class="route-verb">Арендовать инструмент</h3>
-      <div class="stack route-info">
-        <span class="route-sub">Попробуй играть в своём ритме</span>
-        <span>Не готов к занятиям в студии? Можно взять хэндпан в аренду и начать знакомство с инструментом самостоятельно.</span>
-        <span>А чтобы первые шаги были проще, мы подготовили бесплатный видеоурок: покажем, как правильно извлекать звук, освоить базовые движения и сыграть первые сочетания нот. Смотри урок в удобное время и возвращайся к нему, когда захочешь.</span>
-      </div>
-      <div class="route-btns">
-        <button type="button" class="btn btn--52 btn--line route-btn" data-open="rent">Подробнее об аренде</button>
-        <!-- где разместить урок — пока решают (комментарий 21.11) -->
-        <a class="route-more" href="#" data-pending="P-15">Забрать бесплатный урок →</a>
-      </div>
-    </div>
+    
   </div>
   <!-- куда ведёт — обсуждается (правка 21.11); пока открывает тест «Поможем определиться» -->
   <p class="small s4-note"><a href="/handpan-shop-home/astro/test" data-quiz-open>Не знаете, какой путь ваш? Мы поможем определиться →</a></p>
@@ -497,13 +484,13 @@
       <div class="sheet-title" id="sheet-title" data-sheet-title></div>
       <button type="button" class="x" data-close aria-label="Закрыть">×</button>
     </div>
-    <p class="small body--2" data-sheet-help hidden>Можно начать с обучения, взять инструмент в аренду или сразу выбрать свой. Оставьте контакты – подскажем, с чего начать именно вам</p>
+    <p class="small body--2" data-sheet-help hidden>Можно начать с обучения или сразу выбрать свой инструмент. Оставьте контакты – подскажем, с чего начать именно вам</p>
     <form class="form" data-form novalidate>
   
   <div class="fld">
         <label class="fl" for="m-interest">Что интересно</label>
         <select id="m-interest" name="interest" data-interest>
-          <option value="trial">Пробное занятие · 900 ₽</option><option value="buy">Подбор и покупка инструмента</option><option value="rent">Аренда инструмента</option><option value="help">Задать вопрос</option>
+          <option value="trial">Пробное занятие · 900 ₽</option><option value="buy">Подбор и покупка инструмента</option><option value="help">Задать вопрос</option>
         </select>
       </div>
   <fieldset class="fs fld">
@@ -549,8 +536,8 @@
       <div class="sheet-title" id="qm-title">С чего начать?</div>
       <button type="button" class="x" data-quiz-close aria-label="Закрыть">×</button>
     </div>
-    <p class="small">Несколько вопросов помогут выбрать первый шаг: познакомиться с инструментом, начать обучение, подобрать свой ханг или взять его в аренду.</p>
-    <div class="quiz" data-quiz id="hq" data-doubts="{&#34;trial&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходит урок.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;ind&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходят занятия.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;group&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходят занятия в группе.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;format&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, чем отличаются форматы.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;buy&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходит подбор.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Поможем сравнить звучание и подобрать инструмент под ваши задачи.&#34;},&#34;rent&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как оформить аренду.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке или взять в аренду.&#34;,&#34;choose&#34;:&#34;Поможем сравнить звучание и подобрать инструмент под ваши задачи.&#34;}}">
+    <p class="small">Несколько вопросов помогут выбрать первый шаг: познакомиться с инструментом, начать обучение или подобрать свой ханг.</p>
+    <div class="quiz" data-quiz id="hq" data-doubts="{&#34;trial&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходит урок.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;ind&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходят занятия.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;group&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходят занятия в группе.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;format&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, чем отличаются форматы.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке.&#34;,&#34;choose&#34;:&#34;Свой хэндпан для занятия не нужен – инструмент дадим. А когда захочется свой, поможем сравнить звучание и подобрать его под ваши задачи.&#34;},&#34;buy&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как проходит подбор.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке.&#34;,&#34;choose&#34;:&#34;Поможем сравнить звучание и подобрать инструмент под ваши задачи.&#34;},&#34;rent&#34;:{&#34;start&#34;:&#34;Следующий шаг простой: оставьте контакты – перезвоним и расскажем, как оформить аренду.&#34;,&#34;quit&#34;:&#34;Покупать инструмент сразу необязательно. Можно сначала познакомиться с ним на уроке.&#34;,&#34;choose&#34;:&#34;Поможем сравнить звучание и подобрать инструмент под ваши задачи.&#34;}}">
   <div class="quiz-top">
     <div class="quiz-prog" aria-hidden="true"><i data-quiz-bar></i></div>
     <span class="mono quiz-count" data-quiz-count aria-live="polite">01 / 03</span>
@@ -567,9 +554,6 @@
           </label><label class="quiz-opt">
             <input type="radio" name="hq-q0" value="buy">
             <span>Выбрать и купить свой инструмент</span>
-          </label><label class="quiz-opt">
-            <input type="radio" name="hq-q0" value="rent">
-            <span>Взять ханг в аренду</span>
           </label>
       </div>
     </fieldset><fieldset class="quiz-step" data-quiz-step="1" data-key="format" data-if="try learn" hidden>
@@ -685,6 +669,6 @@
   </div>
 </div>
 
-<script src="/handpan-shop-home/astro/common.js?v=1125c"></script><script src="/handpan-shop-home/astro/home.js?v=1125c"></script>
+<script src="/handpan-shop-home/astro/common.js?v=1125d"></script><script src="/handpan-shop-home/astro/home.js?v=1125d"></script>
 </body>
 </html>

@@ -51,6 +51,8 @@ const jsonld = {
       geo: spb.coords ? { '@type': 'GeoCoordinates', latitude: spb.coords[1], longitude: spb.coords[0] } : undefined }
   ]
 };
+// аренду пока убираем со всего сайта (решение 25.11); вернуть карточку — true
+const SHOW_RENT = false;
 ---
 <Base
   title="Ханги и школа игры на хэндпане в Москве и СПб — U-GENE sound vibe"
@@ -131,7 +133,7 @@ const jsonld = {
     <button type="button" class="x" data-menu-close aria-label="Закрыть меню">×</button>
   </div>
   <div class="menu-links">
-    <a href={u('cources')}>Обучение</a><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#routes">Аренда</a><a href="#contacts">Контакты</a>
+    <a href={u('cources')}>Обучение</a><a href={u('instruments')}>Инструменты</a><a href="#" data-pending="P-12">Блог</a><a href="#contacts">Контакты</a>
   </div>
   <div class="btns" role="group" aria-label="Город">
     <button type="button" class="chip" data-city="msk" aria-pressed="true">Москва</button><a class="chip" href={D.spbSite} target="_blank" rel="noopener">Санкт-Петербург ↗</a>
@@ -218,11 +220,11 @@ const jsonld = {
     <div class="sec-head">
       <div class="mono">C · 4/8</div>
       <!-- заголовок по правке 21.11 -->
-      <h2 id="h-s4" class="h2"><span>3 пути</span> <span class="s4-title-indent"><em>знакомства</em><br>с хангом</span></h2>
+      <h2 id="h-s4" class="h2"><span>{SHOW_RENT ? 3 : 2} пути</span> <span class="s4-title-indent"><em>знакомства</em><br>с хангом</span></h2>
     </div>
   </div>
   <!-- три пути по правке 21.11: учиться, выбрать свой, арендовать; карточки одного размера, без выделенной средней -->
-  <div class="routes">
+  <div class={SHOW_RENT ? 'routes' : 'routes routes--2'}>
     <div class="route">
       <img class="route-photo" src={u('img/easy-d.webp')} alt="Первое знакомство с хангом на занятии" width="720" height="900" loading="lazy">
       <h3 class="route-verb">Научиться играть</h3>
@@ -246,6 +248,7 @@ const jsonld = {
         <a class="btn btn--52 btn--line route-btn" href={u('instruments')}>Об инструментах →</a>
       </div>
     </div>
+    {SHOW_RENT && (
     <div class="route">
       <img class="route-photo" src={u('img/route-engraved.webp')} alt="Руки на ханге с гравировкой" width="1092" height="942" loading="lazy">
       <h3 class="route-verb">Арендовать инструмент</h3>
@@ -260,6 +263,7 @@ const jsonld = {
         <a class="route-more" href="#" data-pending="P-15">Забрать бесплатный урок →</a>
       </div>
     </div>
+    )}
   </div>
   <!-- куда ведёт — обсуждается (правка 21.11); пока открывает тест «Поможем определиться» -->
   <p class="small s4-note"><a href={u('test')} data-quiz-open>Не знаете, какой путь ваш? Мы поможем определиться →</a></p>
@@ -403,7 +407,7 @@ const jsonld = {
       <div class="sheet-title" id="sheet-title" data-sheet-title></div>
       <button type="button" class="x" data-close aria-label="Закрыть">×</button>
     </div>
-    <p class="small body--2" data-sheet-help hidden>Можно начать с обучения, взять инструмент в аренду или сразу выбрать свой. Оставьте контакты – подскажем, с чего начать именно вам</p>
+    <p class="small body--2" data-sheet-help hidden>Можно начать с обучения или сразу выбрать свой инструмент. Оставьте контакты – подскажем, с чего начать именно вам</p>
     <LeadForm id="m" />
     <p class="thanks" data-thanks hidden tabindex="-1">Спасибо! Перезвоним в течение дня</p>
   </div>

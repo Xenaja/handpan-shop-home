@@ -831,3 +831,6 @@ html:not([data-strip="words"]) .mq--words,html:not([data-strip="words"]) .s6,htm
 .hang-photo,.s2 .hang-photo{filter:none}
 .hang::before{content:'';position:absolute;z-index:-1;left:6%;right:6%;top:12%;bottom:-6%;border-radius:50%;
   background:radial-gradient(closest-side,rgba(20,28,62,.42),rgba(20,28,62,.18) 60%,rgba(20,28,62,0));pointer-events:none}
+
+/* два пути вместо трёх: аренда убрана 25.11 */
+@media(min-width:700px){ .routes.routes--2{grid-template-columns:repeat(2,minmax(0,1fr))} }
